@@ -3,6 +3,11 @@
 # Edit theme's home layout instead if you wanna make some changes
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: rails_tutorial
+title: Rails Tutorial
 ---
 
-HUSDFHSKFJH
+{% for chapter in site.chapters %}
+  <div class="chapter">
+    {{ chapter.content }}
+  </div>
+{% endfor %}
