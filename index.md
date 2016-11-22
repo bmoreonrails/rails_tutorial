@@ -4,3 +4,7 @@
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: rails_tutorial
 ---
+
+This is the landing page! someone should design me once some of the CSS for the tutorial is written :)
+
+For now, check out the tutorial <a href="/chapters">here</a>

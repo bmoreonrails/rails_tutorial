@@ -8,6 +8,6 @@ title: Rails Tutorial
 
 {% for chapter in site.chapters %}
   <div class="chapter">
-    {{ chapter.content }}
+    {{ chapter.title }}
   </div>
 {% endfor %}

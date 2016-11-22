@@ -1,4 +1,6 @@
 ---
+number: I
+title: Getting Started from Scratch
 ---
 
 {% sectionheader %}
