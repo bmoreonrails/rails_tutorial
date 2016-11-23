@@ -25,7 +25,9 @@
 # github_username:  jekyll
 
 collections:
-  - chapters
+  chapters:
+    output: true
+    permalink: /tutorial/:path/
 
 # Build settings
 markdown: kramdown
