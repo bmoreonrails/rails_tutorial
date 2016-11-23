@@ -8,6 +8,8 @@ title: Rails Tutorial
 
 {% for chapter in site.chapters %}
   <div class="chapter">
-    {{ chapter.number }} {{ chapter.title }}
+    <a href="{{chapter.url}}">
+      {{ chapter.number }} {{ chapter.title }}
+    </a>
   </div>
 {% endfor %}
