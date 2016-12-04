@@ -1,0 +1,32 @@
+.tutorial_nav {
+  color: #FFF;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  float: left;
+  background-color: #69CBA2;
+  
+  a {
+    color: #FFF;
+    text-decoration: none;
+  }
+  
+ .hamburger {
+   font-size: 2.5em;
+   outline: 0;
+   .menu-title {
+      font-size: .5em;
+      vertical-align: middle;
+    }
+  }
+
+  ul {
+    display: none;
+    list-style: none;
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}

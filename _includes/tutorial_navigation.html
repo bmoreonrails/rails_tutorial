@@ -1,9 +1,16 @@
-<ul class="tutorial_nav">
-{% for chapter in site.chapters %}
-  <li>
-    <a href="{{chapter.url}}">
-      {{ chapter.number }} {{ chapter.title }}
-    </a>
-  </li>  
-{% endfor %}
-</ul>
+
+<div class="tutorial_nav">
+  <ul>
+    {% for chapter in site.chapters %}
+     <li>
+      <a href="{{chapter.url}}">
+        {{ chapter.number }} {{ chapter.title }}
+       </a>
+     </li>  
+    {% endfor %}
+   </ul>
+
+  <a href="#menu" class="hamburger">
+    &#9776 <span class="menu-title">{{ page.title }}</span>
+  </a>
+</div>
