@@ -4,13 +4,16 @@
 @import "tutorial/tutorial_nav";
 @import "tutorial/steps";
 @import "tutorial/section_header";
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url(//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Roboto:100,300,700,500,100);
 
 .content {
   padding-top: .25em;
+  padding-left: 3em;
+  padding-right: 3em;
 }
 
 body {
+  font-weight: 300;
   font-family: 'Roboto', sans-serif;
   padding: 0;
   margin: 0;

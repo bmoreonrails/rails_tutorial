@@ -1,7 +1,13 @@
 {% include tutorial_header.html %}
+<body>
   <div class="container">
-      <div class="content">
-        {{ content }}
-     </div>
+    <nav>
+      <p>
+       {% include tutorial_navigation.html %}
+      </p>
+    </nav>
+    <div class="content">
+      {{ content }}
+    </div>
   </div>
 {% include footer.html %}
