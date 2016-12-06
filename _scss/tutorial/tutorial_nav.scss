@@ -1,8 +1,8 @@
 .tutorial_nav {
   padding-top: .2em;
   padding-bottom: .2em;
-  padding-right: 1em;
-  padding-left: 1em;
+  padding-right: .5em;
+  padding-left: .5em;
   color: #FFF;
   position: fixed;
   top: 0px;
@@ -15,14 +15,19 @@
     color: #FFF;
     text-decoration: none;
   }
+
+  .hamburger {
+    font-size: 1.4em;
+  }
   
- .hamburger {
-   font-size: 2.5em;
-   outline: 0;
-   .menu-title {
-      font-size: .5em;
-      vertical-align: middle;
-    }
+  .hamburger-icon {
+    width: 7%;
+    float: left;
+  }
+
+  .menu-title {
+    float: left;
+    width: 90%;
   }
 
   ul {
@@ -33,3 +38,29 @@
     }
   }
 }
+
+@media (min-width: 480px) {
+  .tutorial_nav {
+    .hamburger-icon {
+      width: 5%;
+     } 
+  }
+}
+
+@media (min-width: 768px) {
+  .tutorial_nav {
+    .hamburger {
+      font-size: 1.5em;
+     }
+  }
+}
+
+@media (min-width: 992px) {
+  .tutorial_nav {
+    .hamburger-icon {
+      width: 3%;
+    }
+  }
+}
+
+
