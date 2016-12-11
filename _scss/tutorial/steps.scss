@@ -1,3 +1,25 @@
 .steps {
-  background-color: red;
+  background-color: #FFF;
+  padding: 1em;
+  margin-top: 1em;
+  ol {
+    padding-left: 0em;
+    padding-bottom: 1em;
+    list-style-type: none;
+  }
+  li {
+    display: inline-flex;
+    padding: .5em;
+    counter-increment: item;
+    p {
+      margin: .5em;
+    }   
+  }
+  li:before {
+    font-size: 2em;
+    color: #64CAA0;
+    content: counter(item);
+    float: left;
+    padding-right: .5em;
+  }
 }
