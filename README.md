@@ -8,4 +8,8 @@ If you're interested in contributing YAY! and THANK YOU! Please fork this repo a
 
 ##Up and Running
 
-Once you've cloned this repo, you can get the site up and running locally by typing `jekyll serve` into your console.
+Before you get started, make sure you have Ruby 2.x installed locally.
+
+Then, clone the repo and run `bundle install`.
+
+Now, you can get the site up and running locally by running `jekyll serve`. You can view the running site by going to [http://localhost:4000](http://localhost:4000).
