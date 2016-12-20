@@ -84,7 +84,7 @@ When Win10 starts back up, move onto the 'steps for installing and running bash'
 
 We are going to create folder on your computer, where you will create your rails project.
 
-1.  your desktop, right click and mouse over "New", and click on "Folder"
+1. On your desktop, right click and mouse over "New", and click on "Folder"
 2. Name the folder "Workshop"
 3. Right click on "Workshop" folder, and click on "Pin to Quick access"
 4. Ask Cortana for *File Explorer*, and click on "File Explorer Desktop app".  You should see the Workshop folder in the Navigation tab. (Show File Explorer with Workshop in Navigation)
