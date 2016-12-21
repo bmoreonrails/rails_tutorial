@@ -11,8 +11,8 @@ layout: rails_tutorial
 To get a mac ready for Ruby on Rails development, we need to do the following:
 
 1. install command-line tools (XCode)
-2. install ruby
-3. install rails
+1. install ruby
+1. install rails
 
 We're going to do these tasks via the Terminal console, so if you aren't familiar with that, please read **this non-existent page** over first.
 
@@ -114,5 +114,4 @@ You should see output similar to this:
 
 If you see the output above, rails is running and you can point your browser at http://localhost:3000 and you should see this:
 
-{% include figure.html url="/assets/images/youre_on_rails.png" description="Yay! You're on Rails!" %}
-
+![Yay! You're on Rails!](/assets/images/youre_on_rails.png)
