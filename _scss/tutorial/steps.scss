@@ -8,18 +8,17 @@
     list-style-type: none;
   }
   li {
-    display: inline-flex;
     padding: .5em;
     counter-increment: item;
     p {
       margin: .5em;
+      padding-left: 1.5em;
     }   
   }
   li:before {
     font-size: 2em;
     color: #64CAA0;
     content: counter(item);
-    float: left;
-    padding-right: .5em;
+    position: absolute;
   }
 }
