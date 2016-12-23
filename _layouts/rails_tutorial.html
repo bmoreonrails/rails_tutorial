@@ -1,5 +1,13 @@
-{% include header.html %}
+{% include tutorial_header.html %}
+<body>
+  <div class="container">
+    <nav>
+      <p>
+       {% include tutorial_navigation.html %}
+      </p>
+    </nav>
     <div class="content">
       {{ content }}
     </div>
+  </div>
 {% include footer.html %}

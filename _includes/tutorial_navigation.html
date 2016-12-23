@@ -1,0 +1,19 @@
+
+<div class="tutorial_nav">
+  <ul id="menu-list">
+    {% for chapter in site.chapters %}
+     <li>
+      <a href="{{chapter.url}}">
+        {{ chapter.number }} {{ chapter.title }}
+       </a>
+     </li>  
+    {% endfor %}
+   </ul>
+
+  <div class="menu" data-toggle="#menu-list">
+    <a href="#menu" class="hamburger">
+      <div class="hamburger-icon"> &#9776</div>
+      <div class="menu-title">{{ page.title }}</div>
+    </a>
+  </div>
+</div>

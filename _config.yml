@@ -30,6 +30,8 @@ collections:
     permalink: /tutorial/:path/
 
 # Build settings
+sass: 
+  sass_dir: _scss
 markdown: kramdown
 theme: minima
 gems:
