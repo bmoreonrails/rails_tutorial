@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>B'more on Rails Workshop for Women</title>
+   <link href="/css/syntax.css" type="text/css" rel="stylesheet"/>
+   <link href="/css/base.css" type="text/css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/js/tutorial_nav.js"></script>
+  </head>
+
+
+<body>
+  <div class="container">
+    <nav>
+      <p>
+       
+<div class="tutorial_nav">
+  <ul id="menu-list">
+    
+     <li>
+      <a href="/tutorial/1/">
+        I Getting Started from Scratch
+       </a>
+     </li>  
+    
+     <li>
+      <a href="/tutorial/2/">
+        II Creating the First Table in Your Database
+       </a>
+     </li>  
+    
+     <li>
+      <a href="/tutorial/3/">
+        III Viewing Data in the Browser
+       </a>
+     </li>  
+    
+   </ul>
+
+  <div class="menu" data-toggle="#menu-list">
+    <a href="#menu" class="hamburger">
+      <div class="hamburger-icon"> &#9776</div>
+      <div class="menu-title">Getting Started from Scratch</div>
+    </a>
+  </div>
+</div>
+
+      </p>
+    </nav>
+    <div class="content">
+      <div class="sectionheader"> 
+<p>Getting Started from Scratch</p>
+ </div>
+
+<div class="protip"> 
+<p>Throughout the tutorial, you’re going to run a lot of Terminal commands. For example, we might ask you to do something like</p>
+
+<blockquote>
+  <p>Run <code>pwd</code> to print your current working directory.</p>
+</blockquote>
+
+<p>To run the command, you’ll need to type it in Terminal and hit <code>enter</code> to execute it.</p>
+ </div>
+
+<div class="steps"> 
+<div class="list"> 
+<ol>
+  <li>
+    <p>Open Terminal.</p>
+  </li>
+  <li>
+    <p>You’re now in your home directory. Run <code>ls</code> to see what’s in your home directory. You might see some familiar directories like <code>Desktop</code>, <code>Documents</code>, and <code>Music</code>.</p>
+  </li>
+  <li>
+    <p>All code deserves a good home. Add a new <code>Projects</code> directory to your home directory by running <code>mkdir Projects</code>.</p>
+  </li>
+  <li>
+    <p>Navigate to your new <code>Projects</code> directory by running <code>cd Projects</code>.</p>
+  </li>
+  <li>
+    <p>Now you’re ready to create the bookstore!</p>
+  </li>
+</ol>
+ </div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  &gt; ls
+  Desktop Document Music
+
+  &gt; mkdir Projects
+
+  &gt; <span class="nb">cd </span>Projects</code></pre></figure>
+
+ </div>
+
+<div class="protip"> 
+<p>Before you can complete the following list, your computer needs to be configured with Rails. If you haven’t already, please refer to the <a href="link">install instructions</a> for list on configuring your computer.</p>
+ </div>
+
+<div class="steps"> 
+<div class="list"> 
+<ol>
+  <li>
+    <p>In your <code>Projects</code> directory, run <code>rails new bookstore</code>.</p>
+  </li>
+  <li>
+    <p><code>rails new</code> does a lot of stuff! First, it creates the files and directories that make up the basic structure of your bookstore application. Then, it runs <code>bundle install</code> to install the dependencies needed to run the application.</p>
+  </li>
+  <li>
+    <p>After <code>rails new</code> finishes, run <code>cd bookstore</code> to navigate to the newly created bookstore application.</p>
+  </li>
+</ol>
+ </div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  &gt; rails new bookstore
+        create
+        create  README.md
+        create  Rakefile
+        create  config.ru
+        create  .gitignore
+        create  Gemfile
+        create  app
+        ...
+        run bundle install
+  Fetching gem metadata from http://rubygems.org/...........
+  Fetching version metadata from http://rubygems.org/...
+  Fetching dependency metadata from http://rubygems.org/..
+  Resolving dependencies..................
+  Installing rake 11.3.0
+  ...</code></pre></figure>
+
+ </div>
+
+<div class="steps"> 
+<div class="list"> 
+<ol>
+  <li>
+    <p>Let’s take a look the files that got created.</p>
+  </li>
+  <li>
+    <p>Run <code>ls -l</code> to list out all the top level files and directories <code>rails new</code> generated. There is lot going on, but a few things stand out.</p>
+  </li>
+  <li>
+    <p>Any code that is specific to the bookstore application will live in the <code>app</code> directory. Run <code>ls -l app</code> to take a look at the some of the things you’ll be working with throughout the tutorial.</p>
+  </li>
+</ol>
+ </div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  › ls -l
+  total 48
+  -rw-r--r--   1 awesomesauce  staff  1728 Nov  6 14:31 Gemfile
+  -rw-r--r--   1 awesomesauce  staff  4329 Nov  6 14:33 Gemfile.lock
+  -rw-r--r--   1 awesomesauce  staff   374 Nov  6 14:13 README.md
+  -rw-r--r--   1 awesomesauce  staff   227 Nov  6 14:13 Rakefile
+  drwxr-xr-x  10 awesomesauce  staff   340 Nov  6 14:13 app
+  drwxr-xr-x   7 awesomesauce  staff   238 Nov  6 14:13 bin
+  drwxr-xr-x  14 awesomesauce  staff   476 Nov 12 18:56 config
+  -rw-r--r--   1 awesomesauce  staff   130 Nov  6 14:13 config.ru
+  drwxr-xr-x   4 awesomesauce  staff   136 Nov 12 18:54 db
+  drwxr-xr-x   4 awesomesauce  staff   136 Nov  6 14:13 lib
+  drwxr-xr-x   4 awesomesauce  staff   136 Nov  6 14:34 log
+  drwxr-xr-x   9 awesomesauce  staff   306 Nov  6 14:13 public
+  drwxr-xr-x   9 awesomesauce  staff   306 Nov  6 14:13 <span class="nb">test
+  </span>drwxr-xr-x   7 awesomesauce  staff   238 Nov  6 14:34 tmp
+  drwxr-xr-x   3 awesomesauce  staff   102 Nov  6 14:13 vendor
+
+  › ls -l app
+  total 0
+  drwxr-xr-x  6 awesomesauce  staff  204 Nov  6 14:13 assets
+  drwxr-xr-x  3 awesomesauce  staff  102 Nov  6 14:13 channels
+  drwxr-xr-x  4 awesomesauce  staff  136 Nov  6 14:13 controllers
+  drwxr-xr-x  3 awesomesauce  staff  102 Nov  6 14:13 helpers
+  drwxr-xr-x  3 awesomesauce  staff  102 Nov  6 14:13 <span class="nb">jobs
+  </span>drwxr-xr-x  3 awesomesauce  staff  102 Nov  6 14:13 mailers
+  drwxr-xr-x  4 awesomesauce  staff  136 Nov  6 14:13 models
+  drwxr-xr-x  3 awesomesauce  staff  102 Nov  6 14:13 views</code></pre></figure>
+
+ </div>
+
+<div class="protip"> 
+<p>Don’t have a favorite text editor for programming? We recommend <a href="https://atom.io/">Atom</a>.</p>
+ </div>
+
+<div class="steps"> 
+<div class="list"> 
+<ol>
+  <li>
+    <p>The <code>config</code> directory is where you’ll store configuration files for the bookstore application. <code>rails new</code> generated a bunch of configuration files to help you get this new application up and running quickly. Let’s take a look at one of those files.</p>
+  </li>
+  <li>
+    <p>Use your favorite text editor to open the <code>bookstore</code> directory.</p>
+  </li>
+  <li>
+    <p>In your text editor, open the <code>config</code> directory, and then open <code>database.yml</code>.</p>
+  </li>
+  <li>
+    <p><code>database.yml</code> tells Rails how to connect to the bookstore application’s database.</p>
+  </li>
+  <li>
+    <p>By default, the bookstore application is setup to use <a href="https://sqlite.org/">SQLite</a>. It’s a light weight database that’s perfect for this tutorial.</p>
+  </li>
+  <li>
+    <p>Since we’re happy with the default <code>database.yml</code> generated by <code>rails new</code>, we can live it as is. Ah, <a href="https://en.wikipedia.org/wiki/Convention_over_configuration">convention over configuration</a>.</p>
+  </li>
+</ol>
+ </div>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></td><td class="code"><pre>  <span class="c1"># config/database.yml</span>
+
+  <span class="c1"># SQLite version 3.x</span>
+  <span class="c1">#   gem install sqlite3</span>
+  <span class="c1">#</span>
+  <span class="c1">#   Ensure the SQLite 3 gem is defined in your Gemfile</span>
+  <span class="c1">#   gem 'sqlite3'</span>
+  <span class="c1">#</span>
+  <span class="s">default</span><span class="pi">:</span> <span class="nl">&amp;default</span>
+    <span class="s">adapter</span><span class="pi">:</span> <span class="s">sqlite3</span>
+    <span class="s">pool</span><span class="pi">:</span> <span class="s">5</span>
+    <span class="s">timeout</span><span class="pi">:</span> <span class="s">5000</span>
+
+  <span class="s">development</span><span class="pi">:</span>
+    <span class="s">&lt;&lt;</span><span class="pi">:</span> <span class="nv">*default</span>
+    <span class="s">database</span><span class="pi">:</span> <span class="s">db/development.sqlite3</span>
+
+  <span class="c1"># Warning: The database defined as "test" will be erased and</span>
+  <span class="c1"># re-generated from your development database when you run "rake".</span>
+  <span class="c1"># Do not set this db to the same as development or production.</span>
+  <span class="s">test</span><span class="pi">:</span>
+    <span class="s">&lt;&lt;</span><span class="pi">:</span> <span class="nv">*default</span>
+    <span class="s">database</span><span class="pi">:</span> <span class="s">db/test.sqlite3</span>
+
+  <span class="s">production</span><span class="pi">:</span>
+    <span class="s">&lt;&lt;</span><span class="pi">:</span> <span class="nv">*default</span>
+    <span class="s">database</span><span class="pi">:</span> <span class="s">db/production.sqlite3</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+ </div>
+
+<div class="aside"> 
+<p>Not sure what a database is? Don’t worry, we’ll fill you in :)</p>
+
+<p>Brief description with external resources if we think this is necessary.</p>
+ </div>
+
+<div class="protip"> 
+<p>Don’t worry if what you’re seeing doesn’t look exactly like the examples we’ve included in the tutorial. Small things can change between different versions of Rails.</p>
+ </div>
+
+<div class="steps"> 
+<div class="list"> 
+<ol>
+  <li>
+    <p>There are plenty of things to look at, but we’ll get to them later. For now, let’s get the application running!</p>
+  </li>
+  <li>
+    <p>Go back to Terminal and make sure you’re in the <code>bookstore</code> directory.</p>
+
+    <p>Not sure if you’re in the <code>bookstore</code> directory? Run <code>pwd</code> to see what directory you’re in. You should see something like <code>/Users/awesomesauce/Projects/bookstore</code>.</p>
+  </li>
+  <li>
+    <p>Now run <code>rails server</code> to start the application server. It will tell you how to access the running application:</p>
+
+    <p><code>
+=&gt; Rails 5.0.0.1 application starting in development on
+http://localhost:3000
+</code></p>
+  </li>
+  <li>
+    <p>Open you web browser and go to <a href="http://localhost:3000">http://localhost:3000</a>.</p>
+  </li>
+</ol>
+ </div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  › <span class="nb">pwd</span>
+  /Users/awesomesauce/Projects/bookstore
+
+  &gt; rails server
+  <span class="o">=</span>&gt; Booting Puma
+  <span class="o">=</span>&gt; Rails 5.0.0.1 application starting <span class="k">in </span>development on http://localhost:3000
+  <span class="o">=</span>&gt; Run <span class="sb">`</span>rails server -h<span class="sb">`</span> <span class="k">for </span>more startup options
+  Puma starting <span class="k">in </span>single mode...
+  <span class="k">*</span> Version 3.6.0 <span class="o">(</span>ruby 2.3.1-p112<span class="o">)</span>, codename: Sleepy Sunday Serenity
+  <span class="k">*</span> Min threads: 5, max threads: 5
+  <span class="k">*</span> Environment: development
+  <span class="k">*</span> Listening on tcp://localhost:3000
+  Use Ctrl-C to stop</code></pre></figure>
+
+ </div>
+
+<div class="screenshot"> 
+<p>Browser with “Yay! You’re on Rails!” landing page</p>
+ </div>
+
+<div class="steps"> 
+<div class="list"> 
+<ol>
+  <li>
+    <p>Yay! The bookstore application is running!</p>
+  </li>
+  <li>
+    <p>Go back to Terminal, and you can see the application responding to requests.</p>
+  </li>
+  <li>
+    <p>Now that you’re back in Terminal, run <code>Ctrl-C</code>to stop the application.</p>
+  </li>
+</ol>
+ </div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  › rails server
+  ...
+  Started GET <span class="s2">"/"</span> <span class="k">for</span> ::1 at 2016-11-12 19:38:25 -0500
+  Processing by Rails::WelcomeController#index as HTML
+    Parameters: <span class="o">{</span><span class="s2">"internal"</span><span class="o">=</span>&gt;true<span class="o">}</span>
+    Rendering /Users/awesomesauce/.rvm/gems/ruby-2.3.1/gems/railties-5.0.0.1/lib/rails/templates/rails/welcome/index.html.erb
+    Rendered /Users/awesomesauce/.rvm/gems/ruby-2.3.1/gems/railties-5.0.0.1/lib/rails/templates/rails/welcome/index.html.erb <span class="o">(</span>6.6ms<span class="o">)</span>
+  Completed 200 OK <span class="k">in </span>71ms <span class="o">(</span>Views: 27.0ms | ActiveRecord: 0.0ms<span class="o">)</span>
+  ...
+  ^CExiting</code></pre></figure>
+
+ </div>
+
+<div class="aside"> 
+<p>What’s this bookstore we keep talking about? In this tutorial, we’re going to use Rails to make an application for a bookstore.</p>
+
+<p>As you build the application, you’ll add features to create, view, edit, and delete books. Since we all have feelings on the books we love…and hate, you’ll add features so books can be reviewed by users.</p>
+
+<p>By creating an application for a bookstore, you’ll get explore the different layers of Rails.</p>
+
+<p>Are you ready?!</p>
+
+<p><img src="https://media.giphy.com/media/xT8qBrtlhoV1wl7yUg/giphy.gif" alt="Yes!" title="We should serve this image locally" /></p>
+ </div>
+
+    </div>
+  </div>
+<footer>
+  <div class="container">
+    <p class="center-text">Here's the footer!!</a></p>
+  </div>
+</footer>
+</body>
+</html>
+
