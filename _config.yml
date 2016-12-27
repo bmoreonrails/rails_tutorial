@@ -32,10 +32,15 @@ collections:
 # Build settings
 sass: 
   sass_dir: _scss
-markdown: kramdown
 theme: minima
 gems:
+  - tutorial_class_tags
   - jekyll-feed
 exclude:
   - Gemfile
   - Gemfile.lock
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  hard_wrap: false
