@@ -20,11 +20,27 @@
     content: counter(item);
     position: absolute;
   }
+
+  pre.highlight {
+    overflow-y: scroll;
+  }
+
+  .highlight {
+    margin-left: 2.5em;
+    background-color: lightgrey;
+    width: auto;
+    margin-bottom: 0em;
+    padding: .75em;
+    float: none;
+    code {
+      background-color: lightgrey;
+    }
+  }
 }
 
 @media (min-width: 480px) {
   .list {
-     width: 30%;
+     width: 42%;
      max-width: 600px;
      margin-left: auto;
      margin-right: auto;
