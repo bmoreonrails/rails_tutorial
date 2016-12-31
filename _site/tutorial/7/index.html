@@ -1,0 +1,744 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>B'more on Rails Workshop for Women</title>
+   <link href="/css/syntax.css" type="text/css" rel="stylesheet"/>
+   <link href="/css/base.css" type="text/css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/js/tutorial_nav.js"></script>
+  </head>
+
+
+<body>
+  <div class="container">
+    <nav>
+      <p>
+       
+<div class="tutorial_nav">
+  <ul id="menu-list">
+    
+     <li>
+      <a href="/tutorial/1/">
+        I Getting Started from Scratch
+       </a>
+     </li>  
+    
+     <li>
+      <a href="/tutorial/2/">
+        II Creating the First Table in Your Database
+       </a>
+     </li>  
+    
+     <li>
+      <a href="/tutorial/3/">
+        III Viewing Data in the Browser
+       </a>
+     </li>  
+    
+     <li>
+      <a href="/tutorial/4/">
+        IV Showing Detailed Information in the Browser
+       </a>
+     </li>  
+    
+     <li>
+      <a href="/tutorial/5/">
+        V Creating Books Through the Browser
+       </a>
+     </li>  
+    
+     <li>
+      <a href="/tutorial/6/">
+        VI Updating Books
+       </a>
+     </li>  
+    
+     <li>
+      <a href="/tutorial/7/">
+        VII Styling Your Bookstore
+       </a>
+     </li>  
+    
+   </ul>
+
+  <div class="menu" data-toggle="#menu-list">
+    <a href="#menu" class="hamburger">
+      <div class="hamburger-icon"> &#9776</div>
+      <div class="menu-title">Styling Your Bookstore</div>
+    </a>
+  </div>
+</div>
+
+      </p>
+    </nav>
+    <div class="content">
+      <div class="aside">
+<p>You’re bookstore is really starting to take shape. But doesn’t it look a little…spartan?</p>
+
+<p>Don’t get me wrong, there’s a beauty in the simplicity. However, there are a few changes we can make that’ll make your bookstore easier to use.</p>
+
+<p>We’ll add a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a> file to add some style rules. Then, we’ll update your templates to take advantage of the new style rules.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Download the stylesheet file <code class="highlighter-rouge">bookstore.scss</code> <a href="link-to-file.com">here</a>.</p>
+  </li>
+  <li>
+    <p>Move <code class="highlighter-rouge">bookstore.scss</code> to <code class="highlighter-rouge">app/assets/stylesheets</code>.</p>
+
+    <p>Rails will automatically load all stylesheet files defined in <code class="highlighter-rouge">app/assets/stylesheets</code>.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  › ls -l app/assets/stylesheets
+  total 16
+  -rw-r--r--  1 awesomesauce  staff   736 Dec 30 12:13 application.css
+  -rw-r--r--  1 awesomesauce  staff  2812 Dec 30 12:14 bookstore.scss</code></pre></figure>
+
+</div>
+
+<div class="protip">
+<p>Hey - I thought we were adding a CSS file?! What’s a <code class="highlighter-rouge">.scss</code> file?</p>
+
+<p><code class="highlighter-rouge">bookstore.scss</code> is a <a href="http://sass-lang.com/">Sass</a> file!</p>
+
+<p>As they say at the top of their homepage, Sass is “CSS with superpowers.”</p>
+
+<p>We can use both Sass and CSS files in your application because Rails ships with support for both.</p>
+
+<p>If you’re curious, you can read the <a href="http://sass-lang.com/guide">Sass docs</a> to learn more about it.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Now that your application has some styles, let’s use them!</p>
+  </li>
+  <li>
+    <p>Let’s start by adding a header that will get rendered on every page.</p>
+  </li>
+  <li>
+    <p>Open <code class="highlighter-rouge">app/views/layouts/application.html.erb</code> in your text editor.</p>
+
+    <p>This file makes up the skeleton of every page in your application.</p>
+
+    <p>All your content is rendered inside the <code class="highlighter-rouge">body</code> tag.</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="sx">%= yield %&gt;
+&lt;/body&gt;
+</span></code></pre>
+    </div>
+  </li>
+  <li>
+    <p>After the beginning of the <code class="highlighter-rouge">body</code> tag, add the following code:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">div</span> <span class="k">class</span><span class="o">=</span><span class="s2">"navigation"</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">div</span> <span class="k">class</span><span class="o">=</span><span class="s2">"center"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="sx">%= link_to "My Super Rad Bookstore", books_path %&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</span></code></pre>
+    </div>
+
+    <p>On every page of your bookstore, there will be a header with a link “My Super Rad Bookstore” that links to the books index. No matter what page your on, you’ll be able to get back to your bookstore’s main page.</p>
+  </li>
+  <li>
+    <p>Now, let’s add a containing <code class="highlighter-rouge">div</code> around your application’s content.</p>
+
+    <p>Inside the <code class="highlighter-rouge">body</code> tag, change the <code class="highlighter-rouge">yield</code> line from</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">%= yield %&gt;
+</span></code></pre>
+    </div>
+
+    <p>to</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">div</span> <span class="k">class</span><span class="o">=</span><span class="s2">"container"</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="sx">%= yield %&gt;
+&lt;/div&gt;
+</span></code></pre>
+    </div>
+
+    <p>This let’s us add some styling to make your application’s content consistent across the different pages.</p>
+  </li>
+  <li>
+    <p>Save your changes.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></td><td class="code"><pre>  <span class="o">&lt;!</span><span class="no">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="no">Bookstore</span><span class="o">&lt;</span><span class="sr">/title&gt;
+      &lt;%= csrf_meta_tags %&gt;
+
+      &lt;%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %&gt;
+      &lt;%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %&gt;
+    &lt;/</span><span class="n">head</span><span class="o">&gt;</span>
+
+    <span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">div</span> <span class="k">class</span><span class="o">=</span><span class="s2">"navigation"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">div</span> <span class="k">class</span><span class="o">=</span><span class="s2">"center"</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="sx">%= link_to "My Super Rad Bookstore", books_path %&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class=</span><span class="s2">"container"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="sx">%= yield %&gt;
+      &lt;/div&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Now, let’s take a look at the books index. Open <code class="highlighter-rouge">app/views/books/index.html.erb</code>.</p>
+  </li>
+  <li>
+    <p>At the end of the template, you have a link to add a book.</p>
+
+    <p>Let’s make that link look like a button. This will help people recognize the link as an actionable item.</p>
+  </li>
+  <li>
+    <p>Change the link from</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">%= link_to("Add a book", new_book_path) %&gt;
+</span></code></pre>
+    </div>
+
+    <p>to</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">%= link_to("Add a book", new_book_path, class: "button") %&gt;
+</span></code></pre>
+    </div>
+
+    <p>With this change, you’re adding a CSS class called <code class="highlighter-rouge">button</code> to the link. The CSS class <code class="highlighter-rouge">button</code> is defined in <code class="highlighter-rouge">bookstore.scss</code>.</p>
+  </li>
+  <li>
+    <p>Save your changes.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>  <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="no">Welcome</span> <span class="n">to</span> <span class="no">My</span> <span class="no">Super</span> <span class="no">Rad</span> <span class="no">Bookstore</span><span class="o">!&lt;</span><span class="sr">/h1&gt;
+
+  &lt;ul&gt;
+    &lt;% @books.each do |book| %&gt;
+      &lt;li&gt;
+        &lt;%= link_to(book.title, book_path(book)) %&gt; by &lt;%= book.author %&gt;
+      &lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="sx">% end </span><span class="o">%&gt;</span>
+  <span class="o">&lt;</span><span class="sr">/ul&gt;
+
+  &lt;%= link_to("Add a book", new_book_path, class: "button") %&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Now that we have some styles in place, let’s see what they look like.</p>
+  </li>
+  <li>
+    <p>Go to Terminal and make sure you’re in the <code class="highlighter-rouge">bookstore</code> directory.</p>
+  </li>
+  <li>
+    <p>Now, start your application’s web server and go to <a href="http://localhost:3000/books">http://localhost:3000/books</a>.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  › <span class="nb">pwd</span>
+  /Users/alimi/Projects/bookstore
+
+  › rails server
+  <span class="o">=</span>&gt; Booting Puma
+  <span class="o">=</span>&gt; Rails 5.0.0.1 application starting <span class="k">in </span>development on http://localhost:3000</code></pre></figure>
+
+</div>
+
+<p><img src="screenshot.jpg" alt="Browser showing styled books index" /></p>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Wow! Doesn’t it look so different?!</p>
+
+    <p>Let’s add a few more finishing touches.</p>
+  </li>
+  <li>
+    <p>Open <code class="highlighter-rouge">app/views/new.html.erb</code>.</p>
+  </li>
+  <li>
+    <p>We’ll add the <code class="highlighter-rouge">button</code> CSS class to the form submission button to make it look like a…button.</p>
+
+    <p>Trust me, it’ll be a reall good looking button 😉</p>
+  </li>
+  <li>
+    <p>Change the <code class="highlighter-rouge">submit</code> button from</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">%= f.submit %&gt;
+</span></code></pre>
+    </div>
+
+    <p>to</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">%= f.submit(class: "button" )%&gt;
+</span></code></pre>
+    </div>
+
+    <p>This change is very simmilar to the change we made to the “Add a book” link. Before, you weren’t passing any arguments to the <code class="highlighter-rouge">submit</code> button. Now, you’re setting the class to <code class="highlighter-rouge">button</code>.</p>
+  </li>
+  <li>
+    <p>Save your changes and go to the new book page to see your changes.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></td><td class="code"><pre>  <span class="o">&lt;</span><span class="sx">%= form_for(@book) do |f| %&gt;
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;%=</span> <span class="n">f</span><span class="p">.</span><span class="nf">label</span> <span class="ss">:title</span> <span class="o">%&gt;</span>
+        <span class="o">&lt;</span><span class="sx">%= f.text_field :title %&gt;
+      &lt;/li&gt;
+
+      &lt;li&gt;
+        &lt;%=</span> <span class="n">f</span><span class="p">.</span><span class="nf">label</span> <span class="ss">:author</span> <span class="o">%&gt;</span>
+        <span class="o">&lt;</span><span class="sx">%= f.text_field :author %&gt;
+      &lt;/li&gt;
+
+      &lt;li&gt;
+        &lt;%=</span> <span class="n">f</span><span class="p">.</span><span class="nf">label</span> <span class="ss">:price_cents</span> <span class="o">%&gt;</span>
+        <span class="o">&lt;</span><span class="sx">%= f.number_field :price_cents %&gt;
+      &lt;/li&gt;
+
+      &lt;li&gt;
+        &lt;%=</span> <span class="n">f</span><span class="p">.</span><span class="nf">label</span> <span class="ss">:quantity</span> <span class="o">%&gt;</span>
+        <span class="o">&lt;</span><span class="sx">%= f.number_field :quantity %&gt;
+      &lt;/li&gt;
+
+      &lt;li&gt;
+        &lt;%=</span> <span class="n">f</span><span class="p">.</span><span class="nf">label</span> <span class="ss">:description</span> <span class="o">%&gt;</span>
+        <span class="o">&lt;</span><span class="sx">%= f.text_area :description %&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;%=</span> <span class="n">f</span><span class="p">.</span><span class="nf">submit</span><span class="p">(</span><span class="ss">class: </span><span class="s2">"button"</span><span class="p">)</span> <span class="o">%&gt;</span>
+  <span class="o">&lt;</span><span class="sx">% end </span><span class="o">%&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<p><img src="screenshot.jpg" alt="Browser showing new book page with a styled button" /></p>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>There’s one more link we’ll style as a button. Can you guess which one it is?</p>
+
+    <p>It’s a sneaky one - the “Edit book” link on the book details page.</p>
+
+    <p>Once again, we’ll style the link as a button to help people recognize it as an actionable item.</p>
+  </li>
+  <li>
+    <p>Open <code class="highlighter-rouge">app/views/books/show.html.erb</code>.</p>
+  </li>
+  <li>
+    <p>Just as we’ve done before, add the <code class="highlighter-rouge">button</code> class as the last option to the link.</p>
+  </li>
+  <li>
+    <p>Save your changes and visit <a href="http://localhost:3000/books/1/show">http://localhost:3000/books/1/show</a> to see your changes.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></td><td class="code"><pre>  <span class="o">&lt;</span><span class="n">dl</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">dt</span><span class="o">&gt;</span><span class="no">Id</span><span class="o">&lt;</span><span class="sr">/dt&gt;
+    &lt;dd&gt;&lt;%= @book.id %&gt;&lt;/</span><span class="n">dd</span><span class="o">&gt;</span>
+
+    <span class="o">&lt;</span><span class="n">dt</span><span class="o">&gt;</span><span class="no">Title</span><span class="o">&lt;</span><span class="sr">/dt&gt;
+    &lt;dd&gt;&lt;%= @book.title %&gt;&lt;/</span><span class="n">dd</span><span class="o">&gt;</span>
+
+    <span class="o">&lt;</span><span class="n">dt</span><span class="o">&gt;</span><span class="no">Author</span><span class="o">&lt;</span><span class="sr">/dt&gt;
+    &lt;dd&gt;&lt;%= @book.author %&gt;&lt;/</span><span class="n">dd</span><span class="o">&gt;</span>
+
+    <span class="o">&lt;</span><span class="n">dt</span><span class="o">&gt;</span><span class="no">Price</span><span class="o">&lt;</span><span class="sr">/dt&gt;
+    &lt;dd&gt;&lt;%= number_to_currency(@book.price_cents /</span> <span class="mi">100</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span> <span class="o">%&gt;&lt;</span><span class="sr">/dd&gt;
+
+    &lt;dt&gt;Quantity&lt;/</span><span class="n">dt</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">dd</span><span class="o">&gt;&lt;</span><span class="sx">%= @book.quantity %&gt;&lt;/dd&gt;
+
+    &lt;dt&gt;Description&lt;/dt&gt;
+    &lt;dd&gt;&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">description</span> <span class="sx">%&gt;&lt;/dd&gt;</span>
+  <span class="o">&lt;</span><span class="sr">/dl&gt;
+
+  &lt;%= link_to("Edit book", edit_book_path(@book), class: "button") %&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<p><img src="screenshot.jpg" alt="Browser showing book details page with styled edit link" /></p>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Finally, we have one more button to style as a…button.</p>
+  </li>
+  <li>
+    <p>Open <code class="highlighter-rouge">app/views/books/edit.html.erb</code>.</p>
+  </li>
+  <li>
+    <p>Just like the submit button on the new book template, add the <code class="highlighter-rouge">button</code> class as the last option to the edit book template’s submit button.</p>
+  </li>
+  <li>
+    <p>Save your changes, go to <a href="http://localhost:3000/books/1/edit">http://localhost:3000/books/1/edit</a>, and admire your freshly styled button.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></td><td class="code"><pre>  <span class="o">&lt;</span><span class="sx">%= form_for(@book) do |f| %&gt;
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;%=</span> <span class="n">f</span><span class="p">.</span><span class="nf">label</span> <span class="ss">:title</span> <span class="o">%&gt;</span>
+        <span class="o">&lt;</span><span class="sx">%= f.text_field :title %&gt;
+      &lt;/li&gt;
+
+      &lt;li&gt;
+        &lt;%=</span> <span class="n">f</span><span class="p">.</span><span class="nf">label</span> <span class="ss">:author</span> <span class="o">%&gt;</span>
+        <span class="o">&lt;</span><span class="sx">%= f.text_field :author %&gt;
+      &lt;/li&gt;
+
+      &lt;li&gt;
+        &lt;%=</span> <span class="n">f</span><span class="p">.</span><span class="nf">label</span> <span class="ss">:price_cents</span> <span class="o">%&gt;</span>
+        <span class="o">&lt;</span><span class="sx">%= f.number_field :price_cents %&gt;
+      &lt;/li&gt;
+
+      &lt;li&gt;
+        &lt;%=</span> <span class="n">f</span><span class="p">.</span><span class="nf">label</span> <span class="ss">:quantity</span> <span class="o">%&gt;</span>
+        <span class="o">&lt;</span><span class="sx">%= f.number_field :quantity %&gt;
+      &lt;/li&gt;
+
+      &lt;li&gt;
+        &lt;%=</span> <span class="n">f</span><span class="p">.</span><span class="nf">label</span> <span class="ss">:description</span> <span class="o">%&gt;</span>
+        <span class="o">&lt;</span><span class="sx">%= f.text_area :description %&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;%=</span> <span class="n">f</span><span class="p">.</span><span class="nf">submit</span><span class="p">(</span><span class="ss">class: </span><span class="s2">"button"</span><span class="p">)</span> <span class="o">%&gt;</span>
+  <span class="o">&lt;</span><span class="sx">% end </span><span class="o">%&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<p><img src="screenshot.jpg" alt="Browser showing book edit page with styled update button" /></p>
+
+<div class="aside">
+<p>Your bookstore looks sooooo purrdy 😍</p>
+
+<p><img src="http://stuffpoint.com/cats/image/104659-cats-cute-cat.jpg" alt="Purrdy cat" title="We should serve this file locally" /></p>
+
+<p>But there’s one thing that’s kinda bugging me. Take a look at <a href="http://localhost:3000">http://localhost:3000</a>.</p>
+
+<p>The default Rails homepage is a great way to verify things are working when you’re just getting started, but we’re well past that.</p>
+
+<p>The books index at <a href="http://localhost:3000/books">http://localhost:3000/books</a> is your application’s <em>true</em> homepage, so let’s treat it that way!</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>To make the books index your application’s homepage, we’ll need to update your application’s routes.</p>
+  </li>
+  <li>
+    <p>Open <code class="highlighter-rouge">config/routes.rb</code> in your text editor.</p>
+  </li>
+  <li>
+    <p>Before the line with <code class="highlighter-rouge">resources :books</code>, add the following line:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">root</span> <span class="s2">"books#index"</span>
+</code></pre>
+    </div>
+
+    <p>This will update your application’s routes so requests to <a href="http://localhost:3000">http://localhost:3000</a> get routed to the <code class="highlighter-rouge">BooksController</code> <code class="highlighter-rouge">index</code> action.</p>
+  </li>
+  <li>
+    <p>Save your changes.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>  <span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
+    <span class="c1"># For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html</span>
+    <span class="n">root</span> <span class="s2">"books#index"</span>
+
+    <span class="n">resources</span> <span class="ss">:books</span>
+  <span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Let’s take a look at how the change to <code class="highlighter-rouge">config/routes.rb</code> changed your application’s routes.</p>
+  </li>
+  <li>
+    <p>Go back to Terminal, stop your application’s web server, and run <code class="highlighter-rouge">rake routes</code>.</p>
+  </li>
+  <li>
+    <p>You might not notice it, but there’s a new row at the beginning of the table.</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>root GET    /                         books#index
+</code></pre>
+    </div>
+
+    <p>The root route has an empty path (there’s nothing after <code class="highlighter-rouge">/</code>).</p>
+  </li>
+  <li>
+    <p>It’s a small change, but it’s pretty powerful. Restart your application’s web server and go to <a href="http://localhost:3000">http://localhost:3000</a>.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  › rails server
+  ...
+  ^CExiting
+
+  › rake routes
+     Prefix Verb   URI Pattern               Controller#Action
+       root GET    /                         books#index
+      books GET    /books<span class="o">(</span>.:format<span class="o">)</span>          books#index
+            POST   /books<span class="o">(</span>.:format<span class="o">)</span>          books#create
+   new_book GET    /books/new<span class="o">(</span>.:format<span class="o">)</span>      books#new
+  edit_book GET    /books/:id/edit<span class="o">(</span>.:format<span class="o">)</span> books#edit
+       book GET    /books/:id<span class="o">(</span>.:format<span class="o">)</span>      books#show
+            PATCH  /books/:id<span class="o">(</span>.:format<span class="o">)</span>      books#update
+            PUT    /books/:id<span class="o">(</span>.:format<span class="o">)</span>      books#update
+            DELETE /books/:id<span class="o">(</span>.:format<span class="o">)</span>      books#destroy
+
+  › rails server</code></pre></figure>
+
+</div>
+
+<p><img src="screenshot.jpg" alt="Browser showing the books index as the bookstore's homepage" /></p>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Now that your bookstore has a <code class="highlighter-rouge">root</code> route, let’s make one more change.</p>
+  </li>
+  <li>
+    <p>Open <code class="highlighter-rouge">app/views/layouts/application.html.erb</code>.</p>
+  </li>
+  <li>
+    <p>Change the “My Super Rad Bookstore” link from</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">%= link_to "My Super Rad Bookstore", books_path %&gt;
+</span></code></pre>
+    </div>
+
+    <p>to</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">%= link_to "My Super Rad Bookstore", root_path %&gt;
+</span></code></pre>
+    </div>
+
+    <p>By changing the link to <code class="highlighter-rouge">root_path</code>, we can always be sure that it will go to your application’s homepage.</p>
+  </li>
+  <li>
+    <p>Save your changes and take your updated bookstore for a spin. When you’re done, stop your application’s web server.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></td><td class="code"><pre>  <span class="o">&lt;!</span><span class="no">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="no">Bookstore</span><span class="o">&lt;</span><span class="sr">/title&gt;
+      &lt;%= csrf_meta_tags %&gt;
+
+      &lt;%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %&gt;
+      &lt;%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %&gt;
+    &lt;/</span><span class="n">head</span><span class="o">&gt;</span>
+
+    <span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">div</span> <span class="k">class</span><span class="o">=</span><span class="s2">"navigation"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">div</span> <span class="k">class</span><span class="o">=</span><span class="s2">"center"</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="sx">%= link_to "My Super Rad Bookstore", root_path %&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class=</span><span class="s2">"container"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="sx">%= yield %&gt;
+      &lt;/div&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+    </div>
+  </div>
+<footer>
+  <div class="container">
+    <p class="center-text">Here's the footer!!</a></p>
+  </div>
+</footer>
+</body>
+</html>
+
