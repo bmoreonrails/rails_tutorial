@@ -105,6 +105,8 @@ pre.highlight {
   background-color: #FFF;
   width: 100%;
   padding: 1em; }
+  .list img {
+    width: 80%; }
   .list ol {
     padding-left: 0em;
     padding-bottom: 1em;
