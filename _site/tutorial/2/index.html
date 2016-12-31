@@ -142,16 +142,16 @@
   <li>
     <p>After line 3 of the <code class="highlighter-rouge">CreateBooks</code> migration, add the following:</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>t.string :title
-t.string :author
-t.integer :price_cents
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:title</span>
+<span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:author</span>
+<span class="n">t</span><span class="p">.</span><span class="nf">integer</span> <span class="ss">:price_cents</span>
 </code></pre>
     </div>
   </li>
   <li>
     <p>You’ve added a few things to the <code class="highlighter-rouge">create_table</code> block, but you might’ve noticed that there was already some code in there:</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>t.timestamps
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span>
 </code></pre>
     </div>
 
@@ -271,7 +271,7 @@ t.integer :price_cents
   <li>
     <p>In the <code class="highlighter-rouge">rails console</code>, run the following code:</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>my_favorite_book = Book.new
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">my_favorite_book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">new</span>
 </code></pre>
     </div>
 
@@ -280,7 +280,7 @@ t.integer :price_cents
   <li>
     <p>Now, give <code class="highlighter-rouge">my_favorite_book</code> a title. Run:</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>my_favorite_book.title = "why's (poignant) Guide to Ruby"
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">my_favorite_book</span><span class="p">.</span><span class="nf">title</span> <span class="o">=</span> <span class="s2">"why's (poignant) Guide to Ruby"</span>
 </code></pre>
     </div>
   </li>
@@ -315,7 +315,7 @@ Ruby”.</p>
   <li>
     <p>We should probably keep track of the number of copies we have of my favorite book. Run the following code to set the quantity:</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>my_favorite_book.quantity = 500
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">my_favorite_book</span><span class="p">.</span><span class="nf">quantity</span> <span class="o">=</span> <span class="mi">500</span>
 </code></pre>
     </div>
   </li>
@@ -351,8 +351,8 @@ Ruby”.</p>
   <li>
     <p>We tried setting quantity on <code class="highlighter-rouge">my_favorite_book</code>, but we got an error:</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>NoMethodError: undefined method `quantity=' for #&lt;Book:0x007fdc9453bf60&gt;
-</code></pre>
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="no">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`quantity=' for #&lt;Book:0x007fdc9453bf60&gt;
+</span></code></pre>
     </div>
   </li>
   <li>
@@ -426,7 +426,7 @@ Ruby”.</p>
   <li>
     <p>Inside the <code class="highlighter-rouge">create_table</code> block, add the following line:</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>t.integer :quantity
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">t</span><span class="p">.</span><span class="nf">integer</span> <span class="ss">:quantity</span>
 </code></pre>
     </div>
   </li>
@@ -464,7 +464,9 @@ Ruby”.</p>
 <div class="steps">
 <div class="list">
 <ol>
-  <li>Go back to your terminal and re-run the migration by running <code class="highlighter-rouge">rake db:migrate</code>.</li>
+  <li>
+    <p>Go back to your terminal and re-run the migration by running `rake db:migrate`.</p>
+  </li>
 </ol>
 </div>
 
@@ -490,17 +492,17 @@ Ruby”.</p>
 
     <p>No worries - just run the following code in your console to refresh your memory:</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>my_favorite_book = Book.new
-my_favorite_book.title = "why's (poignant) Guide to Ruby"
-my_favorite_book.author = "why the lucky stiff"
-my_favorite_book.price_cents = 100
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">my_favorite_book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">my_favorite_book</span><span class="p">.</span><span class="nf">title</span> <span class="o">=</span> <span class="s2">"why's (poignant) Guide to Ruby"</span>
+<span class="n">my_favorite_book</span><span class="p">.</span><span class="nf">author</span> <span class="o">=</span> <span class="s2">"why the lucky stiff"</span>
+<span class="n">my_favorite_book</span><span class="p">.</span><span class="nf">price_cents</span> <span class="o">=</span> <span class="mi">100</span>
 </code></pre>
     </div>
   </li>
   <li>
     <p>Ok, now that you have my favorite book again try adding the quantity:</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>my_favorite_book.quantity = 500
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">my_favorite_book</span><span class="p">.</span><span class="nf">quantity</span> <span class="o">=</span> <span class="mi">500</span>
 </code></pre>
     </div>
   </li>
@@ -549,7 +551,7 @@ my_favorite_book.price_cents = 100
 
     <p>Run the following code on the rails console:</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>Book.create(title: "Oh, the Places You'll Go!", author: "Dr. Seuss", price_cents: 500, quantity: 200)
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="no">Book</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">title: </span><span class="s2">"Oh, the Places You'll Go!"</span><span class="p">,</span> <span class="ss">author: </span><span class="s2">"Dr. Seuss"</span><span class="p">,</span> <span class="ss">price_cents: </span><span class="mi">500</span><span class="p">,</span> <span class="ss">quantity: </span><span class="mi">200</span><span class="p">)</span>
 </code></pre>
     </div>
   </li>
