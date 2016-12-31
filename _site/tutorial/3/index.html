@@ -880,32 +880,29 @@
     <p>Everything inside <code class="highlighter-rouge">&lt;% %&gt;</code> will get run in your template.</p>
 
     <p>We’ve seen something similar before. Remember how you got the book titles to render?</p>
+
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span>
+</code></pre>
+    </div>
+
+    <p>The syntax is slightly different. <code class="highlighter-rouge">&lt;%= %&gt;</code> runs Ruby code <em>and</em> renders the result in your template.</p>
+
+    <p><code class="highlighter-rouge">&lt;% %&gt;</code> on the other hand <em>only</em> runs Ruby code. It <em>does not</em> render the
+result of that code.</p>
+  </li>
+  <li>
+    <p>With that in mind, add the following code inside your new unordered list:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">% @books.each </span><span class="k">do</span> <span class="o">|</span><span class="n">book</span><span class="o">|</span> <span class="sx">%&gt;
+&lt;% end %&gt;</span>
+</code></pre>
+    </div>
+
+    <p>Go to <a href="http://localhost:3000/books">http://localhost:3000/books</a> again. Did anything change?</p>
+
+    <p>Nothing changed! You’re running <code class="highlighter-rouge">@books.each</code> in your template, but since it’s inside <code class="highlighter-rouge">&lt;% %&gt;</code> the result of that block isn’t rendered.</p>
   </li>
 </ol>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">        <span class="o">&lt;</span><span class="sx">%= @books[0].title %&gt;
-      </span></code></pre></figure>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>  The syntax is slightly different. `&lt;%= %&gt;` runs Ruby code *and* renders the result in your template.
-
-  `&lt;% %&gt;` on the other hand *only* runs Ruby code. It *does not* render the
-  result of that code.
-</code></pre>
-</div>
-
-<ol>
-  <li>With that in mind, add the following code inside your new unordered list:</li>
-</ol>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">        <span class="o">&lt;</span><span class="sx">% @books.each </span><span class="k">do</span> <span class="o">|</span><span class="n">book</span><span class="o">|</span> <span class="sx">%&gt;
-        &lt;% end %&gt;</span>
-      </code></pre></figure>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>  Go to [http://localhost:3000/books](http://localhost:3000/books) again. Did anything change?
-
-  Nothing changed! You're running `@books.each` in your template, but since it's inside `&lt;% %&gt;` the result of that block isn't rendered.
-</code></pre>
-</div>
 </div>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
@@ -965,47 +962,45 @@
 <div class="steps">
 <div class="list">
 <ol>
-  <li>Did you get it?! Your new unordered list should look something like this:</li>
-</ol>
+  <li>
+    <p>Did you get it?! Your new unordered list should look something like this:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">        <span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="sx">% @books.each </span><span class="k">do</span> <span class="o">|</span><span class="n">book</span><span class="o">|</span> <span class="sx">%&gt;
-            &lt;li&gt;</span><span class="o">&lt;</span><span class="sx">%= book.title %&gt;&lt;/li&gt;
-          &lt;% end %&gt;
-        &lt;/ul&gt;
-      </span></code></pre></figure>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>  Update your solution to match this solution.
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ul&gt;</span>
+  <span class="cp">&lt;%</span> <span class="vi">@books</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">book</span><span class="o">|</span> <span class="cp">%&gt;</span>
+    <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="n">book</span><span class="p">.</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
 </code></pre>
-</div>
+    </div>
 
-<ol>
-  <li>Compare your two unordered lists. They both end in the same result, but one required a little more effort.</li>
-</ol>
+    <p>Update your solution to match this solution.</p>
+  </li>
+  <li>
+    <p>Compare your two unordered lists. They both end in the same result, but one required a little more effort.</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">        <span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;&lt;</span><span class="sx">%= @books[0].title %&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nf">title</span> <span class="sx">%&gt;&lt;/li&gt;</span>
-          <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;&lt;</span><span class="sx">%= @books[2].title %&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nf">title</span> <span class="sx">%&gt;&lt;/li&gt;</span>
-          <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;&lt;</span><span class="sx">%= @books[4].title %&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">5</span><span class="p">].</span><span class="nf">title</span> <span class="sx">%&gt;&lt;/li&gt;</span>
-          <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;&lt;</span><span class="sx">%= @books[6].title %&gt;&lt;/li&gt;
-        &lt;/ul&gt;
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ul&gt;</span>
+  <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">5</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">6</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
 
-        &lt;ul&gt;
-          &lt;% @books.each do |book| %&gt;
-            &lt;li&gt;&lt;%=</span> <span class="n">book</span><span class="p">.</span><span class="nf">title</span> <span class="sx">%&gt;&lt;/li&gt;</span>
-          <span class="o">&lt;</span><span class="sx">% end </span><span class="o">%&gt;</span>
-        <span class="o">&lt;</span><span class="sr">/ul&gt;
-      </span></code></pre></figure>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>  We can take advantage of the ability to run Ruby code inside Rails templates to do things quickly.
+<span class="nt">&lt;ul&gt;</span>
+  <span class="cp">&lt;%</span> <span class="vi">@books</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">book</span><span class="o">|</span> <span class="cp">%&gt;</span>
+    <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="n">book</span><span class="p">.</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
 </code></pre>
-</div>
+    </div>
 
-<ol>
-  <li>You don’t need to show both unordered lists, so go ahead and remove the first one.</li>
+    <p>We can take advantage of the ability to run Ruby code inside Rails templates to do things quickly.</p>
+  </li>
+  <li>
+    <p>You don’t need to show both unordered lists, so go ahead and remove the first one.</p>
+  </li>
 </ol>
 </div>
 
@@ -1048,14 +1043,14 @@
     <p>What did you come up with? Compare your solution with people around you.</p>
 
     <p>Inside the <code class="highlighter-rouge">@books.each</code> block, you should’ve edited the list item so it renders each book’s author next to its title.</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;&lt;</span><span class="sx">%= book.title %&gt; by &lt;%=</span> <span class="n">book</span><span class="p">.</span><span class="nf">author</span> <span class="sx">%&gt;&lt;/li&gt;</span>
+</code></pre>
+    </div>
   </li>
-</ol>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">        <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;&lt;</span><span class="sx">%= book.title %&gt; by &lt;%=</span> <span class="n">book</span><span class="p">.</span><span class="nf">author</span> <span class="sx">%&gt;&lt;/li&gt;</span>
-      </code></pre></figure>
-
-<ol>
-  <li>Before you wrap up, make sure you have the book authors rendering next to the book titles.</li>
+  <li>
+    <p>Before you wrap up, make sure you have the book authors rendering next to the book titles.</p>
+  </li>
 </ol>
 </div>
 

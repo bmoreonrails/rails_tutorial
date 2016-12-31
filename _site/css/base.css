@@ -3,6 +3,8 @@
   background-color: #D8DDDE;
   padding: 1em;
   margin-top: 1em; }
+  .aside code {
+    color: #B32A2A; }
 
 @media (min-width: 480px) {
   .aside {
@@ -11,25 +13,34 @@
     margin-right: auto;
     margin-bottom: auto; } }
 .steps {
+  display: flex;
   overflow: hidden;
-  margin-top: 1em; }
+  margin-top: 3em;
+  margin-bottom: 3em; }
 
 @media (min-width: 480px) {
   .step {
     max-width: 80%; } }
+pre.highlight {
+  overflow-y: scroll; }
+
 .highlight {
+  line-height: initial;
+  overflow-y: scroll;
   width: 100%;
-  background-color: #000;
+  background-color: #424242;
   padding: 1em;
   margin: 0em; }
   .highlight code {
-    background-color: #000;
+    background-color: #424242;
     padding: 0em;
     border-radius: 0em; }
+  .highlight code {
+    color: #FFFAF0; }
 
 @media (min-width: 480px) {
   .highlight {
-    width: 49%;
+    width: 50%;
     float: left;
     max-width: 600px;
     margin-left: auto;
@@ -40,6 +51,8 @@
   background-color: #D8DDDE;
   padding: 1em;
   margin-top: 1em; }
+  .protip code {
+    color: #B32A2A; }
 
 @media (min-width: 480px) {
   .protip {
@@ -95,6 +108,8 @@
   .list li {
     padding: .5em;
     counter-increment: item; }
+    .list li code {
+      color: #B32A2A; }
     .list li p {
       margin: .5em;
       padding-left: 1.5em; }
@@ -103,8 +118,6 @@
     color: #64CAA0;
     content: counter(item);
     position: absolute; }
-  .list pre.highlight {
-    overflow-y: scroll; }
   .list .highlight {
     margin-left: 2.5em;
     background-color: lightgrey;
@@ -117,7 +130,7 @@
 
 @media (min-width: 480px) {
   .list {
-    width: 42%;
+    width: 50%;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
@@ -131,8 +144,9 @@
 
 .content {
   padding-top: 1.25em;
-  padding-left: 1em;
-  padding-right: 1em; }
+  padding-left: 3em;
+  padding-right: 3em;
+  line-height: 1.5; }
 
 body {
   overflow-x: hidden;
