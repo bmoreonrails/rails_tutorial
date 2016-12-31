@@ -9,6 +9,9 @@
   li {
     padding: .5em;
     counter-increment: item;
+    code {
+      color: #B32A2A;
+    }
     p {
       margin: .5em;
       padding-left: 1.5em;
@@ -20,11 +23,23 @@
     content: counter(item);
     position: absolute;
   }
+
+  .highlight {
+    margin-left: 2.5em;
+    background-color: lightgrey;
+    width: auto;
+    margin-bottom: 0em;
+    padding: .75em;
+    float: none;
+    code {
+      background-color: lightgrey;
+    }
+  }
 }
 
 @media (min-width: 480px) {
   .list {
-     width: 30%;
+     width: 50%;
      max-width: 600px;
      margin-left: auto;
      margin-right: auto;

@@ -1,6 +1,7 @@
 ---
 ---
 
+@import "tutorial/aside";
 @import "tutorial/steps";
 @import "tutorial/highlight_block";
 @import "tutorial/protip";
@@ -11,8 +12,9 @@
 
 .content {
   padding-top: 1.25em;
-  padding-left: 1em;
-  padding-right: 1em;
+  padding-left: 3em;
+  padding-right: 3em;
+  line-height: 1.5;
 }
 
 body {
