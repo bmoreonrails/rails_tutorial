@@ -5,6 +5,10 @@
 layout: rails_tutorial
 ---
 
-This is the landing page! someone should design me once some of the CSS for the tutorial is written :)
-
-For now, check out the tutorial <a href="/tutorial.html">here</a>
+{% for chapter in site.chapters %}
+  <div class="chapter">
+    <a href="{{ site.baseurl }}{{chapter.url}}">
+      {{ chapter.number }} {{ chapter.title }}
+    </a>
+  </div>
+{% endfor %}

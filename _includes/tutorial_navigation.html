@@ -3,7 +3,7 @@
   <ul id="menu-list">
     {% for chapter in site.chapters %}
      <li>
-      <a href="{{chapter.url}}">
+      <a href="{{ site.baseurl }}{{chapter.url}}">
         {{ chapter.number }} {{ chapter.title }}
        </a>
      </li>  
