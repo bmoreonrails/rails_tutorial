@@ -16,6 +16,11 @@ Then, clone the repo and run `bundle install`.
 
 Now, you can get the site up and running locally by running `jekyll serve`. You can view the running site by going to [http://localhost:4000/rails_tutorial/](http://localhost:4000/rails_tutorial/).
 
+## Caveats
+
+### Links
+The config value `open_links_in_new_tab` in `config.yml` results in all links opening in a new tab. You can override this behavior on individual links by setting the target attribute back to the default value (`_self`) or if you just don't want the thing to work that way, remove that config value or set it to false.
+
 ##Deploying
 
 Because we use custom plugins that Github-pages doesn't support, you must compile the page locally and deploy the contents of the _site directory only to the gh-pages branch using the following steps: 
