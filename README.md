@@ -1,4 +1,4 @@
-Check us out at (https://bmoreonrails.github.io/rails_tutorial/)[https://bmoreonrails.github.io/rails_tutorial/]
+Check us out at [https://bmoreonrails.github.io/rails_tutorial/](https://bmoreonrails.github.io/rails_tutorial/)
 
 #Bmore On Rail Workshop Tutorial
 
