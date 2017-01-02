@@ -23,7 +23,7 @@ When you are installing ruby and ruby gems (libraries), your system will often n
 If you aren't sure if you need this, try typing `gcc` in a terminal window. (`gcc` is the name of the compiler and stands for GNU Compiler Collection):
 
 {% highlight bash %}
-   > gcc --version
+   $ gcc --version
 {% endhighlight %}
 
 If you see the following dialog, select the default, "Install":
@@ -33,13 +33,13 @@ If you see the following dialog, select the default, "Install":
 Alternatively, if you get the message, `-bash: gcc: command not found`, or if you cancel out of the dialog, install the command-line tools with this command:
 
 {% highlight bash %}
-  > xcode-select --install
+  $ xcode-select --install
 {% endhighlight %}
 
 Note that this will download the command-line tools and install them.  Once installed, `gcc -version` should print out some information about the compiler, e.g.:
 
 {% highlight bash %}
-  > gcc --version
+  $ gcc --version
 {% endhighlight %}
 
 This should result in something similar to the following:
@@ -60,23 +60,23 @@ The [Ruby Version Manager (rvm)](http://rvm.io/) will allow you to install diffe
 To install rvm, open a terminal window and run the following commands (copied directly off of the rvm website):
 
 {% highlight bash %}
-  > brew install gpg  # only necessary if gpg is not already installed
-  > gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-  > \curl -sSL https://get.rvm.io | bash -s stable
+  $ brew install gpg  # only necessary if gpg is not already installed
+  $ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+  $ \curl -sSL https://get.rvm.io | bash -s stable
 {% endhighlight %}
 
 
 Now that you have rvm installed, you can use it to install ruby.  You simply call `rvm install <version>`.  Let's install the latest version (as of 12/3/2016), v2.3.1:
 
 {% highlight bash %}
-  > rvm install 2.3.1
-  > rvm default use 2.3.1
+  $ rvm install 2.3.1
+  $ rvm default use 2.3.1
 {% endhighlight %}
 
 At this point, you should have ruby installed and available to you.
 
 {% highlight bash %}
-  > ruby -v
+  $ ruby -v
   # => ruby 2.3.1p112 (2016-04-26 revision 54768) [x86_64-darwin15]
 {% endhighlight %}
 
@@ -85,7 +85,7 @@ At this point, you should have ruby installed and available to you.
 Now that ruby is installed, installing rails is simple.  Just run the following command:
 
 {% highlight bash %}
-  > gem install rails 5.0.1 --no-document
+  $ gem install rails 5.0.1 --no-document
 {% endhighlight %}
 
 Note, adding `--no-document` prevents the generation of local (offline) documentation.  If you later decide you want local docs, you can easily recreate them (although it can be a slow process).  Look [here](http://blog.honeybadger.io/how-to-globally-disable-rdoc-and-ri-during-gem-installs/) for more details.
@@ -93,7 +93,7 @@ Note, adding `--no-document` prevents the generation of local (offline) document
 If that succeeds, you should be able to run rails on the command-line:
 
 {% highlight bash %}
-  > rails --version
+  $ rails --version
 {% endhighlight %}
 
 ## Test it out
@@ -101,9 +101,9 @@ If that succeeds, you should be able to run rails on the command-line:
 Now that we have everything we need installed, let's try it out.
 
 {% highlight bash %}
-  > rails new test_rails
-  > cd test_rails
-  > rails server
+  $ rails new test_rails
+  $ cd test_rails
+  $ rails server
 {% endhighlight %}
 
 You should see output similar to this:
