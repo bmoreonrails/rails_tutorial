@@ -66,11 +66,11 @@ To install rvm, open a terminal window and run the following commands (copied di
 {% endhighlight %}
 
 
-Now that you have rvm installed, you can use it to install ruby.  You simple call `rvm install <version>`.  By default, `rvm install` installs the latest version, but if you want/need an specific/older version, that's easy too.  Let's install the latest version (as of 12/25/2016), v2.4.0:
+Now that you have rvm installed, you can use it to install ruby.  You simply call `rvm install <version>`.  Let's install the latest version (as of 12/3/2016), v2.3.1:
 
 {% highlight bash %}
-  > rvm install 2.4.0
-  > rvm default use 2.4.0
+  > rvm install 2.3.1
+  > rvm default use 2.3.1
 {% endhighlight %}
 
 At this point, you should have ruby installed and available to you.
