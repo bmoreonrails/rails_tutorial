@@ -7,7 +7,7 @@ layout: rails_tutorial
 
 {% for chapter in site.chapters %}
   <div class="chapter">
-    <a href="{{ site.baseurl }}{{chapter.url}}">
+    <a href="{{ site.baseurl }}{{chapter.url}}" target="_self">
       {{ chapter.number }} {{ chapter.title }}
     </a>
   </div>
