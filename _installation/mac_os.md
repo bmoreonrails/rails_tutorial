@@ -26,7 +26,11 @@ If you aren't sure if you need this, try typing `gcc` in a terminal window. (`gc
    > gcc --version
 {% endhighlight %}
 
-If you get the message, `-bash: gcc: command not found`, install the command-line tools with the command:
+If you see the following dialog, select the default, "Install":
+
+![Install command line tools now?](/assets/images/install_tools_now_dialog.png)
+
+Alternatively, if you get the message, `-bash: gcc: command not found`, or if you cancel out of the dialog, install the command-line tools with this command:
 
 {% highlight bash %}
   > xcode-select --install
@@ -56,15 +60,17 @@ The [Ruby Version Manager (rvm)](http://rvm.io/) will allow you to install diffe
 To install rvm, open a terminal window and run the following commands (copied directly off of the rvm website):
 
 {% highlight bash %}
+  > brew install gpg  # only necessary if gpg is not already installed
   > gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-\curl -sSL https://get.rvm.io | bash -s stable
+  > \curl -sSL https://get.rvm.io | bash -s stable
 {% endhighlight %}
 
-Now that you have rvm installed, you can use it to install ruby.  By default, it installs the latest version, but if you want/need an older version, that's easy too.  For now, let's install the latest version (as of 12/3/2016), v2.3.1:
+
+Now that you have rvm installed, you can use it to install ruby.  You simple call `rvm install <version>`.  By default, `rvm install` installs the latest version, but if you want/need an specific/older version, that's easy too.  Let's install the latest version (as of 12/25/2016), v2.4.0:
 
 {% highlight bash %}
-  > rvm install 2.3.1
-  > rvm default use 2.3.1
+  > rvm install 2.4.0
+  > rvm default use 2.4.0
 {% endhighlight %}
 
 At this point, you should have ruby installed and available to you.
@@ -79,8 +85,10 @@ At this point, you should have ruby installed and available to you.
 Now that ruby is installed, installing rails is simple.  Just run the following command:
 
 {% highlight bash %}
-  > gem install rails 5.0.0
+  > gem install rails 5.0.1 --no-document
 {% endhighlight %}
+
+Note, adding `--no-document` prevents the generation of local (offline) documentation.  If you later decide you want local docs, you can easily recreate them (although it can be a slow process).  Look [here](http://blog.honeybadger.io/how-to-globally-disable-rdoc-and-ri-during-gem-installs/) for more details.
 
 If that succeeds, you should be able to run rails on the command-line:
 
