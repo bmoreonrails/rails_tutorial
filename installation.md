@@ -1,5 +1,5 @@
 ---
-layout: rails_tutorial
+layout: rails_installation
 ---
 
 ## Installation
@@ -25,8 +25,8 @@ Pick your poison! We'll help you get Rails running on your machine.  If you _can
 ### Guides
 {% for guide in site.installation %}
   <div class="guide">
-    <a href="{{guide.url}}">
-      {{ guide.number }} {{ guide.title }}
+    <a href="{{ site.baseurl }}{{guide.url}}" target="_self">
+      {{ guide.title }}
     </a>
   </div>
 {% endfor %}

@@ -1,0 +1,12 @@
+body.installation_guide .highlight {
+  float: none;
+  margin-bottom: 0px;
+  padding-bottom: 16px;
+}
+
+body.installation_guide img {
+  display: block;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}

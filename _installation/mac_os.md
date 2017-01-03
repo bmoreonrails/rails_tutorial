@@ -1,8 +1,7 @@
 ---
 url: mac_os.html
-number: i
 title: Installation on Mac OS X
-layout: rails_tutorial
+layout: rails_installation
 ---
 
 {:.sectionheader}
@@ -28,7 +27,7 @@ If you aren't sure if you need this, try typing `gcc` in a terminal window. (`gc
 
 If you see the following dialog, select the default, "Install":
 
-![Install command line tools now?](/assets/images/install_tools_now_dialog.png)
+![Install command line tools now?]({{ site.baseurl}}/assets/images/install_tools_now_dialog.png)
 
 Alternatively, if you get the message, `-bash: gcc: command not found`, or if you cancel out of the dialog, install the command-line tools with this command:
 
@@ -88,7 +87,9 @@ Now that ruby is installed, installing rails is simple.  Just run the following 
   $ gem install rails 5.0.1 --no-document
 {% endhighlight %}
 
+{% protip %}
 Note, adding `--no-document` prevents the generation of local (offline) documentation.  If you later decide you want local docs, you can easily recreate them (although it can be a slow process).  Look [here](http://blog.honeybadger.io/how-to-globally-disable-rdoc-and-ri-during-gem-installs/) for more details.
+{% endprotip %}
 
 If that succeeds, you should be able to run rails on the command-line:
 
@@ -122,4 +123,4 @@ You should see output similar to this:
 
 If you see the output above, rails is running and you can point your browser at http://localhost:3000 and you should see this:
 
-![Yay! You're on Rails!](/assets/images/youre_on_rails.png)
+![Yay! You're on Rails!]({{ site.baseurl}}/assets/images/youre_on_rails.png)
