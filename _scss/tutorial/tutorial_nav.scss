@@ -1,0 +1,66 @@
+.tutorial_nav {
+  padding-top: .2em;
+  padding-bottom: .2em;
+  padding-right: .5em;
+  padding-left: .5em;
+  color: #FFF;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  margin: 0;
+  float: left;
+  background-color: #69CBA2;
+  
+  a {
+    color: #FFF;
+    text-decoration: none;
+  }
+
+  .hamburger {
+    font-size: 1.4em;
+  }
+  
+  .hamburger-icon {
+    width: 7%;
+    float: left;
+  }
+
+  .menu-title {
+    float: left;
+    width: 90%;
+  }
+
+  ul {
+    display: none;
+    list-style: none;
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (min-width: 480px) {
+  .tutorial_nav {
+    .hamburger-icon {
+      width: 5%;
+     } 
+  }
+}
+
+@media (min-width: 768px) {
+  .tutorial_nav {
+    .hamburger {
+      font-size: 1.5em;
+     }
+  }
+}
+
+@media (min-width: 992px) {
+  .tutorial_nav {
+    .hamburger-icon {
+      width: 3%;
+    }
+  }
+}
+
+
