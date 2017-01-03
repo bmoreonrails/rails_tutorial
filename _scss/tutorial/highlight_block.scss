@@ -1,33 +1,37 @@
-pre.highlight {
-  overflow-y: scroll;
-}
-
-.highlight {
-  line-height: initial;
-  overflow-y: scroll;
-  width: 100%;
-  background-color: #424242;
-  padding: 1em;
-  margin: 0em;
-  code {
-    background-color: #424242;
-    padding: 0em;
-    border-radius: 0em;
+.steps {
+  pre.highlight {
+    overflow-y: scroll;
   }
-  code {
-    color: #FFFAF0;
+
+  .highlight {
+    line-height: initial;
+    overflow-y: scroll;
+    width: 100%;
+    background-color: #424242;
+    padding: 1em;
+    margin: 0em;
+    code {
+      background-color: #424242;
+      padding: 0em;
+      border-radius: 0em;
+    }
+    code {
+      color: #FFFAF0;
+    }
   }
 }
 
 @media (min-width: 480px) {
-  .highlight {
-     width: 50%;
-     float: left;
-     max-width: 600px;
-     margin-left: auto;
-     margin-right: auto;
-     margin-bottom: -500px;
-     padding-bottom: 500px;
+.steps {
+    .highlight {
+       width: 50%;
+       float: left;
+       max-width: 600px;
+       margin-left: auto;
+       margin-right: auto;
+       margin-bottom: -500px;
+       padding-bottom: 500px;
+    }
   }
 }
 
