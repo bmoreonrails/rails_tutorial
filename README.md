@@ -35,4 +35,6 @@ Deploying is a little dangerous with the jekyll site because there is no version
 1. `rm -rf _config.yml _layouts _scss about.md index.md _chapters _includes _plugins css js Gemfile.lock Gemfile`
 1. `mv _site/* .`
 1. `rm -rf _site/`
+1. `git add .`
+1. `git commit -m "Your commit message"`
 1. `git push origin gh-pages -f`
