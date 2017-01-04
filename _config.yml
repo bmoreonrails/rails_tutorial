@@ -29,6 +29,9 @@ collections:
   chapters:
     output: true
     permalink: /tutorial/:path/
+  installation:
+    output: true
+    permalink: /installation/:path/
 
 # Build settings
 sass: 
