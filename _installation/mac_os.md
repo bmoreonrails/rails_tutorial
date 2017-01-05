@@ -5,13 +5,14 @@ layout: rails_installation
 ---
 
 {:.sectionheader}
-# Mac OS X install
+# Installing Rails for Mac OS X
 
 To get a mac ready for Ruby on Rails development, we need to do the following:
 
 1. install command-line tools (XCode)
 1. install ruby
 1. install rails
+1. test it out
 
 We're going to do these tasks via the Terminal console, so if you aren't familiar with that, please read **this non-existent page** over first.
 
@@ -54,7 +55,7 @@ This should result in something similar to the following:
 
 ## "Easy" ruby installs with rvm
 
-The [Ruby Version Manager (rvm)](http://rvm.io/) will allow you to install different versions of ruby on your machine and switch between them as you switch from one job to another.  This can save you from the pain of upgrading an old project to the newest ruby version when it's running along just fine.
+The [Ruby Version Manager (rvm)](http://rvm.io/) will allow you to install different versions of ruby on your machine and switch between them as you switch from one job to another. [Learn why RVM is useful here](https://code.tutsplus.com/articles/why-you-should-use-rvm--net-19529).
 
 To install rvm, open a terminal window and run the following commands (copied directly off of the rvm website):
 
@@ -72,7 +73,7 @@ Now that you have rvm installed, you can use it to install ruby.  You simply cal
   $ rvm default use 2.3.1
 {% endhighlight %}
 
-At this point, you should have ruby installed and available to you.
+To verify you're using the correct Ruby version, type `ruby -v`. You should have 2.3.1 as the version.
 
 {% highlight bash %}
   $ ruby -v
@@ -95,6 +96,7 @@ If that succeeds, you should be able to run rails on the command-line:
 
 {% highlight bash %}
   $ rails --version
+  Rails 5.0.1
 {% endhighlight %}
 
 ## Test it out
@@ -111,7 +113,7 @@ You should see output similar to this:
 
 {% highlight bash %}
   => Booting Puma
-  => Rails 5.0.0.1 application starting in development on http://localhost:3000
+  => Rails 5.0.1 application starting in development on http://localhost:3000
   => Run `rails server -h` for more startup options
   Puma starting in single mode...
   * Version 3.6.2 (ruby 2.3.1-p112), codename: Sleepy Sunday Serenity
