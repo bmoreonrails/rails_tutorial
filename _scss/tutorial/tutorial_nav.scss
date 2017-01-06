@@ -1,6 +1,8 @@
+
 .tutorial_nav {
   padding-right: .5em;
   padding-left: .5em;
+  min-height: $nav-bar-height;
   color: #FFF;
   position: fixed;
   top: 0px;
@@ -17,16 +19,19 @@
   .menu {
     font-size: 1.4em;
     cursor: pointer;
+    display: table;
+    width: 100%;
+    height: $nav-bar-height;
   }
 
   .hamburger-icon {
-    width: 7%;
-    float: left;
+    display: table-cell;
+    vertical-align: middle;
   }
 
   .menu-title {
-    float: left;
-    width: 90%;
+    display: table-cell;
+    vertical-align: middle;
   }
 
   ul {
@@ -47,11 +52,6 @@
 }
 
 @media (min-width: 768px) {
-  .tutorial_nav {
-    .hamburger {
-      font-size: 1.5em;
-     }
-  }
 }
 
 @media (min-width: 992px) {
