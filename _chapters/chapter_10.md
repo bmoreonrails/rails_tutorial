@@ -51,7 +51,7 @@ layout: rails_tutorial
 {% list %}
   1.  In your text editor, open `app/views/books/show.html.erb`.
 
-  1.  Let's start by showing how many reviews the book has. Add the following line to the end of the file:
+  1.  Let's start by showing how many reviews the book has. Add the following line before the "Edit book" link:
 
       ```erb
       <p> Number of reviews: <%= @book.reviews.count %> </p>
@@ -83,11 +83,11 @@ layout: rails_tutorial
     <dd><%= @book.description %></dd>
   </dl>
 
+  <p> Number of reviews: <%= @book.reviews.count %> </p>
+
   <%= link_to("Edit book", edit_book_path(@book), class: "button") %>
 
   <%= button_to("Delete Book", book_path(@book), method: :delete, class: "button danger") %>
-
-  <p> Number of reviews: <%= @book.reviews.count %> </p>
 {% endhighlight %}
 {% endsteps %}
 
@@ -115,7 +115,9 @@ layout: rails_tutorial
 
       We'll want to do something similiar for book reviews.
 
-  1.  Using the books index as an example, add an unordered list to the `show` template with the book's reviews. For each review, add a list item with the review's body.
+  1.  Using the books index as an example, add an unordered list to the `show` template with the book's reviews.
+
+      Add the unordered list before the "Edit book" link. For each review, add a list item with the review's body.
 {% endlist %}
 {% endsteps %}
 
@@ -159,10 +161,6 @@ layout: rails_tutorial
     <dd><%= @book.description %></dd>
   </dl>
 
-  <%= link_to("Edit book", edit_book_path(@book), class: "button") %>
-
-  <%= button_to("Delete Book", book_path(@book), method: :delete, class: "button danger") %>
-
   <p> Number of reviews: <%= @book.reviews.count %> </p>
 
   <ul>
@@ -170,6 +168,10 @@ layout: rails_tutorial
       <li> <%= review.body %> </li>
     <% end %>
   </ul>
+
+  <%= link_to("Edit book", edit_book_path(@book), class: "button") %>
+
+  <%= button_to("Delete Book", book_path(@book), method: :delete, class: "button danger") %>
 {% endhighlight %}
 {% endsteps %}
 
