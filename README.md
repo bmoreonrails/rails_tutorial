@@ -1,5 +1,3 @@
-Check us out at [https://bmoreonrails.github.io/rails_tutorial/](https://bmoreonrails.github.io/rails_tutorial/)
-
 #Bmore On Rail Workshop Tutorial
 
 This site is created using [jekyll](https://jekyllrb.com/). If you're struggling to find information here, more can be found there.
