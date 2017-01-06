@@ -1,7 +1,5 @@
 
 .tutorial_nav {
-  padding-right: .5em;
-  padding-left: .5em;
   min-height: $nav-bar-height;
   color: #FFF;
   position: fixed;
@@ -27,6 +25,8 @@
   .hamburger-icon {
     display: table-cell;
     vertical-align: middle;
+    padding-left: .5em;
+    padding-right: .5em;
   }
 
   .menu-title {
