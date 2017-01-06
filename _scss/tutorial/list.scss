@@ -1,6 +1,5 @@
 .list {
   background-color: #FFF;
-  width: 100%;
   padding: 1em;
   img {
     width: 80%;
@@ -19,7 +18,7 @@
     p {
       margin: .5em;
       padding-left: 1.5em;
-    }   
+    }
   }
   li:before {
     font-size: 2em;
@@ -46,14 +45,12 @@
      margin-left: auto;
      margin-right: auto;
      float: left;
-     margin-bottom: -500px;
-     padding-bottom: 500px;
   }
 }
 
 @media (min-width: 768px) {
   .list {
-    max-width: 50%;
+    width: 50%;
   }
 }
 

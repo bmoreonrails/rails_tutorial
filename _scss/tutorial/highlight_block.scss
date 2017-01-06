@@ -6,7 +6,6 @@
   .highlight {
     line-height: initial;
     overflow-y: scroll;
-    width: 100%;
     background-color: #424242;
     padding: 1em;
     margin: 0em;
@@ -22,20 +21,15 @@
 }
 
 @media (min-width: 480px) {
-.steps {
-    .highlight {
-       width: 50%;
-       float: left;
-       max-width: 600px;
-       margin-left: auto;
-       margin-right: auto;
-       margin-bottom: -500px;
-       padding-bottom: 500px;
-    }
-  }
 }
 
 @media (min-width: 768px) {
+  .steps {
+      .highlight {
+         width: 50%;
+         float: left;
+      }
+    }
 }
 
 @media (min-width: 992px) {
