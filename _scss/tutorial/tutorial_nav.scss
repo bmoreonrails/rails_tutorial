@@ -1,6 +1,4 @@
 .tutorial_nav {
-  padding-top: .2em;
-  padding-bottom: .2em;
   padding-right: .5em;
   padding-left: .5em;
   color: #FFF;
@@ -10,7 +8,7 @@
   margin: 0;
   float: left;
   background-color: #69CBA2;
-  
+
   a {
     color: #FFF;
     text-decoration: none;
@@ -19,7 +17,7 @@
   .hamburger {
     font-size: 1.4em;
   }
-  
+
   .hamburger-icon {
     width: 7%;
     float: left;
@@ -43,7 +41,7 @@
   .tutorial_nav {
     .hamburger-icon {
       width: 5%;
-     } 
+     }
   }
 }
 
@@ -62,5 +60,3 @@
     }
   }
 }
-
-
