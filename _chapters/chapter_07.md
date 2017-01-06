@@ -3,6 +3,7 @@ url: 7.html
 number: 7
 title: Styling Your Bookstore
 layout: rails_tutorial
+chapter: 7
 ---
 
 {% sectionheader %}

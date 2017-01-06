@@ -3,6 +3,7 @@ url: 1.html
 number: 1
 title: Getting Started from Scratch
 layout: rails_tutorial
+chapter: 1
 ---
 {% sectionheader %}
   {{ page.title }}
@@ -246,6 +247,3 @@ layout: rails_tutorial
 
   ![Yes!](https://media.giphy.com/media/xT8qBrtlhoV1wl7yUg/giphy.gif "We should serve this image locally")
 {% endaside %}
-
-
-

@@ -3,6 +3,7 @@ url: 4.html
 number: 4
 title: Showing Detailed Information in the Browser
 layout: rails_tutorial
+chapter: 4
 ---
 
 {% sectionheader %}
