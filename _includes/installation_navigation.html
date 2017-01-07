@@ -1,0 +1,19 @@
+<div class="tutorial_nav">
+  <ul id="menu-list">
+    {% for install_guide in site.installation %}
+     <li>
+      <a href="{{ site.baseurl }}{{install_guide.url}}" target="_self">
+        {{ install_guide.title }}
+       </a>
+     </li>
+    {% endfor %}
+   </ul>
+
+  <div class="menu" data-toggle="#menu-list">
+    <a href="#menu" class="hamburger" target="_self">
+      <div class="hamburger-icon"> &#9776</div>
+      <div class="menu-title">Installation -- {{ page.title }}</div>
+    </a>
+  </div>
+</div>
+

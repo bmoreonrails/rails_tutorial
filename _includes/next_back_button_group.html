@@ -1,0 +1,18 @@
+<div class="tutorial-button-group">
+  {% if page.number %}
+    {% if page.number > 1 %}
+      <a href="{{ site.baseurl}}{{ page.previous.url }}" target="_self">
+        <div class="back-button">
+          Chapter {{page.previous.number}}
+        </div>
+      </a>
+    {% endif %}
+    {% if page.number != site.chapters.last.number %}
+      <a href="{{ site.baseurl }}{{ page.next.url }}" target="_self">
+        <div class="next-button">
+          Chapter {{page.next.number}}
+        </div>
+      </a>
+    {% endif %}
+  {% endif %}
+</div>

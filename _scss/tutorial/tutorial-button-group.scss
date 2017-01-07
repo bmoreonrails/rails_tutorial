@@ -1,0 +1,63 @@
+.tutorial-button-group {
+  text-align: center;
+  a {
+    text-decoration: none;
+    color: transparent;
+    font-size: 1.7em;
+  }
+  .next-button {
+    display: inline-block;
+    position: relative;
+    background: #69CBA2;
+    line-height: 3em;
+    height: 3em;
+    width: 20%;
+    border: none;
+  }
+  .next-button:after {
+    left: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(105, 203, 162, 0);
+    border-left-color: #69CBA2;
+    border-width: 40px;
+    margin-top: -40px;
+  }
+  .back-button {
+    display: inline-block;
+    position: relative;
+    background: #69CBA2;
+    width: 20%;
+    line-height: 3em;
+    margin-right: 50%;
+    height: 3em;
+    border: none;
+  }
+  .back-button:after {
+    right: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(105, 203, 162, 0);
+    border-right-color: #69CBA2;
+    border-width: 40px;
+    margin-top: -40px;
+  }
+}
+
+@media (min-width: 768px) {
+  .tutorial-button-group {
+    a {
+      color: #FFF;
+    }
+  }
+}

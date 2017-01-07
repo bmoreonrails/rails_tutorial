@@ -1,0 +1,18 @@
+.steps {
+  display: block;
+  overflow: hidden;
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+
+@media (min-width: 480px) {
+}
+
+@media (min-width: 768px) {
+  .steps {
+    display: flex;
+  }
+}
+
+@media (min-width: 992px) {
+}
