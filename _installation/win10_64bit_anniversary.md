@@ -52,10 +52,21 @@ You should get a About Windows prompt with information about your Windows versio
 
 ![Windows 10 About Version]({{site.baseurl}}/assets/images/win10-winver-results.png)
 
+
+OR
+
+Check  microsoft's website for an alternative to checking your OS's version [https://support.microsoft.com/en-us/help/13443/windows-which-operating-system](https://support.microsoft.com/en-us/help/13443/windows-which-operating-system){:target='blank'}
+
+
+
 **If you are not using at least 64-bit Windows 10 Pro Anniversary Edition, you will not be able to use these instructions.**
 
 If you the windows build number is lower than 1607, you must do the 'steps for windows updates', which could take a LONG time depending on the number of updates needed.
+{% endlist %}
+{% endsteps %}
 
+{% steps %}
+{% list %}
 ## steps for windows update :
 1. *Ask Cortana* for `Settings`, and click on 'Settings Trusted Windows Store app'.
 

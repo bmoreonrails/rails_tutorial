@@ -19,6 +19,20 @@ In order to successfully follow these installation instructions, you must have t
 {% list %}
 ## steps to check your version
 
+1. Keypress Start button and F (Win+F) on your keyboard to get the Search input field.
+
+
+2. Change "Files" to "Everywhere"
+
+
+3. Type `winver`, and select winver app.
+
+Your version information should look something like this:
+
+![Windows 8 About Version]({{site.baseurl}}/assets/images/win8-winver.png)
+
+**OR**
+
 Check for operating system info in Windows 8.1 or Windows RT 8.1:
 
 1. Swipe in from the right edge of the screen, tap Settings, and then tap Change PC settings. (If you're using a mouse, point to the lower-right corner of the screen, move the mouse pointer up, click Settings, and then click Change PC settings.)
@@ -30,12 +44,19 @@ Check for operating system info in Windows 8.1 or Windows RT 8.1:
 3. Look under Windows for the version and edition of Windows that your PC is running.
 
 
+**OR**
+
 Check for operating system info in Windows 8 or Windows RT
 
 1. On the Start screen, type Computer, press and hold or right-click Computer, and then tap or click Properties.
 
 
 2. Look under Windows edition for the version and edition of Windows that your PC is running.
+
+**OR**
+
+Check  microsoft's website for an alternative to checking your OS's version [https://support.microsoft.com/en-us/help/13443/windows-which-operating-system](https://support.microsoft.com/en-us/help/13443/windows-which-operating-system){:target='blank'}
+
 {% endlist %}
 {% endsteps %}
 

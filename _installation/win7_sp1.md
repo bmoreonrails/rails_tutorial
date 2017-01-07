@@ -23,6 +23,16 @@ Find out what version of Windows 7 is running.
 
 
 2. In "Search programs and files", type `winver`
+
+
+Your version information should look something like this:
+
+![Windows 7 About Version]({{site.baseurl}}/assets/images/win7-winver.png)
+
+**OR**
+
+Check  microsoft's website for an alternative to checking your OS's version [https://support.microsoft.com/en-us/help/13443/windows-which-operating-system](https://support.microsoft.com/en-us/help/13443/windows-which-operating-system){:target='blank'}
+
 {% endlist %}
 {% endsteps %}
 
