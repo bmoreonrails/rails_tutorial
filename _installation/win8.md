@@ -224,6 +224,10 @@ You should now be able to continue with the Tutorial. Remember, any mention of "
 {:.sectionheader}
 # Errors?! Something happened along the way
 
+{% steps %}
+{% list %}
+## Things to do if any of these errors had occurred...
+
 **Gem::RemoteFetcher::FetchError: SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed (...)**
 
 Resolve this error by editing Gemfile, and changing 'source "https://rubygems.org"' to 'source "http://rubygems.org"'
@@ -231,3 +235,5 @@ Resolve this error by editing Gemfile, and changing 'source "https://rubygems.or
 **Unable to install .NET 4.5**
 
 Try to disable or quit your virus scanner, and then try to run the installer again.
+{% endlist %}
+{% endsteps %}
