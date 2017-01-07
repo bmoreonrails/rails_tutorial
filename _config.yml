@@ -34,7 +34,7 @@ collections:
     permalink: /installation/:path/
 
 # Build settings
-sass: 
+sass:
   sass_dir: _scss
 markdown: kramdown
 theme: minima
@@ -43,3 +43,5 @@ gems:
 exclude:
   - Gemfile
   - Gemfile.lock
+
+highlighter: pygments
