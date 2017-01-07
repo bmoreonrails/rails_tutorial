@@ -3,7 +3,6 @@ url: 2.html
 number: 2
 title: Creating the First Table in Your Database
 layout: rails_tutorial
-chapter: 2
 ---
 
 {% sectionheader %}

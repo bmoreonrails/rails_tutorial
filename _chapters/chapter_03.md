@@ -3,7 +3,6 @@ url: 3.html
 number: 3
 title: Viewing Data in the Browser
 layout: rails_tutorial
-chapter: 3
 ---
 
 {% sectionheader %}

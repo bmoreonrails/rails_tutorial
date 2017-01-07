@@ -3,7 +3,6 @@ url: 8.html
 number: 8
 title: Deleting a Book
 layout: rails_tutorial
-chapter: 8
 ---
 
 {% aside %}

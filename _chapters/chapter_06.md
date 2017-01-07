@@ -3,7 +3,6 @@ url: 6.html
 number: 6
 title: Updating Books
 layout: rails_tutorial
-chapter: 6
 ---
 
 {% sectionheader %}

@@ -3,7 +3,6 @@ url: 5.html
 number: 5
 title: Creating Books Through the Browser
 layout: rails_tutorial
-chapter: 5
 ---
 
 {% sectionheader %}

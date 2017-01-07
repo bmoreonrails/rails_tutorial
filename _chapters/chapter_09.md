@@ -3,7 +3,6 @@ url: 9.html
 number: 9
 title: Reviewing a Book
 layout: rails_tutorial
-chapter: 9
 ---
 
 {% aside %}

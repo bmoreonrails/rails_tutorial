@@ -3,7 +3,6 @@ url: 1.html
 number: 1
 title: Getting Started from Scratch
 layout: rails_tutorial
-chapter: 1
 ---
 {% sectionheader %}
   {{ page.title }}

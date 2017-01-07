@@ -3,7 +3,6 @@ url: 10.html
 number: 10
 title: Showing a Book
 layout: rails_tutorial
-chapter: 10
 ---
 
 {% steps %}
