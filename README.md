@@ -30,7 +30,7 @@ Deploying is a little dangerous with the jekyll site because there is no version
 1. `git pull origin master`
 1. `git checkout -b gh-pages`
 1. `jekyll build`
-1. `rm -rf _config.yml _layouts _scss about.md index.md _chapters _includes _plugins css js Gemfile.lock Gemfile _installation/`
+1. `rm -rf _config.yml _layouts _scss about.md index.md _chapters _includes _plugins css js Gemfile.lock Gemfile _installation/ README.md assets/`
 1. `mv _site/* .`
 1. `rm -rf _site/`
 1. `git add .`
