@@ -20,7 +20,7 @@ layout: rails_tutorial
       ```ruby
       resources :books  
       ```
- 
+
   1.  Save your changes.
 {% endlist %}
 
@@ -157,8 +157,8 @@ layout: rails_tutorial
   1.  Now you got a `LoadError` because `BooksController` isn't defined.
 
       ```ruby
-      Unable to autoload constant BooksController, 
-      expected /Users/awesomesauce/Projects/bookstore/app/controllers/books_controller.rb 
+      Unable to autoload constant BooksController,
+      expected /Users/awesomesauce/Projects/bookstore/app/controllers/books_controller.rb
       to define it
       ```
   1.  Remember the `touch` command we used to create the `BooksController`?
@@ -541,7 +541,7 @@ end
 
       ```ruby
       @books = Book.all
-      ``` 
+      ```
       You defined `@books` to be a collection of all the books in your application's database. For our purposes, we can treat this collection like a [Ruby Array](http://ruby-doc.org/core-2.3.1/Array.html).
 
   1.  You can get each item of a Ruby array by it's index, and the first item starts at index 0.

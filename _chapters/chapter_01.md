@@ -246,6 +246,3 @@ layout: rails_tutorial
 
   ![Yes!](https://media.giphy.com/media/xT8qBrtlhoV1wl7yUg/giphy.gif "We should serve this image locally")
 {% endaside %}
-
-
-

@@ -1,6 +1,9 @@
 ---
 ---
 
+$nav-bar-height: 40px;
+$nav-bar-progress-height: 10px;
+
 @import "tutorial/tutorial-button-group";
 @import "tutorial/aside";
 @import "tutorial/steps";
@@ -12,7 +15,7 @@
 @import url(//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Roboto:100,300,700,500,100);
 
 .content {
-  padding-top: 1.25em;
+  padding-top: $nav-bar-height;
   padding-left: 3em;
   padding-right: 3em;
   line-height: 1.5;
@@ -35,4 +38,3 @@ body {
 
 @media (min-width: 992px) {
 }
-

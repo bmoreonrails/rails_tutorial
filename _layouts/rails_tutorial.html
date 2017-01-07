@@ -1,10 +1,8 @@
 {% include tutorial_header.html %}
 <body>
-  <div class="container">
+  <div class="container" data-chapter="{{ page.number }}">
     <nav>
-      <p>
-       {% include tutorial_navigation.html %}
-      </p>
+      {% include tutorial_navigation.html %}
     </nav>
     <div class="content">
       {{ content }}
