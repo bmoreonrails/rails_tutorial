@@ -2,7 +2,12 @@
   background-color: #D8DDDE; 
   padding: 1em;
   margin-top: 1em;
+  margin-bottom: 2em;
   img {
+    display: block;
+    margin: auto;
+  }
+  iframe {
     display: block;
     margin: auto;
   }
@@ -17,7 +22,6 @@
      max-width: 600px;
      margin-left: auto;
      margin-right: auto;
-     margin-bottom: auto;
   }
 }
 
