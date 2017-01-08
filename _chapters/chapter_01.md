@@ -182,7 +182,9 @@ layout: rails_tutorial
 {% aside %}
   Not sure what a database is? Don't worry, we'll fill you in :)
 
-  There are many different types of databases but the one we'll be working with here - and that's the most similar to what you've probably worked with in the past is called a Relational Database. There are many types of *Relational Database Management Systems* (RDMS's for short) and SQLite is just one of them. Feel free to check out this video to learn a bit more about Relational Databases: 
+  There are many different types of databases but the one we'll be working with here - and that's the most similar to what you've probably worked with in the past is called a Relational Database. There are many types of *Relational Database Management Systems* (RDMS's for short) and SQLite is just one of them. 
+
+Feel free to check out this video to learn a bit more about Relational Databases: 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/t48TGntrX4s" frameborder="0" allowfullscreen></iframe>
 
