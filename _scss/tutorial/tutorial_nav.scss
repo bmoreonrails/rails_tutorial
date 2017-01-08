@@ -1,8 +1,5 @@
 .tutorial_nav {
-  padding-top: .2em;
-  padding-bottom: .2em;
-  padding-right: .5em;
-  padding-left: .5em;
+  min-height: $nav-bar-height;
   color: #FFF;
   position: fixed;
   top: 0px;
@@ -10,24 +7,30 @@
   margin: 0;
   float: left;
   background-color: #69CBA2;
-  
+
   a {
     color: #FFF;
     text-decoration: none;
   }
 
-  .hamburger {
+  .menu {
     font-size: 1.4em;
+    cursor: pointer;
+    display: table;
+    width: 100%;
+    height: $nav-bar-height;
   }
-  
+
   .hamburger-icon {
-    width: 7%;
-    float: left;
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: .5em;
+    padding-right: .5em;
   }
 
   .menu-title {
-    float: left;
-    width: 90%;
+    display: table-cell;
+    vertical-align: middle;
   }
 
   ul {
@@ -37,22 +40,29 @@
       text-decoration: underline;
     }
   }
+
+  .progress {
+    width: 100%;
+    height: 10px;
+    background-color: #FFF;
+  }
+
+  .progress_bar {
+    background-color: #ADD6C6;
+    height: 100%;
+    width: 0%;
+  }
 }
 
 @media (min-width: 480px) {
   .tutorial_nav {
     .hamburger-icon {
       width: 5%;
-     } 
+     }
   }
 }
 
 @media (min-width: 768px) {
-  .tutorial_nav {
-    .hamburger {
-      font-size: 1.5em;
-     }
-  }
 }
 
 @media (min-width: 992px) {
@@ -62,5 +72,3 @@
     }
   }
 }
-
-

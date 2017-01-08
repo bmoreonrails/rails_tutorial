@@ -1,9 +1,9 @@
---- 
-url: 2.html 
-number: 2 
+---
+url: 2.html
+number: 2
 title: Creating the First Table in Your Database
-layout: rails_tutorial 
---- 
+layout: rails_tutorial
+---
 
 {% sectionheader %}
   {{ page.title }}
@@ -319,7 +319,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  
+
   1. <p>Go back to your terminal and re-run the migration by running `rake db:migrate`.</p>
 {% endlist %}
 

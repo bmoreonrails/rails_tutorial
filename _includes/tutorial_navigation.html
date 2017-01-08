@@ -1,19 +1,18 @@
 
 <div class="tutorial_nav">
+  <div class="progress"><div class="progress_bar"></div></div>
   <ul id="menu-list">
     {% for chapter in site.chapters %}
      <li>
       <a href="{{ site.baseurl }}{{chapter.url}}" target="_self">
         {{ chapter.number }} {{ chapter.title }}
        </a>
-     </li>  
+     </li>
     {% endfor %}
    </ul>
 
   <div class="menu" data-toggle="#menu-list">
-    <a href="#menu" class="hamburger" target="_self">
-      <div class="hamburger-icon"> &#9776</div>
-      <div class="menu-title">Chapter {{page.number}} -- {{ page.title }}</div>
-    </a>
+    <div class="hamburger-icon"> &#9776</div>
+    <div class="menu-title">Chapter {{page.number}} -- {{ page.title }}</div>
   </div>
 </div>
