@@ -3,6 +3,14 @@
   overflow: hidden;
   margin-top: 3em;
   margin-bottom: 3em;
+
+  pre {
+    overflow: auto;
+  }
+
+  .highlighter-rouge {
+    color: #B32A2A;
+  }
 }
 
 @media (min-width: 480px) {
