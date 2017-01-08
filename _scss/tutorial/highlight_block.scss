@@ -6,12 +6,14 @@
   .highlight {
     line-height: initial;
     overflow-y: scroll;
-    padding: 1em;
     margin: 0em;
     code {
       color: #FFFAF0;
       padding: 0em;
       border-radius: 0em;
+    }
+    pre {
+      padding: 1em;
     }
   }
 }
