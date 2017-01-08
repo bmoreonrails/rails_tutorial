@@ -9,11 +9,12 @@
     margin: 0em;
     code {
       color: #FFFAF0;
-      padding: 0em;
-      border-radius: 0em;
+    }
+    > * {
+      padding: 1em;
     }
     pre {
-      padding: 1em;
+      margin: 0;
     }
   }
 }
