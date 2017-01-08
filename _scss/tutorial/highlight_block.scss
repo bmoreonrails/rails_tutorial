@@ -1,9 +1,5 @@
 .steps {
-  pre.highlight {
-    overflow-y: scroll;
-  }
-
-  .highlight {
+  > .highlight {
     line-height: initial;
     overflow-y: scroll;
     margin: 0em;
@@ -24,7 +20,7 @@
 
 @media (min-width: 768px) {
   .steps {
-      .highlight {
+      > .highlight {
          width: 50%;
       }
     }

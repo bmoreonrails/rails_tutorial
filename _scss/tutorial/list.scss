@@ -29,14 +29,11 @@
 
     .highlight {
       margin-left: 2.5em;
-      background-color: lightgrey;
       width: auto;
-      margin-bottom: 0em;
+      margin-bottom: 0;
+      margin-top: 0;
       padding: .75em;
       float: none;
-      code {
-        background-color: lightgrey;
-      }
     }
   }
 }
