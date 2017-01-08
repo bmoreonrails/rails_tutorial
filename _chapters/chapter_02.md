@@ -48,7 +48,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Open the `bookstore` directory in your text editor and look at `db/migrate/YOUR_TIMESTAMP_create_books.rb`.
+  1.  Open `db/migrate/YOUR_TIMESTAMP_create_books.rb` in your text editor.
 
   1.  This is a migration file called `CreateBooks`. Migrations are used to make changes to the database.
 
@@ -202,7 +202,7 @@ The Ruby in 100 minutes tutorial discussed classes only briefly. All you really 
       my_favorite_book = Book.new
       ```
 
-      This just assigned a new instance of `Book` to a [variable](http://tutorials.jumpstartlab.com/projects/ruby_in_100_minutes.html#2.-variables) so that we can refer to it as `my_favorite_book`.
+      This assigns a new instance of `Book` to a [variable](http://tutorials.jumpstartlab.com/projects/ruby_in_100_minutes.html#2.-variables) so that we can refer to it as `my_favorite_book`.
 
   1.  Now, to give this new instance of book a title. Run:
 
@@ -229,7 +229,7 @@ The Ruby in 100 minutes tutorial discussed classes only briefly. All you really 
 {% list %}
   1.  Remember those other columns we added to the `books` table? We can set those on `my_favorite_book`.
 
-      For example, the book ["why's (poignant) Guide to Ruby"](http://poignant.guide/book/chapter-1.html) was written by a guy who called himself "why the lucky stiff". Try setting `my_favorite_book`'s author to "why the lucky stiff".
+      For example, the book ["why's (poignant) Guide to Ruby"](http://poignant.guide/book/chapter-1.html) was written by a guy who called himself "why the lucky stiff". Try setting `my_favorite_book`'s author to ["why the lucky stiff"](https://en.wikipedia.org/wiki/Why_the_lucky_stiff).
 
   1.  Although `my_favorite_book` is priceless, you can go ahead and give it a price. Remember, we named this column `price_cents`.
 
@@ -266,9 +266,7 @@ The Ruby in 100 minutes tutorial discussed classes only briefly. All you really 
 {% aside %}
 ### This is what I like to call "error driven development" 😉
 
-One of the things that's great about the Rails framework is that it generally gives the programmer really helpful errors. 
-
-These errors can seem intimidating at first - but as you learn more about the framework and the programming language, they become valuble tools for building your application. So - let's embrace and explore these errors together! 
+These errors can seem intimidating at first - but for us as programmers, they're a valuable tools for building our application. So - let's embrace and explore these errors together! 
 {% endaside %}
 
 {% steps %}
