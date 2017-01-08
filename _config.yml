@@ -43,5 +43,3 @@ gems:
 exclude:
   - Gemfile
   - Gemfile.lock
-
-highlighter: pygments
