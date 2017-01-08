@@ -193,7 +193,7 @@ Feel free to check out this video to learn a bit more about Relational Databases
 {% endaside %}
 
 {% protip %}
- As you work through the tutorial - don't worry if what you're seeing doesn't look exactly like the examples we've included in the tutorial. Small things can change between different versions of Rails.
+ As you work through the tutorial - don't worry if what you're seeing doesn't look exactly like our examples. Small things can change between different versions of Rails.
 {% endprotip %}
 
 {% steps %}
@@ -263,7 +263,7 @@ Feel free to check out this video to learn a bit more about Relational Databases
 {% aside %}
   What's this bookstore we keep talking about? In this tutorial, we're going to use Rails to make an application for a bookstore.
 
-  As you build the application, you'll add features to `create`, `view`, `edit`, and `delete` books. Since we all have feelings on the books we love...and hate, you'll add features so books can be reviewed by users.
+  As you build the application, you'll add features to create, view, edit, and delete books. Since we all have feelings on the books we love...and hate, you'll add features so books can be reviewed by users.
 
   By creating an application for a bookstore, you'll get explore the different layers of the Rails framework.
 
