@@ -11,7 +11,7 @@ layout: rails_tutorial
 {% protip %}
   Throughout the tutorial, you're going to run a lot of commands on the command line. For example, we might ask you to do something like
 
-  > Run `$pwd` to print your current working directory.
+  > Run `pwd` to print your current working directory.
 
   The place that you run these commands will be different based on the type of computer you have: 
 
@@ -24,15 +24,15 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Get started by opening your Terminal.
+  1.  Get started by opening Terminal.
 
   1.  You're now in your home directory. The command `ls` will always show you what's in the current directory. Go ahead and run `ls` to see what files are here.
  
   1.  You might see some familiar files like Desktop, Documents, and Music.
 
-  1.  All code deserves a good home. Add a new `Projects` directory to your home directory by running `$mkdir Projects`.
+  1.  All code deserves a good home. Add a new `Projects` directory to your home directory by running `mkdir Projects`.
 
-  1.  Navigate into your new `Projects` directory by running `$cd Projects`.
+  1.  Navigate into your new `Projects` directory by running `cd Projects`.
 
   1.  Now you're ready to create the bookstore!
 {% endlist %}
@@ -53,11 +53,11 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  In your `Projects` directory, run `$rails new bookstore`.
+  1.  In your `Projects` directory, run `rails new bookstore`.
 
   1.  The `rails new` command does a lot of stuff! First, it creates the files and directories that make up the basic structure of your bookstore application. Then, it runs `bundle install` to install the dependencies needed to run the application.
 
-  1.  After `$rails new` finishes, run `$cd bookstore` to navigate into the newly created bookstore application.
+  1.  After `$rails new` finishes, run `cd bookstore` to navigate into the newly created bookstore application.
 {% endlist %}
 
 {% highlight shell %}
@@ -81,20 +81,22 @@ layout: rails_tutorial
 {% endsteps %}
 
 {% aside %}
-  The command "bundle" might sound familiar to you. If you did the install instructions for this tutorial, you probably ran `$gem install bundler`. 
+### What's this bundle thing?
 
-  [Bundler](http://bundler.io/) is a program that helps you manage all of the other little programs that help Rails run and all of the commands related to that program start with `$bundle`. 
+The command "bundle" might sound familiar to you. If you did the install instructions for this tutorial, you probably ran `gem install bundler`. 
 
-  You don't need to worry about this much for the tutorial but if you're interested in it, you can learn more about them on their website. 
+[Bundler](http://bundler.io/) is a program that helps you manage all of the other little programs that help Rails run and all of the commands related to that program start with `bundle`. 
+
+You don't need to worry about this much for the tutorial but if you're interested in it, you can learn more about them on their website. 
 {% endaside %}
 
 {% steps %}
 {% list %}
-  1.  Let's take a look the files that got created when you ran `$rails new`.
+  1.  Let's take a look the files that got created when you ran `rails new`.
 
-  1.  Run `ls -l` to list out all the top level files and directories that you created. There's lot going on, but a few things stand out.
+  1.  Run `ls -l` to list out all the top level files and directories. There's lot going on, but a few things stand out.
 
-  1.  Any code that is specific to the bookstore application will live in the `app` directory this is where you'll be doing most of your work for this tutorial. Run `ls -l app` to take a look at the some of the things you'll be working with throughout the tutorial.
+  1.  Any code that is specific to the bookstore application will live in the `app` directory. This is where you'll be doing most of your work for this tutorial. Run `ls -l app` to take a look at the some of the things you'll be working with.
 {% endlist %}
 
 {% highlight shell %}
@@ -130,14 +132,14 @@ layout: rails_tutorial
 {% endsteps %}
 
 {% protip %}
-  It's easiest to edit these files using a text editor created just for programming. If you don't already have a favorite text editor for programming? We recommend [Atom](https://atom.io/).
+  It's easiest to edit these files using a text editor created just for programming. If you don't already have a favorite text editor we recommend [Atom](https://atom.io/).
 {% endprotip %}
 
 {% steps %}
 {% list %}
-  1.  The `config` directory is where you'll store configuration files for the bookstore application. `$rails new` generated a bunch of configuration files to help you get this new application up and running quickly. Let's take a look at one of those files.
+  1.  The `config` directory is where you'll store configuration files for the bookstore application. `rails new` generated a bunch of configuration files to help you get this new application up and running quickly. Let's take a look at one of those files.
 
-  1.  From inside the menu of your favorite text editor to open the whole `bookstore` directory.
+  1.  From inside your favorite text editor go to File -> open and select the whole `bookstore` directory.
 
   1.  In your text editor, navigate to the `config` directory, and then look at the contents of the `database.yml` file.
 
@@ -180,11 +182,11 @@ layout: rails_tutorial
 {% endsteps %}
 
 {% aside %}
-  Not sure what a database is? Don't worry, we'll fill you in :)
+### Not sure what a database is? Don't worry, we'll fill you in :)
 
-  There are many different types of databases but the one we'll be working with here - and that's the most similar to what you've probably worked with in the past is called a Relational Database. There are many types of *Relational Database Management Systems* (RDMS's for short) and SQLite is just one of them. 
+There are many different types of databases but the type we'll be working with here is called a Relational Database. A relational database is made up of tables where you store data kinda like an Excel spreadsheet but much more powerful. There are many types of *Relational Database Management Systems* (RDMS's for short) and SQLite is just one of them. 
 
-Feel free to check out this video to learn a bit more about Relational Databases: 
+Feel free to check out this video to learn a bit more about Relational Databases:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/t48TGntrX4s" frameborder="0" allowfullscreen></iframe>
 
@@ -200,9 +202,9 @@ Feel free to check out this video to learn a bit more about Relational Databases
 
   1.  Go back to Terminal and make sure you're in the `bookstore` directory.
 
-      Not sure if you're in the `bookstore` directory? Run `$pwd` to see what directory you're in. You should see something like `/Users/awesomesauce/Projects/bookstore`. 
+      Not sure if you're in the `bookstore` directory? Run `pwd` to see what directory you're in. You should see something like `/Users/awesomesauce/Projects/bookstore`. 
 
-      If you're still in your home directory run `$cd bookstore` in your terminal to navigate into your bookstore directory. 
+      If you're still in your home directory run `cd bookstore` in your terminal to navigate into your bookstore directory. 
 
   1.  Now run `$rails server` to start the application server. Notice that the output in your terminal tells you how to access the running application:
 
@@ -241,7 +243,7 @@ Feel free to check out this video to learn a bit more about Relational Databases
 
   1.  Go back to Terminal, and you can see the application responding to requests.
 
-  1.  Now that you're back in Terminal, run `$Ctrl-C` to stop the application.
+  1.  Now that you're back in Terminal, run `Ctrl-C` to stop the application.
 {% endlist %}
 
 {% highlight shell %}
