@@ -13,11 +13,16 @@
     text-decoration: none;
   }
 
+  .menu-container {
+    display: table;
+    width: 100%;
+  }
+
   .menu {
     font-size: 1.4em;
     cursor: pointer;
-    display: table;
-    width: 100%;
+    display: table-cell;
+    width: 75%;
     height: $nav-bar-height;
   }
 
@@ -31,6 +36,7 @@
   .menu-title {
     display: table-cell;
     vertical-align: middle;
+    width: 75%;
   }
 
   ul {
@@ -51,6 +57,17 @@
     background-color: #ADD6C6;
     height: 100%;
     width: 0%;
+  }
+
+  .search {
+    display: table-cell;
+    vertical-align: middle;
+    width: 25%;
+
+    input {
+      height: 25px;
+      width: 200px;
+    }
   }
 }
 
