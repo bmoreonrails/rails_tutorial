@@ -296,15 +296,15 @@ end
 
   1.  Stop your `rails server` by running `Ctrl-c`.
 
-  1.  All templates live in the directory `app/views`.
+  1.  All templates live in the `app/views` directory.
 
       `app/views` will have directories for each of the controllers in your application. By default, a controller's template directory will be the name of the controller...minus the controller.
 
-      For example, the views for the `BooksController` will live in the `app/views/books` subdirectory.
+      For example, the templates for the `BooksController` will live in the `app/views/books` directory.
 
   1.  Create the `BooksController` template directory by running `mkdir app/views/books`.
 
-  1.  Now, create the view or template for the `BooksController`'s `index` action by running `touch app/views/books/index.html.erb`.`
+  1.  Now, create the template for the `BooksController`'s `index` action by running `touch app/views/books/index.html.erb`.`
 
   1.  Restart your web server.
 
@@ -340,7 +340,7 @@ end
 {% list %}
   1.  Ok, let's make this page a little more interesting.
 
-  1.  In your text editor, open the view we made (`app/views/books/index.html.erb`) and add the following line:
+  1.  In your text editor, open the template we made (`app/views/books/index.html.erb`) and add the following line:
 
       ```erb
       <h1>Welcome to My Super Rad Bookstore!</h1>
@@ -348,7 +348,7 @@ end
 
   1.  Save your changes and go to [http://localhost:3000/books](http:://localhost:3000/books) again.
 
-      Yay! 🎉  You should have something that looks like this: 
+      Yay! 🎉   
 {% endlist %}
 
 {% highlight erb linenos %}
@@ -364,19 +364,19 @@ end
 {% aside %}
   You've been going to the `/books` path a bunch and as a result you've been running the `BooksController` `index` action a lot.
 
-  You can think of the `index` page in a web application as the index of a book because it's used to list all of a controller's resources. Since we're in the `BooksController`, this `index` action is going to list all of our database's books.
+  You can think of the `index` page in a rails application as the index of a book because it's used to list all of a controller's resources. Since we're in the `BooksController`, this `index` action is going to list all of your database's books.
 {% endaside %}
 
 {% steps %}
 {% list %}
-  1.  Before you can show all of your books in the browser, you have to make the books data available through your `BooksController index` action.
+  1.  Before you can show all of your books in the browser, you have to make the books data available through your application's `BooksController index` action.
 
   1.  In your text editor, open `app/controllers/books_controller.rb`. Inside the `index` method, add the following line:
 
       ```ruby
       @books = Book.all
       ```
-      That line might look a little familiar. We used `Book.all` in [Chapter 2]({{site.baseurl}}{{page.previous.url}}#all_book) to list all your application's books in the `rails console`. We're using the same method again so we can render your application's books in the browser.
+      That line might look a little familiar. We used `Book.all` in Chapter 2 to list all your application's books in the `rails console`. We're using the same method again so we can render your application's books in the browser.
 
   1.  Save your changes.
 {% endlist %}
@@ -431,13 +431,11 @@ end
 {% endsteps %}
 
 {% aside %}
-### Embedded RuBy
+### Embedded RuBy(ERB)
 
-You may have heard of or used HTML at some point. One of the really cool tools that Ruby has is the ability to use something called Embedded RuBy or ERB for short. 
+Ruby has a templating system that embeds Ruby into a text document called [ERB](https://en.wikipedia.org/wiki/ERuby). 
 
-You'll notice that some of the HTML brackets in our views are slightly different now. Anything between `<%` and `%>` is actually this templating language.  
-
-Also notice that your view's file name is `index.html.erb` <- that erb on the end of the file name tells Ruby that the file needs to be interpreted for you. ERB can be used with any type of text file but in Rails, it's primarily used in the HTML views. 
+ERB allows Ruby code to be embedded within a pair of `<%` and `%>` delimiters. These embedded code blocks are then evaluated in-place. Tthey are then replaced by the result of their evaluation.
 {% endaside %}
 
 {% steps %}
@@ -599,8 +597,6 @@ Also notice that your view's file name is `index.html.erb` <- that erb on the en
 ### Arrays 
 
 You might remember reading about arrays in the [Ruby in 100 minutes](http://tutorials.jumpstartlab.com/projects/ruby_in_100_minutes.html#7.-arrays) tutorial. Arrays are most commonly used for storing a list or collection of things.
-
-You can also read more about them and the methods you can use with them in the [Ruby documentation](http://ruby-doc.org/core-2.3.1/Array.html).  
 {% endaside %}
 
 {% steps %}
