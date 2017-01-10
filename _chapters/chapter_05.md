@@ -71,7 +71,9 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing Unknown action error: "The action 'new' could not be found for BooksController"](screenshot.jpg)
+{% screenshot %}
+![Browser showing Unknown action error: "The action 'new' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action_new.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -114,7 +116,9 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing ActionController::UnknownFormat error: "BooksController#new is missing a template for this request format and variant."](screenshot.jpg)
+{% screenshot %}
+![Browser showing ActionController::UnknownFormat error: "BooksController#new is missing a template for this request format and variant."]({{site.baseurl}}/assets/images/UnknownFormat_in_BooksController_new.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -152,6 +156,7 @@ layout: rails_tutorial
 {% endsteps %}
 
 {% aside %}
+### A Little About Forms
   Data is usually added to web applications through forms.
 
   You probably have never noticed them, but forms are everywhere on the internet. When you login to a site, you enter your credentials into a form. When you post a status on Facebook, you enter your status into a form. When you're Googling for programming resources, you enter your search terms into a form.
@@ -165,7 +170,7 @@ layout: rails_tutorial
 {% list %}
   1.  In your text editor, open `app/views/books/new.html.erb` and add the following code:
 
-      ```ruby
+      ```erb
       <%= form_for(@book) do |f| %>
       <% end %>
       ```
@@ -179,13 +184,15 @@ layout: rails_tutorial
   1.  Save your changes and revisit [http://localhost:3000/books/new](http://localhost:3000/books/new).
 {% endlist %}
 
-{% highlight ruby linenos %}
+{% highlight erb linenos %}
   <%= form_for(@book) do |f| %>
   <% end %>
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing Argument Error in Books#new: "First argument in form cannot contain nil or be empty"](screenshot.jpg)
+{% screenshot %}
+![Browser showing Argument Error in Books#new: "First argument in form cannot contain nil or be empty"]({{site.baseurl}}/assets/images/argument_error_books_new.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -201,7 +208,7 @@ layout: rails_tutorial
 
       Remember the code we used to start the form?
 
-      ```ruby
+      ```erb
       <%= form_for(@book) do |f| %>
       ```
 
@@ -213,7 +220,7 @@ layout: rails_tutorial
 
       Is `@book` defined inside in the new method?
 
-      ```ruby
+      ```erb
       def new
       end
       ```
@@ -303,11 +310,26 @@ layout: rails_tutorial
 
       Can you match the code you added to the different elements on the page?
 {% endlist %}
+{% highlight erb linenos %}
+  <%= form_for(@book) do |f| %>
+    <ul>
+      <li>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+      </li>
+
+      <li>
+        <%= f.label :author %>
+        <%= f.text_field :author %>
+      </li>
+    </ul>
+  <% end %>
+{% endhighlight %}
 {% endsteps %}
 
 {% steps %}
 {% list %}
-  1.  Your `new` book form has fields for title and author, try adding a field for the price. Remember, we named the field `price_cents`.
+  1.  <p>Your `new` book form has fields for title and author, try adding a field for the price. Remember, we named the field `price_cents`.</p>
 {% endlist %}
 {% endsteps %}
 
@@ -315,7 +337,7 @@ layout: rails_tutorial
 {% list %}
   1.  What did you come up with? If you followed the pattern used for the other two fields, you probably came up with something like this:
 
-      ```ruby
+      ```erb
       <li>
         <%= f.label :price_cents %>
         <%= f.text_field :price_cents %>
@@ -326,19 +348,19 @@ layout: rails_tutorial
 
   1.  To make it a number field, simply change
 
-      ```ruby
+      ```erb
       <%= f.text_field :price_cents %>
       ```
 
       to
 
-      ```ruby
+      ```erb
       <%= f.number_field :price_cents %>
       ```
 
   1.  Your full solution should look like this:
 
-      ```ruby
+      ```erb
       <li>
         <%= f.label :price_cents %>
         <%= f.number_field :price_cents %>
@@ -350,7 +372,7 @@ layout: rails_tutorial
       Does the `price_cents` field differ from other fields on the page?
 {% endlist %}
 
-{% highlight ruby linenos %}
+{% highlight erb linenos %}
   <ul>
     <li>
       <%= f.label :title %>
@@ -387,7 +409,7 @@ layout: rails_tutorial
 {% list %}
   1.  What does your solution look like? Your compelte form should look like this:
 
-      ```ruby
+      ```erb
       <%= form_for(@book) do |f| %>
         <ul>
           <li>
@@ -422,7 +444,9 @@ layout: rails_tutorial
 {% endlist %}
 {% endsteps %}
 
-![Browser showing "/books/new" with a form full of fields](screenshot.jpg)
+{% screenshot %}
+![Browser showing "/books/new" with a form full of fields]({{site.baseurl}}/assets/images/form.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -434,7 +458,7 @@ layout: rails_tutorial
 
   1.  At the end of the `form_for` block`, add the following line:
 
-      ```ruby
+      ```erb
       <%= f.submit %>
       ```
 
@@ -444,9 +468,33 @@ layout: rails_tutorial
 
       `f.submit` generates a button labeled "Create Book"
 {% endlist %}
+{% highlight erb linenos %}
+  <%= form_for(@book) do |f| %>
+    <ul>
+      <li>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+      </li>
+
+      <li>
+        <%= f.label :author %>
+        <%= f.text_field :author %>
+      </li>
+
+      <li>
+        <%= f.label :price_cents %>
+        <%= f.number_field :price_cents %>
+      </li>
+    </ul>
+    <%= f.submit %>
+  <% end %>
+{% endhighlight %}
+
 {% endsteps %}
 
-![Browser showing "/books/new" with a form you can submit](screenshot.jpg)
+{% screenshot %}
+![Browser showing "/books/new" with a form you can submit]({{site.baseurl}}/assets/images/form_with_button.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -465,6 +513,10 @@ layout: rails_tutorial
       We've been working with the `BooksController` `new` action? How did we end up with an error for the `create` action?
 {% endlist %}
 {% endsteps %}
+
+{% screenshot %}
+![Browser showing "/books/new" with a form you can submit]({{site.baseurl}}/assets/images/unknown_action_create.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -506,7 +558,7 @@ layout: rails_tutorial
 
   1.  Don't worry if you don't understand everything that is going on. It will make more sense over time.
 
-      The key take away here is the `new` book form gets submitted to the `BooksController` create action.
+      The key take away here is the `new` book form gets *submitted* to the `BooksController` create action.
 
   1.  Restart your application's web server.
 {% endlist %}
@@ -782,8 +834,9 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing ActiveModel::ForbiddenAttributesError in BooksController#create](screenshot.jpg)
-
+{% screenshot %}
+![Browser showing ActiveModel::ForbiddenAttributesError in BooksController#create]({{site.baseurl}}/assets/images/ForbiddenAttribute_Error.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -847,7 +900,7 @@ layout: rails_tutorial
 
   1.  After the unordered list, add the following line:
 
-      ```ruby
+      ```erb
       <%= link_to("Add a book", new_book_path) %>
       ```
 
@@ -858,7 +911,7 @@ layout: rails_tutorial
       You should see the new link. Clicking it should take you to the new book form.
 {% endlist %}
 
-{% highlight ruby linenos %}
+{% highlight erb linenos %}
   <h1>Welcome to My Super Rad Bookstore!</h1>
 
   <ul>
@@ -873,7 +926,9 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing book index with link to "Add a book"](screenshot.jpg)
+{% screenshot %}
+![Browser showing book index with link to "Add a book"]({{site.baseurl}}/assets/images/add_book_button.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
