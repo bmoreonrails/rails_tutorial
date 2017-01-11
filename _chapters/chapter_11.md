@@ -197,7 +197,7 @@ layout: rails_tutorial
 
       Right?!
 
-      ![Fake it 'til you make it](https://s-media-cache-ak0.pinimg.com/564x/36/59/e6/3659e6dcaf4a6cc13f293e6b3565fad2.jpg "We should serve this locally")
+      ![Fake it 'til you make it]({{ site.baseurl }}/assets/images/fake-it.jpg)
 
   1.  You're seeing an `Unknown action` error that says "The action 'new' could not be found for ReviewsController". How would you fix this error?
 
@@ -253,7 +253,7 @@ layout: rails_tutorial
 
       What do you think will happen?
 
-      ![Fingers crossed!](https://media.giphy.com/media/4KxeicCUTvhrW/giphy.gif "We should server this file locally")
+      ![Fingers crossed!]({{ site.baseurl }}/assets/images/fingers-crossed.gif)
 {% endlist %}
 
 {% highlight shell %}
@@ -277,7 +277,7 @@ layout: rails_tutorial
 
       Please, contain your excitement!
 
-      ![Someone's not excited](https://media.tenor.co/images/893990076684397040d10f13e2958490/raw "We should serve this file locally")
+      ![Someone's not excited]({{ site.baseurl }}/assets/images/not-excited.gif)
 
   1.  We're rendering a blank page for the new reviews page, but what should we be rendering instead?
 
@@ -374,7 +374,7 @@ layout: rails_tutorial
 {% list %}
   1.  Now, we can build the review form!
 
-      ![Jake and Finn are excited!](https://m.popkey.co/4df1a5/X1l6D.gif "We should serve this file locally")
+      ![Jake and Finn are excited!]({{ site.baseurl }}/assets/images/excited.gif)
 
   1.  This form is going to be pretty simmilar to the new book form, but with less fields.
 
@@ -517,11 +517,11 @@ layout: rails_tutorial
 {% list %}
   1.  An `Unknown action` error?! But we were so close!!!
 
-      ![Jake is upset](http://vignette3.wikia.nocookie.net/smuff/images/7/76/NOOOOO.gif/revision/latest?cb=20120223210904 "We should server this file locally")
+      ![Jake is upset]({{ site.baseurl }}/assets/images/upset.gif)
 
       Don't be so down! We've gotten through this before...we can fix this.
 
-      ![Fix it!](https://s-media-cache-ak0.pinimg.com/originals/2c/ba/f7/2cbaf7e72ee9e774cb4cebe988d3346d.gif "We should serve this file locally")
+      ![Fix it!]({{ site.baseurl }}/assets/images/fix-it.gif)
 
   1.  The error is telling us what we need to do.
 
@@ -716,7 +716,7 @@ layout: rails_tutorial
 {% list %}
   1.  You've done *a lot* of work in this chapter, but look at your bookstore! Now you can write all those book reviews you've been putting off for all these years.
 
-      ![Typing!](http://cdn-r1.unilad.co.uk/wp-content/uploads/2016/05/tumblr_inline_nwyokhuKT31rt2a43_500.gif "We should serve this file locally")
+      ![Typing!]({{ site.baseurl }}/assets/images/typing.gif)
 
   1.  Before you jump into writing those reviews, let's clean up *one* more thing...
 

@@ -456,7 +456,7 @@ layout: rails_tutorial
 
   1.  Error? ERROR?!
 
-      ![Anger!](http://33.media.tumblr.com/bb7001d20808a632321af9dbcb51ae58/tumblr_nc3gm08zeS1rmoy1jo4_1280.gif "We should serve this file locally")
+      ![Anger!]({{ site.baseurl }}/assets/images/anger.gif)
 
   1.  You're getting an `Unknown action` error that says "The action 'create' could not be found for BooksController".
 
@@ -687,7 +687,7 @@ layout: rails_tutorial
 
       *Magic*
 
-      ![Magic](https://www.drupal.org/files/shia-magic.gif "We should serve this image locally")
+      ![Magic]({{ site.baseurl }}/assets/images/shia-magic.gif)
 {% endlist %}
 
 {% highlight ruby linenos %}
@@ -881,6 +881,6 @@ layout: rails_tutorial
 
   1.  When you're done adding books and basking in the glory, stop your application's web server and give yourself a high five.
 
-      ![Liz Lemon with the self high five](http://gifrific.com/wp-content/uploads/2012/04/Tina-Fey-giving-herself-high-five.gif "We should serve this file locally")
+      ![Liz Lemon with the self high five]({{ site.baseurl }}/assets/images/liz-high-five.gif)
 {% endlist %}
 {% endsteps %}
