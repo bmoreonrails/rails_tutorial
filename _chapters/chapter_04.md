@@ -27,7 +27,7 @@ layout: rails_tutorial
 
   1.  Now that we want to show detailed book information we'll need to use a different route.
 
-      ```ruby
+      ```shell
       book GET    /books/:id(.:format)      books#show
       ```
 
@@ -63,7 +63,7 @@ layout: rails_tutorial
 
   1.  Take a look at the output. It might be see, but at the beginning there's an id.
 
-      ```
+      ```shell
       #<Book id: 1, title: "why's (poignant) Guide to Ruby", ... >
       ```
 
@@ -73,7 +73,7 @@ layout: rails_tutorial
 
       Run `Book.second` and look at the output.
 
-      ```
+      ```shell
       #<Book id: 2, title: "Oh, the Places You'll Go!", ... >
       ```
 
@@ -84,7 +84,7 @@ layout: rails_tutorial
   1.  Exit the console.
 {% endlist %}
 
-{% highlight ruby %}
+{% highlight shell %}
   $ rails c
   Loading development environment (Rails 5.0.0.1)
   >> Book.first
@@ -114,7 +114,7 @@ layout: rails_tutorial
       You're trying to access the `BooksController` `show` action, but it doesn't exist. Let's make it.
 {% endlist %}
 
-{% highlight ruby %}
+{% highlight shell %}
   $ rails server
   => Booting Puma
   => Rails 5.0.0.1 application starting in development on http://localhost:3000
@@ -134,7 +134,9 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing Unknown action error: "The action 'show' could not be found for BooksController"](screenshot.jpg)
+{% screenshot %}
+![Browser showing Unknown action error: "The action 'show' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action_error_show.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -170,7 +172,10 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing ActionController::UnknownFormat error: "BooksController#show is missing a template for this request format and variant"](screenshot.jpg)
+{% screenshot %}
+![Browser showing ActionController::UnknownFormat error: "BooksController#show is missing a template for this request format and variant"]({{site.baseurl}}/assets/images/UnknownFormat_in_BooksController_show.png)
+
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -208,7 +213,7 @@ layout: rails_tutorial
 
   1.  When you visit [http://localhost:3000/books/1](http://localhost:3000/books/1), you send a request to your application's web server. Thanks to Rails routing, the book id (1) is included in that request.
 
-      ```ruby
+      ```shell
       Started GET "/books/1" for ::1 at 2016-12-26 16:12:07 -0500
       Processing by BooksController#show as HTML
         Parameters: {"id"=>"1"}
@@ -217,16 +222,18 @@ layout: rails_tutorial
       Completed 200 OK in 266ms (Views: 263.1ms | ActiveRecord: 0.0ms)
       ```
 
-      It's tucked in there, but the id is inside the parameters hash.
+      It's tucked in there, but the id is inside the parameters hash. See it? Try to find it in your server's output. 
 
-      ```ruby
+      ```shell
       Parameters: {"id"=>"1"}
       ```
 
   1.  Let's see how we can access the parameters hash in your `BooksController` `show` action.
 {% endlist %}
 {% endsteps %}
-{% steps %} {% list %}
+
+{% steps %} 
+{% list %}
   1.  Open your text editor and go to `app/controllers/books_controller.rb`.
 
   1.  In your controllers, request parameters are available as `params`.
@@ -279,7 +286,9 @@ layout: rails_tutorial
 {% endlist %}
 {% endsteps %}
 
-![Browser showing "/books/1" with the request book's id](screenshot.jpg)
+{% screenshot %}
+![Browser showing "/books/1" with the request book's id]({{site.baseurl}}/assets/images/show_with_book_id.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -311,7 +320,7 @@ layout: rails_tutorial
 
   1.  Now try running the following code:
 
-      ```ruby
+      ```shell
       Book.find(3)
       ```
 
@@ -328,7 +337,7 @@ layout: rails_tutorial
   1.  Exit the console and restart your application's web server.
 {% endlist %}
 
-{% highlight ruby %}
+{% highlight shell %}
   $ rails server
 
   ...
@@ -408,14 +417,14 @@ layout: rails_tutorial
 
   1.  Add the following line to the end of the file
 
-      ```ruby
+      ```erb
       This book is called <%= @book.title %>
       ```
 
   1.  Save your changes and go back to [http://localhost:3000/books/1](http://localhost:3000/books/1).
 {% endlist %}
 
-{% highlight ruby linenos %}
+{% highlight erb linenos %}
   This book's id is <%= @id %>.
   This book is called <%= @book.title %>.
 {% endhighlight %}
@@ -437,7 +446,7 @@ layout: rails_tutorial
 
   1.  Now, add the following code to the file:
 
-      ```ruby
+      ```erb
       <dl>
         <dt>Id</dt>
         <dd><%= @book.id %></dd>
@@ -447,12 +456,12 @@ layout: rails_tutorial
       </dl>
       ```
 
-      This is a definition list with a couple of terms: id and title. The terms are defined with values for the given book.
+      This is an HTML [definition list](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl) with a couple of terms: id and title. The terms are defined with values for the given book.
 
       Save your changes and go to [http://localhost:3000/books/1](http://localhost:3000/books/1) to see the results.
 {% endlist %}
 
-{% highlight ruby linenos %}
+{% highlight erb linenos %}
   <dl>
     <dt>Id</dt>
     <dd><%= @book.id %></dd>
@@ -463,11 +472,15 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser show "/books/1" as a definition list](screenshot.jpg)
+{% screenshot %}
+![Browser show "/books/1" as a definition list]({{site.baseurl}}/assets/images/definition_list_show.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
-  1.  Now that we have a definition list with the book's id and title, update it to include the rest of the book's information (author, price_cents, and quantity).
+
+1.  <p>Now that we have a definition list with the book's id and title, update it to include the rest of the book's information (author, price_cents, and quantity).</p>
+
 {% endlist %}
 {% endsteps %}
 
@@ -497,7 +510,7 @@ layout: rails_tutorial
   1.  Update your solution to match this solution.
 {% endlist %}
 
-{% highlight ruby linenos %}
+{% highlight erb linenos %}
   <dl>
     <dt>Id</dt>
     <dd><%= @book.id %></dd>
@@ -542,8 +555,8 @@ layout: rails_tutorial
       ```
 
   1.  Save your changes and revist [http://localhost:3000/books/1](http://localhost:3000/books/1).
-
-{% highlight ruby linenos %}
+{% endlist %}
+{% highlight erb linenos %}
   <dl>
     <dt>Id</dt>
     <dd><%= @book.id %></dd>
@@ -561,10 +574,11 @@ layout: rails_tutorial
     <dd><%= @book.quantity %></dd>
   </dl>
 {% endhighlight %}
-{% endlist %}
 {% endsteps %}
 
-![Browser showing "/books/1" with `number_to_currency(price_cents)`](screenshot.jpg)
+{% screenshot %}
+![Browser showing "/books/1" with `number_to_currency(price_cents)`]({{site.baseurl}}/assets/images/pretty_price_show.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -599,7 +613,7 @@ layout: rails_tutorial
   1.  Save your changes and try looking up a few of your books in your browser.
 {% endlist %}
 
-{% highlight ruby linenos %}
+{% highlight erb linenos %}
   <dl>
     <dt>Id</dt>
     <dd><%= @book.id %></dd>
@@ -619,12 +633,14 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing "/books/1" with a nicely formated price](screenshot.jpg)
+{% screenshot %}
+![Browser showing "/books/1" with a nicely formated price]({{site.baseurl}}/assets/images/but_its_in_cents_show.png)
+{% endscreenshot %}
 
 {% aside %}
   We're making really good progress! Anyone can visit your bookstore to see what books you have, and they can learn a little about those books.
 
-  I love that I can see what books you have and how much they cost, but what if I've never heard of one of your books before??
+  I love that we can see what books you have and how much they cost, but what if I've never heard of one of your books before??
 
   Let's add book descriptions to help give just a little more info about your books.
 {% endaside %}
@@ -637,7 +653,7 @@ layout: rails_tutorial
 
       We've done that through migrations. We created a migration to add the `books` table, and we changed that migration to add new columns.
 
-      Now that you're bookstore application is coming along, we don't want to go back and edit past migrations. This is another one of those things you'll just have to trust me on.
+      Now that you're bookstore application is coming along, we don't want to go back and edit past migrations. Editing past migrations can compromise the data you've worked so hard to collect!
 
       But how will we add the `description` column to the `books` table??
 
@@ -683,7 +699,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Now, go back to Terminal and run `rake db:migrate` to run your new migration against your application's database.
+  1.  <p>Now, go back to Terminal and run `rake db:migrate` to run your new migration against your application's database.</p>
 {% endlist %}
 
 {% highlight shell %}
@@ -705,7 +721,7 @@ layout: rails_tutorial
 
       At the end, you should see a nil description.
 
-      ```
+      ```shell
       => #<Book id: 1, title: "why's (poignant) Guide to Ruby", ..., description: nil>
       ```
 
@@ -713,7 +729,7 @@ layout: rails_tutorial
 
   1.  You can give `my_first_book` a description by running
 
-      ```ruby
+      ```shell
       my_first_book.update(description: "YOUR INSPIRING DESCRIPTION")
       ```
 
@@ -728,20 +744,20 @@ layout: rails_tutorial
   1.  When you're done, exit the `rails console` and restart your application's web server by running `rails server`.
 {% endlist %}
 
-{% highlight ruby %}
+{% highlight shell %}
   $ rails console
   Loading development environment (Rails 5.0.0.1)
 
   >> my_first_book = Book.first
 
-  >> my_first_book.update(description: "Chunky Bacon")
+  >> my_first_book.update(description: "An introductory book to the Ruby programming language, written by why the lucky stiff. The book is unusual among programming books in that it includes quite a lot of strange humor and narrative side tracks which are sometimes completely unrelated to the topic. Many motifs have become inside jokes in the Ruby community, such as references to the words 'chunky bacon'. The book includes many characters which have become popular as well, particularly the cartoon foxes and Trady Blix, a large black feline friend of why's, who acts as a guide to the foxes and occasionally teaches them some Ruby.")
      (0.1ms)  begin transaction
-    SQL (0.6ms)  UPDATE "books" SET "updated_at" = ?, "description" = ? WHERE "books"."id" = ?  [["updated_at", 2016-12-27 02:28:28 UTC], ["description", "Chunky Bacon"], ["id", 1]]
+    SQL (0.6ms)  UPDATE "books" SET "updated_at" = ?, "description" = ? WHERE "books"."id" = ?  [["updated_at", 2016-12-27 02:28:28 UTC], ["description", "An introductory book to the Ruby programming language, written by why the lucky stiff. The book is unusual among programming books in tha    t it includes quite a lot of strange humor and narrative side tracks which are sometimes completely unrelated to the topic. Many motifs have become inside jokes in the Ruby comm    unity, such as references to the words 'chunky bacon'. The book includes many characters which have become popular as well, particularly the cartoon foxes and Trady Blix, a larg    e black feline friend of why's, who acts as a guide to the foxes and occasionally teaches them some Ruby."], ["id", 1]]
      (2.3ms)  commit transaction
   => true
 
   >> my_first_book.description
-  => "Chunky Bacon"
+  => "An introductory book to the Ruby programming language, written by why the lucky stiff. The book is unusual among programming books in that it includes quite a lot of strange humor and narrative side tracks which are sometimes completely unrelated to the topic. Many motifs have become inside jokes in the Ruby community, such as references to the words 'chunky bacon'. The book includes many characters which have become popular as well, particularly the cartoon foxes and Trady Blix, a large black feline friend of why's, who acts as a guide to the foxes and occasionally teaches them some Ruby."
 
   ...
 
@@ -764,7 +780,7 @@ layout: rails_tutorial
   1.  Save your changes and view your beautiful descriptions in your browser.
 {% endlist %}
 
-{% highlight ruby linenos %}
+{% highlight erb linenos %}
   <dl>
     <dt>Id</dt>
     <dd><%= @book.id %></dd>
@@ -787,7 +803,9 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing "/books/1" with a lovely description of "why's (poignant) Guide to Ruby"](screenshot.jpg)
+{% screenshot %}
+![Browser showing "/books/1" with a lovely description of "why's (poignant) Guide to Ruby"]({{site.baseurl}}/assets/images/describing_in_show.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -817,7 +835,7 @@ layout: rails_tutorial
       </li>
       ```
 
-      Rails gives us a `link_to` method we can use to create anchor elements.
+      Rails gives us a [`link_to`](http://api.rubyonrails.org/v5.0.0/classes/ActionView/Helpers/UrlHelper.html#method-i-link_to) method we can use to create anchor elements.
 
       First, you give it the text for the link. In this case, we want to use the book's title as the link text.
 
@@ -828,7 +846,7 @@ layout: rails_tutorial
       When you're done, stop your application's web server.
 {% endlist %}
 
-{% highlight ruby linenos %}
+{% highlight erb linenos %}
   <h1>Welcome to My Super Rad Bookstore!</h1>
 
   <ul>
@@ -841,4 +859,6 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing books index with all the links!](screenshot.jpg)
+{% screenshot %}
+![Browser showing books index with all the links!]({{site.baseurl}}/assets/images/links_yay.png)
+{% endscreenshot %}
