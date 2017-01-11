@@ -13,7 +13,7 @@ $nav-bar-progress-height: 10px;
 @import "tutorial/tutorial_nav";
 @import "tutorial/list";
 @import "tutorial/section_header";
-@import url(//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Roboto:100,300,700,500,100);
+@import "google/fonts";
 
 .content {
   padding-top: $nav-bar-height;
