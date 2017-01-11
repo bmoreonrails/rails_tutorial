@@ -167,7 +167,7 @@ layout: rails_tutorial
 
       You might've even come up with something totally different!
 
-      ![Somebody's impressed](https://media.tenor.co/images/c83ac610b89eb7d2f40b261fcbd2460a/raw "We should serve this file locally")
+      ![Somebody's impressed]({{ site.baseurl }}/assets/images/impressed.gif)
 
   1.  If you get 2 when you run `Review.count`, yay!
 
@@ -398,7 +398,7 @@ layout: rails_tutorial
 
       Or can we???
 
-      ![Wink wink](http://vignette1.wikia.nocookie.net/vampirediaries/images/7/76/Mgrin.gif/revision/latest?cb=20140417204006 "We should serve this locally")
+      ![Wink wink]({{ site.baseurl }}/assets/images/wink.gif)
 
   1.  Since a book can have many reviews, we can define a `has_many` relationship between books and reviews.
 
@@ -432,7 +432,7 @@ layout: rails_tutorial
 
       It might be hard to see, but all your book reviews are there!
 
-      ![Dancing Banana](http://rs251.pbsrc.com/albums/gg306/telanu/120px-Dancing_Banana.gif~c200 "We should serve this file locally")
+      ![Dancing Banana]({{ site.baseurl }}/assets/images/dancing-banana.gif)
 
   1.  Don't belive me??
 

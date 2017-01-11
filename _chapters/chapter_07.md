@@ -341,7 +341,7 @@ layout: rails_tutorial
 {% aside %}
   Your bookstore looks sooooo purrdy 😍
 
-  ![Purrdy cat](http://stuffpoint.com/cats/image/104659-cats-cute-cat.jpg "We should serve this file locally")
+  ![Purrdy cat]({{ site.baseurl }}/assets/images/purrdy-cat.jpg)
 
   But there's one thing that's kinda bugging me. Take a look at [http://localhost:3000](http://localhost:3000).
 
