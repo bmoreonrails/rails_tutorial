@@ -653,7 +653,7 @@ layout: rails_tutorial
 
       We've done that through migrations. We created a migration to add the `books` table, and we changed that migration to add new columns.
 
-      Now that you're bookstore application is coming along, trust me - we don't want to go back and edit past migrations. Editing past migrations can comprimise the data you've worked so hard to collect in your database.
+      Now that you're bookstore application is coming along, we don't want to go back and edit past migrations. Editing past migrations can compromise the data you've worked so hard to collect!
 
       But how will we add the `description` column to the `books` table??
 
@@ -727,17 +727,17 @@ layout: rails_tutorial
 
       `description` is nil because you just added it.
 
-  1.  You can give your first book a description by running
+  1.  You can give `my_first_book` a description by running
 
       ```shell
-      Book.find(1).update(description: "YOUR INSPIRING DESCRIPTION")
+      my_first_book.update(description: "YOUR INSPIRING DESCRIPTION")
       ```
 
       Where YOUR INSPIRING DESCRIPTION is...YOUR INSPIRING DESCRIPTION.
 
       (Don't worry about your description being inspiring 😉)
 
-  1.  After you've added YOUR INSPIRING DESCRIPTION to your, you can run `Book.find(1).description` to see the new description.
+  1.  After you've added YOUR INSPIRING DESCRIPTION to `my_first_book`, you can run `my_first_book.description` to see the new description.
 
   1.  Go ahead and add descriptions for the of rest your books. Your application's database should have seven books, which means you have six descriptions to write.
 
@@ -752,7 +752,7 @@ layout: rails_tutorial
 
   >> my_first_book.update(description: "An introductory book to the Ruby programming language, written by why the lucky stiff. The book is unusual among programming books in that it includes quite a lot of strange humor and narrative side tracks which are sometimes completely unrelated to the topic. Many motifs have become inside jokes in the Ruby community, such as references to the words 'chunky bacon'. The book includes many characters which have become popular as well, particularly the cartoon foxes and Trady Blix, a large black feline friend of why's, who acts as a guide to the foxes and occasionally teaches them some Ruby.")
      (0.1ms)  begin transaction
-    SQL (0.6ms)  UPDATE "books" SET "updated_at" = ?, "description" = ? WHERE "books"."id" = ?  [["updated_at", 2016-12-27 02:28:28 UTC], ["description", "Chunky Bacon"], ["id", 1]]
+    SQL (0.6ms)  UPDATE "books" SET "updated_at" = ?, "description" = ? WHERE "books"."id" = ?  [["updated_at", 2016-12-27 02:28:28 UTC], ["description", "An introductory book to the Ruby programming language, written by why the lucky stiff. The book is unusual among programming books in tha    t it includes quite a lot of strange humor and narrative side tracks which are sometimes completely unrelated to the topic. Many motifs have become inside jokes in the Ruby comm    unity, such as references to the words 'chunky bacon'. The book includes many characters which have become popular as well, particularly the cartoon foxes and Trady Blix, a larg    e black feline friend of why's, who acts as a guide to the foxes and occasionally teaches them some Ruby."], ["id", 1]]
      (2.3ms)  commit transaction
   => true
 
@@ -835,7 +835,7 @@ layout: rails_tutorial
       </li>
       ```
 
-      Rails gives us a [`link_to`](http://apidock.com/rails/ActionView/Helpers/UrlHelper/link_to) method we can use to create anchor elements.
+      Rails gives us a [`link_to`](http://api.rubyonrails.org/v5.0.0/classes/ActionView/Helpers/UrlHelper.html#method-i-link_to) method we can use to create anchor elements.
 
       First, you give it the text for the link. In this case, we want to use the book's title as the link text.
 
