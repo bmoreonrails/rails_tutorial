@@ -62,7 +62,9 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing `/books/1/edit` with an Unknown action error: "The action 'edit' could not be found for BooksController"](screenshot.jpg)
+{% screenshot %}
+![Browser showing `/books/1/edit` with an Unknown action error: "The action 'edit' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action_edit.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -87,7 +89,9 @@ layout: rails_tutorial
 {% endlist %}
 {% endsteps %}
 
-![Browser showing ActionController::UnknownFormat error: "BooksController#edit is missing a template for this request format and variant"](screenshot.jpg)
+{% screenshot %}
+![Browser showing ActionController::UnknownFormat error: "BooksController#edit is missing a template for this request format and variant"]({{site.baseurl}}/assets/images/UnknownFormat_in_BooksController_edit.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -167,7 +171,7 @@ layout: rails_tutorial
 
       Remember what the new book form looked like?
 
-      ```ruby
+      ```erb
       <%= form_for(@book) do |f| %>
         <ul>
           <li>
@@ -202,7 +206,7 @@ layout: rails_tutorial
 
   1.  Let's start the edit form by adding a field to edit the book's title.
 
-      ```ruby
+      ```erb
       <%= form_for(@book) do |f| %>
         <ul>
           <li>
@@ -217,7 +221,9 @@ layout: rails_tutorial
 {% endlist %}
 {% endsteps %}
 
-![Browser showing "/books/1/edit" with a filled-in text_field for the book's title](screenshot.jpg)
+{% screenshot %}
+![Browser showing "/books/1/edit" with a filled-in text_field for the book's title]({{site.baseurl}}/assets/images/edit_field_for_title.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -239,7 +245,7 @@ layout: rails_tutorial
 {% list %}
   1.  How's your form look? It should look like this:
 
-      ```ruby
+      ```erb
       <%= form_for(@book) do |f| %>
         <ul>
           <li>
@@ -273,11 +279,11 @@ layout: rails_tutorial
   1.  Update your solution to match this solution. Save your changes and revisit [http://localhost:3000/books/1/edit](http://localhost:3000/books/1/edit).
 {% endlist %}
 
-{% highlight ruby linenos %}
+{% highlight erb linenos %}
   <%= form_for(@book) do |f| %>
     <ul>
       <li>
-        <%= f.label :title %>
+        <%= if.label :title %>
         <%= f.text_field :title %>
       </li>
 
@@ -305,7 +311,9 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing "/books/1/edit" with a form but no button](screenshot.jpg)
+{% screenshot %}
+![Browser showing "/books/1/edit" with a form but no button]({{site.baseurl}}/assets/images/all_the_edit_fields.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -315,7 +323,7 @@ layout: rails_tutorial
 
   1.  Open `app/views/books/edit.html.erb` and add a `submit` button as the last line inside the `form_for` block.
 
-      ```ruby
+      ```erb
       <%= f.submit %>
       ```
 
@@ -324,7 +332,7 @@ layout: rails_tutorial
   1.  Save your changes and revisit [http://localhost:3000/books/1/edit](http://localhost:3000/books/1/edit). Try making a change and submitting the form.
 {% endlist %}
 
-{% highlight ruby linenos %}
+{% highlight erb linenos %}
   <%= form_for(@book) do |f| %>
     <ul>
       <li>
@@ -358,10 +366,13 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing "/books/1/edit" with a submit button](screenshot.jpg)
+{% screenshot %}
+![Browser showing "/books/1/edit" with a submit button]({{site.baseurl}}/assets/images/update_form_with_button.png)
+{% endscreenshot %}
 
-![Browser showing Unknown action error: "The action 'update' could not be found for BooksController"](screenshot.jpg)
-
+{% screenshot %}
+![Browser showing Unknown action error: "The action 'update' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action_update.png)
+{% endscreenshot %}
 {% steps %}
 {% list %}
   1.  We've been through this drill before...
@@ -626,7 +637,7 @@ layout: rails_tutorial
 
   1.  Open `app/views/books/show.html.erb` in your text editor. Add the following line to the end of the file:
 
-      ```ruby
+      ```erb
       <%= link_to "Edit book", edit_book_path(@book) %>
       ```
 
@@ -639,7 +650,7 @@ layout: rails_tutorial
   1.  When you're done exploring, stop your application's web server.
 {% endlist %}
 
-{% highlight ruby linenos %}
+{% highlight erb linenos %}
   <dl>
     <dt>Id</dt>
     <dd><%= @book.id %></dd>
