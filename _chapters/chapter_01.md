@@ -234,7 +234,9 @@ Feel free to check out this video to learn a bit more about Relational Databases
 {% endsteps %}
 
 {% screenshot %}
-![Rails Default Root Page]({{ site.baseurl}}/assets/images/rails_yay.png)
+  <a href='#' data-featherlight='/rails_tutorial/assets/images/rails_yay.png'>
+  ![Rails Default Root Page]({{ site.baseurl}}/assets/images/rails_yay.png)
+  </a>
 {% endscreenshot %}
 
 {% steps %}
