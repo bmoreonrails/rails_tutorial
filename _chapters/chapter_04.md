@@ -135,7 +135,9 @@ layout: rails_tutorial
 {% endsteps %}
 
 {% screenshot %}
-![Browser showing Unknown action error: "The action 'show' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action_error_show.png)
+  <a href='#' data-featherlight='/rails_tutorial/assets/images/unknown_action_error_show.png'>
+  ![Browser showing Unknown action error: "The action 'show' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action_error_show.png)
+  </a>
 {% endscreenshot %}
 
 {% steps %}
@@ -173,8 +175,9 @@ layout: rails_tutorial
 {% endsteps %}
 
 {% screenshot %}
-![Browser showing ActionController::UnknownFormat error: "BooksController#show is missing a template for this request format and variant"]({{site.baseurl}}/assets/images/UnknownFormat_in_BooksController_show.png)
-
+  <a href='#' data-featherlight='/rails_tutorial/assets/images/unknownFormat_in_BooksController_show.png'>
+  ![browser showing actioncontroller::unknownformat error: "bookscontroller#show is missing a template for this request format and variant"]({{site.baseurl}}/assets/images/unknownFormat_in_BooksController_show.png)
+  </a>
 {% endscreenshot %}
 
 {% steps %}
@@ -287,7 +290,9 @@ layout: rails_tutorial
 {% endsteps %}
 
 {% screenshot %}
-![Browser showing "/books/1" with the request book's id]({{site.baseurl}}/assets/images/show_with_book_id.png)
+  <a href='#' data-featherlight='/rails_tutorial/assets/images/show_with_book_id.png'>
+  ![Browser showing "/books/1" with the request book's id]({{site.baseurl}}/assets/images/show_with_book_id.png)
+  </a>
 {% endscreenshot %}
 
 {% steps %}
@@ -473,7 +478,9 @@ layout: rails_tutorial
 {% endsteps %}
 
 {% screenshot %}
-![Browser show "/books/1" as a definition list]({{site.baseurl}}/assets/images/definition_list_show.png)
+  <a href='#' data-featherlight='/rails_tutorial/assets/images/definition_list_show.png'>
+  ![Browser show "/books/1" as a definition list]({{site.baseurl}}/assets/images/definition_list_show.png)
+  </a>
 {% endscreenshot %}
 
 {% steps %}
@@ -577,7 +584,9 @@ layout: rails_tutorial
 {% endsteps %}
 
 {% screenshot %}
-![Browser showing "/books/1" with `number_to_currency(price_cents)`]({{site.baseurl}}/assets/images/pretty_price_show.png)
+  <a href='#' data-featherlight='/rails_tutorial/assets/images/pretty_price_show.png'>
+  ![Browser showing "/books/1" with `number_to_currency(price_cents)`]({{site.baseurl}}/assets/images/pretty_price_show.png)
+  </a>
 {% endscreenshot %}
 
 {% steps %}
@@ -634,7 +643,9 @@ layout: rails_tutorial
 {% endsteps %}
 
 {% screenshot %}
-![Browser showing "/books/1" with a nicely formated price]({{site.baseurl}}/assets/images/but_its_in_cents_show.png)
+  <a href='#' data-featherlight='/rails_tutorial/assets/images/but_its_in_cents_show.png'>
+  ![Browser showing "/books/1" with a nicely formated price]({{site.baseurl}}/assets/images/but_its_in_cents_show.png)
+  </a>
 {% endscreenshot %}
 
 {% aside %}
@@ -804,7 +815,9 @@ layout: rails_tutorial
 {% endsteps %}
 
 {% screenshot %}
-![Browser showing "/books/1" with a lovely description of "why's (poignant) Guide to Ruby"]({{site.baseurl}}/assets/images/describing_in_show.png)
+  <a href='#' data-featherlight='/rails_tutorial/assets/images/describing_in_show.png'>
+  ![Browser showing "/books/1" with a lovely description of "why's (poignant) Guide to Ruby"]({{site.baseurl}}/assets/images/describing_in_show.png)
+  </a>
 {% endscreenshot %}
 
 {% steps %}
@@ -860,5 +873,7 @@ layout: rails_tutorial
 {% endsteps %}
 
 {% screenshot %}
-![Browser showing books index with all the links!]({{site.baseurl}}/assets/images/links_yay.png)
+  <a href='#' data-featherlight='/rails_tutorial/assets/images/links_yay.png'>
+  ![Browser showing books index with all the links!]({{site.baseurl}}/assets/images/links_yay.png)
+  </a>
 {% endscreenshot %}

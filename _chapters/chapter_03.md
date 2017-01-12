@@ -105,8 +105,11 @@ layout: rails_tutorial
 {% endsteps %}
 
 {% screenshot %}
-![Browser showing Routing Error: "uninitialized constant BooksController"]({{ site.baseurl}}/assets/images/uninitialized_constant_BooksController.png)
+  <a href='#' data-featherlight='/rails_tutorial/assets/images/uninitialized_constant_BooksController.png'>
+  ![Browser showing Routing Error: "uninitialized constant BooksController"]({{ site.baseurl}}/assets/images/uninitialized_constant_BooksController.png)
+  </a>
 {% endscreenshot %}
+
 
 {% steps %}
 {% list %}
@@ -152,8 +155,10 @@ layout: rails_tutorial
 {% endsteps %}
 
 {% screenshot %}
-![Browser showing LoadError: "LoadError in BooksController#index
-  Unable to autoload constant BooksController, expected /Users/awesomesauce/Projects/bookstore/app/controllers/books_controller.rb to define it"]({{site.baseurl}}/assets/images/LoadError_in_BooksController_index.png)
+  <a href='#' data-featherlight='/rails_tutorial/assets/images/loaderror_in_bookscontroller_index.png'>
+  ![Browser showing LoadError: "LoadError in BooksController#index
+    Unable to autoload constant BooksController, expected /Users/awesomesauce/Projects/bookstore/app/controllers/books_controller.rb to define it"]({{site.baseurl}}/assets/images/LoadError_in_BooksController_index.png)
+  </a>
 {% endscreenshot %}
 
 {% steps %}
@@ -206,7 +211,9 @@ end
 {% endsteps %}
 
 {% screenshot %}
-![Browser showing Unknown action error: "The action 'index' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action.png)
+  <a href='#' data-featherlight='/rails_tutorial/assets/images/unknown_action.png'>
+  ![Browser showing Unknown action error: "The action 'index' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action.png)
+  </a>
 {% endscreenshot%}
 
 {% steps %}
@@ -283,7 +290,9 @@ end
 {% endsteps %}
 
 {% screenshot %}
-![Browser showing ActionController::UnknownFormat error: "ActionController::UnknownFormat in BooksController#index - BooksController#index is missing a template for this request format and variant."]({{site.baseurl}}/assets/images/ActionController_UnknownFormat.png)
+  <a href='#' data-featherlight='/rails_tutorial/assets/images/ActionController_UnknownFormat.png'>
+  ![Browser showing ActionController::UnknownFormat error: "ActionController::UnknownFormat in BooksController#index - BooksController#index is missing a template for this request format and variant."]({{site.baseurl}}/assets/images/ActionController_UnknownFormat.png)
+  </a>
 {% endscreenshot %}
 
 {% steps %}
@@ -357,8 +366,9 @@ end
 {% endsteps %}
 
 {% screenshot %}
-![Browser showing the index page rendering your html"]({{site.baseurl}}/assets/images/welcome_to_my_super_rad_bookstore.png)
-
+  <a href='#' data-featherlight='/rails_tutorial/assets/images/welcome_to_my_super_rad_bookstore.png'>
+  ![Browser showing the index page rendering your html"]({{site.baseurl}}/assets/images/welcome_to_my_super_rad_bookstore.png)
+  </a>
 {% endscreenshot %}
 
 {% aside %}
@@ -411,7 +421,9 @@ end
 {% endsteps %}
 
 {% screenshot %}
-![Browser showing /books view with the application's first book title]({{site.baseurl}}/assets/images/book_list_1.png)
+  <a href='#' data-featherlight='/rails_tutorial/assets/images/book_list_1.png'>
+  ![Browser showing /books view with the application's first book title]({{site.baseurl}}/assets/images/book_list_1.png)
+  </a>
 {% endscreenshot %}
 
 {% steps %}
@@ -463,7 +475,9 @@ ERB allows Ruby code to be embedded within a pair of `<%` and `%>` delimiters. T
 {% endsteps %}
 
 {% screenshot %}
-![Browser showing /books view with the application's first book title]({{site.baseurl}}/assets/images/book_list_2.png)
+  <a href='#' data-featherlight='/rails_tutorial/assets/images/book_list_2.png'>
+  ![Browser showing /books view with the application's first book title]({{site.baseurl}}/assets/images/book_list_2.png)
+  </a>
 {% endscreenshot %}
 
 {% steps %}
@@ -549,7 +563,9 @@ ERB allows Ruby code to be embedded within a pair of `<%` and `%>` delimiters. T
 {% endsteps %}
 
 {% screenshot %}
-![Browser showing /books view with the application's first book title]({{site.baseurl}}/assets/images/book_list_3.png)
+  <a href='#' data-featherlight='/rails_tutorial/assets/images/book_list_3.png'>
+  ![Browser showing /books view with the application's first book title]({{site.baseurl}}/assets/images/book_list_3.png)
+  </a>
 {% endscreenshot %}
 
 {% steps %}
@@ -776,7 +792,9 @@ You might remember reading about arrays in the [Ruby in 100 minutes](http://tuto
 {% endsteps %}
 
 {% screenshot %}
-![Browser showing /books view with two unordered lists]({{site.baseurl}}/assets/images/book_list_4.png)
+  <a href='#' data-featherlight='/rails_tutorial/assets/images/book_list_4.png'>
+  ![Browser showing /books view with two unordered lists]({{site.baseurl}}/assets/images/book_list_4.png)
+  </a>
 {% endscreenshot %}
 {% steps %}
 {% list %}
