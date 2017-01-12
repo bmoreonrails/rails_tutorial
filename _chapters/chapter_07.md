@@ -19,7 +19,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Download the stylesheet file `bookstore.scss` [here](link-to-file.com).
+  1.  Download the stylesheet file `bookstore.scss` [here]({{site.baseurl}}/assets/downloads/bookstore.scss).
 
   1.  Move `bookstore.scss` to `app/assets/stylesheets`.
 
@@ -58,7 +58,7 @@ layout: rails_tutorial
 
       All your content is rendered inside the `body` tag.
 
-      ```ruby
+      ```erb
       <body>
         <%= yield %>
       </body>
@@ -66,7 +66,7 @@ layout: rails_tutorial
 
   1.  After the beginning of the `body` tag, add the following code:
 
-      ```ruby
+      ```erb
       <div class="navigation">
         <div class="center">
           <%= link_to "My Super Rad Bookstore", books_path %>
@@ -80,13 +80,13 @@ layout: rails_tutorial
 
       Inside the `body` tag, change the `yield` line from
 
-      ```ruby
+      ```erb
       <%= yield %>
       ```
 
       to
 
-      ```ruby
+      ```erb
       <div class="container">
         <%= yield %>
       </div>
@@ -97,7 +97,7 @@ layout: rails_tutorial
   1.  Save your changes.
 {% endlist %}
 
-{% highlight ruby linenos %}
+{% highlight erb linenos %}
   <!DOCTYPE html>
   <html>
     <head>
@@ -133,13 +133,13 @@ layout: rails_tutorial
 
   1.  Change the link from
 
-      ```ruby
+      ```erb
       <%= link_to("Add a book", new_book_path) %>
       ```
 
       to
 
-      ```ruby
+      ```erb
       <%= link_to("Add a book", new_book_path, class: "button") %>
       ```
 
@@ -148,7 +148,7 @@ layout: rails_tutorial
   1.  Save your changes.
 {% endlist %}
 
-{% highlight ruby linenos %}
+{% highlight erb linenos %}
   <h1>Welcome to My Super Rad Bookstore!</h1>
 
   <ul>
@@ -182,7 +182,9 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing styled books index](screenshot.jpg)
+{% screenshot %}
+![Browser showing styled books index]({{site.baseurl}}/assets/images/add_styles.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -198,13 +200,13 @@ layout: rails_tutorial
 
   1.  Change the `submit` button from
 
-      ```ruby
+      ```erb
       <%= f.submit %>
       ```
 
       to
 
-      ```ruby
+      ```erb
       <%= f.submit(class: "button" )%>
       ```
 
@@ -213,7 +215,7 @@ layout: rails_tutorial
   1.  Save your changes and go to the new book page to see your changes.
 {% endlist %}
 
-{% highlight ruby linenos %}
+{% highlight erb linenos %}
   <%= form_for(@book) do |f| %>
     <ul>
       <li>
@@ -247,7 +249,9 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing new book page with a styled button](screenshot.jpg)
+{% screenshot %}
+![Browser showing new book page with a styled button]({{site.baseurl}}/assets/images/add_a_book_button.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -264,7 +268,7 @@ layout: rails_tutorial
   1.  Save your changes and visit [http://localhost:3000/books/1/show](http://localhost:3000/books/1/show) to see your changes.
 {% endlist %}
 
-{% highlight ruby linenos %}
+{% highlight erb linenos %}
   <dl>
     <dt>Id</dt>
     <dd><%= @book.id %></dd>
@@ -289,7 +293,9 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing book details page with styled edit link](screenshot.jpg)
+{% screenshot %}
+![Browser showing book details page with styled edit link]({{site.baseurl}}/assets/images/show_edit_button_css.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -302,7 +308,7 @@ layout: rails_tutorial
   1.  Save your changes, go to [http://localhost:3000/books/1/edit](http://localhost:3000/books/1/edit), and admire your freshly styled button.
 {% endlist %}
 
-{% highlight ruby linenos %}
+{% highlight erb linenos %}
   <%= form_for(@book) do |f| %>
     <ul>
       <li>
@@ -336,7 +342,9 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing book edit page with styled update button](screenshot.jpg)
+{% screenshot %}
+![Browser showing book edit page with styled update button]({{site.baseurl}}/assets/images/edit_button_css.png)
+{% endscreenshot %}
 
 {% aside %}
   Your bookstore looks sooooo purrdy 😍
@@ -415,7 +423,9 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing the books index as the bookstore's homepage](screenshot.jpg)
+{% screenshot %}
+![Browser showing the books index as the bookstore's homepage]({{site.baseurl}}/assets/images/books_as_index.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -425,13 +435,13 @@ layout: rails_tutorial
 
   1.  Change the "My Super Rad Bookstore" link from
 
-      ```ruby
+      ```erb
       <%= link_to "My Super Rad Bookstore", books_path %>
       ```
 
       to
 
-      ```ruby
+      ```erb
       <%= link_to "My Super Rad Bookstore", root_path %>
       ```
 
@@ -441,7 +451,7 @@ layout: rails_tutorial
   1.  Save your changes and take your updated bookstore for a spin. When you're done, stop your application's web server.
 {% endlist %}
 
-{% highlight ruby linenos %}
+{% highlight erb linenos %}
   <!DOCTYPE html>
   <html>
     <head>
