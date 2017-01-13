@@ -1,7 +1,7 @@
 ---
 url: 10.html
 number: 10
-title: Showing a Book
+title: Showing Reviews
 layout: rails_tutorial
 ---
 
