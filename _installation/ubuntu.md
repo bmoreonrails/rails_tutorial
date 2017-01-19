@@ -7,6 +7,14 @@ layout: rails_installation
 {:.sectionheader}
 # Installing Rails for Linux
 
+{% protip %}
+## Minimum Requirements
+In order to successfully follow these installation instructions, you must have the following:
+
+* Ubuntu 13.04
+* Administrator user with the rights to change the computer properties
+{% endprotip %}
+
 To get linux ready for Ruby on Rails development, we need to do the following:
 
 1. install dependencies

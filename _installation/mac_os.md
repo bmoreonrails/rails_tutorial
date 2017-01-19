@@ -7,6 +7,14 @@ layout: rails_installation
 {:.sectionheader}
 # Installing Rails for Mac OS X
 
+{% protip %}
+## Minimum Requirements
+In order to successfully follow these installation instructions, you must have the following:
+
+* Mac OS X Lion (10.7)
+* Administrator user with the rights to change the computer properties
+{% endprotip %}
+
 To get a mac ready for Ruby on Rails development, we need to do the following:
 
 1. install command-line tools (XCode)
