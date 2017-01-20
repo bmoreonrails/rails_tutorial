@@ -13,6 +13,8 @@ In order to successfully follow these installation instructions, you must have t
 
 * Mac OS X Lion (10.7)
 * Administrator user with the rights to change the computer properties
+
+To check the version of your Mac OS X, go to the &#63743; menu and select "About This Mac".
 {% endprotip %}
 
 To get a mac ready for Ruby on Rails development, we need to do the following:
@@ -64,6 +66,10 @@ This should result in something similar to the following:
 ## "Easy" ruby installs with rvm
 
 The [Ruby Version Manager (rvm)](http://rvm.io/) will allow you to install different versions of ruby on your machine and switch between them as you switch from one job to another. [Learn why RVM is useful here](https://code.tutsplus.com/articles/why-you-should-use-rvm--net-19529).
+
+{% protip %}
+Note, if you already have the `rbenv` ruby manager installed, do not install `rvm` (they don't play nice together!). You can check by typing `rbenv --version` in your terminal.
+{% endprotip %}
 
 To install rvm, open a terminal window and run the following commands (copied directly off of the rvm website):
 
