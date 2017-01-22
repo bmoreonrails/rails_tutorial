@@ -4,6 +4,10 @@ number: 12
 title: Adding Users to Your Database
 layout: rails_tutorial
 ---
+{% sectionheader %}
+  {{ page.title }}
+{% endsectionheader %}
+
 
 {% aside %}
   How does it feel to get all those reviews out of your system? I'm sure it feels good 😆
@@ -171,7 +175,7 @@ layout: rails_tutorial
 
   1.  Now, let's try building your bookstore's first user. Run the following code:
 
-      ```ruby
+      ```shell
       my_first_user = User.new(username: "CatPower")
       ```
 
@@ -179,14 +183,14 @@ layout: rails_tutorial
 
   1.  If you look closely at the error, it's trying to tell you what's wrong. It even has a suggestion on how you can fix it.
 
-      ```ruby
+      ```shell
       You don't have bcrypt installed in your application. Please add it to your Gemfile and run bundle install
       ```
 
       Let's break down this error, but first - exit the rails console.
 {% endlist %}
 
-{% highlight ruby %}
+{% highlight shell %}
   $ rails console
   Loading development environment (Rails 5.0.0.1)
   >> my_first_user = User.new(username: "CatPower")
@@ -202,7 +206,7 @@ layout: rails_tutorial
 {% list %}
   1.  Let's take a look at the first part of the error.
 
-      ```ruby
+      ```shell
       You don't have bcrypt installed in your application.
       ```
 
@@ -214,7 +218,7 @@ layout: rails_tutorial
 
   1.  Now that we have some idea of what the problem is, how can we fix it? Let's take a look at the second part of the error.
 
-      ```ruby
+      ```shell
       Please add it to your Gemfile and run bundle install
       ```
 
