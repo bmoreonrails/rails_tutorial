@@ -166,7 +166,7 @@ layout: rails_tutorial
 
   1.  You know what to do, right?!
 
-      ![...YES](https://1.bp.blogspot.com/-SoNBXETH_us/VwfI6IGBOFI/AAAAAAAAAhg/fNqzhChaoJ8Z0QlxmZD4AujJRWSGm8BMQ/s1600/yes.gif "We should serve this file locally")
+      ![...YES]({{site.baseurl}}/assets/images/yup.gif)
 
   1.  Fix that error. When you're done, you'll get *one more error*.
 {% endlist %}
