@@ -110,7 +110,16 @@ The [Ruby Version Manager (rvm)](http://rvm.io/) will allow you to install diffe
 Note, if you already have the `rbenv` ruby manager installed, do not install `rvm` (they don't play nice together!). You can check by typing `rbenv --version` in your terminal.
 {% endprotip %}
 
-To install rvm, open a terminal window and run the following commands (copied directly off of the rvm website).
+To install rvm, open a terminal window and run the following commands (copied directly off of the RVM website).
+
+Once install RVM via `\curl -sSL https://get.rvm.io | bash -s stable`, RVM will say:
+```
+Installation of RVM in /Users/[Computer Username]/.rvm/ is almost complete:
+
+* To start using RVM you need to run `source /Users/[Computer Username]/.rvm/scripts/rvm`
+  in all your open shell windows, in rare cases you need to reopen all shell windows.
+```
+Copy the following command `source /Users/[Computer Username]/.rvm/scripts/rvm`, and you'll be able to install ruby!
 
 {% endlist %}
 {% highlight bash %}
@@ -119,6 +128,8 @@ $ brew install gpg  # only necessary if gpg is not already installed
 $ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 
 $ \curl -sSL https://get.rvm.io | bash -s stable
+
+$ source /Users/[Computer Username]/.rvm/scripts/rvm # check what's outputted from previous command
 
 {% endhighlight %}
 {% endsteps %}
