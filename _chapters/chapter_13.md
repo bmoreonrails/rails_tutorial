@@ -4,6 +4,10 @@ number: 13
 title: Logging In and Logging Out
 layout: rails_tutorial
 ---
+{% sectionheader %}
+  {{ page.title }}
+{% endsectionheader %}
+
 
 {% steps %}
 {% list %}
@@ -96,7 +100,9 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing Routing Error: "uninitialized constant SessionsController"](screenshot.jpg)
+{% screenshot %}
+![Browser showing Routing Error: "uninitialized constant SessionsController"]({{site.baseurl}}/assets/images/uninitialized_constant_sessions.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -108,7 +114,7 @@ layout: rails_tutorial
       uninitialized constant SessionsController
       ```
 
-  1.  Fix this error and come back when you get a different error.
+  1.  Fix this familiar error and come back when you get a different one.
 {% endlist %}
 {% endsteps %}
 
@@ -146,7 +152,9 @@ layout: rails_tutorial
 {% endlist %}
 {% endsteps %}
 
-![Browser showing Unknown action error: "The action 'new' could not be found for SessionsController"](screenshot.jpg)
+{% screenshot %}
+![Browser showing Unknown action error: "The action 'new' could not be found for SessionsController"]({{site.baseurl}}/assets/images/session_unknown_new_action.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -158,7 +166,7 @@ layout: rails_tutorial
 
   1.  You know what to do, right?!
 
-      ![...YES](https://1.bp.blogspot.com/-SoNBXETH_us/VwfI6IGBOFI/AAAAAAAAAhg/fNqzhChaoJ8Z0QlxmZD4AujJRWSGm8BMQ/s1600/yes.gif "We should serve this file locally")
+      ![...YES]({{site.baseurl}}/assets/images/yup.gif)
 
   1.  Fix that error. When you're done, you'll get *one more error*.
 {% endlist %}
@@ -186,7 +194,9 @@ end
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing ActionController::UnknownFormat error: "SessionsController#new is missing a template for this request format and variant."](screenshot.jpg)
+{% screenshot %}
+![Browser showing ActionController::UnknownFormat error: "SessionsController#new is missing a template for this request format and variant."]({{site.baseurl}}/assets/images/missing_template_sessions_new.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -236,7 +246,7 @@ end
 
   1.  Open `app/views/sessions/new.html.erb` and add the following:
 
-      ```ruby
+      ```erb
       <%= form_for(:session, url: session_path) do |f| %>
       <% end %>
       ```
@@ -245,7 +255,7 @@ end
 
       In the past forms you've built with `form_for`, you started by passing an instance of the record you wanted to update or create. For example, the new books form has a new instance of `Book`.
 
-      ```ruby
+      ```erb
       <%= form_for(@book) do |f| %>
       ```
 
@@ -264,7 +274,7 @@ end
       Finally, add a form submission button.
 {% endlist %}
 
-{% highlight ruby linenos %}
+{% highlight erb linenos %}
   <%= form_for(:session, url: session_path) do |f| %>
   <% end %>
 {% endhighlight %}
@@ -314,7 +324,9 @@ end
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing new session form](screenshot.jpg)
+{% screenshot %}
+![Browser showing new session form]({{site.baseurl}}/assets/images/new_session_form.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -330,7 +342,7 @@ end
 
   1.  Let's make these things better!
 
-      ![Spongebob can't wait!](http://combiboilersleeds.com/images/anticipation/anticipation-4.jpg "We should serve this file locally")
+      ![Spongebob can't wait!]({{site.baseurl}}/assets/images/spongebobcantwait.gif)
 {% endlist %}
 {% endsteps %}
 
@@ -368,17 +380,19 @@ end
 {% endlist %}
 {% endsteps %}
 
-![Browser showing Unknown action error: "The action 'create' could not be found for SessionsController"](screenshot.jpg)
+{% screenshot %}
+![Browser showing Unknown action error: "The action 'create' could not be found for SessionsController"]({{site.baseurl}}/assets/images/unknown_create_session.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
   1.  ...
 
-      ![Why'd it have to be errors?](https://cdn.meme.am/cache/instances/folder934/500x/74721934.jpg "We should serve this file locally")
+      ![Why'd it have to be errors?]({{site.baseurl}}/assets/images/cowboys.jpg)
 
       You know how to deal with `Unknown action` errors, right?!
 
-      ![Of course](http://i.imgur.com/t0CWfhn.gif "We should serve this file locally")
+      ![Of course]({{site.baseurl}}/assets/images/genewilder.gif)
 
   1.  Fix this error!
 
@@ -459,8 +473,29 @@ end
         * show them a failure message
         * re-render the `new` template so they can try logging in again
 
-  1.  There's a lot happening here, so let's try to break it down to get a better feel for what's happening. Before we continue, save your changes.
+  1.  There's a lot happening here, so let's try to break it down to get a better feel for what each of these lines of code is doing. 
+
+      Before we continue, save your changes.
 {% endlist %}
+
+{% highlight ruby linenos %}
+  class SessionsController < ApplicationController
+    def new
+    end
+
+    def create
+      user = User.find_by(username: params[:session][:username])
+      if user.authenticate(params[:session][:password])
+        flash[:notice] = "Welcome back, #{user.username}!"
+        session[:user_id] = user.id
+        redirect_to root_path
+      else
+        flash[:alert] = "Sorry, your username or password is invalid."
+        render :new
+      end
+    end
+  end
+{% endhighlight %}
 {% endsteps %}
 
 {% steps %}
@@ -566,17 +601,19 @@ end
 {% list %}
   1.  Now that you have a fully functional `create` method, let's take it out for a spin!
 
-      ![Car flying away](https://lh3.googleusercontent.com/-geIponlOEnE/Vib-QIgNuSI/AAAAAAAAJb0/1wdGiHX0CGE/w480-h270/Flyingcar.gif "We should serve this file locally")
+      ![Car flying away]({{site.baseurl}}/assests/images/Flyingcar.gif)
 
   1.  Go to [http://localhost:3000/session/new](http://localhost:3000/session/new) and try logging in with an invalid username.
 
       ...
 
-      ![Not again](https://az616578.vo.msecnd.net/files/2015/12/16/6358590342836808161447642573_ohno.gif.gif "We should serve this file locally")
+      ![Not again]({{site.baseurl}}/assets/images/ugh.gif)
 {% endlist %}
 {% endsteps %}
 
-![Browser showing NoMethodError: "undefined method `authenticate' for nil:NilClass"](screenshot.jpg)
+{% screenshot %}
+![Browser showing NoMethodError: "undefined method `authenticate' for nil:NilClass"]({{site.baseurl}}/assets/images/invalid_user_name_error.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -630,7 +667,9 @@ end
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing failure message when logging in with an invalid username](screenshot.jpg)
+{% screenshot %}
+![Browser showing failure message when logging in with an invalid username]({{site.baseurl}}/assets/images/successful_invalid_username.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -642,7 +681,9 @@ end
 {% endlist %}
 {% endsteps %}
 
-![Browser showing success message when logging in](screenshot.jpg)
+{% screenshot %}
+![Browser showing success message when logging in]({{site.baseurl}}/assets/images/success_valid_login.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -735,9 +776,13 @@ end
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing homepage with a "Log Out" link](screenshot.jpg)
+{% screenshot %}
+![Browser showing homepage with a "Log Out" link]({{site.baseurl}}/assets/images/yay_logout_link.png)
+{% endscreenshot %}
 
-![Browser showing Unknown action error: "The action 'destroy' could not be found for SessionsController"](screenshot.jpg)
+{% screenshot %}
+![Browser showing Unknown action error: "The action 'destroy' could not be found for SessionsController"]({{site.baseurl}}/assets/images/logout_destroy_unknown.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -757,7 +802,7 @@ end
       end
       ```
 
-      First, we'll remove the user_id we saved in the session by setting `session[:user_id]` to nil. Then, we'll show a friendly message confirming the user has been logged out. Finally, we'll redirect the user to the `root_path`.
+      The first line of this method removes the user_id we saved in the session by setting `session[:user_id]` to nil. The second line show a friendly message confirming the user has been logged out. The final line redirects the user to the `root_path`.
 
   1.  Save your changes and try logging out! After you've logged out, stop your application's web server.
 {% endlist %}
