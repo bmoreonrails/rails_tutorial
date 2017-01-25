@@ -4,6 +4,10 @@ number: 12
 title: Adding Users to Your Database
 layout: rails_tutorial
 ---
+{% sectionheader %}
+  {{ page.title }}
+{% endsectionheader %}
+
 
 {% aside %}
   How does it feel to get all those reviews out of your system? I'm sure it feels good 😆
@@ -250,7 +254,7 @@ layout: rails_tutorial
 
       Turns out your application has been using a Gemfile this whole time.
 
-      ![Who knew?](https://m.popkey.co/ab5c29/NGy5m.gif "We should serve this file locally")
+      ![Who knew?]({{site.baseurl}}/assets/images/whoknew.gif)
 
   1.  Your application's `Gemfile` is the default Gemfile that ships with all new Rails applications. You can choose different RubyGems, but this default list helps you get started quickly.
 
@@ -519,7 +523,7 @@ layout: rails_tutorial
 
       Wait...that worked?
 
-      ![No way](https://media.giphy.com/media/12HFqNl5DrMWoU/giphy.gif "We should serve this file locally")
+      ![No way]({{site.baseurl}}/assets/images/noway.gif)
 
   1.  Take a look at how the password was saved into the `users` table. Run `my_first_user.password_digest`.
 
@@ -586,6 +590,6 @@ layout: rails_tutorial
 
   1.  Exit the console and do your happy dance.
 
-      ![Lisa's happy dance](https://media.tenor.co/images/1e0c3ee1dd20246947e6effdc7d7ed55/raw "We should serve this file locally")
+      ![Lisa's happy dance]({{site.baseurl}}/assets/images/happy_dance.gif)
 {% endlist %}
 {% endsteps %}
