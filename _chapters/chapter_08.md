@@ -5,6 +5,10 @@ title: Deleting a Book
 layout: rails_tutorial
 ---
 
+{% sectionheader %}
+  {{ page.title }}
+{% endsectionheader %}
+
 {% aside %}
   Your bookstore is starting to feel like a fully featured application. You can list, view, add, and edit books. Is there anything else you might want to do with your books?
 
@@ -56,7 +60,9 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing /books/1](screenshot.jpg)
+{% screenshot %}
+![Browser showing /books/1]({{site.baseurl}}/assets/images/bookstore_1_pre_delete.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -145,9 +151,13 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing book details page with a red delete book button](screenshot.jpg)
+{% screenshot %}
+![Browser showing book details page with a red delete book button]({{site.baseurl}}/assets/images/new_delete_button.png)
+{% endscreenshot %}
 
-![Browser showing Unknown action error: "The action 'destroy' could not be found for BooksController"](screenshot.jpg)
+{% screenshot %}
+![Browser showing Unknown action error: "The action 'destroy' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action_delete.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}

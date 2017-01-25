@@ -8,6 +8,16 @@ layout: rails_installation
   {{ page.title }}
 {% endsectionheader %}
 
+{% protip %}
+## Minimum Requirements
+In order to successfully follow these installation instructions, you must have the following:
+
+* Mac OS X Lion (10.7)
+* Administrator user with the rights to change the computer properties
+
+To check the version of your Mac OS X, go to the &#63743; menu and select "About This Mac".
+{% endprotip %}
+
 To get a mac ready for Ruby on Rails development, we need to do the following:
 
 1. install command-line tools (XCode)
@@ -48,13 +58,59 @@ InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault
 {% endhighlight %}
 {% endsteps %}
 
+{% steps %}
+{% list %}
+# Install Homebrew
+Homebrew allows you to install and manage applications through your terminal, and it's what we'll be using to download RVM.
+
+After you type in the command, the script will show what you're downloading and then ask for your computer password. Enter in your computer password when prompted. (Note: You won't be able to see your password. So just hit enter when you're done!)
+{% endlist %}
+{% highlight bash %}
+$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+# ==> This script will install:
+# /usr/local/bin/brew
+# /usr/local/share/doc/homebrew
+# /usr/local/share/man/man1/brew.1
+# /usr/local/share/zsh/site-functions/_brew
+# /usr/local/etc/bash_completion.d/brew
+# /usr/local/Homebrew
+# ==> The following existing directories will be made group writable:
+# /usr/local/bin
+# ==> The following existing directories will have their owner set to olii:
+# /usr/local/bin
+# ==> The following existing directories will have their group set to admin:
+# /usr/local/bin
+# ==> The following new directories will be created:
+# /usr/local/Cellar
+# /usr/local/Homebrew
+# /usr/local/Frameworks
+# /usr/local/etc
+# /usr/local/include
+# /usr/local/lib
+# /usr/local/opt
+# /usr/local/sbin
+# /usr/local/share
+# /usr/local/share/zsh
+# /usr/local/share/zsh/site-functions
+# /usr/local/var
+#
+# Press RETURN to continue or any other key to abort
+# ==> /usr/bin/sudo /bin/chmod u+rwx /usr/local/bin
+# Password:
+{% endhighlight %}
+{% endsteps %}
 
 {% steps %}
 {% list %}
 ## Install RVM
 The [Ruby Version Manager (rvm)](http://rvm.io/) will allow you to install different versions of ruby on your machine and switch between them as you switch from one job to another. [Learn why RVM is useful here](https://code.tutsplus.com/articles/why-you-should-use-rvm--net-19529).
 
-To install RVM, open a terminal window and run the following commands (copied directly off of the RVM website).
+{% protip %}
+Note, if you already have the `rbenv` ruby manager installed, do not install `rvm` (they don't play nice together!). You can check by typing `rbenv --version` in your terminal.
+{% endprotip %}
+
+To install rvm, open a terminal window and run the following commands (copied directly off of the rvm website).
 
 {% endlist %}
 {% highlight bash %}

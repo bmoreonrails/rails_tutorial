@@ -7,20 +7,24 @@
     ol {
       margin: 0;
       padding: 1em;
+      counter-reset: section;
       list-style-type: none;
     }
     li {
       padding: .5em;
-      counter-increment: item;
       p {
         margin: .5em;
         padding-left: 1.5em;
+      }
+      li:before {
+        content: none;
       }
     }
     li:before {
       font-size: 2em;
       color: #64CAA0;
-      content: counter(item);
+      counter-increment: section;
+      content: counter(section);
       position: absolute;
     }
 
