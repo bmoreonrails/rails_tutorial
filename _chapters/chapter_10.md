@@ -1,9 +1,13 @@
 ---
 url: 10.html
 number: 10
-title: Showing a Book
+title: Showing Reviews
 layout: rails_tutorial
 ---
+{% sectionheader %}
+  {{ page.title }}
+{% endsectionheader %}
+
 
 {% steps %}
 {% list %}
@@ -175,4 +179,6 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing book details page with reviews](screenshot.jpg)
+{% screenshot %}
+![Browser showing book details page with reviews]({{site.baseurl}}/assets/images/reviews_in_browser.png)
+{% endscreenshot %}
