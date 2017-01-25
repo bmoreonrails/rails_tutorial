@@ -289,8 +289,8 @@ layout: rails_tutorial
       ![Someone's not excited]({{ site.baseurl }}/assets/images/not-excited.gif)
 
   1.  We're rendering a blank page for the new reviews page, but what should we be rendering instead?
-
-      We're going to follow the pattern we used before to add books back in chapter 5 of this tutorial.
+      
+      We're going to follow the same we pattern we used back in Chapter 5 to add books.
 
   1.  To add a book, you start by visiting the new book page ([http://localhost:3000/books/new](http://localhost:3000/books/new)). When you get there, you see a form where you can enter data for the new book you want to add.
 
