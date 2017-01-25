@@ -55,7 +55,7 @@ Your version information should look something like this image.
   <i> -OR- </i>
 </p>
 
-### Check  microsoft's website for an alternative to checking your OS's version [https://support.microsoft.com/en-us/help/13443/windows-which-operating-system](https://support.microsoft.com/en-us/help/13443/windows-which-operating-system){:target='blank'}
+### Check Microsoft's website for an alternative to checking your OS's version [https://support.microsoft.com/en-us/help/13443/windows-which-operating-system](https://support.microsoft.com/en-us/help/13443/windows-which-operating-system){:target='blank'}
 
 {% endlist %}
 {% list %}
@@ -84,7 +84,7 @@ The easiest way is to run Windows 8 updater using the following:
 7. After the installation is complete, restart your PC and sign in.
 {% endlist %}
 {% protip %}
-#### If the updater fails, try manually installing the update
+#### If the updater fails, try manually installing the update.
 
 WARNING: By following these instructions to manually update, you will be redirected to Microsoft's website.  You can see more information at [https://support.microsoft.com/en-us/help/13853/windows-lifecycle-fact-sheet](https://support.microsoft.com/en-us/help/13853/windows-lifecycle-fact-sheet){:target='blank'}.
 
@@ -93,17 +93,17 @@ Click on [Windows 8.1](https://support.microsoft.com/en-us/help/15356){:target='
 {% endsteps %}
 
 {:.sectionheader}
-# Install NodeJs
+# Install Node.Js
 
 {% steps %}
 {% list %}
 1. Download the Node.js installer [https://nodejs.org/dist/v4.4.7/node-v4.4.7-x86.msi](https://nodejs.org/dist/v4.4.7/node-v4.4.7-x86.msi){:target='blank'}
 
-2. Once the download is finished, go to the Downloads folder, open nodejs program.
+2. Once the download is finished, go to the Downloads folder, open Node.Js program.
 
 3. Read the full license agreement, accept the terms and run through the rest of the wizard leaving everything to the defaults.  Click "Yes" when it asks if you want to make changes to your computer.
 
-4. Restart your computer so ruby knows about nodejs
+4. Restart your computer so ruby knows about Node.Js
 
 {% endlist %}
 {% highlight shell %}
@@ -151,7 +151,7 @@ $ exit
 {% endsteps %}
 
 {% protip %}
-Remember step 3, to open **Start Command Prompt with Ruby** because you'll use it again.
+Remember step 3! Anytime the tutorial asks you to open your command prompt or terminal, you'll need to **Start Command Prompt with Ruby**.
 {% endprotip %}
 
 {:.sectionheader}
