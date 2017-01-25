@@ -5,6 +5,10 @@ title: Reviewing a Book
 layout: rails_tutorial
 ---
 
+{% sectionheader %}
+  {{ page.title }}
+{% endsectionheader %}
+
 {% aside %}
   Your bookstore is full of wonderful books. Although they have some great descriptions, your books deserve great advocates!
 
@@ -99,7 +103,7 @@ layout: rails_tutorial
       t.text :body
       ```
 
-  1.  If you didn't add this line to your migration, add it and re-run the migration.
+  1.  If you didn't add this line to your migration, you'll need to rollback the migration, add it and re-run the migration.
 {% endlist %}
 
 {% highlight ruby linenos %}
@@ -269,7 +273,9 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  To add a `book_id` column to the `reviews` table, we'll need a new migration.
+  1.  To add a `book_id` column to the `reviews` table, we'll need a new migration. 
+
+      Remember, editing an old migration would mean rolling back that migration and we don't want to do that because that would delete the data in the database.
 
   1.  In your console, run `rails generate migration add_book_id_to_reviews`.
 
@@ -467,5 +473,8 @@ layout: rails_tutorial
 {% endsteps %}
 
 {% aside %}
-  Add a description about relational databases and show database relationship between reviews and books
+### The magic that is a Relational Database!  
+Are you starting to see how we're using Rails to build a relational database? So far, we've built two tables - a books table and a reviews table. Those tables are connected to one another by the `book_id` column on the Reviews table. 
+
+****add illustration here***
 {% endaside %}
