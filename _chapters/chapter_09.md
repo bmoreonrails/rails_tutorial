@@ -273,7 +273,9 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  To add a `book_id` column to the `reviews` table, we'll need a new migration. Remember, editing an old migration would mean rolling back that migration and we don't want to do that because that would delete the data in the database.
+  1.  To add a `book_id` column to the `reviews` table, we'll need a new migration. 
+
+      Remember, editing an old migration would mean rolling back that migration and we don't want to do that because that would delete the data in the database.
 
   1.  In your console, run `rails generate migration add_book_id_to_reviews`.
 
