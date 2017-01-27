@@ -51,7 +51,7 @@ To install RVM, open a terminal window and run the following commands (copied di
 
 Now that you have rvm installed, you can use it to install ruby.  You simply call `rvm install <version>`.  We will install the latest version (as of 12/3/2016), v2.3.1.
 
-To verify you're using the correct Ruby version, type `ruby -v`, which should return `ruby 2.3.1`.
+To verify you're using the correct Ruby version, type `ruby -v`. It should return `ruby 2.3.1p112 (2016-04-26 revision 54768) [x86_64-darwin15]`.
 
 The last thing we'll do is install Bundler - which will manage all your Ruby gems.
 {% endlist %}
@@ -113,6 +113,7 @@ After you type all the commands, you should see Rails starting up at the start o
   $ cd test_rails
 
   $ rails server
+
   => Booting Puma
   => Rails 5.0.1 application starting in development on http://localhost:3000
   => Run `rails server -h` for more startup options
