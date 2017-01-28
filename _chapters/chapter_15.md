@@ -4,6 +4,10 @@ number: 15
 title: Associating Reviews with Users
 layout: rails_tutorial
 ---
+{% sectionheader %}
+  {{ page.title }}
+{% endsectionheader %}
+
 
 {% aside %}
   Now that you can keep track of logged in users, you can keep track of their actions. A great example where this could be useful is with your reviews. Wouldn't it be nice to know which users are leaving which reviews?
@@ -85,9 +89,9 @@ layout: rails_tutorial
 {% endlist %}
 
 {% highlight ruby %}
-  › pwd
+  $ pwd
   /Users/awesomesauce/Projects/bookstore
-  › rails console
+  $ rails console
   Loading development environment (Rails 5.0.0.1)
 
   >> my_first_user = User.first
@@ -117,7 +121,7 @@ layout: rails_tutorial
 {% endlist %}
 
 {% highlight shell %}
-  › rails generate migration add_user_id_to_reviews
+  $ rails generate migration add_user_id_to_reviews
         invoke  active_record
         create    db/migrate/20170124223830_add_user_id_to_reviews.rb
 {% endhighlight %}
@@ -179,12 +183,24 @@ layout: rails_tutorial
   1.  Go to Terminal and start the `rails console`.
 
   1.  Assign your first user to a variable called `my_first_user`.
+      
+      ```ruby
+       my_first_user = User.first
+      ```
 
-  1.  Now, try running `my_first_user.reviews`.
+  1.  Now, try running `my_first_user.reviews`.  
+
+      ```ruby
+      my_first_user.reviews
+      ```
 
       You get an empty collection because `my_first_user` doesn't have any reviews. Let's change that!
 
   1.  Assign your first book to a variable called `my_first_book`.
+
+      ```ruby
+      my_first_book = Book.first
+      ```
 
   1.  Now, run the following code to create a new review for `my_first_book` that will also be associated with `my_first_user`.
 
@@ -205,12 +221,17 @@ layout: rails_tutorial
       `my_first_user.reviews` is still returning an empty collection because `my_first_user` doesn't have the new data.
 
       First, run `my_first_user.reload`. Then, you can run `my_first_user.reviews`.
+      
+      ```ruby
+      my_first_user.reload
+      my_first_user.reviews
+      ```
 
    1.  Yay! 🎉
 {% endlist %}
 
 {% highlight ruby %}
-  › rails console
+  $ rails console
   Loading development environment (Rails 5.0.0.1)
   >> my_first_user = User.first
     User Load (0.2ms)  SELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?  [["LIMIT", 1]]
@@ -255,10 +276,18 @@ layout: rails_tutorial
       ```
 
   1.  `my_last_review` should have a `user_id`. Try running `my_last_review.user_id`.
+      
+      ```ruby
+      my_last_review.user_id
+      ```
 
       This will return the `user_id` of the user who's associated to `my_last_review`. Since we set it to `my_first_user`'s id, it will most likely be 1.
 
   1.  Now, let's try to get the user from the review. Try running `my_last_review.user`.
+      
+      ```ruby
+      my_last_review.user
+      ``` 
 
   1.  Hmm...that's an interesting error. Any thoughts on why you got a `NoMethodError`.
 
@@ -343,7 +372,7 @@ layout: rails_tutorial
 
   1.  Yayay!!!
 
-      ![YES!](https://media.tenor.co/images/8eec658600640ea3f7f2f583f156f5cc/raw "We should serve this file locally")
+      ![YES!]({{site.baseurl}}/assets/images/yes_triumph.gif)
 
   1.  Exit the `rails console`.
 {% endlist %}
@@ -387,7 +416,9 @@ layout: rails_tutorial
       end
       ```
 
-      In the `create` method, you first find the book that's being reviewed. After you get a hold of that book, you create a new review using `review_params`.
+      Lets review what this method is doing.  
+
+      In the second line, you start by finding the book that's being reviewed. After you get a hold of that book, you create a new review using `review_params`.
 
       `review_params` is a method that defines which of the form's fields can be set on the new review.
 
@@ -660,3 +691,7 @@ layout: rails_tutorial
   <% end %>
 {% endhighlight %}
 {% endsteps %}
+
+{% screenshot %}
+![Browser showing the show page with reviews]({{site.baseurl}}/assets/images/reviews_with_reviewers.png)
+{% endscreenshot %}
