@@ -5,6 +5,10 @@ title: Reviewing a Book
 layout: rails_tutorial
 ---
 
+{% sectionheader %}
+  {{ page.title }}
+{% endsectionheader %}
+
 {% aside %}
   Your bookstore is full of wonderful books. Although they have some great descriptions, your books deserve great advocates!
 
@@ -99,7 +103,7 @@ layout: rails_tutorial
       t.text :body
       ```
 
-  1.  If you didn't add this line to your migration, add it and re-run the migration.
+  1.  If you didn't add this line to your migration, you'll need to rollback the migration, add it and re-run the migration.
 {% endlist %}
 
 {% highlight ruby linenos %}
@@ -167,7 +171,7 @@ layout: rails_tutorial
 
       You might've even come up with something totally different!
 
-      ![Somebody's impressed](https://media.tenor.co/images/c83ac610b89eb7d2f40b261fcbd2460a/raw "We should serve this file locally")
+      ![Somebody's impressed]({{ site.baseurl }}/assets/images/impressed.gif)
 
   1.  If you get 2 when you run `Review.count`, yay!
 
@@ -269,7 +273,9 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  To add a `book_id` column to the `reviews` table, we'll need a new migration.
+  1.  To add a `book_id` column to the `reviews` table, we'll need a new migration. 
+
+      Remember, editing an old migration would mean rolling back that migration and we don't want to do that because that would delete the data in the database.
 
   1.  In your console, run `rails generate migration add_book_id_to_reviews`.
 
@@ -398,7 +404,7 @@ layout: rails_tutorial
 
       Or can we???
 
-      ![Wink wink](http://vignette1.wikia.nocookie.net/vampirediaries/images/7/76/Mgrin.gif/revision/latest?cb=20140417204006 "We should serve this locally")
+      ![Wink wink]({{ site.baseurl }}/assets/images/wink.gif)
 
   1.  Since a book can have many reviews, we can define a `has_many` relationship between books and reviews.
 
@@ -432,7 +438,7 @@ layout: rails_tutorial
 
       It might be hard to see, but all your book reviews are there!
 
-      ![Dancing Banana](http://rs251.pbsrc.com/albums/gg306/telanu/120px-Dancing_Banana.gif~c200 "We should serve this file locally")
+      ![Dancing Banana]({{ site.baseurl }}/assets/images/dancing-banana.gif)
 
   1.  Don't belive me??
 
@@ -467,5 +473,8 @@ layout: rails_tutorial
 {% endsteps %}
 
 {% aside %}
-  Add a description about relational databases and show database relationship between reviews and books
+### The magic that is a Relational Database!  
+Are you starting to see how we're using Rails to build a relational database? So far, we've built two tables - a books table and a reviews table. Those tables are connected to one another by the `book_id` column on the Reviews table. 
+
+****add illustration here***
 {% endaside %}

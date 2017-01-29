@@ -271,7 +271,7 @@ end
 
   1.  Save your changes and try going to [http://localhost:3000/books](http://localhost:3000) again.
 
-      ![Aaugh!](http://25.media.tumblr.com/tumblr_lz8plpLwB11qg39ewo1_500.gif "We should serve this image locally")
+      ![Aaugh!]({{ site.baseurl }}/assets/images/aaugh.gif)
 {% endlist %}
 
 {% highlight ruby linenos %}

@@ -4,6 +4,9 @@ number: 11
 title: Adding Reviews from the Browser
 layout: rails_tutorial
 ---
+{% sectionheader %}
+  {{ page.title }}
+{% endsectionheader %}
 
 {% steps %}
 {% list %}
@@ -135,7 +138,9 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing Routing Error: "uninitialized constant ReviewsController"](screenshot.jpg)
+{% screenshot %}
+![Browser showing Routing Error: "uninitialized constant ReviewsController"]({{site.baseurl}}/assets/images/review_controller_routing_error.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -189,7 +194,9 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing Unknown action error: "The action 'new' could not be found for ReviewsController"](screenshot.jpg)
+{% screenshot %}
+![Browser showing Unknown action error: "The action 'new' could not be found for ReviewsController"]({{site.baseurl}}/assets/images/reviews_new.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -197,7 +204,7 @@ layout: rails_tutorial
 
       Right?!
 
-      ![Fake it 'til you make it](https://s-media-cache-ak0.pinimg.com/564x/36/59/e6/3659e6dcaf4a6cc13f293e6b3565fad2.jpg "We should serve this locally")
+      ![Fake it 'til you make it]({{ site.baseurl }}/assets/images/fake-it.jpg)
 
   1.  You're seeing an `Unknown action` error that says "The action 'new' could not be found for ReviewsController". How would you fix this error?
 
@@ -221,7 +228,9 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing ActionController::UnknownFormat error: "ReviewsController#new is missing a template for this request format and variant."](screenshot.jpg)
+{% screenshot %}
+![Browser showing ActionController::UnknownFormat error: "ReviewsController#new is missing a template for this request format and variant."]({{site.baseurl}}/assets/images/missing_reviews_template.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -253,7 +262,7 @@ layout: rails_tutorial
 
       What do you think will happen?
 
-      ![Fingers crossed!](https://media.giphy.com/media/4KxeicCUTvhrW/giphy.gif "We should server this file locally")
+      ![Fingers crossed!]({{ site.baseurl }}/assets/images/fingers-crossed.gif)
 {% endlist %}
 
 {% highlight shell %}
@@ -277,11 +286,11 @@ layout: rails_tutorial
 
       Please, contain your excitement!
 
-      ![Someone's not excited](https://media.tenor.co/images/893990076684397040d10f13e2958490/raw "We should serve this file locally")
+      ![Someone's not excited]({{ site.baseurl }}/assets/images/not-excited.gif)
 
   1.  We're rendering a blank page for the new reviews page, but what should we be rendering instead?
-
-      We're going to follow the pattern we used before to add books.
+      
+      We're going to follow the same we pattern we used back in Chapter 5 to add books.
 
   1.  To add a book, you start by visiting the new book page ([http://localhost:3000/books/new](http://localhost:3000/books/new)). When you get there, you see a form where you can enter data for the new book you want to add.
 
@@ -374,7 +383,7 @@ layout: rails_tutorial
 {% list %}
   1.  Now, we can build the review form!
 
-      ![Jake and Finn are excited!](https://m.popkey.co/4df1a5/X1l6D.gif "We should serve this file locally")
+      ![Jake and Finn are excited!]({{ site.baseurl }}/assets/images/excited.gif)
 
   1.  This form is going to be pretty simmilar to the new book form, but with less fields.
 
@@ -438,7 +447,9 @@ layout: rails_tutorial
 
   1.  For some reason, that doesn't work. This solution leads to an error...
 
-      ![Browser showing NoMethodError in Reviews#new: "undefined method `reviews_path'"](screenshot.jpg)
+      {% screenshot %}
+      ![Browser showing NoMethodError in Reviews#new: "undefined method `reviews_path'"]({{site.baseurl}}/assets/images/new_review_unknown_path.png)
+      {% endscreenshot %}
 
   1.  This is a tricky error, but the gist of it is that we have an undefined method for `reviews_path`.
 
@@ -511,17 +522,19 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing an Unknown action error when trying to add a review](screenshot.jpg)
+{% screenshot %}
+![Browser showing an Unknown action error when trying to add a review]({{site.baseurl}}/assets/images/unknownaction_create.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
   1.  An `Unknown action` error?! But we were so close!!!
 
-      ![Jake is upset](http://vignette3.wikia.nocookie.net/smuff/images/7/76/NOOOOO.gif/revision/latest?cb=20120223210904 "We should server this file locally")
+      ![Jake is upset]({{ site.baseurl }}/assets/images/upset.gif)
 
       Don't be so down! We've gotten through this before...we can fix this.
 
-      ![Fix it!](https://s-media-cache-ak0.pinimg.com/originals/2c/ba/f7/2cbaf7e72ee9e774cb4cebe988d3346d.gif "We should serve this file locally")
+      ![Fix it!]({{ site.baseurl }}/assets/images/fix-it.gif)
 
   1.  The error is telling us what we need to do.
 
@@ -564,7 +577,7 @@ layout: rails_tutorial
 
       ```ruby
       book = Book.find(params[:book_id])
-      book.review.create(params)
+      book.reviews.create(params)
       ```
 
       First, we find the requested book and assign it to a variable called `book`. Then, we create a review for the book using the data that was sent with the form. The data is available in the params hash.
@@ -587,7 +600,9 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing ActiveModel::ForbiddenAttributesError in ReviewsController#create](screenshot.jpg)
+{% screenshot %}
+![Browser showing ActiveModel::ForbiddenAttributesError in ReviewsController#create]({{site.baseurl}}/assets/images/reviews_forbidden.png)
+{% endscreenshot %}
 
 {% steps %}
 {% list %}
@@ -716,7 +731,7 @@ layout: rails_tutorial
 {% list %}
   1.  You've done *a lot* of work in this chapter, but look at your bookstore! Now you can write all those book reviews you've been putting off for all these years.
 
-      ![Typing!](http://cdn-r1.unilad.co.uk/wp-content/uploads/2016/05/tumblr_inline_nwyokhuKT31rt2a43_500.gif "We should serve this file locally")
+      ![Typing!]({{ site.baseurl }}/assets/images/typing.gif)
 
   1.  Before you jump into writing those reviews, let's clean up *one* more thing...
 
@@ -839,4 +854,6 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing book details page with a link to "Add a Review"](screenshot.jpg)
+{% screenshot %}
+![Browser showing book details page with a link to "Add a Review"]({{site.baseurl}}/assets/images/review_button.png)
+{% endscreenshot %}

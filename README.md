@@ -12,7 +12,7 @@ Before you get started, make sure you have Ruby 2.x installed locally.
 
 Then, clone the repo and run `bundle install`.
 
-Now, you can get the site up and running locally by running `jekyll serve`. You can view the running site by going to [http://localhost:4000/rails_tutorial/](http://localhost:4000/rails_tutorial/).
+Now, you can get the site up and running locally by running `jekyll serve`. You can view the running site by going to [http://localhost:4000/rails_tutorial/](http://localhost:4000/rails_tutorial/). (Note that the trailing slash is **not** optional.)
 
 ## Caveats
 

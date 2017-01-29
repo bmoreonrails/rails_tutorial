@@ -269,7 +269,7 @@ Feel free to check out this video to learn a bit more about Relational Databases
 
   Are you ready?!
 
-  ![Yes!](https://media.giphy.com/media/xT8qBrtlhoV1wl7yUg/giphy.gif "We should serve this image locally")
+  ![Yes!]({{ site.baseurl }}/assets/images/yes.gif)
 {% endaside %}
 
 
