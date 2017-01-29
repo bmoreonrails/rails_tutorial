@@ -1,14 +1,12 @@
 .tutorial_nav.before_you_get_started_nav {
-  .menu {
-    cursor: default;
-  }
   .menu-title {
     padding-left: 10px;
   }
   ul.menu-links {
     display: inline-block;
     float: right;
-    padding: 0px;
+    padding-top: 5px;
+    margin: 0px;
     li {
       float: left;
     }
