@@ -1,7 +1,10 @@
 .sectionheader {
-  padding-top: .5em;
+  padding-top: 0.5em;
+  margin: 0 0 2em;
+  font-weight: 300;
   font-size: 2em;
   text-align: center;
+  text-transform: capitalize;
 }
 
 @media (min-width: 480px) {

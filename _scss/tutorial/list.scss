@@ -45,7 +45,8 @@
 @media (min-width: 768px) {
   .steps {
     .list {
-      width: 50%;
+      width: calc(50% - 4em);
+      padding: 2em; 
     }
   }
 }
