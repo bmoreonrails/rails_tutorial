@@ -1,9 +1,11 @@
 ---
 ---
 
+$green: #69CBA2;
 $nav-bar-height: 40px;
 $nav-bar-progress-height: 10px;
 
+@import "tutorial/start-button";
 @import "tutorial/screenshot";
 @import "tutorial/tutorial-button-group";
 @import "tutorial/aside";
