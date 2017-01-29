@@ -35,11 +35,12 @@
   }
 
   .menu {
-    font-size: 1.4em;
     cursor: pointer;
     display: table;
     width: 100%;
     height: $nav-bar-height;
+    font-size: 1em;
+    text-transform: uppercase;
   }
 
   .hamburger-icon {

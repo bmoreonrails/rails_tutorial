@@ -3,6 +3,9 @@
 
 $nav-bar-height: 60px;
 $nav-bar-progress-height: 10px;
+$white: #fff;
+$ruby: #CB65A1;
+$ruby-lite: #F291CB;
 
 @import "tutorial/screenshot";
 @import "tutorial/tutorial-button-group";
@@ -14,6 +17,13 @@ $nav-bar-progress-height: 10px;
 @import "tutorial/list";
 @import "tutorial/section_header";
 @import "fonts";
+
+* {
+    -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
 
 .content {
   padding-top: $nav-bar-height;
@@ -31,8 +41,25 @@ body {
   background-color: #F3F3F1;
 }
 
+a {
+  color: $ruby;
+}
+
+a:hover {
+  color: $ruby-lite;
+}
+
 .highlight { background-color: #272822; }
 .highlight code { color: #FFFAF0; }
+.highlighter-rouge {
+  margin: 0 2px;
+  padding: 2px 4px;
+  background: $ruby;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  color: $white;
+}
 
 @media (min-width: 480px) {
 }
