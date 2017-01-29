@@ -28,13 +28,13 @@ layout: rails_tutorial
 
   1.  You're now in your home directory. The command `ls` will always show you what's in the current directory. Go ahead and run `ls` to see what files are here.
  
-  1.  You might see some familiar files like Desktop, Documents, and Music.
+  You might see some familiar files like Desktop, Documents, and Music. All code deserves a good home. 
 
-  1.  All code deserves a good home. Add a new `Projects` directory to your home directory by running `mkdir Projects`.
+  1.  Add a new `Projects` directory to your home directory by running `mkdir Projects`.
 
   1.  Navigate into your new `Projects` directory by running `cd Projects`.
 
-  1.  Now you're ready to create the bookstore!
+   Now you're ready to create the bookstore!
 {% endlist %}
 
 {% highlight shell %}

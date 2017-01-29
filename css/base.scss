@@ -23,6 +23,7 @@ $nav-bar-progress-height: 10px;
 }
 
 body {
+  counter-reset: section;
   overflow-x: hidden;
   font-weight: 400;
   font-family: 'Roboto', sans-serif;
