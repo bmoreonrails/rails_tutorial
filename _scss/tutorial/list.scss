@@ -1,4 +1,8 @@
 .steps {
+  p {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
   .list {
     background-color: #FFF;
     img {
@@ -7,14 +11,13 @@
     ol {
       margin: 0;
       padding: 1em;
-      counter-reset: section;
       list-style-type: none;
     }
     li {
       padding: .5em;
       p {
         margin: .5em;
-        padding-left: 1.5em;
+        padding-left: 2em;
       }
       li:before {
         content: none;
