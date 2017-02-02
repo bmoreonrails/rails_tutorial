@@ -164,7 +164,7 @@ Now that ruby is installed, installing rails is simple.  Just install Rails with
 If that succeeds, you should be able to run rails on the command-line:
 {% endlist %}
 {% highlight bash %}
-$ gem install rails 5.0.1 --no-document
+$ gem install rails -v 5.0.1 --no-document
 
 $ rails --version
 # Rails 5.0.1
