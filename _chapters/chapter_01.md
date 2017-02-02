@@ -92,7 +92,7 @@ You don't need to worry about this much for the tutorial but if you're intereste
 
 {% steps %}
 {% list %}
-  1.  Let's take a look the files that got created when you ran `rails new`.
+  1.  Let's take a look at the files that got created when you ran `rails new`.
 
   1.  Run `ls -l` to list out all the top level files and directories. There's lot going on, but a few things stand out.
 
