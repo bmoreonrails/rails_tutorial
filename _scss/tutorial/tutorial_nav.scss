@@ -26,6 +26,7 @@
   margin: 0;
   float: left;
   background-color: #69CBA2;
+  z-index: 1; //stops steps numbers from floating on top of nav
 
   a {
     color: #FFF;
