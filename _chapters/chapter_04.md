@@ -61,7 +61,7 @@ layout: rails_tutorial
 
   1.  In the console, run `Book.first` to get the first book from your database.
 
-  1.  Take a look at the output. It might be see, but at the beginning there's an id.
+  1.  Take a look at the output. It might be hard to see, but at the beginning there's an id.
 
       ```shell
       #<Book id: 1, title: "why's (poignant) Guide to Ruby", ... >

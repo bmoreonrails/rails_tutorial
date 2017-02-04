@@ -407,7 +407,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  What does your solution look like? Your compelte form should look like this:
+  1.  What does your solution look like? Your complete form should look like this:
 
       ```erb
       <%= form_for(@book) do |f| %>
@@ -554,7 +554,7 @@ layout: rails_tutorial
 
   1.  Does this make sense to you?
 
-      If it does, I'm impressed. I'm having a hard understanding it all 😅
+      If it does, I'm impressed. I'm having a hard time understanding it all. 😅
 
   1.  Don't worry if you don't understand everything that is going on. It will make more sense over time.
 

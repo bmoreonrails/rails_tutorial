@@ -173,7 +173,7 @@ The Ruby in 100 minutes tutorial discussed classes only briefly. All you really 
 
 {% steps %}
 {% list %}
-  1.  Open Terminal and make sure your in the `bookstore` directory.
+  1.  Open Terminal and make sure you're in the `bookstore` directory.
 
   1.  Run `rails console`. This will open...the `rails console`.
 

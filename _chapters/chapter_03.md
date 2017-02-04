@@ -175,7 +175,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  If you're text editor isn't already open, open it and go to the `bookstore` directory.
+  1.  If your text editor isn't already open, open it and go to the `bookstore` directory.
 
   1.  Now, open `app/controllers/books_controller.rb`.
 
@@ -211,7 +211,7 @@ end
 
 {% steps %}
 {% list %}
-  1.  This new error is telling us that you're `BooksController` doesn't have an `index` action. That kinda makes sense - we didn't add very much code to the `BooksController`. But why does it care that the `index` action is missing?
+  1.  This new error is telling us that your `BooksController` doesn't have an `index` action. That kinda makes sense - we didn't add very much code to the `BooksController`. But why does it care that the `index` action is missing?
 
   1.  Remember the routing table? Kinda? Don't worry, it's fuzzy for me too. Let's pull it up again.
 
@@ -232,7 +232,7 @@ end
 
       Clear as mud, right? Don't worry, it'll make more sense later.
 
-  1.  Now that we (kinda) know why we're trying to run the `index` action`, let's add it.
+  1.  Now that we (kinda) know why we're trying to run the `index` action, let's add it.
 
   1.  Before we go on, restart your web server by running `rails server`.
 {% endlist %}
@@ -304,7 +304,7 @@ end
 
   1.  Create the `BooksController` template directory by running `mkdir app/views/books`.
 
-  1.  Now, create the template for the `BooksController`'s `index` action by running `touch app/views/books/index.html.erb`.`
+  1.  Now, create the template for the `BooksController`'s `index` action by running `touch app/views/books/index.html.erb`.
 
   1.  Restart your web server.
 
@@ -435,7 +435,7 @@ end
 
 Ruby has a templating system that embeds Ruby into a text document called [ERB](https://en.wikipedia.org/wiki/ERuby). 
 
-ERB allows Ruby code to be embedded within a pair of `<%` and `%>` delimiters. These embedded code blocks are then evaluated in-place. Tthey are then replaced by the result of their evaluation.
+ERB allows Ruby code to be embedded within a pair of `<%` and `%>` delimiters. These embedded code blocks are then evaluated in-place. They are then replaced by the result of their evaluation.
 {% endaside %}
 
 {% steps %}
@@ -575,7 +575,7 @@ ERB allows Ruby code to be embedded within a pair of `<%` and `%>` delimiters. T
       ```
       You defined `@books` to be a collection of all the books in your application's database. For our purposes, we can treat this collection like a [Ruby Array](http://ruby-doc.org/core-2.3.1/Array.html).
 
-  1.  You can get each item of a Ruby array by it's index, and the first item starts at index 0.
+  1.  You can get each item of a Ruby array by its index, and the first item starts at index 0.
 
       Does that sound familiar? It's what you used to render the book titles.
 
