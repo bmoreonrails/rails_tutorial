@@ -422,9 +422,9 @@ layout: rails_tutorial
 
   1.  Using the new book form as an example, add a new review form to `app/views/reviews/new.html.erb`. The only field you need to set on a review is its body.
 
-      When you're done, try add a reviewing!
+      When you're done, try add a review!
 
-      *Psst..not to be a downer, but chances are your solution won't work*
+      *Psst...not to be a downer, but chances are your solution won't work*
 {% endlist %}
 {% endsteps %}
 
