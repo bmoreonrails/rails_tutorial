@@ -11,21 +11,34 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  If you have Terminal open from the previous chapter, you should already be in `HOME/Projects/bookstore`. Remember how to check what directory you're in?
-      
+  1.  Open Terminal.
+
+  1.  If you still have Terminal open from the previous chapter, you should be in the `bookstore` directory.
+
+      Do you remember how to check what directory you're in?
+
       (`pwd`)
 
-      If you're not already in your bookstore directory, open Terminal and `cd` to `Projects/bookstore`.     
+  1.  If you're not already in the `bookstore` directory, run the following commands to get there:
 
-  1.  Run `rails generate model book`.
+      ```shell
+      cd Projects
+      cd bookstore
+      ```
 
-  This generated a few new files, but there are only a couple we're interesed in.
+  1.  Now run
 
-  1. <p>Run `ls -l db/migrate`. You should see a file named something like `20161115030350_create_books.rb`.</p>
+      ```shell
+      rails generate model book
+      ```
 
-  20161115030350 is a timestamp generated when the file is created. You're file will start with a more recent timestamp...I hope :)
+      This generated a few new files, but there are only a couple we're interesed in.
 
-  Let's take a look at this file in your text editor.
+  1.  Run `ls -l db/migrate` to take a look at one of the new files. You should see a file named something like `20161115030350_create_books.rb`.
+
+      20161115030350 is a timestamp generated when the file is created. You're file will start with a more recent timestamp...I hope 😝
+
+      Let's take a look at this file in your text editor.
 {% endlist %}
 
 {% highlight shell %}
@@ -48,11 +61,11 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1. <p>Open `db/migrate/YOUR_TIMESTAMP_create_books.rb` in your text editor.</p>
+  1. Open `db/migrate/YOUR_TIMESTAMP_create_books.rb` in your text editor.
 
-  This is a migration file called `CreateBooks`. Migrations are used to make changes to the database.
+     This is a migration file called `CreateBooks`. Migrations are used to make changes to your database.
 
-  On line 3 of the `CreateBooks` migration, there's a block called `create_table`. Inside this block, you'll make changes to add columns to the new `books` table.
+     On line 3 of the `CreateBooks` migration, there's a block called `create_table`. Inside this block, you'll make changes to add columns to the new `books` table.
 {% endlist %}
 
 {% highlight ruby linenos %}
@@ -67,14 +80,11 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% aside %}
-### Rails is using ruby! 
+{% protip %}
+You might remember [blocks](http://tutorials.jumpstartlab.com/projects/ruby_in_100_minutes.html#6.-blocks) from the Ruby in 100 Minutes tutorial.
 
-You might remember [blocks](http://tutorials.jumpstartlab.com/projects/ruby_in_100_minutes.html#6.-blocks) from the Ruby in 100 minutes tutorial you did before you started building your app. 
-
-> Blocks start with the keyword `do` and ends with the keyword `end`. 
-
-{% endaside %}
+Like most blocks, the `create_table` block starts with the `do` keyword and ends with the `end` keyword.
+{% endprotip %}
 
 {% steps %}
 {% list %}
@@ -82,9 +92,9 @@ You might remember [blocks](http://tutorials.jumpstartlab.com/projects/ruby_in_1
 
   It will need a string column to store book titles and another string column to store book authors.
 
-  The table will also need a column to store book prices. Since keeping track of money can be tricky, the column will need to be an integer where book prices can be stored in cents. It sounds weird, but you'll have to trust me on this one.
+  The table will also need a column to store book prices. Since keeping track of money can be tricky, the column will need to be an integer column where book prices can be stored in cents. It sounds weird, but you'll have to trust me on this one.
 
-  1.  After line 3 of the `CreateBooks` migration, add the following:
+  1.  Inside the `create_table` block, add the following lines:
 
       ```ruby
       t.string :title
@@ -92,13 +102,7 @@ You might remember [blocks](http://tutorials.jumpstartlab.com/projects/ruby_in_1
       t.integer :price_cents
       ```
 
-  You've added a few things to the `create_table` block, but you might've noticed that there was already some code in there:
-
-    t.timestamps
-
-  What's `t.timestamps` doing? It's a convinence method added by Rails that will add two more columns to the `books` table: `created_at` and `updated_at`. They'll be used to store the time when books are created and updated.
-
-  1. <p>Save your changes to the `CreateBooks` migration and go back to Terminal.</p>
+  1. Save your changes to the `CreateBooks` migration and go back to Terminal.
 {% endlist %}
 
 {% highlight ruby linenos %}
@@ -114,6 +118,24 @@ You might remember [blocks](http://tutorials.jumpstartlab.com/projects/ruby_in_1
   end
 {% endhighlight %}
 {% endsteps %}
+
+
+{% aside %}
+### What's t.timestamps?
+
+You added a few things to the `create_table` block, but you might've noticed that there was already some code in there:
+
+```ruby
+create_table :books do |t|
+
+  t.timestamps
+end
+```
+
+What's `t.timestamps`?
+
+It's a convinence method added by Rails that will add two more columns to the `books` table: `created_at` and `updated_at`. They'll be used to store the times when books are created and updated.
+{% endaside %}
 
 {% steps %}
 {% list %}
@@ -141,18 +163,18 @@ You might remember [blocks](http://tutorials.jumpstartlab.com/projects/ruby_in_1
 
 This migration just added a table to your database! 
 
-One of the advantages of using a framework like Rails is that you can build and modify a database without having to use raw SQL. Migrations are one of these tools. 
+One of the advantages of using a framework like Rails is that you can build and modify a database without having to use raw SQL.
 {% endaside %}
 
 {% steps %}
 {% list %}
   The migration was just one of the files that was generated by `rails generate model book`. It also generated another file: `app/models/book.rb`. Let's take a quick look at it.
 
-  1. <p>Open the `bookstore` directory in your text editor, and open `app/models/book.rb`.</p>
+  1.  Open `app/models/book.rb` in your text editor.
 
-  It might not look very exciting, but it's actually pretty powerful. We now have a `Book` class. The `Book` class is used to represent individual rows in the `books` table.
+      It might not look very exciting, but it's actually pretty powerful. We now have a `Book` class. The `Book` class is used to represent individual rows in the `books` table.
 
-  Still not impressed? Let's see what you can do with this class.
+      Still not impressed? Let's see what you can do with this class.
 {% endlist %}
 
 {% highlight ruby linenos %}
@@ -161,13 +183,11 @@ One of the advantages of using a framework like Rails is that you can build and 
 {% endhighlight %}
 {% endsteps %}
 
-{% aside %}
-### Classes in Ruby 
+{% protip %}
+You might remember [classes](http://tutorials.jumpstartlab.com/projects/ruby_in_100_minutes.html#11.-objects,-attributes,-and-methods) from the Ruby in 100 minutes tutorial.
 
-The Ruby in 100 minutes tutorial discussed classes only briefly. All you really need to know is that they are: 
-
-> Abstract descriptions of a category or type of thing. They define what attributes and methods all objects of that type have.
-{% endaside %}
+Classes are used to describe things. For example, the `Book` class in your bookstore is used to describe books.
+{% endprotip %}
 
 {% steps %}
 {% list %}
@@ -175,7 +195,10 @@ The Ruby in 100 minutes tutorial discussed classes only briefly. All you really 
 
   1.  Run `rails console`. This will open...the `rails console`.
 
-  {% endlist %}
+      The `rails console` is available in all Rails applications. It let's you play around with the different things in your applications including the data stored in your database.
+
+      Now that you're in the `rails console`, let's see what we can do with the `Book` class.
+{% endlist %}
 
 {% highlight shell %}
   $ pwd
@@ -187,17 +210,11 @@ The Ruby in 100 minutes tutorial discussed classes only briefly. All you really 
 {% endhighlight %}
 {% endsteps %}
 
-{% aside %}
-The `rails console` is available in all Rails applications. It let's you play around with the different things in your applications including the data stored in your database.
-
-Now that you're in the `rails console`, let's see what we can do with the `Book` class.
-{% endaside %}
-
 {% steps %}
 {% list %}
-  First - Let's try creating my favorite book.
+  1.  Let's try creating my favorite book.
 
-  1.  In the `rails console`, run the following code:
+      In the `rails console`, run the following code:
 
       ```ruby
       my_favorite_book = Book.new
@@ -205,22 +222,24 @@ Now that you're in the `rails console`, let's see what we can do with the `Book`
 
       This assigns a new instance of `Book` to a [variable](http://tutorials.jumpstartlab.com/projects/ruby_in_100_minutes.html#2.-variables) so that we can refer to it as `my_favorite_book`.
 
-  1.  Now, to give this new instance of book a title. Run:
+  1.  Now, to give this new instance of book a title run:
 
       ```ruby
       my_favorite_book.title = "why's (poignant) Guide to Ruby"
       ```
 
-  1.  `my_favorite_book` now has a title. Don't belive me?! Try running
-      `my_favorite_book.title`. It should return "why's (poignant) Guide to
-      Ruby".
+  1.  `my_favorite_book` now has a title.
+
+      Don't belive me?! Try running `my_favorite_book.title`. It should return "why's (poignant) Guide to Ruby".
 {% endlist %}
 
 {% highlight ruby %}
   >> my_favorite_book = Book.new
   => #<Book id: nil, title: nil, author: nil, price_cents: nil, created_at: nil, updated_at: nil>
+
   >> my_favorite_book.title = "why's (poignant) Guide to Ruby"
   => "why's (poignant) Guide to Ruby"
+
   >> my_favorite_book.title
   => "why's (poignant) Guide to Ruby"
 {% endhighlight %}
@@ -229,8 +248,6 @@ Now that you're in the `rails console`, let's see what we can do with the `Book`
 {% steps %}
 {% list %}
   Remember those other columns we added to the `books` table? We can set those on `my_favorite_book`.
-
-  For example, the book ["why's (poignant) Guide to Ruby"](http://poignant.guide/book/chapter-1.html) was written by a guy who called himself "why the lucky stiff". 
 
   1.  Try setting `my_favorite_book`'s author to ["why the lucky stiff"](https://en.wikipedia.org/wiki/Why_the_lucky_stiff).
 
@@ -242,16 +259,24 @@ Now that you're in the `rails console`, let's see what we can do with the `Book`
       my_favorite_book.quantity = 500
       ```
 
-  Did that work? No?!
+      Did that work? No?!
 
-  Welcome to your first error!
+      Welcome to your first error!
+
+      ![Not sure if happy or sad]({{site.baseurl}}/assets/images/not_sure_if_happy_or_sad.png)
+
+      These errors can seem intimidating at first, but they can be suprisingly helpful as you work your way through building an application.
+
+      So let's embrace and explore these errors together!
 {% endlist %}
 
 {% highlight ruby %}
   >> my_favorite_book.author = "why the lucky stiff"
   => "why the lucky stiff"
+
   >> my_favorite_book.price_cents = 100
   => 100
+
   >> my_favorite_book.quantity = 500
   NoMethodError: undefined method `quantity=' for #<Book:0x007fdc9453bf60>
       from /Users/awesomesauce/.rvm/gems/ruby-2.3.1/gems/activemodel-5.0.0.1/lib/active_model/attribute_methods.rb:433:in `method_missing'
@@ -267,45 +292,40 @@ Now that you're in the `rails console`, let's see what we can do with the `Book`
 {% endsteps %}
 
 {% aside %}
-### This is what I like to call "error driven development" 😉
+### Your first error
 
-These errors can seem intimidating at first - but for us as programmers, they're a valuable tools for building our application. So - let's embrace and explore these errors together! 
-{% endaside %}
+We tried setting quantity on `my_favorite_book`, but we got an error:
 
-{% steps %}
-{% list %}
-  We tried setting quantity on `my_favorite_book`, but we got an error:
+```ruby
+>> my_favorite_book.quantity = 500
+NoMethodError: undefined method `quantity=' for #<Book:0x007fdc9453bf60>
+```
 
-    NoMethodError: undefined method `quantity=' for #<Book:0x007fdc9453bf60>
+We get a `NoMethodError` for `quantity=` because `quantity` isn't a attribute we can set on `Book`.
 
-  We get a `NoMethodError` for `quantity=` because `quantity` isn't a attribute we can set on `Book`.
+If you remember the `CreateBooks` migration, we added a few columns, but we never added a column for `quantity`.
 
-  If you remember the `CreateBooks` migration, we added a few columns, but we never added a column for `quantity`. Let's fix this!
-{% endlist %}
-
-{% highlight ruby linenos %}
-  class CreateBooks < ActiveRecord::Migration[5.0]
-    def change
-      create_table :books do |t|
-        t.string :title
-        t.string :author
-        t.integer :price_cents
-        t.timestamps
-      end
+```ruby
+class CreateBooks < ActiveRecord::Migration[5.0]
+  def change
+    create_table :books do |t|
+      t.string :title
+      t.string :author
+      t.integer :price_cents
+      t.timestamps
     end
   end
-{% endhighlight %}
-{% endsteps %}
+end
+```
 
-{% aside %}
-### Rolling Back Migrations  
-  Your database is currently in a bad state. The `books` table needs a `quantity` column to store the number of available books. Fortunately, we have a few ways to fix this.
+Your database is currently in a bad state. The `books` table needs a `quantity` column to store the number of available books.
 
-  Migrations are designed to run in two directions. So far, we've run the `CreateBooks` migration "up" to add the `books` table.
+Fortunately, we have a few ways to fix this.
 
-  Now, we're going to run the `CreateBooks` migration "down". By running the migration "down", the `books` table will be removed. With the table no longer in the database, we can make changes to the migration and re-run it so the `books` table has the `quantity` column.
+Migrations are designed to run in two directions. So far, we've run the `CreateBooks` migration "up" to add the `books` table.
+
+Now, we're going to run the `CreateBooks` migration "down". By running the migration "down", the `books` table will be removed. With the table no longer in the database, we can make changes to the migration and re-run it so the `books` table has the `quantity` column.
 {% endaside %}
-
 
 {% steps %}
 {% list %}
@@ -355,8 +375,9 @@ These errors can seem intimidating at first - but for us as programmers, they're
 
 {% steps %}
 {% list %}
+  1.  Go back to Terminal.
 
-  1. <p>Go back to your terminal and re-run the migration by running `rake db:migrate`.</p>
+  1.  Re-run the migration by running `rake db:migrate`.
 {% endlist %}
 
 {% highlight shell %}
@@ -370,13 +391,13 @@ These errors can seem intimidating at first - but for us as programmers, they're
 
 {% steps %}
 {% list %}
-  Now that your `books` table has the `quantity` column, you can go back to adding my favorite book :)
+  Now that your `books` table has the `quantity` column, you can go back to adding my favorite book 😉
 
   1.  Enter the `rails console` by running...`rails console`.
 
   1.  You already forgot what my favorite book was, didn't you?
 
-      No worries - just run each of the following lines of code in your console to refresh your memory:
+      No worries. You can run each of the following lines of code in your console to refresh your memory:
 
       ```ruby
       my_favorite_book = Book.new
@@ -395,7 +416,7 @@ These errors can seem intimidating at first - but for us as programmers, they're
 
       Run `my_favorite_book.save` to save my favorite book to your database.
 
-  If the last thing you see says `true`, my favorite books has been saved to your database. Yay!
+      If the last thing you see says `true`, my favorite books has been saved to your database. Yay!
 {% endlist %}
 
 {% highlight ruby %}
@@ -424,17 +445,19 @@ These errors can seem intimidating at first - but for us as programmers, they're
 
 {% steps %}
 {% list %}
-  Now that you've used the `save` method to save a book to your database, let me show you another way to save a book to your database!
+  What if I told you there was more than one way to add a book to your database?
+
+  ![O rly?!]({{site.baseurl}}/assets/images/orly.png)
 
   1.  Let's try using the `create` method to add my second favorite book to your database.
 
-      Run the following code on the rails console:
+      Run the following code on the `rails console`:
 
       ```ruby
       Book.create(title: "Oh, the Places You'll Go!", author: "Dr. Seuss", price_cents: 500, quantity: 200)
       ```
 
-  The `create` method lets us save data in a single command. Instead of setitng attributes one at a time, we can set them all at once.
+      The `create` method lets us save data in a single command. Instead of setitng attributes one at a time, we can set them all at once.
 {% endlist %}
 
 {% highlight ruby %}
@@ -450,7 +473,7 @@ These errors can seem intimidating at first - but for us as programmers, they're
 {% list %}
   Now that we've added some books to your database, let's try pulling them out of the database.
 
-  1.  My second favorite book was the last book you added to your database. To get it, run `Book.last` on the rails console.
+  1.  My second favorite book was the last book you added to your database. To get it, run `Book.last` on the `rails console`.
 
   1.  My favorite book was the first book you added. Can you guess how we would get it?
 
@@ -460,7 +483,7 @@ These errors can seem intimidating at first - but for us as programmers, they're
 
       Run `Book.all` to get all the books in your database.
 
-  1.  Programming can be really confusing, but every once in a while it kinda makes sense :)
+      Programming can be really confusing, but every once in a while it kinda makes sense 😊
 {% endlist %}
 
 {% highlight ruby %}
