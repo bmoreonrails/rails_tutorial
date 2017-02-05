@@ -233,7 +233,7 @@ layout: rails_tutorial
 
   1.  In `app/views/layouts/application.html.erb`, replace "I'm not logged in" with a link labeled "Login". The link should go to the `new_session` path.
 
-      You have a couple of links in `app/views/layouts/application.html.erb`: a link to "My Super Rad Bookstore" and a link to "Log Out". Use these links as examples and try to add this link.
+      Use the other links in the template as examples.
 {% endlist %}
 {% endsteps %}
 
