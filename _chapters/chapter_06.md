@@ -95,7 +95,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Did you guess you'd see an `ActionController::UnknownFormat` error? Me either 😅
+  1.  Did you guess you'd see an `ActionController::UnknownFormat` error? Me either. 😅
 
       However, you might have guessed that the request was going to error. You added the `edit` action to the `BooksController`, but it doesn't have a template to render.
 
@@ -416,7 +416,7 @@ layout: rails_tutorial
 {% list %}
   1.  Nothing happened!
 
-      The form is being submitted to the `BooksController` `update` method, and the method is...empty. I think I'd be more surprised if something *did* happen 😉
+      The form is being submitted to the `BooksController` `update` method, and the method is...empty. I think I'd be more surprised if something *did* happen. 😉
 
       The `update` method should probably do something. Maybe it should update the book.
 

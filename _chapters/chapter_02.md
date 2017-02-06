@@ -23,7 +23,7 @@ layout: rails_tutorial
 
   1.  Run `ls -l db/migrate`. You should see a file named something like `20161115030350_create_books.rb`.
 
-      20161115030350 is a timestamp generated when the file is created. You're file will start with a more recent timestamp...I hope :)
+      20161115030350 is a timestamp generated when the file is created. Your file will start with a more recent timestamp...I hope :)
 
       Let's take a look at this file in your text editor.
 {% endlist %}
@@ -173,7 +173,7 @@ The Ruby in 100 minutes tutorial discussed classes only briefly. All you really 
 
 {% steps %}
 {% list %}
-  1.  Open Terminal and make sure your in the `bookstore` directory.
+  1.  Open Terminal and make sure you're in the `bookstore` directory.
 
   1.  Run `rails console`. This will open...the `rails console`.
 
