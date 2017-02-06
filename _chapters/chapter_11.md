@@ -124,7 +124,7 @@ layout: rails_tutorial
       new_book_review GET    /books/:book_id/reviews/new(.:format)      reviews#new
       ```
 
-      I mean...it has a prefix of `new_book_review` 😉
+      I mean...it has a prefix of `new_book_review`. 😉
 
   1.  Let's try visiting that path. Start your application's web server, and go to [http://localhost:3000/books/1/reviews/new](http://localhost:3000/books/1/reviews/new). Since the path starts with `/books/1`, this is where we'd go to add a review for your first book.
 
@@ -422,9 +422,9 @@ layout: rails_tutorial
 
   1.  Using the new book form as an example, add a new review form to `app/views/reviews/new.html.erb`. The only field you need to set on a review is its body.
 
-      When you're done, try add a reviewing!
+      When you're done, try add a review!
 
-      *Psst..not to be a downer, but chances are your solution won't work*
+      *Psst..not to be a downer, but chances are your solution won't work.*
 {% endlist %}
 {% endsteps %}
 
@@ -538,7 +538,7 @@ layout: rails_tutorial
 
   1.  The error is telling us what we need to do.
 
-      > The action 'create' could not be found for ReviewsController
+      > The action 'create' could not be found for ReviewsController.
 
   1.  Add an empty `create` method to the `ReviewsController`.
 

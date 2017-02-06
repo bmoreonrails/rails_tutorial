@@ -74,7 +74,7 @@ layout: rails_tutorial
       end
       ```
 
-      Just like the `CreateBooks` migration, the `CreateUsers` migration has a `change` method. Inside the `change` method, there's a `create_table` block with the name of the table to create. In the `CreateBooks` migration the table name is `:books`, but in the the `CreateUsers` migration it's `users'.
+      Just like the `CreateBooks` migration, the `CreateUsers` migration has a `change` method. Inside the `change` method, there's a `create_table` block with the name of the table to create. In the `CreateBooks` migration the table name is `:books`, but in the the `CreateUsers` migration it's `users`.
 
       You define the columns you want to add to the table inside the `create_table` block. You added a bunch of columns in the `CreateBooks` migration, but you haven't added any to the `CreateUsers` migration...yet 😉
 {% endlist %}
@@ -493,7 +493,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Now that you're application is using bcrypt, maybe we can start doing stuff with `User`s 😄
+  1.  Now that you're application is using bcrypt, maybe we can start doing stuff with `User`s. 😄
 
   1.  Open the `rails console` and run the following:
 

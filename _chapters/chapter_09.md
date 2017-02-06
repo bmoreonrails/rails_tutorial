@@ -12,7 +12,7 @@ layout: rails_tutorial
 {% aside %}
   Your bookstore is full of wonderful books. Although they have some great descriptions, your books deserve great advocates!
 
-  Your books need reviews 😉
+  Your books need reviews. 😉
 {% endaside %}
 
 {% steps %}
@@ -70,7 +70,7 @@ layout: rails_tutorial
 
   1.  The `change` method has a `create_table` block that will create the `reviews` table.
 
-      If you ran that migration as it is now, your `reviews` table wouldn't have anything other than the `created_at` and `updated_at` timestamps. We'll need to change the `create_table` block so your new `reviews` table can store more review related data 😄
+      If you ran that migration as it is now, your `reviews` table wouldn't have anything other than the `created_at` and `updated_at` timestamps. We'll need to change the `create_table` block so your new `reviews` table can store more review related data. 😄
 
   1.  The `reviews` table will need a column to store the text of a review. Let's call that column `body`, and let's make it a `text` column so you can leave long, inspiring reviews.
 
@@ -237,7 +237,7 @@ layout: rails_tutorial
       my_first_review.book = Book.first
       ```
 
-      That returned an error, didn't it 🙃
+      That returned an error, didn't it? 🙃
 
   1.  It might be hard to see, but you actually got a pretty useful error...
 
