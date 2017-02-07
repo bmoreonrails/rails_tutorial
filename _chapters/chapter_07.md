@@ -196,7 +196,7 @@ layout: rails_tutorial
 
   1.  We'll add the `button` CSS class to the form submission button to make it look like a...button.
 
-      Trust me, it'll be a reall good looking button 😉
+      Trust me, it'll be a really good looking button 😉
 
   1.  Change the `submit` button from
 
