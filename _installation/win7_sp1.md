@@ -97,9 +97,9 @@ WARNING: By following these instructions to manually update, you will be redirec
 
 **Once the installer is finished:**
 
-1. Swipe right and click on Start Menu
+1. Click on Start
 
-2. In the Start Menu, click or tap on All Apps (mouse over on the bottom left hand corner until your see the down arrow)
+2. Click on All Programs
 
 3. Scroll down to Ruby 2.3.1-p112
 
