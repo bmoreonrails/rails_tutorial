@@ -25,7 +25,7 @@ To get a mac ready for Ruby on Rails development, we need to do the following:
 1. install rails
 1. test it out
 
-We're going to do these tasks via the Terminal console, so if you aren't familiar with that, please read **this non-existent page** over first.
+We're going to do these tasks via the Terminal. To open Terminal, first go to your Applications directory. Then, open the Utilities directory. Once you're there, you should see the Terminal app. Double click it to open it.
 
 
 {% steps %}
