@@ -686,7 +686,7 @@ layout: rails_tutorial
 {% list %}
   1.  Now that we have all this security in place, log out and visit [http://localhost:3000](http://localhost:3000).
 
-      ![Wat]({{site.baseurl}}assets/images/full-house-o.gif)
+      ![Wat]({{site.baseurl}}/assets/images/full-house-o.gif)
 
       We made the `BooksController` a little *too* secure 😅
 

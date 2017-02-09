@@ -601,7 +601,7 @@ end
 {% list %}
   1.  Now that you have a fully functional `create` method, let's take it out for a spin!
 
-      ![Car flying away]({{site.baseurl}}/assests/images/Flyingcar.gif)
+      ![Car flying away]({{site.baseurl}}/assets/images/Flyingcar.gif)
 
   1.  Go to [http://localhost:3000/session/new](http://localhost:3000/session/new) and try logging in with an invalid username.
 
