@@ -5,6 +5,7 @@ $green: #69CBA2;
 $nav-bar-height: 40px;
 $nav-bar-progress-height: 10px;
 
+@import "tutorial/installation";
 @import "tutorial/footer";
 @import "tutorial/start-button";
 @import "tutorial/screenshot";
@@ -20,13 +21,13 @@ $nav-bar-progress-height: 10px;
 
 .content {
   padding-top: $nav-bar-height;
+  counter-reset: section;
   padding-left: 3em;
   padding-right: 3em;
   line-height: 1.5;
 }
 
 body {
-  counter-reset: section;
   overflow-x: hidden;
   font-weight: 300;
   font-family: 'Roboto', sans-serif;
