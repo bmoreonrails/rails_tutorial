@@ -19,7 +19,13 @@ $nav-bar-progress-height: 10px;
 @import "tutorial/section_header";
 @import "fonts";
 
+
+.container {
+  position: relative;
+}
 .content {
+  min-height: 100vh;
+  padding-bottom: 7em;
   padding-top: $nav-bar-height;
   counter-reset: section;
   padding-left: 3em;
