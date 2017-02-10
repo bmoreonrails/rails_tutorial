@@ -22,6 +22,8 @@ layout: rails_tutorial
   After you've typed the command, you'll press `enter` to execute it.
   
   To keep things simple, we'll refer to both *Terminal* and *Command Prompt* as Terminal in the tutorial.
+
+  **Windows users!** If you followed our [install instructions]({{site.baseurl}}/installation.html), you'll have to run `C:\RubyDevKit\devkitvars.bat` when you open the Command Prompt.
 {% endprotip%}
 
 {% steps %}
