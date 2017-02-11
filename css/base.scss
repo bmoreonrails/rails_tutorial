@@ -1,10 +1,6 @@
----
----
-
-$green: #69CBA2;
+--- --- $green: #69CBA2;
 $nav-bar-height: 40px;
 $nav-bar-progress-height: 10px;
-
 @import "tutorial/footer";
 @import "tutorial/start-button";
 @import "tutorial/screenshot";
@@ -17,41 +13,60 @@ $nav-bar-progress-height: 10px;
 @import "tutorial/list";
 @import "tutorial/section_header";
 @import "fonts";
-
 .content {
-  padding-top: $nav-bar-height;
-  padding-left: 3em;
-  padding-right: 3em;
-  line-height: 1.5;
+    padding-top: $nav-bar-height;
+    padding-left: 3em;
+    padding-right: 3em;
+    line-height: 1.5;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    height: 100%;
 }
 
 body {
-  counter-reset: section;
-  overflow-x: hidden;
-  font-weight: 300;
-  font-family: 'Roboto', sans-serif;
-  padding: 0;
-  margin: 0;
-  background-color: #F3F3F1;
-  color: #343C39;
+    counter-reset: section;
+    overflow-x: hidden;
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #F3F3F1;
+    color: #343C39;
+    >.container {
+        padding-bottom: 3em;
+    }
 }
 
 h3 {
-  margin: 0;
-  padding: 0;
-  font-size: 1em;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
-.highlight { background-color: #272822; }
-.highlight code { color: #FFFAF0; }
-
-@media (min-width: 480px) {
+.highlight {
+    background-color: #272822;
 }
 
-@media (min-width: 768px) {
+.highlight code {
+    color: #FFFAF0;
 }
 
-@media (min-width: 992px) {
-}
+@media (min-width: 480px) {}
+
+@media (min-width: 768px) {}
+
+@media (min-width: 992px) {}
