@@ -294,7 +294,7 @@ layout: rails_tutorial
 
   1.  To add a book, you start by visiting the new book page ([http://localhost:3000/books/new](http://localhost:3000/books/new)). When you get there, you see a form where you can enter data for the new book you want to add.
 
-      ![Browser showing new book page](screenshot.jpg)
+      ![Browser showing new book page]({{site.baseurl}}/assets/images/remember_new_book.png){: .screenshot}
 
       When you're done adding the data for the new book, you click on "Create Book" to add the new book.
 
