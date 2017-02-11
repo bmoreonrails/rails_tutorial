@@ -281,9 +281,7 @@ Feel free to check out this video to learn a bit more about Relational Databases
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Rails Default Root Page]({{ site.baseurl}}/assets/images/rails_yay.png)
-{% endscreenshot %}
+![Rails Default Root Page]({{ site.baseurl}}/assets/images/rails_yay.png){: .screenshot }
 
 {% steps %}
 {% list %}

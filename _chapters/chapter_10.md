@@ -179,6 +179,4 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing book details page with reviews]({{site.baseurl}}/assets/images/reviews_in_browser.png)
-{% endscreenshot %}
+![Browser showing book details page with reviews]({{site.baseurl}}/assets/images/reviews_in_browser.png){: .screenshot}
