@@ -60,9 +60,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing /books/1]({{site.baseurl}}/assets/images/bookstore_1_pre_delete.png)
-{% endscreenshot %}
+![Browser showing /books/1]({{site.baseurl}}/assets/images/bookstore_1_pre_delete.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -89,7 +87,7 @@ layout: rails_tutorial
       PUT    /books/:id(.:format)      books#update
       ```
 
-      Do you remember doing anything special to handle the different request type? Me neither 😊
+      Do you remember doing anything special to handle the different request type? Me neither. 😊
 
       You've been sending PATCH/PUT requests to update books thanks to `form_for`.
 
@@ -119,7 +117,7 @@ layout: rails_tutorial
 
       The button has a couple of styling rules. First, the button will be styled as a...`button`. We'll also want the button to stand out because it's potentially dangerous. (We don't want anyone to accidentally delete a book). To make it stand out, we'll add the `danger` class.
 
-  1.  Save your changes, and find a book you don't like. If you like all your books, find one you could live without 😝
+  1.  Save your changes, and find a book you don't like. If you like all your books, find one you could live without. 😝
 
       Once you've found that book, go to its details page in the browser. Find the "Delete Book" button and click it.
 {% endlist %}
@@ -151,17 +149,13 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing book details page with a red delete book button]({{site.baseurl}}/assets/images/new_delete_button.png)
-{% endscreenshot %}
+![Browser showing book details page with a red delete book button]({{site.baseurl}}/assets/images/new_delete_button.png){: .screenshot}
 
-{% screenshot %}
-![Browser showing Unknown action error: "The action 'destroy' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action_delete.png)
-{% endscreenshot %}
+![Browser showing Unknown action error: "The action 'destroy' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action_delete.png){: .screenshot}
 
 {% steps %}
 {% list %}
-  1.  Ahh, another `Unknown action` error. Feels just like home 😅
+  1.  Ahh, another `Unknown action` error. Feels just like home. 😅
 
   1.  Spend a few minutes to see if you can get past the `Unknown action` error. Instead of erroring, the button should do nothing.
 {% endlist %}

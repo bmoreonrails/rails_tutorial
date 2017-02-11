@@ -71,9 +71,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing Unknown action error: "The action 'new' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action_new.png)
-{% endscreenshot %}
+![Browser showing Unknown action error: "The action 'new' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action_new.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -116,9 +114,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing ActionController::UnknownFormat error: "BooksController#new is missing a template for this request format and variant."]({{site.baseurl}}/assets/images/UnknownFormat_in_BooksController_new.png)
-{% endscreenshot %}
+![Browser showing ActionController::UnknownFormat error: "BooksController#new is missing a template for this request format and variant."]({{site.baseurl}}/assets/images/UnknownFormat_in_BooksController_new.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -190,9 +186,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing Argument Error in Books#new: "First argument in form cannot contain nil or be empty"]({{site.baseurl}}/assets/images/argument_error_books_new.png)
-{% endscreenshot %}
+![Browser showing Argument Error in Books#new: "First argument in form cannot contain nil or be empty"]({{site.baseurl}}/assets/images/argument_error_books_new.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -407,7 +401,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  What does your solution look like? Your compelte form should look like this:
+  1.  What does your solution look like? Your complete form should look like this:
 
       ```erb
       <%= form_for(@book) do |f| %>
@@ -444,9 +438,7 @@ layout: rails_tutorial
 {% endlist %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing "/books/new" with a form full of fields]({{site.baseurl}}/assets/images/form.png)
-{% endscreenshot %}
+![Browser showing "/books/new" with a form full of fields]({{site.baseurl}}/assets/images/form.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -492,9 +484,7 @@ layout: rails_tutorial
 
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing "/books/new" with a form you can submit]({{site.baseurl}}/assets/images/form_with_button.png)
-{% endscreenshot %}
+![Browser showing "/books/new" with a form you can submit]({{site.baseurl}}/assets/images/form_with_button.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -514,9 +504,7 @@ layout: rails_tutorial
 {% endlist %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing "/books/new" with a form you can submit]({{site.baseurl}}/assets/images/unknown_action_create.png)
-{% endscreenshot %}
+![Browser showing "/books/new" with a form you can submit]({{site.baseurl}}/assets/images/unknown_action_create.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -554,7 +542,7 @@ layout: rails_tutorial
 
   1.  Does this make sense to you?
 
-      If it does, I'm impressed. I'm having a hard understanding it all 😅
+      If it does, I'm impressed. I'm having a hard time understanding it all. 😅
 
   1.  Don't worry if you don't understand everything that is going on. It will make more sense over time.
 
@@ -834,9 +822,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing ActiveModel::ForbiddenAttributesError in BooksController#create]({{site.baseurl}}/assets/images/ForbiddenAttribute_Error.png)
-{% endscreenshot %}
+![Browser showing ActiveModel::ForbiddenAttributesError in BooksController#create]({{site.baseurl}}/assets/images/ForbiddenAttribute_Error.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -926,9 +912,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing book index with link to "Add a book"]({{site.baseurl}}/assets/images/add_book_button.png)
-{% endscreenshot %}
+![Browser showing book index with link to "Add a book"]({{site.baseurl}}/assets/images/add_book_button.png){: .screenshot}
 
 {% steps %}
 {% list %}

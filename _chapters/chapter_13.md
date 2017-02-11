@@ -100,9 +100,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing Routing Error: "uninitialized constant SessionsController"]({{site.baseurl}}/assets/images/uninitialized_constant_sessions.png)
-{% endscreenshot %}
+![Browser showing Routing Error: "uninitialized constant SessionsController"]({{site.baseurl}}/assets/images/uninitialized_constant_sessions.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -152,9 +150,7 @@ layout: rails_tutorial
 {% endlist %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing Unknown action error: "The action 'new' could not be found for SessionsController"]({{site.baseurl}}/assets/images/session_unknown_new_action.png)
-{% endscreenshot %}
+![Browser showing Unknown action error: "The action 'new' could not be found for SessionsController"]({{site.baseurl}}/assets/images/session_unknown_new_action.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -194,9 +190,7 @@ end
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing ActionController::UnknownFormat error: "SessionsController#new is missing a template for this request format and variant."]({{site.baseurl}}/assets/images/missing_template_sessions_new.png)
-{% endscreenshot %}
+![Browser showing ActionController::UnknownFormat error: "SessionsController#new is missing a template for this request format and variant."]({{site.baseurl}}/assets/images/missing_template_sessions_new.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -324,9 +318,7 @@ end
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing new session form]({{site.baseurl}}/assets/images/new_session_form.png)
-{% endscreenshot %}
+![Browser showing new session form]({{site.baseurl}}/assets/images/new_session_form.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -380,9 +372,7 @@ end
 {% endlist %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing Unknown action error: "The action 'create' could not be found for SessionsController"]({{site.baseurl}}/assets/images/unknown_create_session.png)
-{% endscreenshot %}
+![Browser showing Unknown action error: "The action 'create' could not be found for SessionsController"]({{site.baseurl}}/assets/images/unknown_create_session.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -601,7 +591,7 @@ end
 {% list %}
   1.  Now that you have a fully functional `create` method, let's take it out for a spin!
 
-      ![Car flying away]({{site.baseurl}}/assests/images/Flyingcar.gif)
+      ![Car flying away]({{site.baseurl}}/assets/images/Flyingcar.gif)
 
   1.  Go to [http://localhost:3000/session/new](http://localhost:3000/session/new) and try logging in with an invalid username.
 
@@ -611,9 +601,7 @@ end
 {% endlist %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing NoMethodError: "undefined method `authenticate' for nil:NilClass"]({{site.baseurl}}/assets/images/invalid_user_name_error.png)
-{% endscreenshot %}
+![Browser showing NoMethodError: "undefined method `authenticate' for nil:NilClass"]({{site.baseurl}}/assets/images/invalid_user_name_error.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -667,9 +655,7 @@ end
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing failure message when logging in with an invalid username]({{site.baseurl}}/assets/images/successful_invalid_username.png)
-{% endscreenshot %}
+![Browser showing failure message when logging in with an invalid username]({{site.baseurl}}/assets/images/successful_invalid_username.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -681,9 +667,7 @@ end
 {% endlist %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing success message when logging in]({{site.baseurl}}/assets/images/success_valid_login.png)
-{% endscreenshot %}
+![Browser showing success message when logging in]({{site.baseurl}}/assets/images/success_valid_login.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -776,13 +760,9 @@ end
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing homepage with a "Log Out" link]({{site.baseurl}}/assets/images/yay_logout_link.png)
-{% endscreenshot %}
+![Browser showing homepage with a "Log Out" link]({{site.baseurl}}/assets/images/yay_logout_link.png){: .screenshot}
 
-{% screenshot %}
-![Browser showing Unknown action error: "The action 'destroy' could not be found for SessionsController"]({{site.baseurl}}/assets/images/logout_destroy_unknown.png)
-{% endscreenshot %}
+![Browser showing Unknown action error: "The action 'destroy' could not be found for SessionsController"]({{site.baseurl}}/assets/images/logout_destroy_unknown.png){: .screenshot}
 
 {% steps %}
 {% list %}

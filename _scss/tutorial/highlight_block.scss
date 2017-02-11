@@ -18,7 +18,8 @@
 @media (min-width: 768px) {
   .steps {
       > .highlight {
-         width: 50%;
+          width: calc(50%);
+          padding: 2em; 
       }
     }
 }

@@ -4,6 +4,10 @@ number: 15
 title: Associating Reviews with Users
 layout: rails_tutorial
 ---
+{% sectionheader %}
+  {{ page.title }}
+{% endsectionheader %}
+
 
 {% aside %}
   Now that you can keep track of logged in users, you can keep track of their actions. A great example where this could be useful is with your reviews. Wouldn't it be nice to know which users are leaving which reviews?
@@ -85,9 +89,9 @@ layout: rails_tutorial
 {% endlist %}
 
 {% highlight ruby %}
-  › pwd
+  $ pwd
   /Users/awesomesauce/Projects/bookstore
-  › rails console
+  $ rails console
   Loading development environment (Rails 5.0.0.1)
 
   >> my_first_user = User.first
@@ -117,7 +121,7 @@ layout: rails_tutorial
 {% endlist %}
 
 {% highlight shell %}
-  › rails generate migration add_user_id_to_reviews
+  $ rails generate migration add_user_id_to_reviews
         invoke  active_record
         create    db/migrate/20170124223830_add_user_id_to_reviews.rb
 {% endhighlight %}
@@ -180,37 +184,13 @@ layout: rails_tutorial
 
   1.  Assign your first user to a variable called `my_first_user`.
 
-  1.  Now, try running `my_first_user.reviews`.
+  1.  Now, try running `my_first_user.reviews`.  
 
       You get an empty collection because `my_first_user` doesn't have any reviews. Let's change that!
-
-  1.  Assign your first book to a variable called `my_first_book`.
-
-  1.  Now, run the following code to create a new review for `my_first_book` that will also be associated with `my_first_user`.
-
-      ```ruby
-      my_first_book.reviews.create(body: "This review was written by a user!", user_id: my_first_user.id)
-      ```
-
-      By running `my_first_book.reviews.create`, we're creating a new review for `my_first_book`.
-
-      On the new review, we're setting a `body` and a `user_id`. The `user_id` is set to `my_first_user`'s id so the review can be assigned to `my_first_user`.
-
-  1.  Now that `my_first_user` has a review, try running `my_first_user.reviews` again.
-
-      *I thought `my_first_user` would have reviews 😔*
-
-      But `my_first_user` *does* have reviews!
-
-      `my_first_user.reviews` is still returning an empty collection because `my_first_user` doesn't have the new data.
-
-      First, run `my_first_user.reload`. Then, you can run `my_first_user.reviews`.
-
-   1.  Yay! 🎉
 {% endlist %}
 
 {% highlight ruby %}
-  › rails console
+  $ rails console
   Loading development environment (Rails 5.0.0.1)
   >> my_first_user = User.first
     User Load (0.2ms)  SELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?  [["LIMIT", 1]]
@@ -220,7 +200,25 @@ layout: rails_tutorial
   >> my_first_user.reviews
     Review Load (0.1ms)  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ?  [["user_id", 1]]
   => #<ActiveRecord::Associations::CollectionProxy []>
+{% endhighlight %}
+{% endsteps %}
 
+{% steps %}
+{% list %}
+  1.  Assign your first book to a variable called `my_first_book`.
+
+  1.  Now, run the following code to create a new review for `my_first_book` that will also be associated with `my_first_user`.
+
+      ```ruby
+      my_first_book.reviews.create(body: "This review was written by a user!", user_id: my_first_user.id)
+      ```
+
+      On the new review, we're setting a `body` and a `user_id`.
+
+      By setting the `user_id` to `my_first_user`'s id, we'll know that the review belongs to `my_first_user`.
+{% endlist %}
+
+{% highlight ruby %}
   >> my_first_book = Book.first
     Book Load (0.3ms)  SELECT  "books".* FROM "books" ORDER BY "books"."id" ASC LIMIT ?  [["LIMIT", 1]]
   => #<Book id: 1, title: "why's (poignant) Guide to Ruby", author: "why the lucky stiff", price_cents: 100, created_at: "2016-12-26 15:51:15", updated_at: "2016-12-30 20:29:14", quantity: 500, description: "Chunky Bacon!">
@@ -230,7 +228,39 @@ layout: rails_tutorial
     SQL (1.4ms)  INSERT INTO "reviews" ("body", "created_at", "updated_at", "book_id", "user_id") VALUES (?, ?, ?, ?, ?)  [["body", "This review was written by a user!"], ["created_at", 2017-01-25 00:46:42 UTC], ["updated_at", 2017-01-25 00:46:42 UTC], ["book_id", 1], ["user_id", 1]]
      (1.4ms)  commit transaction
   => #<Review id: 8, body: "This review was written by a user!", created_at: "2017-01-25 00:46:42", updated_at: "2017-01-25 00:46:42", book_id: 1, user_id: 1>
+{% endhighlight %}
+{% endsteps %}
 
+{% steps %}
+{% list %}
+  1.  Now that `my_first_user` has a review, try running `my_first_user.reviews` again.
+
+      *I thought `my_first_user` would have reviews* 😔
+
+      But `my_first_user` *does* have reviews!
+
+  1.  Do you remember when you assigned the first user in your database to `my_first_user`?
+
+      ```ruby
+      my_first_user = User.first
+      ```
+
+      It's been a while - it was the first thing you did when you entered the `rails console`.
+
+      `my_first_user` is a variable, and it only knows about the data that existed when it was defined. Even though your first user now has a review in the database, the variable `my_first_user` doesn't know anything about it.
+
+  1.  To update `my_first_user` with the new review data, run:
+
+      ```ruby
+      my_first_user.reload
+      ```
+
+  1.  Now, try running `my_first_user.reviews`.
+
+      🎉
+{% endlist %}
+
+{% highlight ruby %}
   >> my_first_user.reviews
   => #<ActiveRecord::Associations::CollectionProxy []>
 
@@ -246,7 +276,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Now that your first user has a review, let's take a closer look at that review.
+  1.  Let's take a closer look at that new review.
 
   1.  Run the following code to assign the new review to a variable called `my_last_review`:
 
@@ -343,7 +373,7 @@ layout: rails_tutorial
 
   1.  Yayay!!!
 
-      ![YES!](https://media.tenor.co/images/8eec658600640ea3f7f2f583f156f5cc/raw "We should serve this file locally")
+      ![YES!]({{site.baseurl}}/assets/images/yes_triumph.gif)
 
   1.  Exit the `rails console`.
 {% endlist %}
@@ -365,19 +395,17 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
+{% aside %}
+  Now that we have a way to assign reviews to their users, let's update your bookstore so we always know who's leaving reviews.
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  Now that we have a way to assign reviews to their users, let's update your bookstore so we always know who's leaving reviews.
+  1.  Remember, we can assign a review to a user by setting the `user_id` on the review. But do you remember how users create reviews?
 
-  1.  Do you remember how reviews get created when users visit your bookstore?
+      Users create reviews by submitting forms to the `ReviewsController` `create` method. Let's take a look at it.
 
-      After a user has logged in, they can go to a book and click the "Add a Review" link. The link will take them to the new review page (`app/views/reviews/new.html.erb`).
-
-      Then, users write their reviews in the "Body" field of the new review form. When they're done, they submit the form and its data by clicking the "Create Review" button.
-
-      The form gets submitted to the `ReviewsController` `create` method. Let's take a look at it.
-
-  1.  In you text editor, open the `ReviewsController` (`app/controllers/reviews_controller.rb`) and take a look at the `create` method.
+  1.  In your text editor, open the `ReviewsController` (`app/controllers/reviews_controller.rb`) and find the `create` method.
 
       ```ruby
       def create
@@ -386,8 +414,19 @@ layout: rails_tutorial
         redirect_to book_path(book)
       end
       ```
+  1.  It's been a while since you added this method, so let's do a quick review.
 
-      In the `create` method, you first find the book that's being reviewed. After you get a hold of that book, you create a new review using `review_params`.
+      In the `create` method, you start by finding the book that's being reviewed.
+
+      ```ruby
+      book = Book.find(params[:book_id])
+      ```
+
+      Then, you create a new review for it using `review_params`.
+
+      ```ruby
+      book.reviews.create(review_params)
+      ```
 
       `review_params` is a method that defines which of the form's fields can be set on the new review.
 
@@ -397,13 +436,15 @@ layout: rails_tutorial
       end
       ```
 
-      You set it up so the form must submit a `review` hash, and the only field you're permitting in that hash is the `body` field.
+      Using strong parameters, you set up the `review_params` method so the form must submit a `review` hash. The only field you're permitting in that hash is the `body` field.
 
-  1.  *This is great and all, but what does it have to do with assigning reviews to their users?*
+  1.  Now, we need to update `review_params` so we can also set `user_id`.
 
-      Right now the only thing we can set on new reviews is a `body`. If we want assign reviews to their users, we also need to be able to set the new review's `user_id`.
+      *But how do we know what the `user_id` should be?*
 
-      This raises a couple of questions...
+      Only logged in users can create new reviews, and we know which user is logged in because their user id is saved in the session as `user_id`.
+
+      We'll have to change the `review_params` method so it lets us set `user_id` to the `user_id` saved in the session...
 {% endlist %}
 
 {% highlight ruby linenos %}
@@ -437,59 +478,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  What are some questions that come to mind?
-
-      One question I can think of is how do we know what the new review's `user_id` should be?
-
-      Well, logged in users are the only users who can create reviews, and we know when users are logged in!
-
-      When a user logs in, you save their id in the session hash as `user_id`.
-
-      ```ruby
-      class SessionsController < ApplicationController
-        ...
-
-        def create
-          user = User.find_by(username: params[:session][:username])
-
-          if user && user.authenticate(params[:session][:password])
-            ...
-            session[:user_id] = user.id
-            ...
-          end
-        end
-
-        ...
-      end
-      ```
-
-      The session hash is available in all your controllers, so we always know the logged in user's id.
-
-  1.  The next question I have is how are we going to set this thing?
-
-      🤔
-
-      What does the `ReviewsController` `create` method look like again?
-
-      ```ruby
-      def create
-        book = Book.find(params[:book_id])
-        book.reviews.create(review_params)
-        redirect_to book_path(book)
-      end
-      ```
-
-      Right. To create a new review for the book being reviewed, we do `book.reviews.create`. We're using `review_params` to decide which values can be set on the new review.
-
-      Maybe we should change `review_params`...
-{% endlist %}
-{% endsteps %}
-
-{% steps %}
-{% list %}
-  1.  Let's change the `ReviewsController` `review_params` method!
-
-      Change `review_params` from
+  1.  Change the `review_params` method from
 
       ```ruby
       def review_params
@@ -506,9 +495,11 @@ layout: rails_tutorial
       end
       ```
 
-      We still need to use strong parameters to permit the form fields that'll get set on the new review, but we'll assign them to a variable called `permitted_params`.
+      We're still using strong parameters to restrict which form fields can get set on a new review, but we'll assign them to a new variable called `permitted_params`.
 
-      Then, we'll use `merge` to add `user_id` to `permitted_params`. `user_id` will be set to `session[:user_id]`.
+      Then, we'll use the `merge` method to add `user_id` to `permitted_params`.
+
+      `user_id` will be set to `session[:user_id]`.
 
   1.  Save your changes and start your application's web server.
 
@@ -577,10 +568,12 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
+{% aside %}
+  Now that we know who's leaving reviews, let's share that information with your bookstore's visitors.
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  Now that we know who's leaving reviews, let's share that information with your bookstore's visitors.
-
   1.  Do you remember where reviews are shown?
 
       In your text editor, open `app/views/books/show.html.erb`.
@@ -660,3 +653,5 @@ layout: rails_tutorial
   <% end %>
 {% endhighlight %}
 {% endsteps %}
+
+![Browser showing the show page with reviews]({{site.baseurl}}/assets/images/reviews_with_reviewers.png){: .screenshot}

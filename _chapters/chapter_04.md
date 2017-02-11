@@ -61,7 +61,7 @@ layout: rails_tutorial
 
   1.  In the console, run `Book.first` to get the first book from your database.
 
-  1.  Take a look at the output. It might be see, but at the beginning there's an id.
+  1.  Take a look at the output. It might be hard to see, but at the beginning there's an id.
 
       ```shell
       #<Book id: 1, title: "why's (poignant) Guide to Ruby", ... >
@@ -134,9 +134,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing Unknown action error: "The action 'show' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action_error_show.png)
-{% endscreenshot %}
+![Browser showing Unknown action error: "The action 'show' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action_error_show.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -172,10 +170,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing ActionController::UnknownFormat error: "BooksController#show is missing a template for this request format and variant"]({{site.baseurl}}/assets/images/UnknownFormat_in_BooksController_show.png)
-
-{% endscreenshot %}
+![Browser showing ActionController::UnknownFormat error: "BooksController#show is missing a template for this request format and variant"]({{site.baseurl}}/assets/images/UnknownFormat_in_BooksController_show.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -286,9 +281,7 @@ layout: rails_tutorial
 {% endlist %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing "/books/1" with the request book's id]({{site.baseurl}}/assets/images/show_with_book_id.png)
-{% endscreenshot %}
+![Browser showing "/books/1" with the request book's id]({{site.baseurl}}/assets/images/show_with_book_id.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -472,9 +465,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser show "/books/1" as a definition list]({{site.baseurl}}/assets/images/definition_list_show.png)
-{% endscreenshot %}
+![Browser show "/books/1" as a definition list]({{site.baseurl}}/assets/images/definition_list_show.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -576,9 +567,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing "/books/1" with `number_to_currency(price_cents)`]({{site.baseurl}}/assets/images/pretty_price_show.png)
-{% endscreenshot %}
+![Browser showing "/books/1" with `number_to_currency(price_cents)`]({{site.baseurl}}/assets/images/pretty_price_show.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -633,9 +622,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing "/books/1" with a nicely formated price]({{site.baseurl}}/assets/images/but_its_in_cents_show.png)
-{% endscreenshot %}
+![Browser showing "/books/1" with a nicely formated price]({{site.baseurl}}/assets/images/but_its_in_cents_show.png){: .screenshot}
 
 {% aside %}
   We're making really good progress! Anyone can visit your bookstore to see what books you have, and they can learn a little about those books.
@@ -803,9 +790,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing "/books/1" with a lovely description of "why's (poignant) Guide to Ruby"]({{site.baseurl}}/assets/images/describing_in_show.png)
-{% endscreenshot %}
+![Browser showing "/books/1" with a lovely description of "why's (poignant) Guide to Ruby"]({{site.baseurl}}/assets/images/describing_in_show.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -859,6 +844,4 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing books index with all the links!]({{site.baseurl}}/assets/images/links_yay.png)
-{% endscreenshot %}
+![Browser showing books index with all the links!]({{site.baseurl}}/assets/images/links_yay.png){: .screenshot}

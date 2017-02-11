@@ -1,12 +1,18 @@
 ---
 ---
 
+
 $nav-bar-height: 60px;
+$green: #69CBA2;
 $nav-bar-progress-height: 10px;
 $white: #fff;
 $ruby: #CB65A1;
 $ruby-lite: #F291CB;
 
+
+@import "tutorial/installation";
+@import "tutorial/footer";
+@import "tutorial/start-button";
 @import "tutorial/screenshot";
 @import "tutorial/tutorial-button-group";
 @import "tutorial/aside";
@@ -26,20 +32,20 @@ $ruby-lite: #F291CB;
 }
 
 .content {
-  padding-top: $nav-bar-height;
-  padding-left: 3em;
-  padding-right: 3em;
-  line-height: 1.5;
+    padding-top: $nav-bar-height;
+    padding-left: 3em;
+    padding-right: 3em;
+    line-height: 1.5;
 }
 
-body {
-  overflow-x: hidden;
-  font-weight: 300;
-  font-family: 'Roboto', sans-serif;
-  padding: 0;
-  margin: 0;
-  background-color: #F3F3F1;
+html {
+  box-sizing: border-box;
 }
+
+*, *:before, *:after {
+  box-sizing:inherit;
+}
+
 
 a {
   color: $ruby;
@@ -59,13 +65,45 @@ a:hover {
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   color: $white;
+
+html, body {
+  height: 100%;
+
 }
 
-@media (min-width: 480px) {
+body {
+    counter-reset: section;
+    overflow-x: hidden;
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #F3F3F1;
+    color: #343C39;
+    >.container {
+        min-height: calc(100% - 5.3em); //magic number for sticky footer
+        padding-bottom: 3em;
+    }
 }
 
-@media (min-width: 768px) {
+h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
-@media (min-width: 992px) {
+.highlight {
+    background-color: #272822;
 }
+
+.highlight code {
+    color: #FFFAF0;
+}
+
+@media (min-width: 480px) {}
+
+@media (min-width: 768px) {}
+
+@media (min-width: 992px) {}

@@ -4,7 +4,7 @@ body.installation_guide .highlight {
   padding-bottom: 16px;
 }
 
-body.installation_guide img {
+body.installation_guide .content img {
   display: block;
   width: 70%;
   margin-left: auto;

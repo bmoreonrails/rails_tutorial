@@ -1,14 +1,12 @@
 .tutorial_nav.before_you_get_started_nav {
-  .menu {
-    cursor: default;
-  }
   .menu-title {
     padding-left: 10px;
   }
   ul.menu-links {
     display: inline-block;
     float: right;
-    padding: 0px;
+    padding-top: 5px;
+    margin: 0px;
     li {
       float: left;
     }
@@ -28,6 +26,7 @@
   margin: 0;
   float: left;
   background-color: #69CBA2;
+  z-index: 1; //stops steps numbers from floating on top of nav
 
   a {
     color: #FFF;

@@ -4,18 +4,22 @@ number: 14
 title: Logged In vs Logged Out Users
 layout: rails_tutorial
 ---
+{% sectionheader %}
+  {{ page.title }}
+{% endsectionheader %}
+
 
 {% aside %}
   You're logged out, but isn't it a little weird that you still see the "Log Out" link?
 
-  ![Browser showing bookstore after logging out. The "Log Out" link is still on the page.](screenshot.jpg)
+  ![Browser showing bookstore after logging out. The "Log Out" link is still on the page.]({{site.baseurl}}/assets/images/log_out_still.png){: .screenshot}
 
   Let's change that! We'll only show the "Log Out" link to users who are logged in.
 {% endaside %}
 
 {% steps %}
 {% list %}
-  1.  If we only want to show the "Log Out" link to logged in users, we first have to figure out if a user is logged in or not. Fortunately, we already have the parts in place to figure this out.
+  1.  If we only want to show the "Log Out" link to *logged in* users, we first have to figure out if a user is logged in or not. Fortunately, we already have the parts in place to figure this out.
 
   1.  After a user successfully logs in, you're saving their user id in the session. You did this in the `SessionsController` `create` method.
 
@@ -69,7 +73,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing homepage with "Welcome back, CatPower!" login message](screenshot.jpg)
+![Browser showing homepage with "Welcome back, CatPower!" login message]({{site.baseurl}}/assets/images/welcome_back_cat_power.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -132,7 +136,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing "Hi, my user id is 1" above the "Log Out" link](screenshot.jpg)
+![Browser showing "Hi, my user id is 1" above the "Log Out" link]({{site.baseurl}}/assets/images/hi_my_user_id.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -211,7 +215,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing "I'm not logged in"](screenshot.jpg)
+![Browser showing "I'm not logged in"]({{site.baseurl}}/assets/images/yay_logout_button.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -221,7 +225,7 @@ layout: rails_tutorial
 
   1.  In `app/views/layouts/application.html.erb`, replace "I'm not logged in" with a link labeled "Login". The link should go to the `new_session` path.
 
-      You have a couple of links in `app/views/layouts/application.html.erb`: a link to "My Super Rad Bookstore" and a link to "Log Out". Use these links as examples.
+      Use the other links in the template as examples.
 {% endlist %}
 {% endsteps %}
 
@@ -281,13 +285,13 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing "Log In" link](screenshot.jpg)
+![Browser showing "Log In" link]({{site.baseurl}}/assets/images/login_link.png){: .screenshot}
 
 {% steps %}
 {% list %}
   1.  If you're anything like me, you probably tried to log out just as soon as you logged in so you could see the link change back and forth.
 
-      ![Sure I did](http://gifsec.com/wp-content/uploads/GIF/2015/01/Yes-No-Not-Really-GIF.gif "We should serve this file locally")
+      ![Sure I did]({{site.baseurl}}/assets/images/Yes-No-Not-Really-GIF.gif)
 
       But if you're not like me, give it a try! You've got to appreciate the small things in life 😝
 
@@ -303,7 +307,9 @@ layout: rails_tutorial
 
       I can think of one - logged out users shouldn't be able to add books. This is *your* super rad bookstore after all. You don't want some random person to come along and start adding books to your bookstore.
 
-  1.  Open `app/views/books/index.html.erb` and find the "Add a book" link. Update the template so the "Add a book" link is only visible to logged in users. Logged out users shouldn't see anything.
+  1.  Open `app/views/books/index.html.erb` and find the "Add a book" link. 
+
+      Take some time and try updating the template so the "Add a book" link is only visible to logged in users. Logged out users shouldn't see anything.
 {% endlist %}
 {% endsteps %}
 
@@ -335,10 +341,10 @@ layout: rails_tutorial
 
       When you log out, the "Add a book" link will disappear...
 
-      ![Poof!](https://media.giphy.com/media/26ybw3KqnsxC3C4H6/giphy.gif "We should serve this file locally")
+      ![Poof!]({{site.baseurl}}/assets/images/poof.gif)
 {% endlist %}
 
-{% highlight erby linenos %}
+{% highlight erb linenos %}
   <h1>Welcome to My Super Rad Bookstore!</h1>
 
   <ul>
@@ -355,13 +361,13 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing homepage without "Add a book" link for logged out users](screenshot.jpg)
+![Browser showing homepage without "Add a book" link for logged out users]({{site.baseurl}}/assets/images/add_book_link_gone.png){: .screenshot}
 
 {% steps %}
 {% list %}
   1.  Can you think of other things logged out users shouldn't be able to do?
 
-      Right now, anyone can edit, review, or delete a book. I wouldn't want to give such broad powers to anyone in *my* super rad bookstore, and you shouldn't either!
+      Right now, if you go to a book's page, anyone can edit, review, or delete a book. I wouldn't want to give such broad powers to anyone in *my* super rad bookstore, and you shouldn't either!
 
   1.  Open `app/views/books/show.html.erb`. At the end of the template, you have links to edit a book and add a review. You also have a button to delete a book.
 
@@ -449,19 +455,19 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing book details page without action elements](screenshot.jpg)
+![Browser showing book details page without action elements]({{site.baseurl}}/assets/images/hide_buttons.png){: .screenshot}
 
 {% steps %}
 {% list %}
   1.  Alright, I think we've hidden everything we need to hide from logged out users. Your bookstore is super secure now, right?!
 
-      ![This cop thinks everything is fine](https://media.tenor.co/images/6f324f90b9720c8c2d8302529f771551/tenor.gif "We should serve this file locally")
+      ![This cop thinks everything is fine]({{site.baseurl}}/assets/images/tenor.gif)
 
-  1.  Log out and try going to [http://localhost:3000/books/new](http://localhost:3000/books/new).
+  1.  Make sure you're logged out and try going to [http://localhost:3000/books/new](http://localhost:3000/books/new).
 
       Anyone can add books!
 
-      ![No!](https://media.giphy.com/media/12XMGIWtrHBl5e/giphy.gif "We should serve this file localy")
+      ![No!]({{site.baseurl}}/assets/images/no.gif)
 
   1.  We made it more difficult for logged out users to mess with your bookstore, but that won't stop them if they can figure out the paths to go to.
 
@@ -549,7 +555,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing login page with alert to login before continuing](screenshot.jpg)
+![Browser showing login page with alert to login before continuing]({{site.baseurl}}/assets/images/oh_no_login.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -664,7 +670,7 @@ layout: rails_tutorial
 {% list %}
   1.  Now that we have all this security in place, log out and visit [http://localhost:3000](http://localhost:3000).
 
-      ![Wat](http://stream1.gifsoup.com/view4/3091736/full-house-o.gif "We should serve this file locally")
+      ![Wat]({{site.baseurl}}/assets/images/full-house-o.gif)
 
       We made the `BooksController` a little *too* secure 😅
 

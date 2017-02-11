@@ -62,9 +62,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing `/books/1/edit` with an Unknown action error: "The action 'edit' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action_edit.png)
-{% endscreenshot %}
+![Browser showing `/books/1/edit` with an Unknown action error: "The action 'edit' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action_edit.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -89,13 +87,11 @@ layout: rails_tutorial
 {% endlist %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing ActionController::UnknownFormat error: "BooksController#edit is missing a template for this request format and variant"]({{site.baseurl}}/assets/images/UnknownFormat_in_BooksController_edit.png)
-{% endscreenshot %}
+![Browser showing ActionController::UnknownFormat error: "BooksController#edit is missing a template for this request format and variant"]({{site.baseurl}}/assets/images/UnknownFormat_in_BooksController_edit.png){: .screenshot}
 
 {% steps %}
 {% list %}
-  1.  Did you guess you'd see an `ActionController::UnknownFormat` error? Me either 😅
+  1.  Did you guess you'd see an `ActionController::UnknownFormat` error? Me either. 😅
 
       However, you might have guessed that the request was going to error. You added the `edit` action to the `BooksController`, but it doesn't have a template to render.
 
@@ -221,9 +217,7 @@ layout: rails_tutorial
 {% endlist %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing "/books/1/edit" with a filled-in text_field for the book's title]({{site.baseurl}}/assets/images/edit_field_for_title.png)
-{% endscreenshot %}
+![Browser showing "/books/1/edit" with a filled-in text_field for the book's title]({{site.baseurl}}/assets/images/edit_field_for_title.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -311,9 +305,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing "/books/1/edit" with a form but no button]({{site.baseurl}}/assets/images/all_the_edit_fields.png)
-{% endscreenshot %}
+![Browser showing "/books/1/edit" with a form but no button]({{site.baseurl}}/assets/images/all_the_edit_fields.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -366,13 +358,10 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing "/books/1/edit" with a submit button]({{site.baseurl}}/assets/images/update_form_with_button.png)
-{% endscreenshot %}
+![Browser showing "/books/1/edit" with a submit button]({{site.baseurl}}/assets/images/update_form_with_button.png){: .screenshot}
 
-{% screenshot %}
-![Browser showing Unknown action error: "The action 'update' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action_update.png)
-{% endscreenshot %}
+![Browser showing Unknown action error: "The action 'update' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action_update.png){: .screenshot}
+
 {% steps %}
 {% list %}
   1.  We've been through this drill before...
@@ -416,7 +405,7 @@ layout: rails_tutorial
 {% list %}
   1.  Nothing happened!
 
-      The form is being submitted to the `BooksController` `update` method, and the method is...empty. I think I'd be more surprised if something *did* happen 😉
+      The form is being submitted to the `BooksController` `update` method, and the method is...empty. I think I'd be more surprised if something *did* happen. 😉
 
       The `update` method should probably do something. Maybe it should update the book.
 

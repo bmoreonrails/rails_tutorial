@@ -21,7 +21,7 @@ end
 
 Liquid::Template.register_tag('aside', ClassBlock)
 Liquid::Template.register_tag('protip', ClassBlock)
-Liquid::Template.register_tag('screenshot', ClassBlock)
 Liquid::Template.register_tag('sectionheader', ClassBlock)
 Liquid::Template.register_tag('steps', ClassBlock)
 Liquid::Template.register_tag('list', ClassBlock)
+

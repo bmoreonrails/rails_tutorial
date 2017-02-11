@@ -1,8 +1,9 @@
 .aside {
   background-color: #D8DDDE; 
   padding: 1em 2em;
-  margin-top: 1em;
-  margin-bottom: 2em;
+  margin: 0 0 6em;
+  text-align: center;
+
   img {
     display: block;
     margin: auto;
@@ -10,6 +11,15 @@
   iframe {
     display: block;
     margin: auto;
+  }
+
+  code {
+    color: #B32A2A;
+  }
+
+  .highlight {
+    text-align: left;
+    padding: .75em;
   }
 }
 
