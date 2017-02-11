@@ -1,6 +1,12 @@
---- --- $green: #69CBA2;
+---
+---
+
+$green: #69CBA2;
 $nav-bar-height: 40px;
 $nav-bar-progress-height: 10px;
+
+
+@import "tutorial/installation";
 @import "tutorial/footer";
 @import "tutorial/start-button";
 @import "tutorial/screenshot";
@@ -13,6 +19,7 @@ $nav-bar-progress-height: 10px;
 @import "tutorial/list";
 @import "tutorial/section_header";
 @import "fonts";
+
 .content {
     padding-top: $nav-bar-height;
     padding-left: 3em;
@@ -21,18 +28,15 @@ $nav-bar-progress-height: 10px;
 }
 
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-*,
-*:before,
-*:after {
-    box-sizing: inherit;
+*, *:before, *:after {
+  box-sizing:inherit;
 }
 
-html,
-body {
-    height: 100%;
+html, body {
+  height: 100%;
 }
 
 body {

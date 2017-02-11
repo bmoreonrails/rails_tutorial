@@ -1,6 +1,6 @@
 ---
 url: mac_os.html
-title: Installation on Mac OS X
+title: Installation on macOS 
 layout: rails_installation
 ---
 
@@ -18,31 +18,32 @@ In order to successfully follow these installation instructions, you must have t
 To check the version of your Mac OS X, go to the &#63743; menu and select "About This Mac".
 {% endprotip %}
 
-To get a mac ready for Ruby on Rails development, we need to do the following:
+{% steps %}
+{% list %}
+## Open Terminal  
+We're going to do these tasks via the Terminal. 
 
-1. install command-line tools (XCode)
-1. install ruby
-1. install rails
-1. test it out
-
-We're going to do these tasks via the Terminal console, so if you aren't familiar with that, please read **this non-existent page** over first.
-
+To open Terminal, first go to your Applications directory. Then, open the Utilities directory. Once you're there, you should see the Terminal app. Double click it to open it.
+{% endlist %}
+{% endsteps %}
 
 {% steps %}
 {% list %}
 ## Install Command-line tools
 
-When you are installing ruby and ruby gems (libraries), your system will often need to compile code for you.  The compilers for this can be installed with XCode, the development tool suite for native macOs development.  You can install the full version of XCode if you plan on doing any macOS or iOS development, but for this tutorial, you only need to install the development tool suite.
+When you are installing ruby and ruby gems (libraries), your system will often need to compile code for you.  The compilers for this can be installed with XCode, the development tool suite for native macOs development.  
 
-*NB: While at the workshop, please only install the development tool suite, since the full version of XCode will take a lot of time to download.*
+For this tutorial, you only need to install XCode's command line tools.
 
-If you aren't sure if you need this, try typing `gcc` in a terminal window. (`gcc` is the name of the compiler and stands for GNU Compiler Collection). If you receive the below dialog saying the "gcc" tool needs to be installed, click "Install".
+If you aren't sure if you need this, try typing `gcc` in a terminal window. (`gcc` is the name of the compiler and stands for GNU Compiler Collection). 
+
+If you receive the below dialog saying the "gcc" tool needs to be installed, click "Install".
 
 ![Install command line tools now?]({{ site.baseurl}}/assets/images/install_tools_now_dialog.png)
 
-*Alternatively*, if you get the message, `-bash: gcc: command not found`, or if you cancel out of the dialog, install the command-line tools with this command: `xcode-select --install`
+**Alternatively**, if you get the message, `-bash: gcc: command not found`, or if you cancel out of the dialog, install the command-line tools with this command: `xcode-select --install`
 
-*Note that this will download the command-line tools and install them.  Once installed, `gcc -version` should print out some information about the compiler.*
+This will download the command-line tools and install them.  Once installed, `gcc -version` should print out some information about the compiler.
 {% endlist %}
 {% highlight bash %}
 $ gcc --version
@@ -63,10 +64,14 @@ InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault
 # Install Homebrew
 Homebrew allows you to install and manage applications through your terminal, and it's what we'll be using to download RVM.
 
-After you type in the command, the script will show what you're downloading and then ask for your computer password. Enter in your computer password when prompted. (Note: You won't be able to see your password. So just hit enter when you're done!)
+To do this, you'll need to go to [Homebrew's website](http://brew.sh/) and copy and past the command that is given into your terminal prompt. 
+
+This command uses [curl](https://en.wikipedia.org/wiki/CURL) which is a command line tool for downloading information over the internet from your terminal. Normally this would not be advised but Homebrew is a very reputible source and used by millions of engineers around the world. So - trust us on this one :-)  
+
+After you type in the command, the script will show what you're downloading and then ask for your computer password. Enter in your computer password when prompted. Note that you'r password will not show up when you type it - that's normal. Just type it and press enter. 
 {% endlist %}
 {% highlight bash %}
-$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+$ /usr/bin/ruby -e "$(curl -fsSL https://raw....)"
 
 # ==> This script will install:
 # /usr/local/bin/brew
@@ -104,22 +109,33 @@ $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/inst
 {% steps %}
 {% list %}
 ## Install RVM
-The [Ruby Version Manager (rvm)](http://rvm.io/) will allow you to install different versions of ruby on your machine and switch between them as you switch from one job to another. [Learn why RVM is useful here](https://code.tutsplus.com/articles/why-you-should-use-rvm--net-19529).
+The [Ruby Version Manager (rvm)](http://rvm.io/) will allow you to install different versions of ruby on your machine and switch between them as you switch from one project to another. [Learn why RVM is useful here](https://code.tutsplus.com/articles/why-you-should-use-rvm--net-19529).
 
 {% protip %}
-Note, if you already have the `rbenv` ruby manager installed, do not install `rvm` (they don't play nice together!). You can check by typing `rbenv --version` in your terminal.
+Note, if you already have the `rbenv` ruby manager installed, do not install `rvm` (they don't play nice together!). 
+
+You can check by typing `rbenv --version` in your terminal.
 {% endprotip %}
 
 To install rvm, open a terminal window and run the following commands (copied directly off of the RVM website).
 
-Once install RVM via `\curl -sSL https://get.rvm.io | bash -s stable`, RVM will say:
+`brew install gpg`
+
+`gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3`
+
+`\curl -sSL https://get.rvm.io | bash -s stable`
+
+`source /Users/[Computer Username]/.rvm/scripts/rvm`
+
+Once installed RVM will say:
 ```
 Installation of RVM in /Users/[Computer Username]/.rvm/ is almost complete:
 
 * To start using RVM you need to run `source /Users/[Computer Username]/.rvm/scripts/rvm`
   in all your open shell windows, in rare cases you need to reopen all shell windows.
 ```
-Copy the following command `source /Users/[Computer Username]/.rvm/scripts/rvm`, and you'll be able to install ruby!
+Follow those instructions and copy the command and past into your terminal and press enter.
+Now you'll be able to install Ruby!
 
 {% endlist %}
 {% highlight bash %}
@@ -136,7 +152,7 @@ $ source /Users/[Computer Username]/.rvm/scripts/rvm # check what's outputted fr
 
 {% steps %}
 {% list %}
-# Install Ruby 2.3.1
+## Install Ruby 2.3.1
 Now that you have RVM installed, you can use it to install Ruby.  You simply call `rvm install <version>`.  Let's install the latest version (as of 12/3/2016), v2.3.1.
 
 To verify you're using the correct Ruby version, type `ruby -v`. You should have 2.3.1 as the version.
@@ -205,12 +221,9 @@ After you type all the commands, you should see Rails starting up at the start o
 {% aside %}
 If you see the output above, rails is running and you can point your browser at http://localhost:3000 and you should see this:
 
+{% screenshot %}
 ![Yay! You're on Rails!]({{ site.baseurl}}/assets/images/youre_on_rails.png)
+{% endscreenshot %}
 
 This is not the directory you'll be using in the tutorial. To remove this simply type `rm -rf test_rails`.
 {% endaside %}
-
-{% protip %}
-Don't forget to check out some cool [development tools]({{site.baseurl}}/installation/dev_tools/)!
-
-{% endprotip %}
