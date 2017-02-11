@@ -108,9 +108,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing Routing Error: "uninitialized constant BooksController"]({{ site.baseurl}}/assets/images/uninitialized_constant_BooksController.png)
-{% endscreenshot %}
+![Browser showing Routing Error: "uninitialized constant BooksController"]({{ site.baseurl}}/assets/images/uninitialized_constant_BooksController.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -155,16 +153,11 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-{% endscreenshot %}
-
 {% aside %}
 Now you got a `LoadError` because `BooksController` isn't defined.
 
-{% screenshot %}
 ![Browser showing LoadError: "LoadError in BooksController#index
-  Unable to autoload constant BooksController, expected /Users/awesomesauce/Projects/bookstore/app/controllers/books_controller.rb to define it"]({{site.baseurl}}/assets/images/LoadError_in_BooksController_index.png)
-{% endscreenshot %}
+  Unable to autoload constant BooksController, expected /Users/awesomesauce/Projects/bookstore/app/controllers/books_controller.rb to define it"]({{site.baseurl}}/assets/images/LoadError_in_BooksController_index.png){: .screenshot}
 
 Remember the `touch` command you used to create the `BooksController`?
 
@@ -211,9 +204,7 @@ end
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing Unknown action error: "The action 'index' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action.png)
-{% endscreenshot%}
+![Browser showing Unknown action error: "The action 'index' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -288,9 +279,7 @@ end
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing ActionController::UnknownFormat error: "ActionController::UnknownFormat in BooksController#index - BooksController#index is missing a template for this request format and variant."]({{site.baseurl}}/assets/images/ActionController_UnknownFormat.png)
-{% endscreenshot %}
+![Browser showing ActionController::UnknownFormat error: "ActionController::UnknownFormat in BooksController#index - BooksController#index is missing a template for this request format and variant."]({{site.baseurl}}/assets/images/ActionController_UnknownFormat.png){: .screenshot}
 
 {% aside %}
 ### Progress!
@@ -373,10 +362,7 @@ Let's make that happen!
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing the index page rendering your html"]({{site.baseurl}}/assets/images/welcome_to_my_super_rad_bookstore.png)
-
-{% endscreenshot %}
+![Browser showing the index page rendering your html"]({{site.baseurl}}/assets/images/welcome_to_my_super_rad_bookstore.png){: .screenshot}
 
 {% aside %}
 ### Listing All the Things
@@ -435,9 +421,7 @@ Since we're dealing with the `BooksController`, this `index` action is going to 
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing /books view with the application's first book title]({{site.baseurl}}/assets/images/book_list_1.png)
-{% endscreenshot %}
+![Browser showing /books view with the application's first book title]({{site.baseurl}}/assets/images/book_list_1.png){: .screenshot}
 
 {% aside %}
 Your application's data might be a little different than mine, but you're probably seeing the title to *MY* favorite book. Yippie!
@@ -490,9 +474,7 @@ Let's focus on that funny looking syntax for a few minutes.
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing /books view with the application's first book title]({{site.baseurl}}/assets/images/book_list_2.png)
-{% endscreenshot %}
+![Browser showing /books view with the application's first book title]({{site.baseurl}}/assets/images/book_list_2.png){: .screenshot}
 
 {% aside %}
 You're seeing a different book title, aren't you?
@@ -580,9 +562,7 @@ I bet you could get all the books to render on the `index` template...
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing /books view with the application's first book title]({{site.baseurl}}/assets/images/book_list_3.png)
-{% endscreenshot %}
+![Browser showing /books view with the application's first book title]({{site.baseurl}}/assets/images/book_list_3.png){: .screenshot}
 
 {% aside %}
 Yay! Book titles!
@@ -810,9 +790,7 @@ ERB templates are available in all Rails applications. Any file that ends in `.h
 {% endlist %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing /books view with two unordered lists]({{site.baseurl}}/assets/images/book_list_4.png)
-{% endscreenshot %}
+![Browser showing /books view with two unordered lists]({{site.baseurl}}/assets/images/book_list_4.png){: .screenshot}
 
 {% steps %}
 {% list %}

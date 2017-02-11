@@ -221,9 +221,7 @@ After you type all the commands, you should see Rails starting up at the start o
 {% aside %}
 If you see the output above, rails is running and you can point your browser at http://localhost:3000 and you should see this:
 
-{% screenshot %}
-![Yay! You're on Rails!]({{ site.baseurl}}/assets/images/youre_on_rails.png)
-{% endscreenshot %}
+![Yay! You're on Rails!]({{ site.baseurl}}/assets/images/youre_on_rails.png){: .screenshot}
 
 This is not the directory you'll be using in the tutorial. To remove this simply type `rm -rf test_rails`.
 {% endaside %}

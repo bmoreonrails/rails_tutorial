@@ -138,9 +138,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing Routing Error: "uninitialized constant ReviewsController"]({{site.baseurl}}/assets/images/review_controller_routing_error.png)
-{% endscreenshot %}
+![Browser showing Routing Error: "uninitialized constant ReviewsController"]({{site.baseurl}}/assets/images/review_controller_routing_error.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -194,9 +192,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing Unknown action error: "The action 'new' could not be found for ReviewsController"]({{site.baseurl}}/assets/images/reviews_new.png)
-{% endscreenshot %}
+![Browser showing Unknown action error: "The action 'new' could not be found for ReviewsController"]({{site.baseurl}}/assets/images/reviews_new.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -228,9 +224,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing ActionController::UnknownFormat error: "ReviewsController#new is missing a template for this request format and variant."]({{site.baseurl}}/assets/images/missing_reviews_template.png)
-{% endscreenshot %}
+![Browser showing ActionController::UnknownFormat error: "ReviewsController#new is missing a template for this request format and variant."]({{site.baseurl}}/assets/images/missing_reviews_template.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -447,9 +441,7 @@ layout: rails_tutorial
 
   1.  For some reason, that doesn't work. This solution leads to an error...
 
-      {% screenshot %}
-      ![Browser showing NoMethodError in Reviews#new: "undefined method `reviews_path'"]({{site.baseurl}}/assets/images/new_review_unknown_path.png)
-      {% endscreenshot %}
+      ![Browser showing NoMethodError in Reviews#new: "undefined method `reviews_path'"]({{site.baseurl}}/assets/images/new_review_unknown_path.png){: .screenshot}
 
   1.  This is a tricky error, but the gist of it is that we have an undefined method for `reviews_path`.
 
@@ -522,9 +514,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing an Unknown action error when trying to add a review]({{site.baseurl}}/assets/images/unknownaction_create.png)
-{% endscreenshot %}
+![Browser showing an Unknown action error when trying to add a review]({{site.baseurl}}/assets/images/unknownaction_create.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -600,9 +590,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing ActiveModel::ForbiddenAttributesError in ReviewsController#create]({{site.baseurl}}/assets/images/reviews_forbidden.png)
-{% endscreenshot %}
+![Browser showing ActiveModel::ForbiddenAttributesError in ReviewsController#create]({{site.baseurl}}/assets/images/reviews_forbidden.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -854,6 +842,4 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing book details page with a link to "Add a Review"]({{site.baseurl}}/assets/images/review_button.png)
-{% endscreenshot %}
+![Browser showing book details page with a link to "Add a Review"]({{site.baseurl}}/assets/images/review_button.png){: .screenshot}

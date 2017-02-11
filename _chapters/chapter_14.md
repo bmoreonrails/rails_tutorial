@@ -12,9 +12,7 @@ layout: rails_tutorial
 {% aside %}
   You're logged out, but isn't it a little weird that you still see the "Log Out" link?
 
-  {% screenshot %}
-  ![Browser showing bookstore after logging out. The "Log Out" link is still on the page.]({{site.baseurl}}/assets/images/log_out_still.png)
-  {% endscreenshot %}
+  ![Browser showing bookstore after logging out. The "Log Out" link is still on the page.]({{site.baseurl}}/assets/images/log_out_still.png){: .screenshot}
 
   Let's change that! We'll only show the "Log Out" link to users who are logged in.
 {% endaside %}
@@ -75,9 +73,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing homepage with "Welcome back, CatPower!" login message]({{site.baseurl}}/assets/images/welcome_back_cat_power.png)
-{% endscreenshot %}
+![Browser showing homepage with "Welcome back, CatPower!" login message]({{site.baseurl}}/assets/images/welcome_back_cat_power.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -140,9 +136,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing "Hi, my user id is 1" above the "Log Out" link]({{site.baseurl}}/assets/images/hi_my_user_id.png)
-{% endscreenshot %}
+![Browser showing "Hi, my user id is 1" above the "Log Out" link]({{site.baseurl}}/assets/images/hi_my_user_id.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -221,9 +215,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing "I'm not logged in"]({{site.baseurl}}/assets/images/yay_logout_button.png)
-{% endscreenshot %}
+![Browser showing "I'm not logged in"]({{site.baseurl}}/assets/images/yay_logout_button.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -293,9 +285,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing "Log In" link]({{site.baseurl}}/assets/images/login_link.png)
-{% endscreenshot %}
+![Browser showing "Log In" link]({{site.baseurl}}/assets/images/login_link.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -371,9 +361,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing homepage without "Add a book" link for logged out users]({{site.baseurl}}/assets/images/add_book_link_gone.png)
-{% endscreenshot %}
+![Browser showing homepage without "Add a book" link for logged out users]({{site.baseurl}}/assets/images/add_book_link_gone.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -467,9 +455,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing book details page without action elements]({{site.baseurl}}/assets/images/hide_buttons.png)
-{% endscreenshot %}
+![Browser showing book details page without action elements]({{site.baseurl}}/assets/images/hide_buttons.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -569,9 +555,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing login page with alert to login before continuing]({{site.baseurl}}/assets/images/oh_no_login.png)
-{% endscreenshot %}
+![Browser showing login page with alert to login before continuing]({{site.baseurl}}/assets/images/oh_no_login.png){: .screenshot}
 
 {% steps %}
 {% list %}

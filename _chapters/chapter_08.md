@@ -60,9 +60,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing /books/1]({{site.baseurl}}/assets/images/bookstore_1_pre_delete.png)
-{% endscreenshot %}
+![Browser showing /books/1]({{site.baseurl}}/assets/images/bookstore_1_pre_delete.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -151,13 +149,9 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing book details page with a red delete book button]({{site.baseurl}}/assets/images/new_delete_button.png)
-{% endscreenshot %}
+![Browser showing book details page with a red delete book button]({{site.baseurl}}/assets/images/new_delete_button.png){: .screenshot}
 
-{% screenshot %}
-![Browser showing Unknown action error: "The action 'destroy' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action_delete.png)
-{% endscreenshot %}
+![Browser showing Unknown action error: "The action 'destroy' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action_delete.png){: .screenshot}
 
 {% steps %}
 {% list %}

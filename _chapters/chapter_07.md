@@ -182,9 +182,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing styled books index]({{site.baseurl}}/assets/images/add_styles.png)
-{% endscreenshot %}
+![Browser showing styled books index]({{site.baseurl}}/assets/images/add_styles.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -249,9 +247,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing new book page with a styled button]({{site.baseurl}}/assets/images/add_a_book_button.png)
-{% endscreenshot %}
+![Browser showing new book page with a styled button]({{site.baseurl}}/assets/images/add_a_book_button.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -293,9 +289,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing book details page with styled edit link]({{site.baseurl}}/assets/images/show_edit_button_css.png)
-{% endscreenshot %}
+![Browser showing book details page with styled edit link]({{site.baseurl}}/assets/images/show_edit_button_css.png){: .screenshot}
 
 {% steps %}
 {% list %}
@@ -342,9 +336,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing book edit page with styled update button]({{site.baseurl}}/assets/images/edit_button_css.png)
-{% endscreenshot %}
+![Browser showing book edit page with styled update button]({{site.baseurl}}/assets/images/edit_button_css.png){: .screenshot}
 
 {% aside %}
   Your bookstore looks sooooo purrdy 😍
@@ -423,9 +415,7 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing the books index as the bookstore's homepage]({{site.baseurl}}/assets/images/books_as_index.png)
-{% endscreenshot %}
+![Browser showing the books index as the bookstore's homepage]({{site.baseurl}}/assets/images/books_as_index.png){: .screenshot}
 
 {% steps %}
 {% list %}
