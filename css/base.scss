@@ -45,6 +45,7 @@ body {
     background-color: #F3F3F1;
     color: #343C39;
     >.container {
+        min-height: calc(100% - 5.3em); //magic number for sticky footer
         padding-bottom: 3em;
     }
 }
