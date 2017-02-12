@@ -43,7 +43,7 @@ If you receive the below dialog saying the "gcc" tool needs to be installed, cli
 
 **Alternatively**, if you get the message, `-bash: gcc: command not found`, or if you cancel out of the dialog, install the command-line tools with this command: `xcode-select --install`
 
-This will download the command-line tools and install them.  Once installed, `gcc -version` should print out some information about the compiler.
+This will download the command-line tools and install them.  Once installed, `gcc --version` should print out some information about the compiler.
 {% endlist %}
 {% highlight bash %}
 $ gcc --version
