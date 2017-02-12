@@ -4,8 +4,9 @@
 
 @media (min-width: 480px) {
   .screenshot {
+    display: block;
     max-width: 600px;
-    margin-left: 25%;
+    margin-left: auto;
     margin-right: auto;
   }
 }
