@@ -6,8 +6,7 @@ $nav-bar-height: 60px;
 $green: #69CBA2;
 $nav-bar-progress-height: 10px;
 $white: #fff;
-$ruby: #CB65A1;
-$ruby-lite: #F291CB;
+$ruby: #8B0000;
 
 
 @import "tutorial/installation";
@@ -51,12 +50,10 @@ a {
   color: $ruby;
 }
 
-a:hover {
-  color: $ruby-lite;
+div[class^="language-"] {
+  background-color: white;
 }
 
-.highlight { background-color: #272822; }
-.highlight code { color: #FFFAF0; }
 .highlighter-rouge {
   margin: 0 2px;
   padding: 2px 4px;
@@ -65,6 +62,7 @@ a:hover {
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   color: $white;
+}
 
 html, body {
   height: 100%;

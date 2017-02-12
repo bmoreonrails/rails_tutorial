@@ -31,6 +31,10 @@
   a {
     color: #FFF;
     text-decoration: none;
+    &:hover {
+      color: $ruby;
+      text-decoration: none;
+    }
   }
 
   .menu {
