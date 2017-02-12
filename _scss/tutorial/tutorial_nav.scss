@@ -33,6 +33,10 @@
     text-decoration: none;
   }
 
+  a:hover {
+    text-decoration: underline;
+  }
+
   .menu {
     font-size: 1.4em;
     cursor: pointer;
@@ -56,9 +60,6 @@
   ul {
     display: none;
     list-style: none;
-    a:hover {
-      text-decoration: underline;
-    }
   }
 
   .progress {

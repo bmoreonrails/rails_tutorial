@@ -1,5 +1,6 @@
 ---
 layout: rails_installation
+title: Choosing Your System
 ---
 
 {% sectionheader %}
