@@ -20,8 +20,11 @@ layout: rails_tutorial
   * If you're on Windows, you'll type the command into *Command Prompt*.
 
   After you've typed the command, you'll press `enter` to execute it.
-  
+
   To keep things simple, we'll refer to both *Terminal* and *Command Prompt* as Terminal in the tutorial.
+{% wintip %}
+**Window Users:** If you see a block like this, pay attention to it! Some commands differ from Macs. It won't happen a lot, but when it does, it's important.
+{% endwintip %}
 {% endprotip%}
 
 {% steps %}
@@ -74,6 +77,10 @@ layout: rails_tutorial
       ```shell
       rails new bookstore
       ```
+
+{% wintip %}
+**Window Users:** Use the command `rails new --skip-spring --skip-listen bookstore` to create your rails app. (If you don't skip spring/listen, your rails app won't start!)
+{% endwintip %}
 
   1.  After `rails new` finishes, run `cd bookstore` to navigate into the newly created bookstore application.
 
@@ -321,6 +328,3 @@ Are you ready?!
 
 ![Yes!]({{ site.baseurl }}/assets/images/yes.gif)
 {% endaside %}
-
-
-
