@@ -654,6 +654,4 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% screenshot %}
-![Browser showing the show page with reviews]({{site.baseurl}}/assets/images/reviews_with_reviewers.png)
-{% endscreenshot %}
+![Browser showing the show page with reviews]({{site.baseurl}}/assets/images/reviews_with_reviewers.png){: .screenshot}

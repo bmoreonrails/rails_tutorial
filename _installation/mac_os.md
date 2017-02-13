@@ -43,7 +43,7 @@ If you receive the below dialog saying the "gcc" tool needs to be installed, cli
 
 **Alternatively**, if you get the message, `-bash: gcc: command not found`, or if you cancel out of the dialog, install the command-line tools with this command: `xcode-select --install`
 
-This will download the command-line tools and install them.  Once installed, `gcc -version` should print out some information about the compiler.
+This will download the command-line tools and install them.  Once installed, `gcc --version` should print out some information about the compiler.
 {% endlist %}
 {% highlight bash %}
 $ gcc --version
@@ -221,9 +221,7 @@ After you type all the commands, you should see Rails starting up at the start o
 {% aside %}
 If you see the output above, rails is running and you can point your browser at http://localhost:3000 and you should see this:
 
-{% screenshot %}
-![Yay! You're on Rails!]({{ site.baseurl}}/assets/images/youre_on_rails.png)
-{% endscreenshot %}
+![Yay! You're on Rails!]({{ site.baseurl}}/assets/images/youre_on_rails.png){: .screenshot}
 
 This is not the directory you'll be using in the tutorial. To remove this simply type `rm -rf test_rails`.
 {% endaside %}

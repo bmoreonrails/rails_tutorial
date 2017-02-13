@@ -11,8 +11,9 @@
     {% endfor %}
    </ul>
 
-  <div class="menu" data-toggle="#menu-list">
-    <div class="hamburger-icon"> &#9776</div>
-    <div class="menu-title">Chapter {{page.number}} -- {{ page.title }}</div>
+  <div class="menu">
+    <div class="hamburger-icon" data-toggle="#menu-list"> &#9776</div>
+    <div class="menu-title" data-toggle="#menu-list">Chapter {{page.number}} -- {{ page.title }}</div>
+    <div class="menu-title"><a href="{{site.baseurl}}/" target="_self">Home</a></div>
   </div>
 </div>
