@@ -309,6 +309,8 @@ Finally, we'll check if everything is working by creating a new Rails app.
 
 1.  Now that you've verified everything is working, you can stop the application by running `Ctrl-c` in the Command Prompt.
 
+    You might be asked if you'd like to `Terminate batch job (Y/N)?`. Simply type `y` and press `enter`.
+
 1.  You can also remove the "installfest" directory by running the following commands:
 
     ```shell
