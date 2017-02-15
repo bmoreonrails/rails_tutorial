@@ -1,6 +1,7 @@
 .aside {
   margin: 0 0 6em;
   text-align: center;
+
   img {
     display: block;
     margin: auto;
@@ -9,8 +10,9 @@
     display: block;
     margin: auto;
   }
-  code {
-    color: #B32A2A;
+
+  div[class^="language-"] {
+    background-color: #F3F3F1;
   }
 
   .highlight {

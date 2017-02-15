@@ -1,9 +1,12 @@
 ---
 ---
 
+
+$nav-bar-height: 60px;
 $green: #69CBA2;
-$nav-bar-height: 40px;
 $nav-bar-progress-height: 10px;
+$white: #fff;
+$ruby: #8B0000;
 
 
 @import "tutorial/installation";
@@ -20,6 +23,13 @@ $nav-bar-progress-height: 10px;
 @import "tutorial/section_header";
 @import "fonts";
 
+* {
+    -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
 .content {
     padding-top: $nav-bar-height;
     padding-left: 3em;
@@ -35,8 +45,28 @@ html {
   box-sizing:inherit;
 }
 
+
+a {
+  color: $ruby;
+}
+
+div[class^="language-"] {
+  background-color: white;
+}
+
+.highlighter-rouge {
+  margin: 0 2px;
+  padding: 2px 4px;
+  background: $ruby;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  color: $white;
+}
+
 html, body {
   height: 100%;
+
 }
 
 body {

@@ -1,11 +1,11 @@
 .protip {
   background-color: #D8DEDF; 
   padding: 2em;
-  code {
-    color: #B32A2A;
-  }
 }
 
+div[class^="language-"] {
+  background-color: #D8DEDF;
+}
 
 @media (min-width: 480px) {
   .protip {
