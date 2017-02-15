@@ -128,7 +128,7 @@ To install rvm, open a terminal window and run the following commands (copied di
 `source /Users/[Computer Username]/.rvm/scripts/rvm`
 
 Once installed RVM will say:
-```
+```shell
 Installation of RVM in /Users/[Computer Username]/.rvm/ is almost complete:
 
 * To start using RVM you need to run `source /Users/[Computer Username]/.rvm/scripts/rvm`
