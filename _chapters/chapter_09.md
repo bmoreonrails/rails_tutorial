@@ -474,7 +474,10 @@ layout: rails_tutorial
 
 {% aside %}
 ### The magic that is a Relational Database!  
-Are you starting to see how we're using Rails to build a relational database? So far, we've built two tables - a books table and a reviews table. Those tables are connected to one another by the `book_id` column on the Reviews table. 
+Are you starting to see how we're using Rails to build a relational database? 
 
-****add illustration here***
+So far, we've built two tables - a books table and a reviews table. Those tables are connected to one another by the `book_id` column on the Reviews table. That column is making it possible for books to have many reviews in our database.
+
+![Data Table showing relationship]({{site.baseurl}}/assets/images/Relationships.png){: .screenshot}
+
 {% endaside %}
