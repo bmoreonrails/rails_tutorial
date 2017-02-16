@@ -132,7 +132,7 @@ layout: rails_tutorial
 {% endlist %}
 
 {% highlight shell %}
-  › rails s
+  › rails server
   => Booting Puma
   => Rails 5.0.0.1 application starting in development on http://localhost:3000
 {% endhighlight %}

@@ -190,7 +190,7 @@ layout: rails_tutorial
 
       Let's add a few more finishing touches.
 
-  1.  Open `app/views/new.html.erb`.
+  1.  Open `app/views/books/new.html.erb`.
 
   1.  We'll add the `button` CSS class to the form submission button to make it look like a...button.
 
@@ -261,7 +261,7 @@ layout: rails_tutorial
 
   1.  Just as we've done before, add the `button` class as the last option to the link.
 
-  1.  Save your changes and visit [http://localhost:3000/books/1/show](http://localhost:3000/books/1/show) to see your changes.
+  1.  Save your changes and visit [http://localhost:3000/books/1](http://localhost:3000/books/1) to see your changes.
 {% endlist %}
 
 {% highlight erb linenos %}

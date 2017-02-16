@@ -66,7 +66,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  In your text editor, open the `CreateReviews` migration (`app/views/migrations/TIMESTAMP_create_reviews.rb`).
+  1.  In your text editor, open the `CreateReviews` migration (`db/migrations/TIMESTAMP_create_reviews.rb`).
 
   1.  The `change` method has a `create_table` block that will create the `reviews` table.
 

@@ -69,7 +69,7 @@ layout: rails_tutorial
 
       The first book in your database has an id of 1.
 
-  1.  I wonder what id you second book will have...
+  1.  I wonder what id your second book will have...
 
       Run `Book.second` and look at the output.
 
@@ -188,7 +188,7 @@ layout: rails_tutorial
 {% endlist %}
 
 {% highlight shell %}
-  $ rails s
+  $ rails server
 
   ...
 
@@ -196,7 +196,7 @@ layout: rails_tutorial
 
   $ touch app/views/books/show.html.erb
 
-  $ rails s
+  $ rails server
 
   ...
 {% endhighlight %}
@@ -257,7 +257,7 @@ layout: rails_tutorial
 {% list %}
   1.  By defining `@id` in the `BooksController` `show` method, it's available in the `BooksController` `show` template.
 
-  1.  Open `app/controllers/books/show.html.erb` in your text editor and add the following:
+  1.  Open `app/views/books/show.html.erb` in your text editor and add the following:
 
       ```ruby
       This book's id is <%= @id %>.
@@ -273,7 +273,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Now that the `BooksController` `show` template is wired to up the render something, what do you expect to see if you visit [http://localhost:3000/books/1](http://localhost:3000/books/1)?
+  1.  Now that the `BooksController` `show` template is wired up to render something, what do you expect to see if you visit [http://localhost:3000/books/1](http://localhost:3000/books/1)?
 
       Do you have an idea? Let's verify it!
 
@@ -301,7 +301,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Now that we have the book id for the book we want to show, we can use it get that book from your application's database.
+  1.  Now that we have the book id for the book we want to show, we can use it to get that book from your application's database.
 
   1.  We've used a few methods to get books from the database. We've used `Book.all` to get all the books, and we've used `Book.first` to get the first book.
 
@@ -379,7 +379,7 @@ layout: rails_tutorial
 
   1.  We've already grabbed the requested book id and set it to `@id`. Let's use that to find the requested book.
 
-  1.  Inside the `show` method, add the following line:
+  1.  Add the following line to the end of the `show` method:
 
       ```ruby
       @book = Book.find(@id)
