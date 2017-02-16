@@ -11,7 +11,7 @@ layout: rails_tutorial
 
 
 {% aside %}
-  So far you've created books on the `rails console`. It works, but it's not best experience. In most web applications, you enter data through...the web.
+  So far you've created books on the `rails console`. It works, but it's not the best experience. In most web applications, you enter data through...the web.
 
   Your bookstore *is* a web application, so let's treat it like one. Let's set up your application so you can create books from your browser.
 {% endaside %}
@@ -155,7 +155,7 @@ layout: rails_tutorial
 ### A Little About Forms
   Data is usually added to web applications through forms.
 
-  You probably have never noticed them, but forms are everywhere on the internet. When you login to a site, you enter your credentials into a form. When you post a status on Facebook, you enter your status into a form. When you're Googling for programming resources, you enter your search terms into a form.
+  You probably have never noticed them, but forms are everywhere on the internet. When you log in to a site, you enter your credentials into a form. When you post a status on Facebook, you enter your status into a form. When you're Googling for programming resources, you enter your search terms into a form.
 
   After you add your data to a form, you submit it by clicking a submit button. For example, a login form might have a submit button that says "Login".
 
@@ -294,7 +294,7 @@ layout: rails_tutorial
       </ul>
       ```
 
-      We're putting your form elememnts inside an unordered list. The form will have two fields, one for title and one for author.
+      We're putting your form elements inside an unordered list. The form will have two fields, one for title and one for author.
 
       `f.label` defines labels for each field.
 
@@ -488,7 +488,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Now that you have a form with a shinny "Create Book" button, why don't you try creating a book?
+  1.  Now that you have a form with a shiny "Create Book" button, why don't you try creating a book?
 
       Fill out the form and click "Create Book".
 

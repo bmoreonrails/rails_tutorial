@@ -165,7 +165,7 @@ Remember the `touch` command you used to create the `BooksController`?
 touch app/controllers/books_controller.rb
 ```
 
-It created the `BooksController` file, but the file is empty. Don't belive me? Let's take a look at it.
+It created the `BooksController` file, but the file is empty. Don't believe me? Let's take a look at it.
 {% endaside %}
 
 {% steps %}
@@ -670,7 +670,7 @@ You might remember reading about arrays in the [Ruby in 100 minutes](http://tuto
 
   1.  Try playing with the `each` method to see what else you can print out. You should be able print things like the book ids, authors, and quantities.
 
-  1.  When you're done exploring, run `exit` to exit the `rails console`. Then,restart the `rails server`.
+  1.  When you're done exploring, run `exit` to exit the `rails console`. Then, restart the `rails server`.
 {% endlist %}
 
 {% highlight ruby %}
@@ -706,7 +706,7 @@ You might remember reading about arrays in the [Ruby in 100 minutes](http://tuto
 {% list %}
   Let's put this new knowledge to work.
 
-  1.  In you text editor, open `app/views/books/index.html.erb`.
+  1.  In your text editor, open `app/views/books/index.html.erb`.
 
   1.  At the end of the file, add a new, empty unordered list. It should look like this:
 
@@ -780,7 +780,7 @@ ERB templates are available in all Rails applications. Any file that ends in `.h
 
 {% steps %}
 {% list %}
-  Now that you have your block setup, you're ready to render some book titles.
+  Now that you have your block set up, you're ready to render some book titles.
 
   1.  Spend a few minutes and try to get each book title to render as a list item inside the block.
 

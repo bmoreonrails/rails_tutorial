@@ -18,7 +18,7 @@ layout: rails_tutorial
 
   We need users!
 
-  A user should be able to login to your bookstore. Once their logged in, any reviews they write can be attributed to them.
+  A user should be able to login to your bookstore. Once they're logged in, any reviews they write can be attributed to them.
 
   We'll start by adding users to your database.
 {% endaside %}

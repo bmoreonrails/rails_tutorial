@@ -571,7 +571,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Looks great, right!
+  1.  Looks great, right?
 
       Except *why's (poignant) Guide to Ruby* doesn't cost $100.00. We set the books price_cents to 100, and 100 cents is $1.00.
 
