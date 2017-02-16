@@ -617,7 +617,7 @@ You might remember reading about arrays in the [Ruby in 100 minutes](http://tuto
   1.  Run the following code:
 
       ```ruby
-      books = Books.all
+      books = Book.all
       ```
 
       You now have a `books` variable that's been assigned all the books in your application's database. `books` can be thought of as a Ruby Array.
