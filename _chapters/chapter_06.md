@@ -4,22 +4,20 @@ number: 6
 title: Updating Books
 layout: rails_tutorial
 ---
-
 {% sectionheader %}
   {{ page.title }}
 {% endsectionheader %}
 
-
 {% aside %}
-  You have so many books in your bookstore! 🎉
+You have so many books in your bookstore! 🎉
 
-  What would happen if you suddenly sold every copy of a book? What about if the price changes?
+What would happen if you suddenly sold every copy of a book? What about if the price changes?
 
-  You'd have to open `rails console` to change your book's data. That doesn't sound very great.
+You'd have to open `rails console` to change your book's data. That doesn't sound very great.
 
-  What if you could update books in your browser? Wouldn't that be a little easier?
+What if you could update books in your browser? Wouldn't that be a little easier?
 
-  Let's make it so you can can update books in the browser.
+Let's make it so you can can update books in the browser.
 {% endaside %}
 
 {% steps %}
@@ -39,7 +37,6 @@ layout: rails_tutorial
   1.  Start your application's web server and go to [http://localhost:3000/books](http://localhost:3000/books). From the index, click the link for *why's (poignant) Guide to Ruby*.
 
       Your browser should have URL of `http://localhost:3000/books/1` in its address bar. Edit the URL so it's `http://localhost:3000/books/1/edit` to visit the edit path for *why's (poignant) Guide to Ruby*. Now, try going to the new URL.
-
 {% endlist %}
 
 {% highlight shell %}
@@ -64,15 +61,17 @@ layout: rails_tutorial
 
 ![Browser showing `/books/1/edit` with an Unknown action error: "The action 'edit' could not be found for BooksController"]({{site.baseurl}}/assets/images/unknown_action_edit.png){: .screenshot}
 
+{% aside %}
+You got an error, right?
+
+Good.
+
+Can you guess why you're seeing an `Unknown action` error?
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  You got an error, right?
-
-      Good.
-
-      Can you guess why you're seeing an `Unknown action` error?
-
-  1.  You're getting an `Unknown action` error because your `BooksController` doesn't have an `edit` method. Let's add it.
+  You're getting an `Unknown action` error because your `BooksController` doesn't have an `edit` method. Let's add it.
 
   1.  Open the `BooksController` in your text editor. Add the `edit` method to the end of the controller.
 
@@ -85,18 +84,45 @@ layout: rails_tutorial
 
       What do you think will happen?
 {% endlist %}
+
+{% highlight ruby linenos %}
+  class BooksController < ApplicationController
+    def index
+      @books = Book.all
+    end
+
+    def show
+      @id = params[:id]
+      @book = Book.find(@id)
+    end
+
+    def new
+      @book = Book.new
+    end
+
+    def create
+      Book.create(params.require(:book).permit(:title, :author, :price_cents, :quantity, :description))
+      redirect_to books_path
+    end
+
+    def edit
+    end
+  end
+{% endhighlight %}
 {% endsteps %}
 
 ![Browser showing ActionController::UnknownFormat error: "BooksController#edit is missing a template for this request format and variant"]({{site.baseurl}}/assets/images/UnknownFormat_in_BooksController_edit.png){: .screenshot}
 
+{% aside %}
+Did you guess you'd see an `ActionController::UnknownFormat` error? Me either. 😅
+
+However, you might have guessed that the request was going to error. You added the `edit` action to the `BooksController`, but it doesn't have a template to render.
+
+Let's add it.
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  Did you guess you'd see an `ActionController::UnknownFormat` error? Me either. 😅
-
-      However, you might have guessed that the request was going to error. You added the `edit` action to the `BooksController`, but it doesn't have a template to render.
-
-      Let's add it.
-
   1.  Go back to Terminal and stop your application's web server.
 
   1.  Run `touch app/views/books/edit.html.erb` to create the edit book template.
@@ -119,9 +145,9 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  In the edit template, we'll take advantage of forms again. We'll use them to gather new book data.
+  In the edit template, we'll take advantage of forms again. We'll use them to gather new book data.
 
-      Before we add the form to the template, let's make some of the existing book data available.
+  Before we add the form to the template, let's make some of the existing book data available.
 
   1.  Open the `BooksController` and add the following line inside the `edit` method:
 
@@ -161,46 +187,50 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
+{% aside %}
+The edit book form is going be similiar to the new book form.
+
+Remember what the new book form looked like?
+
+```erb
+<%= form_for(@book) do |f| %>
+  <ul>
+    <li>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </li>
+
+    <li>
+      <%= f.label :author %>
+      <%= f.text_field :author %>
+    </li>
+
+    <li>
+      <%= f.label :price_cents %>
+      <%= f.number_field :price_cents %>
+    </li>
+
+    <li>
+      <%= f.label :quantity %>
+      <%= f.number_field :quantity %>
+    </li>
+
+    <li>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </li>
+  </ul>
+
+  <%= f.submit %>
+<% end %>
+```
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  The edit book form is going be similiar to the new book form.
+  Let's start the edit book form by adding a field to edit the book's title.
 
-      Remember what the new book form looked like?
-
-      ```erb
-      <%= form_for(@book) do |f| %>
-        <ul>
-          <li>
-            <%= f.label :title %>
-            <%= f.text_field :title %>
-          </li>
-
-          <li>
-            <%= f.label :author %>
-            <%= f.text_field :author %>
-          </li>
-
-          <li>
-            <%= f.label :price_cents %>
-            <%= f.number_field :price_cents %>
-          </li>
-
-          <li>
-            <%= f.label :quantity %>
-            <%= f.number_field :quantity %>
-          </li>
-
-          <li>
-            <%= f.label :description %>
-            <%= f.text_area :description %>
-          </li>
-        </ul>
-
-        <%= f.submit %>
-      <% end %>
-      ```
-
-  1.  Let's start the edit form by adding a field to edit the book's title.
+  1.  Open `app/views/books/edit.html.erb` in your text editor and add the following:
 
       ```erb
       <%= form_for(@book) do |f| %>
@@ -219,16 +249,19 @@ layout: rails_tutorial
 
 ![Browser showing "/books/1/edit" with a filled-in text_field for the book's title]({{site.baseurl}}/assets/images/edit_field_for_title.png){: .screenshot}
 
+{% aside %}
+Whoa! The title is already filled-in!
+
+In the `BooksController` `edit` method, you found the requested book in your database and assigned it to `@book`. When you called `form_for` in `app/views/books/edit.html.erb`, you passed it `@book`.
+
+Since `@book` is a book in your database with a title, the title `text_field` was populated with `@book`'s title.
+
+([*Magic*](https://www.youtube.com/watch?v=MzlK0OGpIRs))
+{% endaside %}
+
+
 {% steps %}
 {% list %}
-  1.  Whoa! The title is already filled-in!
-
-      In the `BooksController` `edit` method, you found the requested book in your database and assigned it to `@book`. When you called `form_for` in `app/views/books/edit.html.erb`, you passed it `@book`.
-
-      Since `@book` is a book in your database with a title, the title `text_field` was populated with `@book`'s title.
-
-      ([*Magic*](https://www.youtube.com/watch?v=MzlK0OGpIRs))
-
   1.  Update the form so it has fields for all the book attributes: title, author, price_cents, quantity, and description.
 
       Use the new book form in `app/views/books/new.html.erb` as an example.
@@ -307,12 +340,14 @@ layout: rails_tutorial
 
 ![Browser showing "/books/1/edit" with a form but no button]({{site.baseurl}}/assets/images/all_the_edit_fields.png){: .screenshot}
 
+{% aside %}
+Now you can edit all your book data, but there's no way to save your changes.
+
+We need to add a `submit` button so you can submit your changes via the form.
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  Now you can edit all your book data, but there's no way to save your changes.
-
-      We need to add a `submit` button so you can submit your changes via the form.
-
   1.  Open `app/views/books/edit.html.erb` and add a `submit` button as the last line inside the `form_for` block.
 
       ```erb
@@ -364,7 +399,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  We've been through this drill before...
+  We've been through this drill before...
 
   1.  Open the `BooksController` and add an `update` method to the end of it.
 
@@ -403,11 +438,11 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Nothing happened!
+  Nothing happened!
 
-      The form is being submitted to the `BooksController` `update` method, and the method is...empty. I think I'd be more surprised if something *did* happen. 😉
+  The form is being submitted to the `BooksController` `update` method, and the method is...empty. I think I'd be more surprised if something *did* happen. 😉
 
-      The `update` method should probably do something. Maybe it should update the book.
+  The `update` method should probably do something. Maybe it should update the book.
 
   1.  First, let's find the book you're trying to update.
 
@@ -419,7 +454,7 @@ layout: rails_tutorial
 
       We've done this in a few of the `BooksController` methods.
 
-  1.  Now that we have the book, how will we `update` it?
+      Now that we have the book, how will we `update` it?
 
       You've updated books before. Do you remember when you added descriptions to all your books? How did you do it?
 
@@ -470,23 +505,27 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
+{% aside %}
+### Where are my changes?!
+
+Nothing happened, right?
+
+Go to [http://localhost:3000/books/1](http://localhost:3000/books/1), and make sure to refresh the page.
+
+Your change is there!
+
+Don't believe me? Try making another change?
+
+How are changes happening when it looks like the form isn't being submitted?
+
+The form is being submitted to the `BooksController` `update` method, and the requested changes are being made to the book. But that's where the `update` method ends. It looks like nothing happened because there's no visual queue that something happened.
+
+After a book is updated, let's redirect to that book's details. That way, we can see the changes.
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  Nothing happened, right?
-
-      Go to [http://localhost:3000/books/1](http://localhost:3000/books/1), and make sure to refresh the page.
-
-      Your change is there!
-
-      Don't believe me? Try making another change?
-
-  1.  How are changes happening when it looks like the form isn't being submitted?
-
-      The form is being submitted to the `BooksController` `update` method, and the requested changes are being made to the book. But that's where the `update` method ends. It looks like nothing happened because there's no visual queue that something happened.
-
-  1.  After a book is updated, let's redirect to that book's details. That way, we can see the changes.
-
-      Add the end of the `BooksController` `update` method, add the following line:
+  1.  At the end of the `BooksController` `update` method, add the following line:
 
       ```ruby
       redirect_to book_path(book)
@@ -528,32 +567,33 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
+{% aside %}
+Yay! In addition to adding books from the browser, you can now edit books too.
+
+Before we move on, let's take a look at cleaning up some stuff. Let's start with the `BooksController`.
+
+In both the `create` and `update` methods of the `BooksController`, you're authorizing and getting the same params.
+
+```ruby
+def create
+  Book.create(params.require(:book).permit(:title, :author, :price_cents, :quantity, :description))
+  ...
+end
+
+...
+
+def update
+  ...
+  book.update(params.require(:book).permit(:title, :author, :price_cents, :quantity, :description))
+  ...
+end
+```
+
+Fortunately, there's a convention to help manage this shared bit of code.
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  Yay! In addition to adding books from the browser, you can now edit books too.
-
-  1.  Before we move on, let's take a look at cleaning up some stuff. Let's start with the `BooksController`.
-
-  1.  In both the `create` and `update` methods, you're authorizing and getting the same params.
-
-      ```ruby
-      def create
-        Book.create(params.require(:book).permit(:title, :author, :price_cents, :quantity, :description))
-        ...
-      end
-
-      ...
-
-      def update
-        ...
-        book.update(params.require(:book).permit(:title, :author, :price_cents, :quantity, :description))
-        ...
-      end
-
-      ```
-
-      Fortunately, there's a convention to help manage this shared bit of code.
-
   1.  Open the `BooksController` in your text editor, and add the following code to the end of it:
 
       ```ruby
@@ -620,9 +660,9 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Let's make one more change to improve the edit workflow.
+  Let's make one more change to improve the edit workflow.
 
-      Right now, you can only edit books if you know the `edit_book_path` URL. Let's make this a little user-friendly by adding a link to the edit page from the book show page.
+  Right now, you can only edit books if you know the `edit_book_path` URL. Let's make this a little user-friendly by adding a link to the edit page from the book show page.
 
   1.  Open `app/views/books/show.html.erb` in your text editor. Add the following line to the end of the file:
 
