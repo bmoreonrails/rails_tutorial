@@ -8,7 +8,6 @@ layout: rails_tutorial
   {{ page.title }}
 {% endsectionheader %}
 
-
 {% aside %}
   You're logged out, but isn't it a little weird that you still see the "Log Out" link?
 
@@ -17,42 +16,42 @@ layout: rails_tutorial
   Let's change that! We'll only show the "Log Out" link to users who are logged in.
 {% endaside %}
 
-{% steps %}
-{% list %}
-  1.  If we only want to show the "Log Out" link to *logged in* users, we first have to figure out if a user is logged in or not. Fortunately, we already have the parts in place to figure this out.
+{% aside %}
+### How Do We Know If a User is Logged In or Not?
 
-  1.  After a user successfully logs in, you're saving their user id in the session. You did this in the `SessionsController` `create` method.
+If we only want to show the "Log Out" link to *logged in* users, we first have to figure out if a user is logged in or not. Fortunately, we already have the parts in place to figure this out.
 
-      ```ruby
-      def create
-        user = User.find_by(username: params[:session][:username])
+After a user successfully logs in, you're saving their user id in the session. You did this in the `SessionsController` `create` method.
 
-        if user && user.authenticate(params[:session][:password])
-          ...
-          session[:user_id] = user.id
-          ...
-        else
-          ...
-        end
-      end
-      ```
+```ruby
+def create
+  user = User.find_by(username: params[:session][:username])
 
-      When a user logs out, you remove their user id from the session. You did this in the `SessionsController` `destroy` method.
+  if user && user.authenticate(params[:session][:password])
+    ...
+    session[:user_id] = user.id
+    ...
+  else
+    ...
+  end
+end
+```
 
-      ```ruby
-      def destroy
-        session[:user_id] = nil
-        ...
-      end
-      ```
+When a user logs out, you remove their user id from the session. You did this in the `SessionsController` `destroy` method.
 
-      We can tell if a user is logged in or not by checking in the session. If a user id is present, we know that user is logged in. Otherwise, no one is logged in.
+```ruby
+def destroy
+  session[:user_id] = nil
+  ...
+end
+```
 
-  1.  We've only used the session in your controllers, but it's also avaialble in your templates. Let's see what we can do with it.
+We can tell if a user is logged in or not by checking in the session. If a user id is present, we know that user is logged in. Otherwise, no one is logged in.
 
-  1.  Before we get to far, you'll need to log in again.
-{% endlist %}
-{% endsteps %}
+We've only used the session in your controllers, but it's also avaialble in your templates. Let's see what we can do with it.
+
+Before we get to far, you'll need to log in again.
+{% endaside %}
 
 {% steps %}
 {% list %}
@@ -77,7 +76,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Now that you're logged in, we can start making some changes 😊
+  Now that you're logged in, we can start making some changes 😊
 
   1.  Open `app/views/layouts/application.html.erb`.
 
@@ -140,7 +139,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Sweet! Now that we know how to access the session in your templates, let's put it to use.
+  Sweet! Now that we know how to access the session in your templates, let's put it to use.
 
   1.  Reopen `app/views/layouts/application.html.erb`.
 
@@ -217,12 +216,14 @@ layout: rails_tutorial
 
 ![Browser showing "I'm not logged in"]({{site.baseurl}}/assets/images/yay_logout_button.png){: .screenshot}
 
+{% aside %}
+Progress!
+
+Now that we aren't showing the "Log Out" link to logged out users, let's show them a "Login" link instead.
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  Progress!
-
-      Now that we aren't showing the "Log Out" link to logged out users, let's show them a "Login" link instead.
-
   1.  In `app/views/layouts/application.html.erb`, replace "I'm not logged in" with a link labeled "Login". The link should go to the `new_session` path.
 
       Use the other links in the template as examples.
@@ -287,25 +288,23 @@ layout: rails_tutorial
 
 ![Browser showing "Log In" link]({{site.baseurl}}/assets/images/login_link.png){: .screenshot}
 
-{% steps %}
-{% list %}
-  1.  If you're anything like me, you probably tried to log out just as soon as you logged in so you could see the link change back and forth.
+{% aside %}
+If you're anything like me, you probably tried to log out just as soon as you logged in so you could see the link change back and forth.
 
-      ![Sure I did]({{site.baseurl}}/assets/images/Yes-No-Not-Really-GIF.gif)
+![Sure I did]({{site.baseurl}}/assets/images/Yes-No-Not-Really-GIF.gif)
 
-      But if you're not like me, give it a try! You've got to appreciate the small things in life 😝
+But if you're not like me, give it a try! You've got to appreciate the small things in life 😝
 
-  1.  You might also notice that the "Log Out"/"Login" links are on every page of your bookstore.
+You might also notice that the "Log Out"/"Login" links are on every page of your bookstore.
 
-      `app/views/layouts/application.html.erb` is the main layout file of your application, and it's used by every template in your bookstore. Since we added the links this layout, they will get rendered on every page.
-{% endlist %}
-{% endsteps %}
+`app/views/layouts/application.html.erb` is the main layout file of your application, and it's used by every template in your bookstore. Since we added the links to this layout, they will get rendered on every page.
+{% endaside %}
 
 {% steps %}
 {% list %}
-  1.  Now that we have logged in and logged out users, can you think of things logged out users shouldn't be able to do?
+  Now that we have logged in and logged out users, can you think of things logged out users shouldn't be able to do?
 
-      I can think of one - logged out users shouldn't be able to add books. This is *your* super rad bookstore after all. You don't want some random person to come along and start adding books to your bookstore.
+  I can think of one - logged out users shouldn't be able to add books. This is *your* super rad bookstore after all. You don't want some random person to come along and start adding books to your bookstore.
 
   1.  Open `app/views/books/index.html.erb` and find the "Add a book" link. 
 
@@ -365,9 +364,9 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Can you think of other things logged out users shouldn't be able to do?
+  Can you think of other things logged out users shouldn't be able to do?
 
-      Right now, if you go to a book's page, anyone can edit, review, or delete a book. I wouldn't want to give such broad powers to anyone in *my* super rad bookstore, and you shouldn't either!
+  Right now, if you go to a book's page, anyone can edit, review, or delete a book. I wouldn't want to give such broad powers to anyone in *my* super rad bookstore, and you shouldn't either!
 
   1.  Open `app/views/books/show.html.erb`. At the end of the template, you have links to edit a book and add a review. You also have a button to delete a book.
 
@@ -459,9 +458,9 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Alright, I think we've hidden everything we need to hide from logged out users. Your bookstore is super secure now, right?!
+  Alright, I think we've hidden everything we need to hide from logged out users. Your bookstore is super secure now, right?!
 
-      ![This cop thinks everything is fine]({{site.baseurl}}/assets/images/tenor.gif)
+  ![This cop thinks everything is fine]({{site.baseurl}}/assets/images/tenor.gif)
 
   1.  Make sure you're logged out and try going to [http://localhost:3000/books/new](http://localhost:3000/books/new).
 
@@ -469,17 +468,17 @@ layout: rails_tutorial
 
       ![No!]({{site.baseurl}}/assets/images/no.gif)
 
-  1.  We made it more difficult for logged out users to mess with your bookstore, but that won't stop them if they can figure out the paths to go to.
+      We made it more difficult for logged out users to mess with your bookstore, but that won't stop them if they can figure out the paths to go to.
 
-  1.  We can stop mischievous users from snooping around by checking for logged out users in your controllers.
+      We can stop mischievous users from snooping around by checking for logged out users in your controllers.
 {% endlist %}
 {% endsteps %}
 
 {% steps %}
 {% list %}
-  1.  Let's start by looking at the `BooksController` `new` method.
+  Let's start by looking at the `BooksController` `new` method.
 
-      The session is available to us in all of our controllers. Let's use it to check if a user is logged in. If they're logged in, we can do what we've always been doing. Otherwise, let's redirect the user to the login page.
+  The session is available to us in all of our controllers. Let's use it to check if a user is logged in. If they're logged in, we can do what we've always been doing. Otherwise, let's redirect the user to the login page.
 
   1.  Open `app/controllers/books_controller.rb`. Change the `new` method from
 
@@ -557,14 +556,18 @@ layout: rails_tutorial
 
 ![Browser showing login page with alert to login before continuing]({{site.baseurl}}/assets/images/oh_no_login.png){: .screenshot}
 
+{% aside %}
+### Adding More Restrictions to the BooksController
+
+Now that we have this check in place, we should probably add them to a few more of the `BooksController` methods.
+
+`index` and `show` should be available to all users, but logged out users shouldn't have access to `create`, `edit`, `update`, or `destroy`.
+
+One solution to this problem would be to copy the check we added to the `new` method to the rest of the methods we want to secure. This would work, but copying code is suprisingly time consuming. Fortunately, Rails has a method that will help us out.
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  Now that we have this check in place, we should probably add them to a few more of the `BooksController` methods.
-
-      `index` and `show` should be available to all users, but logged out users shouldn't have access to `create`, `edit`, `update`, or `destroy`.
-
-  1.  One solution to this problem would be to copy the check we added to the `new` method to the rest of the methods we want to secure. This would work, but copying code is suprisingly time consuming. Fortunately, Rails has a method that will help us out.
-
   1.  Open the `BooksController`. Just after the beginning of the controller, add the following line:
 
       ```ruby
@@ -588,7 +591,7 @@ layout: rails_tutorial
       end
       ```
 
-  1.  This should look *very* familiar. It's the same logic you used in the `new` method!
+      This should look *very* familiar. It's the same logic you used in the `new` method!
 
       ```ruby
       def new
@@ -688,7 +691,7 @@ layout: rails_tutorial
 
       Now that you're back in, try going directly to a book's detail page. For example, you could go to [http://localhost:3000/books/1](http://localhost:3000/books/1).
 
-      Try visiting different paths directly as logged in and logged out users. The book index and details page should be available to both, but only logged in users can reach things like the edit book page.
+  1.  Try visiting different paths directly as logged in and logged out users. The book index and details page should be available to both, but only logged in users can reach things like the edit book page.
 {% endlist %}
 
 {% highlight ruby linenos %}
@@ -746,7 +749,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Now that we have the `BooksController` locked down, let's add the same checks to the `ReviewsController`.
+  Now that we have the `BooksController` locked down, let's add the same checks to the `ReviewsController`.
 
   1.  Open the `ReviewsController` (`app/controllers/reviews_controller.rb`).
 
