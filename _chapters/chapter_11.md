@@ -8,19 +8,21 @@ layout: rails_tutorial
   {{ page.title }}
 {% endsectionheader %}
 
+{% aside %}
+Now you can see your beautiful reviews, but wouldn't it be nice if you could also *add* reviews??
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  Now you can see your beautiful reviews, but wouldn't it be nice if you could also *add* reviews??
-
   1.  Let's start by taking a look at your application's routes file. In your text editor, open `config/routes.rb`.
 
-  1.  So far, you've specified one resource in your routes file - books.
+      So far, you've specified one resource in your routes file - books.
 
       ```ruby
       resources :books
       ```
 
-  1.  It's been a while since we've been inside the routes file, but your application now has a new resource - reviews. You've defined a relationship between these two resources in your application. A book can have many reviews, and review belongs to a book.
+      It's been a while since we've been inside the routes file, but your application now has a new resource - reviews. You've defined a relationship between these two resources in your application. A book can have many reviews, and review belongs to a book.
 
       We can define this relationship in your routes file.
 
@@ -55,11 +57,11 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Let's see how that changed your application's routes.
+  Let's see how that changed your application's routes.
 
-      Open Terminal, go to the `bookstore` directory, and run `rake routes`.
+  1.  Open Terminal, go to the `bookstore` directory, and run `rake routes`.
 
-  1.  Whoa! Your application's routing table got waaaaay bigger.
+      Whoa! Your application's routing table got waaaaay bigger.
 
       Your application now has a bunch of review routes. Do you notice a pattern in their paths?
 
@@ -81,7 +83,7 @@ layout: rails_tutorial
 
       For example, instead of having a route to get all your application's reviews (`/reviews`), you have a route to get all of a books reviews (`/books/:book_id/reviews`).
 
-  1.  *Why are we doing this again?*
+      *Why are we doing this again?*
 
       We're setting up your application's routes to reflect the `belongs_to/has_many` relationship that exists between books and reviews.
 
@@ -114,21 +116,27 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
+{% aside %}
+### What Route Do We Use to Add Reviews?
+
+Given the changes to your application's routes, what route would we use to add new reviews?
+
+One route stands out:
+
+```shell
+new_book_review GET    /books/:book_id/reviews/new(.:format)      reviews#new
+```
+
+I mean...it has a prefix of `new_book_review`. 😉
+
+Let's try visiting that path.
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  Given the changes to your application's routes, what route would we use to add new reviews?
+  1.  Start your application's web server, and go to [http://localhost:3000/books/1/reviews/new](http://localhost:3000/books/1/reviews/new). Since the path starts with `/books/1`, this is where we'd go to add a review for your first book.
 
-      One route stands out
-
-      ```shell
-      new_book_review GET    /books/:book_id/reviews/new(.:format)      reviews#new
-      ```
-
-      I mean...it has a prefix of `new_book_review`. 😉
-
-  1.  Let's try visiting that path. Start your application's web server, and go to [http://localhost:3000/books/1/reviews/new](http://localhost:3000/books/1/reviews/new). Since the path starts with `/books/1`, this is where we'd go to add a review for your first book.
-
-  1.  Those errors sure do get old, don't they...
+      Those errors sure do get old, don't they...
 {% endlist %}
 
 {% highlight shell %}
@@ -140,14 +148,16 @@ layout: rails_tutorial
 
 ![Browser showing Routing Error: "uninitialized constant ReviewsController"]({{site.baseurl}}/assets/images/review_controller_routing_error.png){: .screenshot}
 
+{% aside %}
+You got a `Routing Error` with a message that says "uninitialized constant ReviewsController". Any ideas why you're seeing that error?
+
+...
+
+You don't have a `ReviewsController`!
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  You got a `Routing Error` with a message that says "uninitialized constant ReviewsController". Any ideas why you're seeing that error?
-
-      ...
-
-      You don't have a `ReviewsController`!
-
   1.  Go back to Terminal, stop your application's web server, and run the following command:
 
       ```shell
@@ -194,18 +204,20 @@ layout: rails_tutorial
 
 ![Browser showing Unknown action error: "The action 'new' could not be found for ReviewsController"]({{site.baseurl}}/assets/images/reviews_new.png){: .screenshot}
 
+{% aside %}
+Another error, but we know how to deal with these.
+
+Right?!
+
+![Fake it 'til you make it]({{ site.baseurl }}/assets/images/fake-it.jpg)
+
+You're seeing an `Unknown action` error that says "The action 'new' could not be found for ReviewsController". How would you fix this error?
+
+The `ReviewsController` needs a `new` action!
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  Another error, but we know how to deal with these.
-
-      Right?!
-
-      ![Fake it 'til you make it]({{ site.baseurl }}/assets/images/fake-it.jpg)
-
-  1.  You're seeing an `Unknown action` error that says "The action 'new' could not be found for ReviewsController". How would you fix this error?
-
-  1.  The `ReviewsController` needs a `new` action!
-
   1.  Add an empty `new` method to the `ReviewsController`.
 
       ```ruby
@@ -226,16 +238,20 @@ layout: rails_tutorial
 
 ![Browser showing ActionController::UnknownFormat error: "ReviewsController#new is missing a template for this request format and variant."]({{site.baseurl}}/assets/images/missing_reviews_template.png){: .screenshot}
 
+{% aside %}
+You have a `ReviewsController` that has a `new` method, but you're *still* getting an error when you visit the new reviews path ([http://localhost:3000/books/1/reviews/new](http://localhost:3000/books/1/reviews/new)).
+
+The `ActionController::UnknownFormat` error might seem intense, but do you remember seeing it before? There's one key piece of information burried in the weeds.
+
+```text
+ReviewsController#new is missing a template for this request format and variant.
+```
+
+We're missing a template!
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  You have a `ReviewsController` that has a `new` method, but you're *still* getting an error when you visit the new reviews path ([http://localhost:3000/books/1/reviews/new](http://localhost:3000/books/1/reviews/new)).
-
-  1.  The `ActionController::UnknownFormat` error might seem intense, but do you remember seeing it before? There's one key piece of information burried in the weeds.
-
-      > ReviewsController#new is missing a template for this request format and variant.
-
-      We're missing a template!
-
   1.  First, go back to Terminal and stop your application's web server.
 
   1.  Now, you'll need to create directory for the review templates. Run the following command:
@@ -274,31 +290,29 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% steps %}
-{% list %}
-  1.  Have you ever been so excited to see a blank page?!
+{% aside %}
+Have you ever been so excited to see a blank page?!
 
-      Please, contain your excitement!
+Please, contain your excitement!
 
-      ![Someone's not excited]({{ site.baseurl }}/assets/images/not-excited.gif)
+![Someone's not excited]({{ site.baseurl }}/assets/images/not-excited.gif)
 
-  1.  We're rendering a blank page for the new reviews page, but what should we be rendering instead?
-      
-      We're going to follow the same we pattern we used back in Chapter 5 to add books.
+We're rendering a blank page for the new reviews page, but what should we be rendering instead?
 
-  1.  To add a book, you start by visiting the new book page ([http://localhost:3000/books/new](http://localhost:3000/books/new)). When you get there, you see a form where you can enter data for the new book you want to add.
+We're going to follow the same we pattern we used back in Chapter 5 to add books.
 
-      ![Browser showing new book page]({{site.baseurl}}/assets/images/remember_new_book.png){: .screenshot}
+To add a book, you start by visiting the new book page ([http://localhost:3000/books/new](http://localhost:3000/books/new)). When you get there, you see a form where you can enter data for the new book you want to add.
 
-      When you're done adding the data for the new book, you click on "Create Book" to add the new book.
+![Browser showing new book page]({{site.baseurl}}/assets/images/remember_new_book.png){: .screenshot}
 
-  1.  We're going to repeat this workflow, but instead of creating a book we're going to create a *review* for a given book.
-{% endlist %}
-{% endsteps %}
+When you're done adding the data for the new book, you click on "Create Book" to add the new book.
+
+We're going to repeat this workflow, but instead of creating a book we're going to create a *review* for a given book.
+{% endaside %}
 
 {% steps %}
 {% list %}
-  1.  Let's get started by showing the title of the book that's being reviewed at the top of the page.
+  Let's get started by showing the title of the book that's being reviewed at the top of the page.
 
   1.  Open the `ReviewsController` in your text editor, and add the following code to `new` method.
 
@@ -346,11 +360,11 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Now, we need to make the new review form.
+  Now, we need to make the new review form.
 
-  1.  To get started, we'll update the `ReviewsController` `new` method to make a new review available in the new review template.
+  To get started, we'll update the `ReviewsController` `new` method to make a new review available in the new review template.
 
-      *That's a lot of new 😅*
+  *That's a lot of new* 😅
 
   1.  Open the `ReviewsController` and add the following line at the end of the `new` method.
 
@@ -375,9 +389,9 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Now, we can build the review form!
+  Now, we can build the review form!
 
-      ![Jake and Finn are excited!]({{ site.baseurl }}/assets/images/excited.gif)
+  ![Jake and Finn are excited!]({{ site.baseurl }}/assets/images/excited.gif)
 
   1.  This form is going to be pretty simmilar to the new book form, but with less fields.
 
@@ -422,49 +436,51 @@ layout: rails_tutorial
 {% endlist %}
 {% endsteps %}
 
+{% aside %}
+What did you come up with? If you're anything like me, you followed the pattern in the new book form and came up with something like this:
+
+```erb
+<%= form_for(@review) do |f| %>
+  <ul>
+    <li>
+      <%= f.label :body %>
+      <%= f.text_field :body %>
+    </li>
+  </ul>
+
+  <%= f.submit(class: "button") %>
+<% end %>
+```
+
+For some reason, that doesn't work. This solution leads to an error...
+
+![Browser showing NoMethodError in Reviews#new: "undefined method `reviews_path'"]({{site.baseurl}}/assets/images/new_review_unknown_path.png){: .screenshot}
+
+This is a tricky error, but the gist of it is that we have an undefined method for `reviews_path`.
+
+By doing `<%= form_for(@review) do |f| %>`, we're creating a form for a new review that will get submitted to the `reviews_path`. What's wrong with that?
+
+We don't have a `reviews_path`...we have a `book_reviews_path`.
+
+Do you remember what your application's routes file looks like?
+
+```ruby
+Rails.application.routes.draw do
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root "books#index"
+
+  resources :books do
+    resources :reviews
+  end
+end
+```
+
+Reviews are resources nested under books. Therefore, all review routes have to be referenced through a book.
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  What did you come up with? If you're anything like me, you followed the pattern in the new book form and came up with something like this:
-
-      ```erb
-      <%= form_for(@review) do |f| %>
-        <ul>
-          <li>
-            <%= f.label :body %>
-            <%= f.text_field :body %>
-          </li>
-        </ul>
-
-        <%= f.submit(class: "button") %>
-      <% end %>
-      ```
-
-  1.  For some reason, that doesn't work. This solution leads to an error...
-
-      ![Browser showing NoMethodError in Reviews#new: "undefined method `reviews_path'"]({{site.baseurl}}/assets/images/new_review_unknown_path.png){: .screenshot}
-
-  1.  This is a tricky error, but the gist of it is that we have an undefined method for `reviews_path`.
-
-  1.  By doing `<%= form_for(@review) do |f| %>`, we're creating a form for a new review that will get submitted to the `reviews_path`. What's wrong with that?
-
-      We don't have a `reviews_path`...we have a `book_reviews_path`.
-
-      Do you remember what your application's routes file looks like?
-
-      ```ruby
-      Rails.application.routes.draw do
-        # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-        root "books#index"
-
-        resources :books do
-          resources :reviews
-        end
-      end
-      ```
-
-      Reviews are resources nested under books. Therefore, all review routes have to be referenced through a book.
-
-  1.  To make this form work, we need to change
+  1.  To make the new review form work, we need to change
 
       ```erb
       <%= form_for(@review) do |f| %>
@@ -516,20 +532,24 @@ layout: rails_tutorial
 
 ![Browser showing an Unknown action error when trying to add a review]({{site.baseurl}}/assets/images/unknownaction_create.png){: .screenshot}
 
+{% aside %}
+An `Unknown action` error?! But we were so close!!!
+
+![Jake is upset]({{ site.baseurl }}/assets/images/upset.gif)
+
+Don't be so down! We've gotten through this before...we can fix this.
+
+![Fix it!]({{ site.baseurl }}/assets/images/fix-it.gif)
+
+The error is telling us what we need to do.
+
+```text
+The action 'create' could not be found for ReviewsController.
+```
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  An `Unknown action` error?! But we were so close!!!
-
-      ![Jake is upset]({{ site.baseurl }}/assets/images/upset.gif)
-
-      Don't be so down! We've gotten through this before...we can fix this.
-
-      ![Fix it!]({{ site.baseurl }}/assets/images/fix-it.gif)
-
-  1.  The error is telling us what we need to do.
-
-      > The action 'create' could not be found for ReviewsController.
-
   1.  Add an empty `create` method to the `ReviewsController`.
 
       ```ruby
@@ -553,16 +573,18 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
+{% aside %}
+Nothing happened, right?
+
+RIGHT?!?
+
+Of course nothing happened, the `create` method is empty.
+
+We need to update the `ReviewsController` `create` method so it creates a review for the requested book.
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  Nothing happened, right?
-
-      RIGHT?!?
-
-      Of course nothing happened, the `create` method is empty.
-
-  1.  We need to update the `ReviewsController` `create` method so it creates a review for the requested book.
-
   1.  Add the followling lines to the `ReviewsController` `create` method:
 
       ```ruby
@@ -592,33 +614,31 @@ layout: rails_tutorial
 
 ![Browser showing ActiveModel::ForbiddenAttributesError in ReviewsController#create]({{site.baseurl}}/assets/images/reviews_forbidden.png){: .screenshot}
 
-{% steps %}
-{% list %}
-  1.  Are you really surprised to see another error? 😉
+{% aside %}
+Are you really surprised to see another error? 😉
 
-  1.  What do you think is going on? You're getting an `ActiveModel::ForbiddenAttributesError`, but why?
+What do you think is going on? You're getting an `ActiveModel::ForbiddenAttributesError`, but why?
 
-  1.  If you look closely at the browser, Rails is telling you *where* the problem is. It's inside the `create` method.
+If you look closely at the browser, Rails is telling you *where* the problem is. It's inside the `create` method.
 
-      ```ruby
-      book.reviews.create(params)
-      ```
+```ruby
+book.reviews.create(params)
+```
 
-      Why would you get an `ActiveModel::ForbiddenAttributesError` from doing `book.reviews.create(params)`...🤔
+Why would you get an `ActiveModel::ForbiddenAttributesError` from doing `book.reviews.create(params)`...🤔
 
-  1.  Check out the `ActiveModel::ForbiddenAttributesError` [doc](http://api.rubyonrails.org/v5.0.0/classes/ActiveModel/ForbiddenAttributesError.html). What does the description say?
+Check out the `ActiveModel::ForbiddenAttributesError` [doc](http://api.rubyonrails.org/v5.0.0/classes/ActiveModel/ForbiddenAttributesError.html). What does the description say?
 
-      > Raised when forbidden attributes are used for mass assignment.
+> *Raised when forbidden attributes are used for mass assignment.*
 
-      Ah! We're trying to create the review using all the data from the params hash, but we haven't allowed any attributes to be set. This is that security feature we looked at earlier called [strong parameters](http://guides.rubyonrails.org/action_controller_overview.html#strong-parameters).
+Ah! We're trying to create the review using all the data from the params hash, but we haven't allowed any attributes to be set. This is that security feature we looked at earlier called [strong parameters](http://guides.rubyonrails.org/action_controller_overview.html#strong-parameters).
 
-      Strong parameters forces us to explcitly state what attributes can be set to prevent malicious data from entering our applications. When you try to assign attributes that haven't been permitted, you get an `ActiveModel::ForbiddenAttributesError` error.
-{% endlist %}
-{% endsteps %}
+Strong parameters forces us to explcitly state what attributes can be set to prevent malicious data from entering our applications. When you try to assign attributes that haven't been permitted, you get an `ActiveModel::ForbiddenAttributesError` error.
+{% endaside %}
 
 {% steps %}
 {% list %}
-  1.  To fix the `ReviewsController` `create` method, we need to specify the attributes that can be set on reviews. There is only one attribute we care about - `body`.
+  To fix the `ReviewsController` `create` method, we need to specify the attributes that can be set on reviews. There is only one attribute we care about - `body`.
 
   1.  Add the following method to the end of the `ReviewsController`:
 
@@ -674,7 +694,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Nothing happened...or did it?
+  Nothing happened...or did it?
 
   1.  Go back to your first book's details page at [http://localhost:3000/books/1](http://localhost:3000/books/1).
 
@@ -684,7 +704,7 @@ layout: rails_tutorial
 
   1.  Nothing happens at the end of the `ReviewsController` `create` method so it feels like your review wasn't created. Let's fix this.
 
-  1.  Add the following line to the end of the `ReviewsController` `create` method:
+      Add the following line to the end of the `ReviewsController` `create` method:
 
       ```ruby
       redirect_to book_path(book)
@@ -715,21 +735,23 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
+{% aside %}
+You've done *a lot* of work in this chapter, but look at your bookstore! Now you can write all those book reviews you've been putting off for all these years.
+
+![Typing!]({{ site.baseurl }}/assets/images/typing.gif)
+
+Before you jump into writing those reviews, let's clean up *one* more thing...
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  You've done *a lot* of work in this chapter, but look at your bookstore! Now you can write all those book reviews you've been putting off for all these years.
+  To create a review for a book, you have to know the URL you want to visit. We can make this a little nicer by adding a link to the new review page from the book details pages.
 
-      ![Typing!]({{ site.baseurl }}/assets/images/typing.gif)
-
-  1.  Before you jump into writing those reviews, let's clean up *one* more thing...
-
-  1.  To create a review for a book, you have to know the URL you want to visit. We can make this a little nicer by adding a link to the new review page from the book details pages.
-
-      You'll be able to quickly write a review for the book you're looking at.
+  You'll be able to quickly write a review for the book you're looking at.
 
   1.  Let's start by looking at your application's routes. Go to Terminal, stop your application's web server, and run `rake routes`.
 
-  1.  Which row has the path we've been using to get to the new review page?
+      Which row has the path we've been using to get to the new review page?
 
       ```shell
       new_book_review GET    /books/:book_id/reviews/new(.:format)      reviews#new
