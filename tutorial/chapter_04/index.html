@@ -1,0 +1,1278 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    
+      <base target="_blank"/>
+    
+    <title>B'more on Rails Workshop for Women</title>
+    <link href="/rails_tutorial/css/syntax/monokai.css" type="text/css" rel="stylesheet"/>
+    <link href="/rails_tutorial/css/base.css" type="text/css" rel="stylesheet"/>
+    <link href="/rails_tutorial/assets/vendor/css/featherlight.min.css" type="text/css" rel="stylesheet">
+    <script src="/rails_tutorial/js/jquery.min.js"></script>
+    <script src="/rails_tutorial/assets/vendor/js/featherlight.min.js"></script>
+    <script src="/rails_tutorial/js/tutorial_nav.js"></script>
+    <script src="/rails_tutorial/js/progress.js"></script>
+  </head>
+
+<body>
+  <div class="container" data-chapter="4">
+    <nav>
+      
+<div class="tutorial_nav">
+  <div class="progress"><div class="progress_bar"></div></div>
+  <ul id="menu-list">
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_01/" target="_self">
+        1 Getting Started from Scratch
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_02/" target="_self">
+        2 Creating the First Table in Your Database
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_03/" target="_self">
+        3 Viewing Data in the Browser
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_04/" target="_self">
+        4 Showing Detailed Information in the Browser
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_05/" target="_self">
+        5 Creating Books Through the Browser
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_06/" target="_self">
+        6 Updating Books
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_07/" target="_self">
+        7 Styling Your Bookstore
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_08/" target="_self">
+        8 Deleting a Book
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_09/" target="_self">
+        9 Reviewing a Book
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_10/" target="_self">
+        10 Showing Reviews
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_11/" target="_self">
+        11 Adding Reviews from the Browser
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_12/" target="_self">
+        12 Adding Users to Your Database
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_13/" target="_self">
+        13 Logging In and Logging Out
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_14/" target="_self">
+        14 Logged In vs Logged Out Users
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_15/" target="_self">
+        15 Associating Reviews with Users
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_16/" target="_self">
+        16 The End!
+       </a>
+     </li>
+    
+   </ul>
+
+  <div class="menu">
+    <div class="hamburger-icon" data-toggle="#menu-list"> &#9776</div>
+    <div class="menu-title" data-toggle="#menu-list">Chapter 4 -- Showing Detailed Information in the Browser</div>
+    <div class="menu-title"><a href="/rails_tutorial/" target="_self">Home</a></div>
+  </div>
+</div>
+
+    </nav>
+    <div class="content">
+      <div class="sectionheader">
+<p>Showing Detailed Information in the Browser</p>
+</div>
+
+<div class="aside">
+<p>You’re bookstore is starting to come along. You have an index that lists all the books in your database by title and author. This is great, but what about the other information you’ve stored about your books? It would be useful to see how much a book costs, or how many are available.</p>
+
+<p>Let’s show this information.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<p>Let’s start by looking at your application’s routes again.</p>
+
+<ol>
+  <li>
+    <p>Open Terminal and go to your <code class="highlighter-rouge">bookstore</code> directory.</p>
+  </li>
+  <li>
+    <p>Run <code class="highlighter-rouge">rake routes</code>.</p>
+
+    <p>So far we’ve worked with the first row in the routes table. We used the <code class="highlighter-rouge">/books</code> path with the <code class="highlighter-rouge">BooksController</code> <code class="highlighter-rouge">index</code> action to list all your application’s books.</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>books GET    /books<span class="o">(</span>.:format<span class="o">)</span>          books#index
+</code></pre>
+    </div>
+
+    <p>Now that we want to show detailed book information we’ll need to use a different route.</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>book GET    /books/:id<span class="o">(</span>.:format<span class="o">)</span>      books#show
+</code></pre>
+    </div>
+
+    <p>This time, we’ll use the <code class="highlighter-rouge">/books/:id</code> path with the <code class="highlighter-rouge">BooksController</code> <code class="highlighter-rouge">show</code> action to show a book’s information.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  <span class="nv">$ </span><span class="nb">pwd</span>
+  /Users/awesomesauce/Projects/bookstore
+
+  <span class="nv">$ </span>rake routes
+     Prefix Verb   URI Pattern               Controller#Action
+      books GET    /books<span class="o">(</span>.:format<span class="o">)</span>          books#index
+            POST   /books<span class="o">(</span>.:format<span class="o">)</span>          books#create
+   new_book GET    /books/new<span class="o">(</span>.:format<span class="o">)</span>      books#new
+  edit_book GET    /books/:id/edit<span class="o">(</span>.:format<span class="o">)</span> books#edit
+       book GET    /books/:id<span class="o">(</span>.:format<span class="o">)</span>      books#show
+            PATCH  /books/:id<span class="o">(</span>.:format<span class="o">)</span>      books#update
+            PUT    /books/:id<span class="o">(</span>.:format<span class="o">)</span>      books#update
+            DELETE /books/:id<span class="o">(</span>.:format<span class="o">)</span>      books#destroy</code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<p>In the <code class="highlighter-rouge">/books/:id</code> path, we can take advantage of <code class="highlighter-rouge">:id</code> to get a book by it’s id.</p>
+
+<p>What’s that? You didn’t know a book could have an id? Let’s take a look.</p>
+
+<ol>
+  <li>
+    <p>Go back to Terminal and start <code class="highlighter-rouge">rails console</code>.</p>
+  </li>
+  <li>
+    <p>In the console, run <code class="highlighter-rouge">Book.first</code> to get the first book from your database.</p>
+
+    <p>Take a look at the output. It might be hard to see, but at the beginning there’s an id.</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="c1">#&lt;Book id: 1, title: "why's (poignant) Guide to Ruby", ... &gt;</span>
+</code></pre>
+    </div>
+
+    <p>The first book in your database has an id of 1.</p>
+  </li>
+  <li>
+    <p>I wonder what id your second book will have…</p>
+
+    <p>Run <code class="highlighter-rouge">Book.second</code> and look at the output.</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="c1">#&lt;Book id: 2, title: "Oh, the Places You'll Go!", ... &gt;</span>
+</code></pre>
+    </div>
+
+    <p>The second book in your database has an id of … 2!!!</p>
+
+    <p>By default, every book you create will be given a unique id, and it will be given an id in sequential order.</p>
+  </li>
+  <li>
+    <p>Exit the console.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="err">$</span> <span class="n">rails</span> <span class="n">c</span>
+  <span class="no">Loading</span> <span class="n">development</span> <span class="n">environment</span> <span class="p">(</span><span class="no">Rails</span> <span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+  <span class="o">&gt;&gt;</span> <span class="no">Book</span><span class="p">.</span><span class="nf">first</span>
+    <span class="no">Book</span> <span class="no">Load</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">2</span><span class="n">ms</span><span class="p">)</span>  <span class="no">SELECT</span>  <span class="s2">"books"</span><span class="p">.</span><span class="nf">*</span> <span class="no">FROM</span> <span class="s2">"books"</span> <span class="no">ORDER</span> <span class="no">BY</span> <span class="s2">"books"</span><span class="o">.</span><span class="s2">"id"</span> <span class="no">ASC</span> <span class="no">LIMIT</span> <span class="p">?</span>  <span class="p">[[</span><span class="s2">"LIMIT"</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+  <span class="o">=&gt;</span> <span class="c1">#&lt;Book id: 1, title: "why's (poignant) Guide to Ruby", author: "why the lucky stiff", price_cents: 100, created_at: "2016-12-26 15:51:15", updated_at: "2016-12-26 15:51:15", quantity: 500&gt;</span>
+
+  <span class="o">&gt;&gt;</span> <span class="no">Book</span><span class="p">.</span><span class="nf">second</span>
+    <span class="no">Book</span> <span class="no">Load</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">2</span><span class="n">ms</span><span class="p">)</span>  <span class="no">SELECT</span>  <span class="s2">"books"</span><span class="p">.</span><span class="nf">*</span> <span class="no">FROM</span> <span class="s2">"books"</span> <span class="no">ORDER</span> <span class="no">BY</span> <span class="s2">"books"</span><span class="o">.</span><span class="s2">"id"</span> <span class="no">ASC</span> <span class="no">LIMIT</span> <span class="p">?</span> <span class="no">OFFSET</span> <span class="p">?</span>  <span class="p">[[</span><span class="s2">"LIMIT"</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s2">"OFFSET"</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+  <span class="o">=&gt;</span> <span class="c1">#&lt;Book id: 2, title: "Oh, the Places You'll Go!", author: "Dr. Seuss", price_cents: 500, created_at: "2016-12-26 15:51:15", updated_at: "2016-12-26 15:51:15", quantity: 200&gt;</span>
+
+  <span class="o">&gt;&gt;</span> <span class="nb">exit</span></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<p>How will the <code class="highlighter-rouge">/books/:id</code> path work in action?</p>
+
+<ol>
+  <li>
+    <p>Go back to Terminal and start your application’s web server by running <code class="highlighter-rouge">rails server</code>.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">:id</code> can be replaced with specific ids. Since we know your first book’s id is 1, we can go to <code class="highlighter-rouge">/books/1</code>.</p>
+
+    <p>Open your browser and go to <a href="http://localhost:3000/books/1">http://localhost:3000/books/1</a>.</p>
+  </li>
+  <li>
+    <p>An unknown action error?! Why does that look familiar… 😉</p>
+
+    <p>You’re trying to access the <code class="highlighter-rouge">BooksController</code> <code class="highlighter-rouge">show</code> action, but it doesn’t exist. Let’s make it!</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  <span class="nv">$ </span>rails server
+  <span class="o">=</span>&gt; Booting Puma
+  <span class="o">=</span>&gt; Rails 5.0.0.1 application starting <span class="k">in </span>development on http://localhost:3000
+  <span class="o">=</span>&gt; Run <span class="sb">`</span>rails server -h<span class="sb">`</span> <span class="k">for </span>more startup options
+  Puma starting <span class="k">in </span>single mode...
+  <span class="k">*</span> Version 3.6.0 <span class="o">(</span>ruby 2.3.1-p112<span class="o">)</span>, codename: Sleepy Sunday Serenity
+  <span class="k">*</span> Min threads: 5, max threads: 5
+  <span class="k">*</span> Environment: development
+  <span class="k">*</span> Listening on tcp://localhost:3000
+  Use Ctrl-C to stop
+  Started GET <span class="s2">"/books/1"</span> <span class="k">for</span> ::1 at 2016-12-26 12:07:18 -0500
+    ActiveRecord::SchemaMigration Load <span class="o">(</span>0.2ms<span class="o">)</span>  SELECT <span class="s2">"schema_migrations"</span>.<span class="k">*</span> FROM <span class="s2">"schema_migrations"</span>
+
+  AbstractController::ActionNotFound <span class="o">(</span>The action <span class="s1">'show'</span> could not be found <span class="k">for </span>BooksController<span class="o">)</span>:
+
+  ...</code></pre></figure>
+
+</div>
+
+<p><img src="/rails_tutorial/assets/images/unknown_action_error_show.png" alt="Browser showing Unknown action error: &quot;The action 'show' could not be found for BooksController&quot;" class="screenshot" /></p>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Open your text editor and go to <code class="highlighter-rouge">app/controllers/books_controller.rb</code>.</p>
+  </li>
+  <li>
+    <p>After the index action, add the following:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">show</span>
+<span class="k">end</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Save your changes, and go to <a href="http://localhost:3000/books/1">http://localhost:3000/books/1</a> again.</p>
+  </li>
+  <li>
+    <p>Now you get a different error:</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>ActionController::UnknownFormat <span class="o">(</span>BooksController#show is missing a template <span class="k">for </span>this request format and variant.
+</code></pre>
+    </div>
+
+    <p>We’ve seen this error too. You added the <code class="highlighter-rouge">show</code> action, but it doesn’t have a template to go with it.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>  <span class="k">class</span> <span class="nc">BooksController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+    <span class="k">def</span> <span class="nf">index</span>
+      <span class="vi">@books</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">all</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">show</span>
+    <span class="k">end</span>
+  <span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<p><img src="/rails_tutorial/assets/images/UnknownFormat_in_BooksController_show.png" alt="Browser showing ActionController::UnknownFormat error: &quot;BooksController#show is missing a template for this request format and variant&quot;" class="screenshot" /></p>
+
+<div class="steps">
+<div class="list">
+<p>Let’s add the missing template.</p>
+
+<ol>
+  <li>
+    <p>Go back to Terminal and stop your application’s web server by running <code class="highlighter-rouge">Ctrl-C</code>.</p>
+  </li>
+  <li>
+    <p>Now, run <code class="highlighter-rouge">touch app/views/books/show.html.erb</code> to create the empty template.</p>
+  </li>
+  <li>
+    <p>Restart your application’s web server by running <code class="highlighter-rouge">rails server</code> and revisit <a href="http://localhost:3000/books/1">http://localhost:3000/books/1</a>.</p>
+
+    <p>Remember, a blank page means no errors. 😆</p>
+
+    <p>Now that we have the <code class="highlighter-rouge">BooksController</code> <code class="highlighter-rouge">show</code> action rendering a template, we’re ready to show a book’s details.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  <span class="nv">$ </span>rails server
+
+  ...
+
+  ^CExiting
+
+  <span class="nv">$ </span>touch app/views/books/show.html.erb
+
+  <span class="nv">$ </span>rails server
+
+  ...</code></pre></figure>
+
+</div>
+
+<div class="aside">
+<h3 id="how-do-we-know-which-book-were-showing">How do we know which book we’re showing?</h3>
+
+<p>Before you can show a book’s details, you have to figure out <em>which</em> book’s details to show. How can we figure out which book to show?</p>
+
+<p>When you visit <a href="http://localhost:3000/books/1">http://localhost:3000/books/1</a>, you send a request to your application’s web server. Thanks to Rails routing, the book id (1) is included in that request.</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>Started GET <span class="s2">"/books/1"</span> <span class="k">for</span> ::1 at 2016-12-26 16:12:07 -0500
+Processing by BooksController#show as HTML
+  Parameters: <span class="o">{</span><span class="s2">"id"</span><span class="o">=</span>&gt;<span class="s2">"1"</span><span class="o">}</span>
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application <span class="o">(</span>0.3ms<span class="o">)</span>
+Completed 200 OK <span class="k">in </span>266ms <span class="o">(</span>Views: 263.1ms | ActiveRecord: 0.0ms<span class="o">)</span>
+</code></pre>
+</div>
+
+<p>It’s tucked in there, but the id is inside the parameters hash. See it? Try to find it in your server’s output.</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>Parameters: <span class="o">{</span><span class="s2">"id"</span><span class="o">=</span>&gt;<span class="s2">"1"</span><span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Let’s see how we can access the parameters hash in your <code class="highlighter-rouge">BooksController</code> <code class="highlighter-rouge">show</code> method.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Open your text editor and go to <code class="highlighter-rouge">app/controllers/books_controller.rb</code>.</p>
+  </li>
+  <li>
+    <p>Request parameters are available in all your application’s controllers as <code class="highlighter-rouge">params</code>.</p>
+
+    <p>Inside the <code class="highlighter-rouge">show</code> method, add the following code:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="vi">@id</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">]</span>
+</code></pre>
+    </div>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre>  <span class="k">class</span> <span class="nc">BooksController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+    <span class="k">def</span> <span class="nf">index</span>
+      <span class="vi">@books</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">all</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">show</span>
+      <span class="vi">@id</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">]</span>
+    <span class="k">end</span>
+  <span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<p>By defining <code class="highlighter-rouge">@id</code> in the <code class="highlighter-rouge">BooksController</code> <code class="highlighter-rouge">show</code> method, it’s available in the <code class="highlighter-rouge">BooksController</code> <code class="highlighter-rouge">show</code> template.</p>
+
+<ol>
+  <li>
+    <p>Open <code class="highlighter-rouge">app/views/books/show.html.erb</code> in your text editor and add the following:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="no">This</span> <span class="n">book</span><span class="err">'</span><span class="n">s</span> <span class="nb">id</span> <span class="n">is</span> <span class="o">&lt;</span><span class="sx">%= @id %&gt;.
+</span></code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Save your changes.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>  <span class="no">This</span> <span class="n">book</span><span class="err">'</span><span class="n">s</span> <span class="nb">id</span> <span class="n">is</span> <span class="o">&lt;</span><span class="sx">%= @id %&gt;.</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<p>Now that the <code class="highlighter-rouge">BooksController</code> <code class="highlighter-rouge">show</code> template is wired up to render something, what do you expect to see if you visit <a href="http://localhost:3000/books/1">http://localhost:3000/books/1</a>?</p>
+
+<p>Do you have an idea? Let’s verify it!</p>
+
+<ol>
+  <li>
+    <p>Go to <a href="http://localhost:3000/books/1">http://localhost:3000/books/1</a>.</p>
+
+    <p>What do you see?? Was it what you were expecting?</p>
+  </li>
+</ol>
+</div>
+</div>
+
+<p><img src="/rails_tutorial/assets/images/show_with_book_id.png" alt="Browser showing &quot;/books/1&quot; with the request book's id" class="screenshot" /></p>
+
+<div class="aside">
+<p>Did reality meet your expecations?</p>
+
+<p>The page renders “This book’s id is 1.” becuase you made a request from your browser with book id 1 (<a href="http://localhost:3000/books/1">http://localhost:3000/books/1</a>).</p>
+
+<p>You’re able to render the id because you grabbed it from the request parameters and assigned it to <code class="highlighter-rouge">@id</code> inside the <code class="highlighter-rouge">BooksController</code> <code class="highlighter-rouge">show</code> action.</p>
+
+<p>What happens if you go to <a href="http://localhost:3000/books/2">http://localhost:3000/books/2</a>?</p>
+
+<p>What about <a href="http://localhost:3000/books/3">http://localhost:3000/books/3</a>?</p>
+
+<p>The new book id is rendered on every request because you wired up the template to show the requested book’s id.</p>
+</div>
+
+<div class="aside">
+<h3 id="finding-a-book">Finding a Book</h3>
+
+<p>Now that we have the book id for the book we want to show, we can use it to get that book from your application’s database.</p>
+
+<p>We’ve used a few methods to get books from the database. We’ve used <code class="highlighter-rouge">Book.all</code> to get all the books, and we’ve used <code class="highlighter-rouge">Book.first</code> to get the first book.</p>
+
+<p>But how do we get a book by it’s id? Let’s explore on the <code class="highlighter-rouge">rails console</code>.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Go back to Terminal and quit your application’s web server by running <code class="highlighter-rouge">Ctrl-C</code>. Then, start the <code class="highlighter-rouge">rails console</code>.</p>
+  </li>
+  <li>
+    <p>Now try running the following code:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="no">Book</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre>
+    </div>
+
+    <p>What did it return? It returned the book in your application’s database with id 3.</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="c1">#&lt;Book id: 3, title: "1984", author: "George Orwell", price_cents: 0, created_at: "2016-12-26 15:51:15", updated_at: "2016-12-26 15:51:15", quantity: 200&gt;</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>What do you get when you run <code class="highlighter-rouge">Book.find(1)</code> or <code class="highlighter-rouge">Book.find(5)</code>?</p>
+
+    <p>You get the book with that id.</p>
+  </li>
+  <li>
+    <p>What happens if you do <code class="highlighter-rouge">Book.find(100)</code>?</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">RecordNotFound</span><span class="p">:</span> <span class="no">Couldn</span><span class="s1">'t find Book with '</span><span class="nb">id</span><span class="err">'</span><span class="o">=</span><span class="mi">100</span>
+</code></pre>
+    </div>
+    <p>An error! <code class="highlighter-rouge">Book.find</code> returns an error when it doesn’t find a book with the given book id.</p>
+
+    <p>So we can use <code class="highlighter-rouge">Book.find</code> to get books from your application’s database with a given id. If a book doesn’t exist with that id, we get an <code class="highlighter-rouge">ActiveRecord::RecordNotFound</code> error.</p>
+  </li>
+  <li>
+    <p>Exit the console and restart your application’s web server.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="err">$</span> <span class="n">rails</span> <span class="n">server</span>
+
+  <span class="p">.</span><span class="nf">.</span><span class="p">.</span>
+  <span class="nf">^</span><span class="no">CExiting</span>
+
+  <span class="err">$</span> <span class="n">rails</span> <span class="n">console</span>
+  <span class="no">Loading</span> <span class="n">development</span> <span class="n">environment</span> <span class="p">(</span><span class="no">Rails</span> <span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+  <span class="o">&gt;&gt;</span> <span class="no">Book</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="no">Book</span> <span class="no">Load</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">2</span><span class="n">ms</span><span class="p">)</span>  <span class="no">SELECT</span>  <span class="s2">"books"</span><span class="p">.</span><span class="nf">*</span> <span class="no">FROM</span> <span class="s2">"books"</span> <span class="no">WHERE</span> <span class="s2">"books"</span><span class="o">.</span><span class="s2">"id"</span> <span class="o">=</span> <span class="p">?</span> <span class="no">LIMIT</span> <span class="p">?</span>  <span class="p">[[</span><span class="s2">"id"</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s2">"LIMIT"</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+  <span class="o">=&gt;</span> <span class="c1">#&lt;Book id: 3, title: "1984", author: "George Orwell", price_cents: 0, created_at: "2016-12-26 15:51:15", updated_at: "2016-12-26 15:51:15", quantity: 200&gt;</span>
+
+  <span class="o">&gt;&gt;</span> <span class="no">Book</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="no">Book</span> <span class="no">Load</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">2</span><span class="n">ms</span><span class="p">)</span>  <span class="no">SELECT</span>  <span class="s2">"books"</span><span class="p">.</span><span class="nf">*</span> <span class="no">FROM</span> <span class="s2">"books"</span> <span class="no">WHERE</span> <span class="s2">"books"</span><span class="o">.</span><span class="s2">"id"</span> <span class="o">=</span> <span class="p">?</span> <span class="no">LIMIT</span> <span class="p">?</span>  <span class="p">[[</span><span class="s2">"id"</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s2">"LIMIT"</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+  <span class="o">=&gt;</span> <span class="c1">#&lt;Book id: 1, title: "why's (poignant) Guide to Ruby", author: "why the lucky stiff", price_cents: 100, created_at: "2016-12-26 15:51:15", updated_at: "2016-12-26 15:51:15", quantity: 500&gt;</span>
+
+  <span class="o">&gt;&gt;</span> <span class="no">Book</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="no">Book</span> <span class="no">Load</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">2</span><span class="n">ms</span><span class="p">)</span>  <span class="no">SELECT</span>  <span class="s2">"books"</span><span class="p">.</span><span class="nf">*</span> <span class="no">FROM</span> <span class="s2">"books"</span> <span class="no">WHERE</span> <span class="s2">"books"</span><span class="o">.</span><span class="s2">"id"</span> <span class="o">=</span> <span class="p">?</span> <span class="no">LIMIT</span> <span class="p">?</span>  <span class="p">[[</span><span class="s2">"id"</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="s2">"LIMIT"</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+  <span class="o">=&gt;</span> <span class="c1">#&lt;Book id: 5, title: "Life of Pi", author: "Yann Martel", price_cents: 750, created_at: "2016-12-26 15:51:15", updated_at: "2016-12-26 15:51:15", quantity: 50&gt;</span>
+
+  <span class="o">&gt;&gt;</span> <span class="no">Book</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="no">Book</span> <span class="no">Load</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">2</span><span class="n">ms</span><span class="p">)</span>  <span class="no">SELECT</span>  <span class="s2">"books"</span><span class="p">.</span><span class="nf">*</span> <span class="no">FROM</span> <span class="s2">"books"</span> <span class="no">WHERE</span> <span class="s2">"books"</span><span class="o">.</span><span class="s2">"id"</span> <span class="o">=</span> <span class="p">?</span> <span class="no">LIMIT</span> <span class="p">?</span>  <span class="p">[[</span><span class="s2">"id"</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="p">[</span><span class="s2">"LIMIT"</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+  <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">RecordNotFound</span><span class="p">:</span> <span class="no">Couldn</span><span class="s1">'t find Book with '</span><span class="nb">id</span><span class="s1">'=100
+	from /Users/alimi/.rvm/gems/ruby-2.3.1/gems/activerecord-5.0.0.1/lib/active_record/core.rb:173:in `find'</span>
+	<span class="n">from</span> <span class="p">(</span><span class="n">irb</span><span class="p">):</span><span class="mi">5</span>
+	<span class="n">from</span> <span class="sr">/Users/</span><span class="n">alimi</span><span class="o">/</span><span class="p">.</span><span class="nf">rvm</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">ruby</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="mi">3</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">railties</span><span class="o">-</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">rails</span><span class="o">/</span><span class="n">commands</span><span class="o">/</span><span class="n">console</span><span class="p">.</span><span class="nf">rb</span><span class="p">:</span><span class="mi">65</span><span class="ss">:in</span> <span class="sb">`start'
+	from /Users/alimi/.rvm/gems/ruby-2.3.1/gems/railties-5.0.0.1/lib/rails/commands/console_helper.rb:9:in `</span><span class="n">start</span><span class="s1">'
+	from /Users/alimi/.rvm/gems/ruby-2.3.1/gems/railties-5.0.0.1/lib/rails/commands/commands_tasks.rb:78:in `console'</span>
+	<span class="n">from</span> <span class="sr">/Users/</span><span class="n">alimi</span><span class="o">/</span><span class="p">.</span><span class="nf">rvm</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">ruby</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="mi">3</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">railties</span><span class="o">-</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">rails</span><span class="o">/</span><span class="n">commands</span><span class="o">/</span><span class="n">commands_tasks</span><span class="p">.</span><span class="nf">rb</span><span class="p">:</span><span class="mi">49</span><span class="ss">:in</span> <span class="sb">`run_command!'
+	from /Users/alimi/.rvm/gems/ruby-2.3.1/gems/railties-5.0.0.1/lib/rails/commands.rb:18:in `</span><span class="o">&lt;</span><span class="n">top</span> <span class="p">(</span><span class="n">required</span><span class="p">)</span><span class="o">&gt;</span><span class="s1">'
+	from bin/rails:4:in `require'</span>
+	<span class="n">from</span> <span class="n">bin</span><span class="o">/</span><span class="n">rails</span><span class="p">:</span><span class="mi">4</span><span class="ss">:in</span> <span class="sb">`&lt;main&gt;'
+
+  &gt;&gt; exit
+
+  $ rails server
+  =&gt; Booting Puma
+  ...</span></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<p>Let’s use our new knowledge of <code class="highlighter-rouge">Book.find</code> to get and show the requested book in the <code class="highlighter-rouge">BooksController</code> <code class="highlighter-rouge">show</code> method.</p>
+
+<ol>
+  <li>
+    <p>In your text editor, open the <code class="highlighter-rouge">BooksController</code>.</p>
+  </li>
+  <li>
+    <p>We’ve already grabbed the requested book id and set it to <code class="highlighter-rouge">@id</code>. Let’s use that to find the requested book.</p>
+
+    <p>Add the following line to the end of the <code class="highlighter-rouge">show</code> method:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="vi">@book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="vi">@id</span><span class="p">)</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Save your changes and go to <a href="http://localhost:3000/books/1">http://localhost:3000/books/1</a>.</p>
+
+    <p>Did you notice anything different? I hope not, because we didn’t update the template 😝</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre>  <span class="k">class</span> <span class="nc">BooksController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+    <span class="k">def</span> <span class="nf">index</span>
+      <span class="vi">@books</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">all</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">show</span>
+      <span class="vi">@id</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">]</span>
+      <span class="vi">@book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="vi">@id</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Now, open the <code class="highlighter-rouge">BooksController</code> <code class="highlighter-rouge">show</code> template (<code class="highlighter-rouge">app/views/books/show.html.erb</code>).</p>
+  </li>
+  <li>
+    <p>Add the following line to the end of the file</p>
+
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code>This book is called <span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">title</span> <span class="cp">%&gt;</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Save your changes and go back to <a href="http://localhost:3000/books/1">http://localhost:3000/books/1</a>.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>  This book's id is <span class="cp">&lt;%=</span> <span class="vi">@id</span> <span class="cp">%&gt;</span>.
+  This book is called <span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">title</span> <span class="cp">%&gt;</span>.<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<p><img src="/rails_tutorial/assets/images/show_book_id_and_title.png" alt="Browser showing the first book's id and title" class="screenshot" /></p>
+
+<div class="aside">
+<p>Yay! You got the request book and showed <em>some</em> of its information.</p>
+
+<p>Unfortunately, it’s kinda smashed together on the page.</p>
+
+<p>Let’s use a definition list to clean it up.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Open <code class="highlighter-rouge">app/views/books/show.html.erb</code> in your text editor and delete everything in the file.</p>
+
+    <p>Yes, EVERYTHING.</p>
+
+    <p>There’s nothing wrong with what we’ve done so far, but adding the definition list is easier from scratch.</p>
+  </li>
+  <li>
+    <p>Now, add the following code to the file:</p>
+
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;dl&gt;</span>
+  <span class="nt">&lt;dt&gt;</span>Id<span class="nt">&lt;/dt&gt;</span>
+  <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">id</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+
+  <span class="nt">&lt;dt&gt;</span>Title<span class="nt">&lt;/dt&gt;</span>
+  <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+<span class="nt">&lt;/dl&gt;</span>
+</code></pre>
+    </div>
+
+    <p>This is an HTML <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl">definition list</a> with a couple of terms: “Id” and “Title”. The terms are defined with values for the given book.</p>
+
+    <p>Save your changes and go to <a href="http://localhost:3000/books/1">http://localhost:3000/books/1</a> to see the results.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>  <span class="nt">&lt;dl&gt;</span>
+    <span class="nt">&lt;dt&gt;</span>Id<span class="nt">&lt;/dt&gt;</span>
+    <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">id</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+
+    <span class="nt">&lt;dt&gt;</span>Title<span class="nt">&lt;/dt&gt;</span>
+    <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+  <span class="nt">&lt;/dl&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<p><img src="/rails_tutorial/assets/images/definition_list_show.png" alt="Browser show &quot;/books/1&quot; as a definition list" class="screenshot" /></p>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Now that we have a definition list with the book's id and title, update it to include the rest of the book's information (author, price_cents, and quantity).</p>
+  </li>
+</ol>
+
+</div>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>What did you come up with? Your solution should look something like this:</p>
+
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;dl&gt;</span>
+  <span class="nt">&lt;dt&gt;</span>Id<span class="nt">&lt;/dt&gt;</span>
+  <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">id</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+
+  <span class="nt">&lt;dt&gt;</span>Title<span class="nt">&lt;/dt&gt;</span>
+  <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+
+  <span class="nt">&lt;dt&gt;</span>Author<span class="nt">&lt;/dt&gt;</span>
+  <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">author</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+
+  <span class="nt">&lt;dt&gt;</span>Price Cents<span class="nt">&lt;/dt&gt;</span>
+  <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">price_cents</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+
+  <span class="nt">&lt;dt&gt;</span>Quantity<span class="nt">&lt;/dt&gt;</span>
+  <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">quantity</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+<span class="nt">&lt;/dl&gt;</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Update your solution to match this solution.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre>  <span class="nt">&lt;dl&gt;</span>
+    <span class="nt">&lt;dt&gt;</span>Id<span class="nt">&lt;/dt&gt;</span>
+    <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">id</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+
+    <span class="nt">&lt;dt&gt;</span>Title<span class="nt">&lt;/dt&gt;</span>
+    <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+
+    <span class="nt">&lt;dt&gt;</span>Author<span class="nt">&lt;/dt&gt;</span>
+    <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">author</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+
+    <span class="nt">&lt;dt&gt;</span>Price Cents<span class="nt">&lt;/dt&gt;</span>
+    <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">price_cents</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+
+    <span class="nt">&lt;dt&gt;</span>Quantity<span class="nt">&lt;/dt&gt;</span>
+    <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">quantity</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+  <span class="nt">&lt;/dl&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<div class="aside">
+<h3 id="price-cents">Price Cents?</h3>
+
+<p>The books details look great, but doesn’t “Price Cents” look kinda weird?</p>
+
+<p>Do you ever wonder how much something would cost in pennies? Really?! I thought I was the only one!</p>
+
+<p>For most people, it would be easier to see the book’s price in dollars. Fortunately, Rails has our back.</p>
+
+<p>Rails provides a <a href="http://api.rubyonrails.org/classes/ActionView/Helpers/NumberHelper.html#method-i-number_to_currency"><code class="highlighter-rouge">number_to_currency</code> method</a> that prints a number as currency.</p>
+
+<p>Let’s see what happens when you use it.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Reopen <code class="highlighter-rouge">app/views/books/show.html.erb</code> and change the “Price Cents” definition from</p>
+
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">price_cents</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+</code></pre>
+    </div>
+
+    <p>to</p>
+
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="n">number_to_currency</span><span class="p">(</span><span class="vi">@book</span><span class="p">.</span><span class="nf">price_cents</span><span class="p">)</span> <span class="cp">%&gt;</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Save your changes and revist <a href="http://localhost:3000/books/1">http://localhost:3000/books/1</a>.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre>  <span class="nt">&lt;dl&gt;</span>
+    <span class="nt">&lt;dt&gt;</span>Id<span class="nt">&lt;/dt&gt;</span>
+    <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">id</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+
+    <span class="nt">&lt;dt&gt;</span>Title<span class="nt">&lt;/dt&gt;</span>
+    <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+
+    <span class="nt">&lt;dt&gt;</span>Author<span class="nt">&lt;/dt&gt;</span>
+    <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">author</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+
+    <span class="nt">&lt;dt&gt;</span>Price Cents<span class="nt">&lt;/dt&gt;</span>
+    <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="n">number_to_currency</span><span class="p">(</span><span class="vi">@book</span><span class="p">.</span><span class="nf">price_cents</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+
+    <span class="nt">&lt;dt&gt;</span>Quantity<span class="nt">&lt;/dt&gt;</span>
+    <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">quantity</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+  <span class="nt">&lt;/dl&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<p><img src="/rails_tutorial/assets/images/pretty_price_show.png" alt="Browser showing &quot;/books/1&quot; with `number_to_currency(price_cents)`" class="screenshot" /></p>
+
+<div class="aside">
+<p>Looks great, right?!</p>
+
+<p>Except <em>why’s (poignant) Guide to Ruby</em> doesn’t cost $100.00. We set the book’s <code class="highlighter-rouge">price_cents</code> to 100, and 100 cents is $1.00.</p>
+
+<p><code class="highlighter-rouge">number_to_currency</code> formats a number as a dollar amount, but the number has to be in dollars.</p>
+
+<p>We need to first convert <code class="highlighter-rouge">price_cents</code> to dollars before we can really use <code class="highlighter-rouge">number_to_currency</code>.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Reopen <code class="highlighter-rouge">app/views/books/show.html.erb</code> and change the “Price Cents” definition from</p>
+
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="n">number_to_currency</span><span class="p">(</span><span class="vi">@book</span><span class="p">.</span><span class="nf">price_cents</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+</code></pre>
+    </div>
+
+    <p>to</p>
+
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="n">number_to_currency</span><span class="p">(</span><span class="vi">@book</span><span class="p">.</span><span class="nf">price_cents</span> <span class="o">/</span> <span class="mi">100</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+</code></pre>
+    </div>
+
+    <p>To convert from cents to dollars, we can simply divide by 100.</p>
+
+    <p>(Actually we have to divide by 100.0 because <a href="/rails_tutorial/assets/images/floating_point_math_bad_times.png">floating point math is fun</a>)</p>
+
+    <p>Then, the converted value is used by <code class="highlighter-rouge">number_to_currency</code>.</p>
+  </li>
+  <li>
+    <p>You can also go ahead and change the definition term from “Price Cents” to “Price”.</p>
+  </li>
+  <li>
+    <p>Save your changes and try looking up a few of your books in your browser.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre>  <span class="nt">&lt;dl&gt;</span>
+    <span class="nt">&lt;dt&gt;</span>Id<span class="nt">&lt;/dt&gt;</span>
+    <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">id</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+
+    <span class="nt">&lt;dt&gt;</span>Title<span class="nt">&lt;/dt&gt;</span>
+    <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+
+    <span class="nt">&lt;dt&gt;</span>Author<span class="nt">&lt;/dt&gt;</span>
+    <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">author</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+
+    <span class="nt">&lt;dt&gt;</span>Price<span class="nt">&lt;/dt&gt;</span>
+    <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="n">number_to_currency</span><span class="p">(</span><span class="vi">@book</span><span class="p">.</span><span class="nf">price_cents</span> <span class="o">/</span> <span class="mi">100</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+
+    <span class="nt">&lt;dt&gt;</span>Quantity<span class="nt">&lt;/dt&gt;</span>
+    <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">quantity</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+  <span class="nt">&lt;/dl&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<p><img src="/rails_tutorial/assets/images/but_its_in_cents_show.png" alt="Browser showing &quot;/books/1&quot; with a nicely formated price" class="screenshot" /></p>
+
+<div class="aside">
+<p>We’re making really good progress! Anyone can visit your bookstore to see what books you have, and they can learn a little about those books.</p>
+
+<p>I love that I can see what books you have and how much they cost, but what if I’ve never heard of one of your books before??</p>
+
+<p>Let’s add book descriptions to help give just a little more info about your books.</p>
+</div>
+
+<div class="aside">
+<h3 id="adding-descriptions-to-books">Adding descriptions to books</h3>
+
+<p>We can add descriptions to books by adding a <code class="highlighter-rouge">description</code> column to the <code class="highlighter-rouge">books</code> table.</p>
+
+<p>Do you remember how we added columns to your application’s database tables?</p>
+
+<p>We’ve done that through migrations. We created a migration to add the <code class="highlighter-rouge">books</code> table, and we changed that migration to add new columns.</p>
+
+<p>Now that you’re bookstore application is coming along, we don’t want to go back and edit past migrations. Editing past migrations can compromise the data you’ve worked so hard to collect!</p>
+
+<p>But how will we add the <code class="highlighter-rouge">description</code> column to the <code class="highlighter-rouge">books</code> table??</p>
+
+<p>A new migration!</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Go back to Terminal and stop your application’s web server by running <code class="highlighter-rouge">Ctrl-C</code>.</p>
+  </li>
+  <li>
+    <p>Now, run <code class="highlighter-rouge">rails generate migration add_description_to_books</code>.</p>
+
+    <p>This creates a new timestamped migration file <code class="highlighter-rouge">db/migrate/TIMESTAMP_add_description_to_books.rb</code>.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  <span class="nv">$ </span>rails generate migration add_description_to_books
+        invoke  active_record
+        create    db/migrate/20161227020938_add_description_to_books.rb</code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Open your new migration in your text editor.</p>
+  </li>
+  <li>
+    <p>Inside the <code class="highlighter-rouge">change</code> method, add the following line:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">add_column</span> <span class="ss">:books</span><span class="p">,</span> <span class="ss">:description</span><span class="p">,</span> <span class="ss">:text</span>
+</code></pre>
+    </div>
+
+    <p>With this change, we’re setting up the migration to add a column to the <code class="highlighter-rouge">books</code> table. The new column will be named <code class="highlighter-rouge">description</code> and it will store any amount of <code class="highlighter-rouge">text</code>.</p>
+  </li>
+  <li>
+    <p>Save your changes.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>  <span class="k">class</span> <span class="nc">AddDescriptionToBooks</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">change</span>
+      <span class="n">add_column</span> <span class="ss">:books</span><span class="p">,</span> <span class="ss">:description</span><span class="p">,</span> <span class="ss">:text</span>
+    <span class="k">end</span>
+  <span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Now, go back to Terminal.</p>
+
+    <p>Run <code class="highlighter-rouge">rake db:migrate</code> to run your new migration against your application’s database.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  <span class="nv">$ </span>rake db:migrate
+  <span class="o">==</span> 20161227020938 AddDescriptionToBooks: migrating <span class="o">============================</span>
+  -- add_column<span class="o">(</span>:books, :description, :text<span class="o">)</span>
+     -&gt; 0.0049s
+  <span class="o">==</span> 20161227020938 AddDescriptionToBooks: migrated <span class="o">(</span>0.0050s<span class="o">)</span> <span class="o">===================</span></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<p>Let’s take a look at how this changes your bookstore.</p>
+
+<ol>
+  <li>
+    <p>In Terminal, start <code class="highlighter-rouge">rails console</code>, get your first book and assign it to a variable called <code class="highlighter-rouge">my_first_book</code>.</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">my_first_book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">first</span>
+</code></pre>
+    </div>
+
+    <p>Does the book look different?</p>
+
+    <p>At the end, you should see a nil description.</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="c1">#&lt;Book id: 1, title: "why's (poignant) Guide to Ruby", ..., description: nil&gt;</span>
+</code></pre>
+    </div>
+
+    <p><code class="highlighter-rouge">description</code> is nil because you just added it.</p>
+  </li>
+  <li>
+    <p>You can give <code class="highlighter-rouge">my_first_book</code> a description by running</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">my_first_book</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="ss">description: </span><span class="s2">"YOUR INSPIRING DESCRIPTION"</span><span class="p">)</span>
+</code></pre>
+    </div>
+
+    <p>Where YOUR INSPIRING DESCRIPTION is…YOUR INSPIRING DESCRIPTION.</p>
+
+    <p>(Don’t worry about your description being inspiring 😉)</p>
+  </li>
+  <li>
+    <p>After you’ve added YOUR INSPIRING DESCRIPTION to <code class="highlighter-rouge">my_first_book</code>, you can run <code class="highlighter-rouge">my_first_book.description</code> to see the new description.</p>
+  </li>
+  <li>
+    <p>Go ahead and add descriptions for the of rest your books. Your application’s database should have seven books, which means you have six descriptions to write.</p>
+  </li>
+  <li>
+    <p>When you’re done, exit the <code class="highlighter-rouge">rails console</code> and restart your application’s web server by running <code class="highlighter-rouge">rails server</code>.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="err">$</span> <span class="n">rails</span> <span class="n">console</span>
+  <span class="no">Loading</span> <span class="n">development</span> <span class="n">environment</span> <span class="p">(</span><span class="no">Rails</span> <span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+
+  <span class="o">&gt;&gt;</span> <span class="n">my_first_book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">first</span>
+
+  <span class="o">&gt;&gt;</span> <span class="n">my_first_book</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="ss">description: </span><span class="s2">"An introductory book to the Ruby programming language, written by why the lucky stiff. The book is unusual among programming books in that it includes quite a lot of strange humor and narrative side tracks which are sometimes completely unrelated to the topic. Many motifs have become inside jokes in the Ruby community, such as references to the words 'chunky bacon'. The book includes many characters which have become popular as well, particularly the cartoon foxes and Trady Blix, a large black feline friend of why's, who acts as a guide to the foxes and occasionally teaches them some Ruby."</span><span class="p">)</span>
+     <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">1</span><span class="n">ms</span><span class="p">)</span>  <span class="k">begin</span> <span class="n">transaction</span>
+    <span class="no">SQL</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">6</span><span class="n">ms</span><span class="p">)</span>  <span class="no">UPDATE</span> <span class="s2">"books"</span> <span class="no">SET</span> <span class="s2">"updated_at"</span> <span class="o">=</span> <span class="sc">?,</span> <span class="s2">"description"</span> <span class="o">=</span> <span class="p">?</span> <span class="no">WHERE</span> <span class="s2">"books"</span><span class="o">.</span><span class="s2">"id"</span> <span class="o">=</span> <span class="p">?</span>  <span class="p">[[</span><span class="s2">"updated_at"</span><span class="p">,</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">27</span> <span class="mo">02</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">28</span> <span class="no">UTC</span><span class="p">],</span> <span class="p">[</span><span class="s2">"description"</span><span class="p">,</span> <span class="s2">"An introductory book to the Ruby programming language, written by why the lucky stiff. The book is unusual among programming books in tha    t it includes quite a lot of strange humor and narrative side tracks which are sometimes completely unrelated to the topic. Many motifs have become inside jokes in the Ruby comm    unity, such as references to the words 'chunky bacon'. The book includes many characters which have become popular as well, particularly the cartoon foxes and Trady Blix, a larg    e black feline friend of why's, who acts as a guide to the foxes and occasionally teaches them some Ruby."</span><span class="p">],</span> <span class="p">[</span><span class="s2">"id"</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+     <span class="p">(</span><span class="mi">2</span><span class="o">.</span><span class="mi">3</span><span class="n">ms</span><span class="p">)</span>  <span class="n">commit</span> <span class="n">transaction</span>
+  <span class="o">=&gt;</span> <span class="kp">true</span>
+
+  <span class="o">&gt;&gt;</span> <span class="n">my_first_book</span><span class="p">.</span><span class="nf">description</span>
+  <span class="o">=&gt;</span> <span class="s2">"An introductory book to the Ruby programming language, written by why the lucky stiff. The book is unusual among programming books in that it includes quite a lot of strange humor and narrative side tracks which are sometimes completely unrelated to the topic. Many motifs have become inside jokes in the Ruby community, such as references to the words 'chunky bacon'. The book includes many characters which have become popular as well, particularly the cartoon foxes and Trady Blix, a large black feline friend of why's, who acts as a guide to the foxes and occasionally teaches them some Ruby."</span>
+
+  <span class="p">.</span><span class="nf">.</span><span class="p">.</span>
+
+  <span class="nf">&gt;</span><span class="o">&gt;</span> <span class="nb">exit</span></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Now that your books have descriptions, you can share them with the WORLD!</p>
+
+    <p>Reopen <code class="highlighter-rouge">app/views/books/show.html.erb</code> and add the book’s description to the end of the definition list.</p>
+  </li>
+</ol>
+</div>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>What did you come up with? You should’ve added the following lines:</p>
+
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;dt&gt;</span>Description<span class="nt">&lt;/dt&gt;</span>
+<span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">description</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Save your changes and view your beautiful descriptions in your browser.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td class="code"><pre>  <span class="nt">&lt;dl&gt;</span>
+    <span class="nt">&lt;dt&gt;</span>Id<span class="nt">&lt;/dt&gt;</span>
+    <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">id</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+
+    <span class="nt">&lt;dt&gt;</span>Title<span class="nt">&lt;/dt&gt;</span>
+    <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+
+    <span class="nt">&lt;dt&gt;</span>Author<span class="nt">&lt;/dt&gt;</span>
+    <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">author</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+
+    <span class="nt">&lt;dt&gt;</span>Price<span class="nt">&lt;/dt&gt;</span>
+    <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="n">number_to_currency</span><span class="p">(</span><span class="vi">@book</span><span class="p">.</span><span class="nf">price_cents</span> <span class="o">/</span> <span class="mi">100</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+
+    <span class="nt">&lt;dt&gt;</span>Quantity<span class="nt">&lt;/dt&gt;</span>
+    <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">quantity</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+
+    <span class="nt">&lt;dt&gt;</span>Description<span class="nt">&lt;/dt&gt;</span>
+    <span class="nt">&lt;dd&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">description</span> <span class="cp">%&gt;</span><span class="nt">&lt;/dd&gt;</span>
+  <span class="nt">&lt;/dl&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<p><img src="/rails_tutorial/assets/images/describing_in_show.png" alt="Browser showing &quot;/books/1&quot; with a lovely description of &quot;why's (poignant) Guide to Ruby&quot;" class="screenshot" /></p>
+
+<div class="aside">
+<h3 id="links">Links!</h3>
+
+<p>Now you have a lovely books index and lots of individual book views, but there is no relationship between the two. Let’s link them!</p>
+
+<p>Since you have a books index with a little bit of book information and book views lots of specific information, it makes sense to link from the books index to specific book pages.</p>
+
+<p>If a visitor to your bookstore is really excited to see a book on the index, they could click on that book to get more detailed information about it.</p>
+
+<p>We’ll update the index so book titles link to their book’s page.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<p>In HTML, you add links using anchor elements (<code class="highlighter-rouge">&lt;a&gt;</code> tags). Anchor elements link to other pages by their <code class="highlighter-rouge">href</code> attribute.</p>
+
+<p>Fortunately, Rails gives us a convience method to abstract away some of that work.</p>
+
+<ol>
+  <li>
+    <p>In your text editor, open <code class="highlighter-rouge">app/views/books/index.html.erb</code>.</p>
+  </li>
+  <li>
+    <p>Change the list item that renders book titles and authors to this:</p>
+
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;li&gt;</span>
+  <span class="cp">&lt;%=</span> <span class="n">link_to</span><span class="p">(</span><span class="n">book</span><span class="p">.</span><span class="nf">title</span><span class="p">,</span> <span class="n">book_path</span><span class="p">(</span><span class="n">book</span><span class="p">))</span> <span class="cp">%&gt;</span> by <span class="cp">&lt;%=</span> <span class="n">book</span><span class="p">.</span><span class="nf">author</span> <span class="cp">%&gt;</span>
+<span class="nt">&lt;/li&gt;</span>
+</code></pre>
+    </div>
+
+    <p>Rails gives us a <a href="http://api.rubyonrails.org/v5.0.0/classes/ActionView/Helpers/UrlHelper.html#method-i-link_to"><code class="highlighter-rouge">link_to</code></a> method we can use to create anchor elements.</p>
+
+    <p>First, you give it the text for the link. In this case, we want to use the book’s title as the link text.</p>
+
+    <p>Then, you give it the path for the link. We want the link to go to <code class="highlighter-rouge">/books/:id</code>, but we passed it <code class="highlighter-rouge">book_path(book)</code>. <code class="highlighter-rouge">book_path(book)</code> is another Rails method. Long story short, it generates <code class="highlighter-rouge">/books/:id</code> for the given book.</p>
+  </li>
+  <li>
+    <p>Save your changes and go to <a href="http://localhost:3000/books">http://localhost:3000/books</a>. Try clicking all the links!</p>
+
+    <p>When you’re done, stop your application’s web server.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre>  <span class="nt">&lt;h1&gt;</span>Welcome to My Super Rad Bookstore!<span class="nt">&lt;/h1&gt;</span>
+
+  <span class="nt">&lt;ul&gt;</span>
+    <span class="cp">&lt;%</span> <span class="vi">@books</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">book</span><span class="o">|</span> <span class="cp">%&gt;</span>
+      <span class="nt">&lt;li&gt;</span>
+        <span class="cp">&lt;%=</span> <span class="n">link_to</span><span class="p">(</span><span class="n">book</span><span class="p">.</span><span class="nf">title</span><span class="p">,</span> <span class="n">book_path</span><span class="p">(</span><span class="n">book</span><span class="p">))</span> <span class="cp">%&gt;</span> by <span class="cp">&lt;%=</span> <span class="n">book</span><span class="p">.</span><span class="nf">author</span> <span class="cp">%&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+    <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+  <span class="nt">&lt;/ul&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<p><img src="/rails_tutorial/assets/images/links_yay.png" alt="Browser showing books index with all the links!" class="screenshot" /></p>
+
+      <div class="tutorial-button-group">
+  
+    
+      <a href="/rails_tutorial/tutorial/chapter_03/" target="_self">
+        <div class="back-button">
+          Chapter 3
+        </div>
+      </a>
+    
+    
+      <a href="/rails_tutorial/tutorial/chapter_05/" target="_self">
+        <div class="next-button">
+          Chapter 5
+        </div>
+      </a>
+    
+  
+</div>
+
+    </div>
+  </div>
+<footer>
+  <div class="container">
+    <a href="http://bmoreonrails.org/"><img src="/rails_tutorial/assets/icons/bmore.png"></a>
+    <a href="https://github.com/bmoreonrails/rails_tutorial"><img class="icon" src="/rails_tutorial/assets/icons/github.png"></a>
+    <a href="https://twitter.com/BmorRailsSchool"><img class="icon" src="/rails_tutorial/assets/icons/twitter.png"></a> 
+  </div>
+</footer>
+</body>
+</html>
+
+
+<script>
+
+$('img.screenshot').featherlight({
+    targetAttr: 'src'
+});
+
+</script>

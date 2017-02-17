@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    
+      <base target="_blank"/>
+    
+    <title>B'more on Rails Workshop for Women</title>
+    <link href="/rails_tutorial/css/syntax/monokai.css" type="text/css" rel="stylesheet"/>
+    <link href="/rails_tutorial/css/base.css" type="text/css" rel="stylesheet"/>
+    <link href="/rails_tutorial/assets/vendor/css/featherlight.min.css" type="text/css" rel="stylesheet">
+    <script src="/rails_tutorial/js/jquery.min.js"></script>
+    <script src="/rails_tutorial/assets/vendor/js/featherlight.min.js"></script>
+    <script src="/rails_tutorial/js/tutorial_nav.js"></script>
+    <script src="/rails_tutorial/js/progress.js"></script>
+  </head>
+
+<body class="installation_guide">
+  <div class="container">
+    <nav>
+      <p>
+       <div class="tutorial_nav before_you_get_started_nav">
+
+  <div class="menu">
+      <div class="menu-title">Installation -- Windows 10 64-bit Anniversary Edition Installation</div>
+      <div class="menu-title"><a href="/rails_tutorial/" target="_self">Home</a></div>
+  </div>
+</div>
+
+
+      </p>
+    </nav>
+    <div class="content installation">
+      <div class="sectionheader">
+<p>Windows 10 64-bit Anniversary Edition Installation</p>
+</div>
+
+<div class="aside">
+<h1 id="table-of-contents">Table of Contents</h1>
+</div>
+
+<div class="protip">
+<h2 id="minimum-requirements">Minimum Requirements</h2>
+
+<p>In order to successfully follow these installation instructions, you must have the following:</p>
+
+<ul>
+  <li>64-bit Windows 10 Anniversary Edition with version 1607 or higher</li>
+  <li>Administrator account on your Win10 device/computer</li>
+</ul>
+
+</div>
+
+<div class="sectionheader">
+<h3 id="notes-before-installation">Notes Before Installation</h3>
+</div>
+
+<div class="steps">
+<div class="list">
+<h2 id="cortana">Cortana</h2>
+<p>In the following instructions, you will see <strong>Ask Cortana</strong> used often. We are referring to the ‘Ask me anything’ input box in your taskbar, which will search your computer for what you’ll need.</p>
+
+<p><img src="/rails_tutorial/assets/images/win10-taskbar-ask-me-anything.png" alt="Cortana ask me anything in taskbar" /></p>
+
+<p align="center">
+  <i> -OR- </i>
+</p>
+
+<p>If you don’t see <strong>Ask me anything</strong> in your taskbar, enable it through from your taskbar.</p>
+
+</div>
+<div class="list">
+<h3 id="to-enable-cortana">To enable Cortana:</h3>
+<ol>
+  <li>
+    <p>Right-click directly anywhere on the taskbar</p>
+  </li>
+  <li>
+    <p>A list of options show up, select ‘Cortana’</p>
+  </li>
+  <li>
+    <p>Select ‘Show search box’</p>
+  </li>
+</ol>
+</div>
+</div>
+
+<div class="steps">
+<div class="list">
+<h2 id="steps-to-check-your-version">Steps to Check Your Version:</h2>
+
+<p><strong>Ask Cortana</strong> for <code class="highlighter-rouge">winver</code>, and click on ‘winver run command’</p>
+
+<p>You should get a About Windows prompt with information about your Windows version.  Click ‘Ok’ when you confirm the right version.</p>
+
+<p align="center">
+  <i> -OR- </i>
+</p>
+
+<p>Check  microsoft’s website for an alternative to checking your OS’s version <a href="https://support.microsoft.com/en-us/help/13443/windows-which-operating-system" target="blank">https://support.microsoft.com/en-us/help/13443/windows-which-operating-system</a></p>
+
+<p><strong>If you are not using at least 64-bit Windows 10 Pro Anniversary Edition, you will not be able to use these instructions.</strong></p>
+
+<p>If you the windows build number is lower than 1607, you must do the ‘steps for windows updates’, which could take a LONG time depending on the number of updates needed.</p>
+</div>
+
+<div class="list">
+<p><img src="/rails_tutorial/assets/images/win10-winver-results.png" alt="Windows 10 About Version" /></p>
+</div>
+</div>
+
+<div class="steps">
+<div class="list">
+<h2 id="steps-for-windows-update">Steps for Windows Update:</h2>
+<ol>
+  <li>
+    <p><em>Ask Cortana</em> for <code class="highlighter-rouge">Settings</code>, and click on ‘Settings Trusted Windows Store app’.</p>
+  </li>
+  <li>
+    <p>Click on “Update &amp; security”</p>
+  </li>
+  <li>
+    <p>Click on “Windows Update”</p>
+  </li>
+  <li>
+    <p>Click on “Check for updates”, if any updates are available, it will start to download and prepare to install.</p>
+  </li>
+</ol>
+</div>
+<div class="protip">
+<p><strong>Keep updating</strong></p>
+
+<p>If the update asks you to restart, restart your device/computer.  Repeat the steps for windows update until windows does not find any more updates and tells you “Your device is up to date”.  Close all the Settings windows, and move onto Installing bash on windows section.</p>
+</div>
+</div>
+
+<h1 class="sectionheader" id="installing-bash-on-windows">Installing bash on Windows</h1>
+
+<div class="steps">
+<div class="list">
+<h2 id="enable-bash">Enable Bash:</h2>
+
+<h3 id="steps-for-enabling-developer-mode">Steps for enabling developer mode:</h3>
+<ol>
+  <li>
+    <p><em>Ask Cortana</em> for <code class="highlighter-rouge">Settings</code>, and click on ‘Settings Trusted Windows Store app’.</p>
+  </li>
+  <li>
+    <p>Click on “Updates and security”</p>
+  </li>
+  <li>
+    <p>Click on “For developers”</p>
+  </li>
+  <li>
+    <p>Select “Developer mode” under Use developer features,</p>
+  </li>
+  <li>
+    <p>Select “Yes” in the prompt asking if you understand that by turning on developer mode, it will expose your device and personal data to security risks or harm your device.</p>
+  </li>
+</ol>
+
+<h3 id="steps-for-enabling-windows-subsystem-for-linux-feature">Steps for enabling windows subsystem for linux feature:</h3>
+<ol>
+  <li>
+    <p><em>Ask Cortana</em> for <code class="highlighter-rouge">Turn Windows features on or off</code>, and click on ‘Turn Windows features on and off Control Panel’.</p>
+  </li>
+  <li>
+    <p>Checkbox click on “Windows Subsystem for Linux (Beta)”</p>
+  </li>
+  <li>
+    <p>Click “Ok”, if it asks you to restart your computer, click on “Restart now”.</p>
+  </li>
+</ol>
+</div>
+<div class="protip">
+<p>Restart your device/computer, once win10 starts again, move onto ‘steps for installing and running bash’ section.</p>
+</div>
+</div>
+
+<div class="steps">
+<div class="list">
+<h2 id="steps-for-installing-and-running-bash">steps for installing and running bash:</h2>
+<ol>
+  <li>
+    <p><em>Ask Cortana</em> for <code class="highlighter-rouge">Command Prompt</code>.</p>
+  </li>
+  <li>
+    <p>Right click on ‘Desktop app’, and click on “Run as administrator”. If asked, enter your password.  If it asks, do you want to allow this app to make changes to your device/computer, click “Yes”. The Command Prompt window will appear with a blinking underline: <img src="/rails_tutorial/assets/images/win10-command-prompt.png" alt="Windows 10 Command Prompt" /></p>
+  </li>
+  <li>
+    <p>Type <code class="highlighter-rouge">bash --login</code>, which will start the bash installation.</p>
+  </li>
+  <li>
+    <p>When it ask you <code class="highlighter-rouge">"Beta Feature, this will install ubuntu on windows distributed by Canonical and licensed under its terms available here: https://aka.ms/uowterms",</code> type <code class="highlighter-rouge">y</code> and then enter.  It’ll start to download from the Windows Store, and start installing to the file system.</p>
+  </li>
+  <li>
+    <p>Next, it will ask you to create a default UNIX user account and password.  <em>Note, this unix username and password have nothing to do with your win10 username and password.</em></p>
+  </li>
+  <li>
+    <p>At the prompt: <code class="highlighter-rouge">"Enter new UNIX username:"</code>, type in <code class="highlighter-rouge">railsworkshop</code></p>
+  </li>
+  <li>
+    <p>At this step, whatever you type won’t be displayed!  But don’t worry, if you misspell anything.<br />
+So at the prompt: <code class="highlighter-rouge">"Enter new UNIX password:"</code>, type in <code class="highlighter-rouge">railsworkshop</code></p>
+  </li>
+  <li>
+    <p>At this step, you will be asked for the password from the previous step. If you had misspelled anything, it will repeat the previous step! So in this step, at the prompt: “Retype new UNIX password:”, type in <em>railsworkshop</em> used in previous step.</p>
+  </li>
+  <li>
+    <p>Final step, should tell you “Installation successful! The environment will start momentarily…. Documentation is available at: https://aka.ms/wslusers”.  It will give you a Bash Prompt (Image of Bash Prompt) <img src="/rails_tutorial/assets/images/win10-bash.jpg" alt="Windows 10 Bash Prompt" /></p>
+  </li>
+  <li>
+    <p>Type <em>exit</em> at the Bash Prompt to leave and return to the Windows Prompt.</p>
+  </li>
+  <li>
+    <p>Type <em>exit</em> at the Windows Prompt to leave the Command Prompt.</p>
+  </li>
+</ol>
+
+</div>
+</div>
+
+<h1 class="sectionheader" id="create-rails-workshop-folder">Create Rails Workshop Folder</h1>
+
+<div class="protip">
+<p>We are going to create folder on your computer, where you will create your rails project.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>On your desktop, right click and mouse over “New”, and click on “Folder”</p>
+  </li>
+  <li>
+    <p>Name the folder “Projects”</p>
+  </li>
+  <li>
+    <p>Right click on “Projects” folder, and click on “Pin to Quick access” so it’s easier for you to access throughout the tutorial.</p>
+  </li>
+  <li>
+    <p><em>Ask Cortana</em> for <code class="highlighter-rouge">File Explorer</code>, and click on “File Explorer Desktop app”.  You should see the Workshop folder in the Navigation tab. (Show File Explorer with Workshop in Navigation)</p>
+  </li>
+</ol>
+</div>
+</div>
+
+<h1 class="sectionheader" id="installing-rails">Installing rails</h1>
+
+<div class="steps">
+<div class="list">
+<h2 id="steps-to-get-bash-prompt-window-at-your-rails-workshop-folder">Steps to get bash prompt window at your Rails workshop folder:</h2>
+
+<ol>
+  <li>
+    <p><em>Ask Cortana</em> for <code class="highlighter-rouge">File Explorer</code>, and click on the “File Explorer Desktop app”.</p>
+  </li>
+  <li>
+    <p>In the menu bar, click on “File”</p>
+  </li>
+  <li>
+    <p>Click on “Open command prompt”</p>
+  </li>
+  <li>
+    <p>Type <code class="highlighter-rouge">bash --login</code>, which should open the Bash Prompt in the Workshop folder.</p>
+  </li>
+</ol>
+</div>
+<div class="protip">
+<p><strong>REMEMBER THESE STEPS!</strong></p>
+
+<p><em>Most</em> of your Rails tutorial work should be in the Bash Prompt in the Workshop folder, and you will need to do create multiple bash prompt windows!</p>
+
+<p><em>Caveat:</em> To switch folders within the command prompt, you will need to exit out of the Bash Prompt. Anytime you need to do something in Rails, remember to go back into the Bash Prompt!</p>
+
+<p><em>Another Caveat:</em> If you just type <code class="highlighter-rouge">bash</code> to enter in the Bash Prompt, all the items you’ve downloaded  <em>will <strong>not</strong> work</em>. You must use <code class="highlighter-rouge">bash --login</code> to initalize the Bash Prompt.</p>
+</div>
+</div>
+
+<div class="steps">
+<div class="list">
+<h2 id="install-dependencies-for-ruby">Install Dependencies for Ruby:</h2>
+
+<div class="protip">
+<p>Copy the text after the <code class="highlighter-rouge">$</code>, one at a time and paste into a bash prompt window.
+<strong>To paste in the bash prompt window, just right click.</strong></p>
+
+<p>When you paste each line, make sure it runs the command and wait for the bash prompt to return.</p>
+
+<p>Enter your UNIX password any time it ask for it, which should be <code class="highlighter-rouge">railsworkshop</code>.</p>
+</div>
+
+<p>First, we’ll need to update our system and install dependencies for Ruby.</p>
+
+</div>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> <span class="nv">$ </span>sudo apt-get update
+
+ <span class="nv">$ </span>sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev <span class="se">\</span>
+   libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev <span class="se">\ </span>libxslt1-dev
+   libcurl4-openssl-dev python-software-properties libffi-dev <span class="se">\</span>
+
+ <span class="nv">$ </span>sudo apt-get install libgdbm-dev libncurses5-dev automake libtool <span class="se">\</span>
+   bison libffi-dev</code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<h2 id="install-ruby-231-via-rvm">Install Ruby 2.3.1 via RVM:</h2>
+
+<p>The <a href="http://rvm.io/">Ruby Version Manager (RVM)</a> will allow you to install different versions of ruby on your machine and switch between them as you switch from one job to another. <a href="https://code.tutsplus.com/articles/why-you-should-use-rvm--net-19529">Learn why RVM is useful here</a>.</p>
+
+<p>Once you have YVM installed, you can use it to install ruby.  You simply call <code class="highlighter-rouge">rvm install &lt;version&gt;</code>.  We’ll install and use the latest version (as of 12/3/2016), v2.3.1.</p>
+
+<p>To verify you have Ruby installed, type <code class="highlighter-rouge">ruby -v</code>, and you should see <code class="highlighter-rouge">ruby 2.3.1p112 (2016-04-26 revision 54768) [x86_64-linux]</code>.</p>
+
+<p>Finally, you’ll need to install Bundler, which will handle all your Ruby dependencies.</p>
+
+</div>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> <span class="nv">$ </span>gpg --keyserver hkp://keys.gnupg.net --recv-keys <span class="se">\</span>
+  409B6B1796C275462A1703113804BB82D39DC0E3
+
+ <span class="nv">$ </span>curl -sSL https://get.rvm.io | bash -s stable
+
+ <span class="nv">$ </span><span class="nb">source</span> ~/.rvm/scripts/rvm
+
+ <span class="nv">$ </span>rvm install 2.3.1
+
+ <span class="nv">$ </span>rvm use 2.3.1 --default
+
+ <span class="nv">$ </span>gem install bundler</code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<h2 id="install-rails-501">Install Rails 5.0.1:</h2>
+
+<p>Since Rails ships with so many dependencies these days, we’re going to need to install a Javascript runtime like NodeJS. This lets you use Coffeescript and the <a href="http://guides.rubyonrails.org/asset_pipeline.html">Asset Pipeline</a> in Rails which combines and minifies your javascript to provide a faster production environment.</p>
+
+<p>Lastly, we’ll finally install Rails! To verify your installation, type <code class="highlighter-rouge">rails -v</code>, which will output <code class="highlighter-rouge">Rails 5.0.1</code>.</p>
+
+</div>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> <span class="nv">$ </span>curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+
+ <span class="nv">$ </span>sudo apt-get install -y nodejs
+
+ <span class="nv">$ </span>gem install rails --version 5.0.1 --no-document
+
+ <span class="nv">$ </span>rails -v</code></pre></figure>
+
+</div>
+
+<div class="protip">
+<p>Yeah! You did it! You can now start the Rails Tutorial!</p>
+
+<p><img src="/rails_tutorial/assets/images/excited.gif" alt="Congratulations!" /></p>
+
+<p>Don’t forget to check out some cool <a href="/rails_tutorial/installation/dev_tools/">development tools</a>!</p>
+</div>
+
+    </div>
+  </div>
+<footer>
+  <div class="container">
+    <a href="http://bmoreonrails.org/"><img src="/rails_tutorial/assets/icons/bmore.png"></a>
+    <a href="https://github.com/bmoreonrails/rails_tutorial"><img class="icon" src="/rails_tutorial/assets/icons/github.png"></a>
+    <a href="https://twitter.com/BmorRailsSchool"><img class="icon" src="/rails_tutorial/assets/icons/twitter.png"></a> 
+  </div>
+</footer>
+</body>
+</html>
+

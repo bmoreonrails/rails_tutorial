@@ -1,0 +1,1212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    
+      <base target="_blank"/>
+    
+    <title>B'more on Rails Workshop for Women</title>
+    <link href="/rails_tutorial/css/syntax/monokai.css" type="text/css" rel="stylesheet"/>
+    <link href="/rails_tutorial/css/base.css" type="text/css" rel="stylesheet"/>
+    <link href="/rails_tutorial/assets/vendor/css/featherlight.min.css" type="text/css" rel="stylesheet">
+    <script src="/rails_tutorial/js/jquery.min.js"></script>
+    <script src="/rails_tutorial/assets/vendor/js/featherlight.min.js"></script>
+    <script src="/rails_tutorial/js/tutorial_nav.js"></script>
+    <script src="/rails_tutorial/js/progress.js"></script>
+  </head>
+
+<body>
+  <div class="container" data-chapter="3">
+    <nav>
+      
+<div class="tutorial_nav">
+  <div class="progress"><div class="progress_bar"></div></div>
+  <ul id="menu-list">
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_01/" target="_self">
+        1 Getting Started from Scratch
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_02/" target="_self">
+        2 Creating the First Table in Your Database
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_03/" target="_self">
+        3 Viewing Data in the Browser
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_04/" target="_self">
+        4 Showing Detailed Information in the Browser
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_05/" target="_self">
+        5 Creating Books Through the Browser
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_06/" target="_self">
+        6 Updating Books
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_07/" target="_self">
+        7 Styling Your Bookstore
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_08/" target="_self">
+        8 Deleting a Book
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_09/" target="_self">
+        9 Reviewing a Book
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_10/" target="_self">
+        10 Showing Reviews
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_11/" target="_self">
+        11 Adding Reviews from the Browser
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_12/" target="_self">
+        12 Adding Users to Your Database
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_13/" target="_self">
+        13 Logging In and Logging Out
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_14/" target="_self">
+        14 Logged In vs Logged Out Users
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_15/" target="_self">
+        15 Associating Reviews with Users
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_16/" target="_self">
+        16 The End!
+       </a>
+     </li>
+    
+   </ul>
+
+  <div class="menu">
+    <div class="hamburger-icon" data-toggle="#menu-list"> &#9776</div>
+    <div class="menu-title" data-toggle="#menu-list">Chapter 3 -- Viewing Data in the Browser</div>
+    <div class="menu-title"><a href="/rails_tutorial/" target="_self">Home</a></div>
+  </div>
+</div>
+
+    </nav>
+    <div class="content">
+      <div class="sectionheader">
+<p>Viewing Data in the Browser</p>
+</div>
+
+<div class="aside">
+<p>You’ve added a lot of books to your bookstore, but wouldn’t it be nice if you could actually <em>see</em> them in your browser? You are building a web application after all. 😉</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Before you can see your books, you’ll need make some changes. Open the <code class="highlighter-rouge">bookstore</code> directory in your text editor.</p>
+  </li>
+  <li>
+    <p>Now open <code class="highlighter-rouge">config/routes.rb</code> and add the following line inside the only block in the file:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">resources</span> <span class="ss">:books</span>  
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Save your changes.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>    <span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
+      <span class="c1"># For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html</span>
+      <span class="n">resources</span> <span class="ss">:books</span>
+    <span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Go back to Terminal and make sure you’re in the <code class="highlighter-rouge">bookstore</code> directory.</p>
+  </li>
+  <li>
+    <p>Run <code class="highlighter-rouge">rake routes</code>.</p>
+
+    <p>You should see a bunch of stuff about books along the lines of…</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>   Prefix Verb   URI Pattern               Controller#Action
+    books GET    /books<span class="o">(</span>.:format<span class="o">)</span>          books#index
+          POST   /books<span class="o">(</span>.:format<span class="o">)</span>          books#create
+ new_book GET    /books/new<span class="o">(</span>.:format<span class="o">)</span>      books#new
+edit_book GET    /books/:id/edit<span class="o">(</span>.:format<span class="o">)</span> books#edit
+     book GET    /books/:id<span class="o">(</span>.:format<span class="o">)</span>      books#show
+          PATCH  /books/:id<span class="o">(</span>.:format<span class="o">)</span>      books#update
+          PUT    /books/:id<span class="o">(</span>.:format<span class="o">)</span>      books#update
+          DELETE /books/:id<span class="o">(</span>.:format<span class="o">)</span>      books#destroy
+</code></pre>
+    </div>
+
+    <p><code class="highlighter-rouge">rake routes</code> prints a table of the available routes in your application. Since you added <code class="highlighter-rouge">books</code> as a resource in <code class="highlighter-rouge">config/routes.rb</code>, your application now has a bunch of book routes.</p>
+
+    <p>The <code class="highlighter-rouge">URI Pattern</code> column in the table tells you how to reach the routes from a browser.</p>
+
+    <p>For example, when your application is running locally you can reach <code class="highlighter-rouge">/books</code> by going to <code class="highlighter-rouge">http://localhost:3000/books</code>.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  <span class="nv">$ </span><span class="nb">pwd</span>
+  /Users/awesomesauce/Projects/bookstore
+
+  <span class="nv">$ </span>rake routes
+     Prefix Verb   URI Pattern               Controller#Action
+      books GET    /books<span class="o">(</span>.:format<span class="o">)</span>          books#index
+            POST   /books<span class="o">(</span>.:format<span class="o">)</span>          books#create
+   new_book GET    /books/new<span class="o">(</span>.:format<span class="o">)</span>      books#new
+  edit_book GET    /books/:id/edit<span class="o">(</span>.:format<span class="o">)</span> books#edit
+       book GET    /books/:id<span class="o">(</span>.:format<span class="o">)</span>      books#show
+            PATCH  /books/:id<span class="o">(</span>.:format<span class="o">)</span>      books#update
+            PUT    /books/:id<span class="o">(</span>.:format<span class="o">)</span>      books#update
+            DELETE /books/:id<span class="o">(</span>.:format<span class="o">)</span>      books#destroy</code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<p>Let’s trying going to the <code class="highlighter-rouge">/books</code> route.</p>
+
+<ol>
+  <li>
+    <p>In Terminal, run <code class="highlighter-rouge">rails server</code> to start your application’s web server.</p>
+  </li>
+  <li>
+    <p>Now, open your favorite web browser and go to <a href="http://localhost:3000/books">http://localhost:3000/books</a>.</p>
+
+    <p>If I had to guess, you probably got an error 🙃</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  <span class="nv">$ </span>rails server
+  <span class="o">=</span>&gt; Booting Puma
+  <span class="o">=</span>&gt; Rails 5.0.0.1 application starting <span class="k">in </span>development on http://localhost:3000
+  <span class="o">=</span>&gt; Run <span class="sb">`</span>rails server -h<span class="sb">`</span> <span class="k">for </span>more startup options
+  Puma starting <span class="k">in </span>single mode...
+  <span class="k">*</span> Version 3.6.0 <span class="o">(</span>ruby 2.3.1-p112<span class="o">)</span>, codename: Sleepy Sunday Serenity
+  <span class="k">*</span> Min threads: 5, max threads: 5
+  <span class="k">*</span> Environment: development
+  <span class="k">*</span> Listening on tcp://localhost:3000
+  Use Ctrl-C to stop
+  Started GET <span class="s2">"/books"</span> <span class="k">for</span> ::1 at 2016-11-28 22:24:04 -0500
+    ActiveRecord::SchemaMigration Load <span class="o">(</span>0.4ms<span class="o">)</span>  SELECT <span class="s2">"schema_migrations"</span>.<span class="k">*</span> FROM <span class="s2">"schema_migrations"</span>
+
+  ActionController::RoutingError <span class="o">(</span>uninitialized constant BooksController<span class="o">)</span>:
+  ...</code></pre></figure>
+
+</div>
+
+<p><img src="/rails_tutorial/assets/images/uninitialized_constant_BooksController.png" alt="Browser showing Routing Error: &quot;uninitialized constant BooksController&quot;" class="screenshot" /></p>
+
+<div class="steps">
+<div class="list">
+<p>We’ve run into a problem, but Rails is giving us some info to help us understand what’s going on.</p>
+
+<p>You’re getting a <code class="highlighter-rouge">Routing Error</code> because there’s an <code class="highlighter-rouge">uninitialized constant</code> called <code class="highlighter-rouge">BooksController</code>. Rails is expecting your application to have a <code class="highlighter-rouge">BooksController</code>, but it doesn’t have one. Let’s create it!</p>
+
+<ol>
+  <li>
+    <p>Go back to Terminal and stop your rails server by running <code class="highlighter-rouge">Ctrl-c</code>.</p>
+  </li>
+  <li>
+    <p>Create the <code class="highlighter-rouge">BooksController</code> by running <code class="highlighter-rouge">touch app/controllers/books_controller.rb</code>.</p>
+  </li>
+  <li>
+    <p>Restart your web server by running <code class="highlighter-rouge">rails server</code>, and try going to <a href="http:://localhost:3000/books">http:://localhost:3000/books</a> again.</p>
+
+    <p>That still errored, didn’t it? But hey, at least you got a new error!</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  <span class="nv">$ </span>rails server
+  <span class="o">=</span>&gt; Booting Puma
+  <span class="o">=</span>&gt; Rails 5.0.0.1 application starting <span class="k">in </span>development on http://localhost:3000
+  <span class="o">=</span>&gt; Run <span class="sb">`</span>rails server -h<span class="sb">`</span> <span class="k">for </span>more startup options
+  Puma starting <span class="k">in </span>single mode...
+  <span class="k">*</span> Version 3.6.0 <span class="o">(</span>ruby 2.3.1-p112<span class="o">)</span>, codename: Sleepy Sunday Serenity
+  <span class="k">*</span> Min threads: 5, max threads: 5
+  <span class="k">*</span> Environment: development
+  <span class="k">*</span> Listening on tcp://localhost:3000
+  Use Ctrl-C to stop
+  ...
+  ^CExiting
+
+  <span class="nv">$ </span>touch app/controllers/books_controller.rb
+
+  <span class="nv">$ </span>rails server
+  <span class="o">=</span>&gt; Booting Puma
+  <span class="o">=</span>&gt; Rails 5.0.0.1 application starting <span class="k">in </span>development on http://localhost:3000
+  ...
+  Use Ctrl-C to stop
+  Started GET <span class="s2">"/books"</span> <span class="k">for</span> ::1 at 2016-11-29 20:55:26 -0500
+    ActiveRecord::SchemaMigration Load <span class="o">(</span>0.2ms<span class="o">)</span>  SELECT <span class="s2">"schema_migrations"</span>.<span class="k">*</span> FROM <span class="s2">"schema_migrations"</span>
+
+  LoadError <span class="o">(</span>Unable to autoload constant BooksController, expected /Users/awesomesauce/Projects/bookstore/app/controllers/books_controller.rb to define it<span class="o">)</span>:</code></pre></figure>
+
+</div>
+
+<div class="aside">
+<p>Now you got a <code class="highlighter-rouge">LoadError</code> because <code class="highlighter-rouge">BooksController</code> isn’t defined.</p>
+
+<p><img src="/rails_tutorial/assets/images/LoadError_in_BooksController_index.png" alt="Browser showing LoadError: &quot;LoadError in BooksController#index
+  Unable to autoload constant BooksController, expected /Users/awesomesauce/Projects/bookstore/app/controllers/books_controller.rb to define it&quot;" class="screenshot" /></p>
+
+<p>Remember the <code class="highlighter-rouge">touch</code> command you used to create the <code class="highlighter-rouge">BooksController</code>?</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>touch app/controllers/books_controller.rb
+</code></pre>
+</div>
+
+<p>It created the <code class="highlighter-rouge">BooksController</code> file, but the file is empty. Don’t believe me? Let’s take a look at it.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>If your text editor isn’t already open, open it and go to the <code class="highlighter-rouge">bookstore</code> directory.</p>
+  </li>
+  <li>
+    <p>Now, open <code class="highlighter-rouge">app/controllers/books_controller.rb</code>.</p>
+  </li>
+  <li>
+    <p>See, it’s empty 😝</p>
+
+    <p><code class="highlighter-rouge">touch</code> creates empty files. You used it to create an empty file called <code class="highlighter-rouge">app/controllers/books_controller.rb</code>.</p>
+  </li>
+</ol>
+</div>
+</div>
+
+<div class="steps">
+<div class="list">
+<p>The error you got said something about there being a missing constant <code class="highlighter-rouge">BooksController</code>. Let’s add it.</p>
+
+<ol>
+  <li>
+    <p>Add the following code to <code class="highlighter-rouge">app/controllers/books_controller.rb</code>:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BooksController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+<span class="k">end</span>
+</code></pre>
+    </div>
+
+    <p>That should define the constant Rails was looking for.</p>
+  </li>
+  <li>
+    <p>Save the file and try going to <a href="http://localhost:3000/books">http://localhost:3000/books</a> again.</p>
+
+    <p>New error!</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">BooksController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+<span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<p><img src="/rails_tutorial/assets/images/unknown_action.png" alt="Browser showing Unknown action error: &quot;The action 'index' could not be found for BooksController&quot;" class="screenshot" /></p>
+
+<div class="steps">
+<div class="list">
+<p>This new error is telling us that your <code class="highlighter-rouge">BooksController</code> doesn’t have an <code class="highlighter-rouge">index</code> action. That kinda makes sense - we didn’t add very much code to the <code class="highlighter-rouge">BooksController</code>. But why does it care that the <code class="highlighter-rouge">index</code> action is missing?</p>
+
+<p>Remember the routing table? Kinda? Don’t worry, it’s fuzzy for me too. Let’s pull it up again.</p>
+
+<ol>
+  <li>
+    <p>Go back to Terminal and stop the <code class="highlighter-rouge">rails server</code> by running <code class="highlighter-rouge">Ctrl-c</code>.</p>
+  </li>
+  <li>
+    <p>Now, run <code class="highlighter-rouge">rake routes</code>. Voila - the routing table.</p>
+
+    <p>The first entry in the routing table is for the <code class="highlighter-rouge">/books</code> path.</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>Prefix Verb   URI Pattern       Controller#Action
+ books GET    /books<span class="o">(</span>.:format<span class="o">)</span>  books#index
+</code></pre>
+    </div>
+
+    <p>The last column tells us which controller and action get run when we go to the <code class="highlighter-rouge">/books</code> path.</p>
+
+    <p>The URI Pattern <code class="highlighter-rouge">/books(.:format)</code> maps to the Controller#Action pair of <code class="highlighter-rouge">books#index</code>. This tells us requests to the <code class="highlighter-rouge">/books</code> path will be routed to the <code class="highlighter-rouge">BooksController</code> <code class="highlighter-rouge">index</code> action.</p>
+
+    <p>Clear as mud, right? Don’t worry, it’ll make more sense later.</p>
+  </li>
+  <li>
+    <p>Now that we (kinda) know why we’re trying to run the <code class="highlighter-rouge">index</code> action, let’s add it.</p>
+
+    <p>Before we go on, restart your web server by running <code class="highlighter-rouge">rails server</code>.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  <span class="nv">$ </span>rails server
+  <span class="o">=</span>&gt; Booting Puma
+  ...
+  ^CExiting
+
+  <span class="nv">$ </span>rake routes
+     Prefix Verb   URI Pattern               Controller#Action
+      books GET    /books<span class="o">(</span>.:format<span class="o">)</span>          books#index
+            POST   /books<span class="o">(</span>.:format<span class="o">)</span>          books#create
+   new_book GET    /books/new<span class="o">(</span>.:format<span class="o">)</span>      books#new
+  edit_book GET    /books/:id/edit<span class="o">(</span>.:format<span class="o">)</span> books#edit
+       book GET    /books/:id<span class="o">(</span>.:format<span class="o">)</span>      books#show
+            PATCH  /books/:id<span class="o">(</span>.:format<span class="o">)</span>      books#update
+            PUT    /books/:id<span class="o">(</span>.:format<span class="o">)</span>      books#update
+            DELETE /books/:id<span class="o">(</span>.:format<span class="o">)</span>      books#destroy
+
+  <span class="nv">$ </span>rails server
+  <span class="o">=</span>&gt; Booting Puma
+  ...</code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>In your text editor, open the <code class="highlighter-rouge">BooksController</code> and add the following method inside the <code class="highlighter-rouge">BooksController</code> class.</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">index</span>
+<span class="k">end</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Save your changes and try going to <a href="http://localhost:3000">http://localhost:3000/books</a> again.</p>
+
+    <p><img src="/rails_tutorial/assets/images/aaugh.gif" alt="Aaugh!" /></p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>  <span class="k">class</span> <span class="nc">BooksController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+    <span class="k">def</span> <span class="nf">index</span>
+    <span class="k">end</span>
+  <span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<p><img src="/rails_tutorial/assets/images/ActionController_UnknownFormat.png" alt="Browser showing ActionController::UnknownFormat error: &quot;ActionController::UnknownFormat in BooksController#index - BooksController#index is missing a template for this request format and variant.&quot;" class="screenshot" /></p>
+
+<div class="aside">
+<h3 id="progress">Progress!</h3>
+
+<p>We’re making progress.</p>
+
+<p>…</p>
+
+<p>Seriously!</p>
+
+<p>The <code class="highlighter-rouge">/books</code> path is sucessfully reaching the <code class="highlighter-rouge">BooksController</code> <code class="highlighter-rouge">index</code> action, but we’re getting an error because we’re missing a template.</p>
+
+<p>A template is a view that get’s rendered at the end of a controller action. In this case, Rails is expecting your application to have an <code class="highlighter-rouge">index</code> template to go with the <code class="highlighter-rouge">BooksController</code> <code class="highlighter-rouge">index</code> action.</p>
+
+<p>Let’s make that happen!</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Stop your <code class="highlighter-rouge">rails server</code> by running <code class="highlighter-rouge">Ctrl-c</code>.</p>
+  </li>
+  <li>
+    <p>All templates live in the <code class="highlighter-rouge">app/views</code> directory.</p>
+
+    <p><code class="highlighter-rouge">app/views</code> will have directories for each of the controllers in your application. By default, a controller’s template directory will be the name of the controller…minus the controller.</p>
+
+    <p>For example, the templates for the <code class="highlighter-rouge">BooksController</code> will live in the <code class="highlighter-rouge">app/views/books</code> directory.</p>
+
+    <p>Create the <code class="highlighter-rouge">BooksController</code> template directory by running <code class="highlighter-rouge">mkdir app/views/books</code>.</p>
+  </li>
+  <li>
+    <p>Now, create the template for the <code class="highlighter-rouge">BooksController</code>’s <code class="highlighter-rouge">index</code> action by running <code class="highlighter-rouge">touch app/views/books/index.html.erb</code>.</p>
+  </li>
+  <li>
+    <p>Restart your web server.</p>
+
+    <p>(Remember? Start your web server by running <code class="highlighter-rouge">rails server</code>.)</p>
+  </li>
+  <li>
+    <p>Now, try going to <a href="http://localhost:3000/books">http://localhost:3000/books</a>.</p>
+
+    <p>The page might be blank, but that means no errors!</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  <span class="nv">$ </span>rails server
+  <span class="o">=</span>&gt; Booting Puma
+  ...
+  ^CExiting
+
+  <span class="nv">$ </span>mkdir app/views/books
+
+  <span class="nv">$ </span>touch app/views/books/index.html.erb
+
+  <span class="nv">$ </span>rails server
+  ...
+  Started GET <span class="s2">"/books"</span> <span class="k">for</span> ::1 at 2016-11-29 22:15:07 -0500
+    ActiveRecord::SchemaMigration Load <span class="o">(</span>0.2ms<span class="o">)</span>  SELECT <span class="s2">"schema_migrations"</span>.<span class="k">*</span> FROM <span class="s2">"schema_migrations"</span>
+  Processing by BooksController#index as HTML
+    Rendering books/index.html.erb within layouts/application
+    Rendered books/index.html.erb within layouts/application <span class="o">(</span>1.7ms<span class="o">)</span>
+  Completed 200 OK <span class="k">in </span>645ms <span class="o">(</span>Views: 631.6ms | ActiveRecord: 0.0ms<span class="o">)</span></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<p>Ok, let’s make this page a little more interesting.</p>
+
+<ol>
+  <li>
+    <p>In your text editor, open the template we made (<code class="highlighter-rouge">app/views/books/index.html.erb</code>) and add the following line:</p>
+
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;h1&gt;</span>Welcome to My Super Rad Bookstore!<span class="nt">&lt;/h1&gt;</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Save your changes and go to <a href="http:://localhost:3000/books">http://localhost:3000/books</a> again.</p>
+
+    <p>Yay! 🎉</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>  <span class="nt">&lt;h1&gt;</span>Welcome to My Super Rad Bookstore!<span class="nt">&lt;/h1&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<p><img src="/rails_tutorial/assets/images/welcome_to_my_super_rad_bookstore.png" alt="Browser showing the index page rendering your html&quot;" class="screenshot" /></p>
+
+<div class="aside">
+<h3 id="listing-all-the-things">Listing All the Things</h3>
+
+<p>You’ve been going to the <code class="highlighter-rouge">/books</code> path a bunch and as a result you’ve been running the <code class="highlighter-rouge">BooksController</code> <code class="highlighter-rouge">index</code> action a lot.</p>
+
+<p>You can think of an <code class="highlighter-rouge">index</code> action in a Rails application as the index of a book. It’s used to list all of a controller’s resources.</p>
+
+<p>Since we’re dealing with the <code class="highlighter-rouge">BooksController</code>, this <code class="highlighter-rouge">index</code> action is going to list all of your bookstore’s books.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<p>Before you can show all of your books in the browser, you have to make the books data available through your application’s <code class="highlighter-rouge">BooksController index</code> action.</p>
+
+<ol>
+  <li>
+    <p>In your text editor, open <code class="highlighter-rouge">app/controllers/books_controller.rb</code>. Inside the <code class="highlighter-rouge">index</code> method, add the following line:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="vi">@books</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">all</span>
+</code></pre>
+    </div>
+
+    <p>That line might look a little familiar. In Chapter 2, we used <code class="highlighter-rouge">Book.all</code> to list all your books on the <code class="highlighter-rouge">rails console</code>.</p>
+
+    <p>We’re using the same method again so we can render your books in the browser.</p>
+  </li>
+  <li>
+    <p>Save your changes.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>  <span class="k">class</span> <span class="nc">BooksController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+    <span class="k">def</span> <span class="nf">index</span>
+      <span class="vi">@books</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">all</span>
+    <span class="k">end</span>
+  <span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<p>By making that change to the <code class="highlighter-rouge">BooksController</code> <code class="highlighter-rouge">index</code> action, you’ve made book data available to your <code class="highlighter-rouge">index</code> template.</p>
+
+<p>Let’s see what you can do with it.</p>
+
+<ol>
+  <li>
+    <p>In your text editor, open <code class="highlighter-rouge">app/views/books/index.html.erb</code> and add the following line to the end of the file:</p>
+
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Save your changes and try going to <a href="http://localhost:3000/books">http://localhost:3000/books</a> again.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>  <span class="nt">&lt;h1&gt;</span>Welcome to My Super Rad Bookstore!<span class="nt">&lt;/h1&gt;</span>
+  <span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<p><img src="/rails_tutorial/assets/images/book_list_1.png" alt="Browser showing /books view with the application's first book title" class="screenshot" /></p>
+
+<div class="aside">
+<p>Your application’s data might be a little different than mine, but you’re probably seeing the title to <em>MY</em> favorite book. Yippie!</p>
+
+<p>(If your data is different, you’re seeing the title of some other book…sigh 😉)</p>
+
+<p>You had to do a couple of things to get that title to show up in your browser.</p>
+
+<p>First in the <code class="highlighter-rouge">BooksController</code> <code class="highlighter-rouge">index</code> method, you defined an instance variable <code class="highlighter-rouge">@books</code> and assigned it all the books in your application.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BooksController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="k">def</span> <span class="nf">index</span>
+    <span class="vi">@books</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">all</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p>Then in the associated <code class="highlighter-rouge">index</code> template (<code class="highlighter-rouge">app/views/books/index.html.erb</code>), you used some funny looking syntax to get the first book and show it’s title.</p>
+
+<div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;h1&gt;</span>Welcome to My Super Rad Bookstore!<span class="nt">&lt;/h1&gt;</span>
+<span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span>
+</code></pre>
+</div>
+
+<p>Let’s focus on that funny looking syntax for a few minutes.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>In your text editor, open <code class="highlighter-rouge">app/views/books/index.html.erb</code>.</p>
+  </li>
+  <li>
+    <p>Remember that line you added to the end of the file?</p>
+
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span>
+</code></pre>
+    </div>
+
+    <p>Change it so it looks like this:</p>
+
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Can you guess what this will change? Reload <a href="http:://localhost:3000/books">http:://localhost:3000/books</a> to see what happens.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>  <span class="nt">&lt;h1&gt;</span>Welcome to My Super Rad Bookstore!<span class="nt">&lt;/h1&gt;</span>
+  <span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<p><img src="/rails_tutorial/assets/images/book_list_2.png" alt="Browser showing /books view with the application's first book title" class="screenshot" /></p>
+
+<div class="aside">
+<p>You’re seeing a different book title, aren’t you?</p>
+
+<p>You used <code class="highlighter-rouge">@books[0]</code> to get the first book from your database, and you changed it to <code class="highlighter-rouge">@books[1]</code> to get the next book.</p>
+
+<p>I bet you could get all the books to render on the <code class="highlighter-rouge">index</code> template…</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Spend some time and see if you can get all the book titles to render. If you’ve been following along with the tutorial, you should have seven books in your application.</p>
+
+    <p>If you know some HTML, try listing the titles in an unordered list.</p>
+
+    <p>Don’t know very much HTML? Don’t worry about it - you’ll get familiar with it reaaaal soon. Just focus on getting the titles to render.</p>
+  </li>
+</ol>
+</div>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>What did you come up with?</p>
+
+    <p>One way may have been to list out each book like this:</p>
+
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span>
+<span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span>
+<span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span>
+<span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span>
+<span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span>
+<span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">5</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span>
+<span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">6</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span>
+</code></pre>
+    </div>
+
+    <p>That renders all the book titles, but they end up getting rendered on a single line.</p>
+  </li>
+  <li>
+    <p>If you know some HTML, you may have thrown in a few <code class="highlighter-rouge">br</code>s to give the titles some space like this:</p>
+
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span>
+<span class="nt">&lt;br&gt;</span>
+<span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span>
+<span class="nt">&lt;br&gt;</span>
+<span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span>
+<span class="nt">&lt;br&gt;</span>
+<span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span>
+<span class="nt">&lt;br&gt;</span>
+<span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span>
+<span class="nt">&lt;br&gt;</span>
+<span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">5</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span>
+<span class="nt">&lt;br&gt;</span>
+<span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">6</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Better yet, you may have even used an unordered list:</p>
+
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ul&gt;</span>
+  <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">5</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">6</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>If you used an unordered list, great!</p>
+
+    <p>If not, no worries - update your solution to use an unordered list.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>  <span class="nt">&lt;h1&gt;</span>Welcome to My Super Rad Bookstore!<span class="nt">&lt;/h1&gt;</span>
+
+  <span class="nt">&lt;ul&gt;</span>
+    <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">5</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">6</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;/ul&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<p><img src="/rails_tutorial/assets/images/book_list_3.png" alt="Browser showing /books view with the application's first book title" class="screenshot" /></p>
+
+<div class="aside">
+<p>Yay! Book titles!</p>
+
+<p>But doesn’t a lot of that code in your template look just a little…repetitive?</p>
+
+<div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+...
+</code></pre>
+</div>
+<p><em>There has to be a better way!?</em></p>
+
+<p>There is! 😄</p>
+
+<p>Remember when you defined <code class="highlighter-rouge">@books</code> in the <code class="highlighter-rouge">BooksController</code> <code class="highlighter-rouge">index</code> method?</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="vi">@books</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">all</span>
+</code></pre>
+</div>
+
+<p>You defined <code class="highlighter-rouge">@books</code> to be a collection of all the books in your application’s database. For our purposes, we can treat this collection like a <a href="http://ruby-doc.org/core-2.3.1/Array.html">Ruby Array</a>.</p>
+
+<p>You can get each item of a Ruby array by its index, and the first item starts at index 0.</p>
+
+<p>Does that sound familiar? It’s what you used to render the book titles.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code>  <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;&lt;</span><span class="sx">%= @books[0].title %&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nf">title</span> <span class="sx">%&gt;&lt;/li&gt;</span>
+  <span class="p">.</span><span class="nf">.</span><span class="o">.</span>
+</code></pre>
+</div>
+
+<p>This works well, but it’s a very manual process. You have to individually access each book to render its title. It also depends on you knowing how many books there are in the database.</p>
+
+<p>In Ruby, we don’t have to access each book individually like this. We can use Array’s <a href="http://ruby-doc.org/core-2.3.1/Array.html#method-i-each"><code class="highlighter-rouge">each</code></a> method to help us out.</p>
+
+<p>Let’s see what that would look like.</p>
+</div>
+
+<div class="protip">
+<p>You might remember reading about arrays in the <a href="http://tutorials.jumpstartlab.com/projects/ruby_in_100_minutes.html#7.-arrays">Ruby in 100 minutes</a> tutorial. Arrays are most commonly used for storing a list or collection of things.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Go back to your terminal and quit the <code class="highlighter-rouge">rails server</code> by running <code class="highlighter-rouge">Ctrl-c</code>.</p>
+  </li>
+  <li>
+    <p>Now, start the <code class="highlighter-rouge">rails console</code> by running…<code class="highlighter-rouge">rails console</code>.</p>
+  </li>
+  <li>
+    <p>Run the following code:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">books</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">all</span>
+</code></pre>
+    </div>
+
+    <p>You now have a <code class="highlighter-rouge">books</code> variable that’s been assigned all the books in your application’s database. <code class="highlighter-rouge">books</code> can be thought of as a Ruby Array.</p>
+
+    <p>Sound familiar 😉</p>
+  </li>
+  <li>
+    <p>Now, try running the following:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">books</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">book</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">book</span><span class="p">.</span><span class="nf">title</span> <span class="p">}</span>
+</code></pre>
+    </div>
+
+    <p>What happened?</p>
+
+    <p>You used the <code class="highlighter-rouge">each</code> method to iterate over each book and print its title.</p>
+  </li>
+  <li>
+    <p>The curly braces ({}) after <code class="highlighter-rouge">each</code> are the start and end of a block. We’ve seen the other block notation before - it starts with a <code class="highlighter-rouge">do</code> and ends with an <code class="highlighter-rouge">end</code>.</p>
+
+    <p>Try running the following:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">books</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">book</span><span class="o">|</span>
+  <span class="nb">puts</span> <span class="n">book</span><span class="p">.</span><span class="nf">title</span>
+<span class="k">end</span>
+</code></pre>
+    </div>
+
+    <p>The syntax might be different, but it’s the same result - each of the book titles are printed.</p>
+  </li>
+  <li>
+    <p>At the beginning of the block, you have a couple of pipes surronding <code class="highlighter-rouge">book</code></p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">books</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">book</span><span class="o">|</span> <span class="p">.</span><span class="nf">.</span><span class="o">.</span> <span class="p">}</span>
+</code></pre>
+    </div>
+
+    <p>This is called a block parameter. In this case, it lets you access each book so you can print its title.</p>
+
+    <p>Before, we would’ve manually gone through each book to print its title.</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="nb">puts</span> <span class="n">books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nf">title</span>
+<span class="nb">puts</span> <span class="n">books</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nf">title</span>
+<span class="p">.</span><span class="nf">.</span><span class="o">.</span>
+</code></pre>
+    </div>
+
+    <p>Now, <code class="highlighter-rouge">each</code> lets us do it in a lot less code.</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">books</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">book</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">book</span><span class="p">.</span><span class="nf">title</span> <span class="p">}</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Try playing with the <code class="highlighter-rouge">each</code> method to see what else you can print out. You should be able print things like the book ids, authors, and quantities.</p>
+  </li>
+  <li>
+    <p>When you’re done exploring, run <code class="highlighter-rouge">exit</code> to exit the <code class="highlighter-rouge">rails console</code>. Then, restart the <code class="highlighter-rouge">rails server</code>.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="o">&gt;&gt;</span> <span class="n">books</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">all</span>
+    <span class="no">Book</span> <span class="no">Load</span> <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="mi">4</span><span class="n">ms</span><span class="p">)</span>  <span class="no">SELECT</span> <span class="s2">"books"</span><span class="p">.</span><span class="nf">*</span> <span class="no">FROM</span> <span class="s2">"books"</span>
+  <span class="o">=&gt;</span> <span class="c1">#&lt;ActiveRecord::Relation [#&lt;Book id: 1, title: "why's (poignant) Guide to Ruby", author: "why the lucky stiff", price_cents: 100, created_at: "2016-11-24 03:30:53", updated_at: "2016-11-24 03:30:53", quantity: 500&gt;, #&lt;Book id: 2, title: "Oh, the Places You'll Go!", author: "Dr. Seuss", price_cents: 500, created_at: "2016-11-24 03:33:22", updated_at: "2016-11-24 03:33:22", quantity: 200&gt;, #&lt;Book id: 4, title: "1984", author: "George Orwell", price_cents: 0, created_at: "2016-11-30 01:35:44", updated_at: "2016-11-30 01:35:44", quantity: 200&gt;, #&lt;Book id: 5, title: "The Sound and The Fury", author: "William Faulkner", price_cents: 500, created_at: "2016-11-30 01:36:47", updated_at: "2016-11-30 01:36:47", quantity: 150&gt;, #&lt;Book id: 6, title: "Life of Pi", author: "Yann Martel", price_cents: 750, created_at: "2016-11-30 01:37:40", updated_at: "2016-11-30 01:37:40", quantity: 50&gt;, #&lt;Book id: 7, title: "The Kite Runner", author: "Khaled Hosseini", price_cents: 600, created_at: "2016-11-30 01:38:28", updated_at: "2016-11-30 01:38:28", quantity: 23&gt;, #&lt;Book id: 8, title: "Ender's Game", author: "Orson Scott Card", price_cents: 42, created_at: "2016-11-30 01:40:20", updated_at: "2016-11-30 01:40:20", quantity: 1000&gt;]&gt;</span>
+
+  <span class="o">&gt;&gt;</span> <span class="n">books</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">book</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">book</span><span class="p">.</span><span class="nf">title</span> <span class="p">}</span>
+  <span class="n">why</span><span class="s1">'s (poignant) Guide to Ruby
+  Oh, the Places You'</span><span class="n">ll</span> <span class="no">Go</span><span class="o">!</span>
+  <span class="mi">1984</span>
+  <span class="no">The</span> <span class="no">Sound</span> <span class="n">and</span> <span class="no">The</span> <span class="no">Fury</span>
+  <span class="no">Life</span> <span class="n">of</span> <span class="no">Pi</span>
+  <span class="no">The</span> <span class="no">Kite</span> <span class="no">Runner</span>
+  <span class="no">Ender</span><span class="s1">'s Game
+  =&gt; [#&lt;Book id: 1, title: "why'</span><span class="n">s</span> <span class="p">(</span><span class="n">poignant</span><span class="p">)</span> <span class="no">Guide</span> <span class="n">to</span> <span class="no">Ruby</span><span class="s2">", author: "</span><span class="n">why</span> <span class="n">the</span> <span class="n">lucky</span> <span class="n">stiff</span><span class="s2">", price_cents: 100, created_at: "</span><span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">24</span> <span class="mo">03</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">53</span><span class="s2">", updated_at: "</span><span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">24</span> <span class="mo">03</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">53</span><span class="s2">", quantity: 500&gt;, #&lt;Book id: 2, title: "</span><span class="no">Oh</span><span class="p">,</span> <span class="n">the</span> <span class="no">Places</span> <span class="no">You</span><span class="s1">'ll Go!", author: "Dr. Seuss", price_cents: 500, created_at: "2016-11-24 03:33:22", updated_at: "2016-11-24 03:33:22", quantity: 200&gt;, #&lt;Book id: 4, title: "1984", author: "George Orwell", price_cents: 0, created_at: "2016-11-30 01:35:44", updated_at: "2016-11-30 01:35:44", quantity: 200&gt;, #&lt;Book id: 5, title: "The Sound and The Fury", author: "William Faulkner", price_cents: 500, created_at: "2016-11-30 01:36:47", updated_at: "2016-11-30 01:36:47", quantity: 150&gt;, #&lt;Book id: 6, title: "Life of Pi", author: "Yann Martel", price_cents: 750, created_at: "2016-11-30 01:37:40", updated_at: "2016-11-30 01:37:40", quantity: 50&gt;, #&lt;Book id: 7, title: "The Kite Runner", author: "Khaled Hosseini", price_cents: 600, created_at: "2016-11-30 01:38:28", updated_at: "2016-11-30 01:38:28", quantity: 23&gt;, #&lt;Book id: 8, title: "Ender'</span><span class="n">s</span> <span class="no">Game</span><span class="s2">", author: "</span><span class="no">Orson</span> <span class="no">Scott</span> <span class="no">Card</span><span class="s2">", price_cents: 42, created_at: "</span><span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">30</span> <span class="mo">01</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">20</span><span class="s2">", updated_at: "</span><span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">30</span> <span class="mo">01</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">20</span><span class="s2">", quantity: 1000&gt;]
+
+  &gt;&gt; books.each do |book|
+  ?&gt;     puts book.title
+  &gt;&gt;   end
+  why's (poignant) Guide to Ruby
+  Oh, the Places You'll Go!
+  1984
+  The Sound and The Fury
+  Life of Pi
+  The Kite Runner
+  Ender's Game
+  =&gt; [#&lt;Book id: 1, title: "</span><span class="n">why</span><span class="s1">'s (poignant) Guide to Ruby", author: "why the lucky stiff", price_cents: 100, created_at: "2016-11-24 03:30:53", updated_at: "2016-11-24 03:30:53", quantity: 500&gt;, #&lt;Book id: 2, title: "Oh, the Places You'</span><span class="n">ll</span> <span class="no">Go</span><span class="o">!</span><span class="s2">", author: "</span><span class="no">Dr</span><span class="o">.</span> <span class="no">Seuss</span><span class="s2">", price_cents: 500, created_at: "</span><span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">24</span> <span class="mo">03</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">22</span><span class="s2">", updated_at: "</span><span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">24</span> <span class="mo">03</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">22</span><span class="s2">", quantity: 200&gt;, #&lt;Book id: 4, title: "</span><span class="mi">1984</span><span class="s2">", author: "</span><span class="no">George</span> <span class="no">Orwell</span><span class="s2">", price_cents: 0, created_at: "</span><span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">30</span> <span class="mo">01</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">44</span><span class="s2">", updated_at: "</span><span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">30</span> <span class="mo">01</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">44</span><span class="s2">", quantity: 200&gt;, #&lt;Book id: 5, title: "</span><span class="no">The</span> <span class="no">Sound</span> <span class="n">and</span> <span class="no">The</span> <span class="no">Fury</span><span class="s2">", author: "</span><span class="no">William</span> <span class="no">Faulkner</span><span class="s2">", price_cents: 500, created_at: "</span><span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">30</span> <span class="mo">01</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">47</span><span class="s2">", updated_at: "</span><span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">30</span> <span class="mo">01</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">47</span><span class="s2">", quantity: 150&gt;, #&lt;Book id: 6, title: "</span><span class="no">Life</span> <span class="n">of</span> <span class="no">Pi</span><span class="s2">", author: "</span><span class="no">Yann</span> <span class="no">Martel</span><span class="s2">", price_cents: 750, created_at: "</span><span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">30</span> <span class="mo">01</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">40</span><span class="s2">", updated_at: "</span><span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">30</span> <span class="mo">01</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">40</span><span class="s2">", quantity: 50&gt;, #&lt;Book id: 7, title: "</span><span class="no">The</span> <span class="no">Kite</span> <span class="no">Runner</span><span class="s2">", author: "</span><span class="no">Khaled</span> <span class="no">Hosseini</span><span class="s2">", price_cents: 600, created_at: "</span><span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">30</span> <span class="mo">01</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">28</span><span class="s2">", updated_at: "</span><span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">30</span> <span class="mo">01</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">28</span><span class="s2">", quantity: 23&gt;, #&lt;Book id: 8, title: "</span><span class="no">Ender</span><span class="err">'</span><span class="n">s</span> <span class="no">Game</span><span class="s2">", author: "</span><span class="no">Orson</span> <span class="no">Scott</span> <span class="no">Card</span><span class="s2">", price_cents: 42, created_at: "</span><span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">30</span> <span class="mo">01</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">20</span><span class="s2">", updated_at: "</span><span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">30</span> <span class="mo">01</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">20</span><span class="s2">", quantity: 1000&gt;]</span></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<p>Let’s put this new knowledge to work.</p>
+
+<ol>
+  <li>
+    <p>In your text editor, open <code class="highlighter-rouge">app/views/books/index.html.erb</code>.</p>
+  </li>
+  <li>
+    <p>At the end of the file, add a new, empty unordered list. It should look like this:</p>
+
+    <div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ul&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre>
+    </div>
+
+    <p>Inside the new unordered list, we’ll want to iterate over all the books assigned to <code class="highlighter-rouge">@books</code> and render a list item for each book title.</p>
+
+    <p>We can iterate over <code class="highlighter-rouge">@books</code> by using the <code class="highlighter-rouge">each</code> method.</p>
+
+    <p>You’ve used the <code class="highlighter-rouge">each</code> method on the <code class="highlighter-rouge">rails console</code>, but how will you use it in your template?</p>
+  </li>
+  <li>
+    <p>To run Ruby code in your template, you have to put it inside some funny looking brackets:</p>
+
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;%</span> <span class="p">.</span><span class="nf">.</span><span class="o">.</span> <span class="cp">%&gt;</span>
+</code></pre>
+    </div>
+
+    <p>Everything inside <code class="highlighter-rouge">&lt;% %&gt;</code> will get run in your template.</p>
+
+    <p>We’ve seen something similar before. Remember how you got the book titles to render?</p>
+
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span>
+</code></pre>
+    </div>
+
+    <p>The syntax is slightly different. <code class="highlighter-rouge">&lt;%= %&gt;</code> runs Ruby code <em>and</em> renders the result in your template.</p>
+
+    <p><code class="highlighter-rouge">&lt;% %&gt;</code> on the other hand <em>only</em> runs Ruby code. It <em>does not</em> render the
+result of that code.</p>
+
+    <p>With that in mind, add the following code inside your new unordered list:</p>
+
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;%</span> <span class="vi">@books</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">book</span><span class="o">|</span> <span class="cp">%&gt;</span>
+<span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Save your changes and revisit <a href="http://localhost:3000/books">http://localhost:3000/books</a>. Did anything change?</p>
+
+    <p>Nothing changed! You’re running <code class="highlighter-rouge">@books.each</code> in your template, but since it’s inside <code class="highlighter-rouge">&lt;% %&gt;</code> the result of that block isn’t rendered.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre>  <span class="nt">&lt;h1&gt;</span>Welcome to My Super Rad Bookstore!<span class="nt">&lt;/h1&gt;</span>
+
+  <span class="nt">&lt;ul&gt;</span>
+    <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">5</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">6</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;/ul&gt;</span>
+
+  <span class="nt">&lt;ul&gt;</span>
+    <span class="cp">&lt;%</span> <span class="vi">@books</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">book</span><span class="o">|</span> <span class="cp">%&gt;</span>
+    <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+  <span class="nt">&lt;/ul&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<div class="protip">
+<p>You can use that funny looking syntax in your templates because they’re <a href="http://guides.rubyonrails.org/v5.0.0/action_view_overview.html#templates">ERB templates</a>.</p>
+
+<p>ERB templates are available in all Rails applications. Any file that ends in <code class="highlighter-rouge">.html.erb</code> is an ERB template.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<p>Now that you have your block set up, you’re ready to render some book titles.</p>
+
+<ol>
+  <li>
+    <p>Spend a few minutes and try to get each book title to render as a list item inside the block.</p>
+
+    <p>Remember, inside the block each book is availble to you as <code class="highlighter-rouge">book</code>.</p>
+
+    <p>When you’re done, you should see two identical unordered lists on <a href="http://localhost:3000/books">http://localhost:3000/books</a>.</p>
+  </li>
+</ol>
+</div>
+</div>
+
+<p><img src="/rails_tutorial/assets/images/book_list_4.png" alt="Browser showing /books view with two unordered lists" class="screenshot" /></p>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Did you get it?! Your new unordered list should look something like this:</p>
+
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ul&gt;</span>
+  <span class="cp">&lt;%</span> <span class="vi">@books</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">book</span><span class="o">|</span> <span class="cp">%&gt;</span>
+    <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="n">book</span><span class="p">.</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre>
+    </div>
+
+    <p>Update your solution to match this solution.</p>
+  </li>
+  <li>
+    <p>Compare your two unordered lists. They both end in the same result, but one required a little more effort.</p>
+
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ul&gt;</span>
+  <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">5</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@books</span><span class="p">[</span><span class="mi">6</span><span class="p">].</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+
+<span class="nt">&lt;ul&gt;</span>
+  <span class="cp">&lt;%</span> <span class="vi">@books</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">book</span><span class="o">|</span> <span class="cp">%&gt;</span>
+    <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="n">book</span><span class="p">.</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+  <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre>
+    </div>
+
+    <p>We can take advantage of the ability to run Ruby code inside Rails templates to do things quickly.</p>
+  </li>
+  <li>
+    <p>You don’t need to show both unordered lists, so go ahead and remove the first one.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>  <span class="nt">&lt;h1&gt;</span>Welcome to My Super Rad Bookstore!<span class="nt">&lt;/h1&gt;</span>
+
+  <span class="nt">&lt;ul&gt;</span>
+    <span class="cp">&lt;%</span> <span class="vi">@books</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">book</span><span class="o">|</span> <span class="cp">%&gt;</span>
+      <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="n">book</span><span class="p">.</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+    <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+  <span class="nt">&lt;/ul&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<p>Now that you have book titles rendering, let’s try adding some information.</p>
+
+<ol>
+  <li>
+    <p>Update the books unordered lists so it includes the book author next to each author like this:</p>
+
+    <p>why’s (poignant) Guide to Ruby by why the lucky stiff</p>
+  </li>
+</ol>
+</div>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>What did you come up with? Compare your solution with people around you.</p>
+
+    <p>Inside the <code class="highlighter-rouge">@books.each</code> block, you should’ve edited the list item so it renders each book’s author next to its title.</p>
+
+    <div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="n">book</span><span class="p">.</span><span class="nf">title</span> <span class="cp">%&gt;</span> by <span class="cp">&lt;%=</span> <span class="n">book</span><span class="p">.</span><span class="nf">author</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Update your solution to match this solution.</p>
+  </li>
+  <li>
+    <p>When you’re done, stop your application’s web server by running <code class="highlighter-rouge">Ctrl-C</code>.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>  <span class="nt">&lt;h1&gt;</span>Welcome to My Super Rad Bookstore!<span class="nt">&lt;/h1&gt;</span>
+
+  <span class="nt">&lt;ul&gt;</span>
+    <span class="cp">&lt;%</span> <span class="vi">@books</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">book</span><span class="o">|</span> <span class="cp">%&gt;</span>
+      <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="n">book</span><span class="p">.</span><span class="nf">title</span> <span class="cp">%&gt;</span> by <span class="cp">&lt;%=</span> <span class="n">book</span><span class="p">.</span><span class="nf">author</span> <span class="cp">%&gt;</span><span class="nt">&lt;/li&gt;</span>
+    <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+  <span class="nt">&lt;/ul&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+      <div class="tutorial-button-group">
+  
+    
+      <a href="/rails_tutorial/tutorial/chapter_02/" target="_self">
+        <div class="back-button">
+          Chapter 2
+        </div>
+      </a>
+    
+    
+      <a href="/rails_tutorial/tutorial/chapter_04/" target="_self">
+        <div class="next-button">
+          Chapter 4
+        </div>
+      </a>
+    
+  
+</div>
+
+    </div>
+  </div>
+<footer>
+  <div class="container">
+    <a href="http://bmoreonrails.org/"><img src="/rails_tutorial/assets/icons/bmore.png"></a>
+    <a href="https://github.com/bmoreonrails/rails_tutorial"><img class="icon" src="/rails_tutorial/assets/icons/github.png"></a>
+    <a href="https://twitter.com/BmorRailsSchool"><img class="icon" src="/rails_tutorial/assets/icons/twitter.png"></a> 
+  </div>
+</footer>
+</body>
+</html>
+
+
+<script>
+
+$('img.screenshot').featherlight({
+    targetAttr: 'src'
+});
+
+</script>

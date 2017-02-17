@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    
+      <base target="_blank"/>
+    
+    <title>B'more on Rails Workshop for Women</title>
+    <link href="/rails_tutorial/css/syntax/monokai.css" type="text/css" rel="stylesheet"/>
+    <link href="/rails_tutorial/css/base.css" type="text/css" rel="stylesheet"/>
+    <link href="/rails_tutorial/assets/vendor/css/featherlight.min.css" type="text/css" rel="stylesheet">
+    <script src="/rails_tutorial/js/jquery.min.js"></script>
+    <script src="/rails_tutorial/assets/vendor/js/featherlight.min.js"></script>
+    <script src="/rails_tutorial/js/tutorial_nav.js"></script>
+    <script src="/rails_tutorial/js/progress.js"></script>
+  </head>
+
+<body>
+  <div class="container" data-chapter="2">
+    <nav>
+      
+<div class="tutorial_nav">
+  <div class="progress"><div class="progress_bar"></div></div>
+  <ul id="menu-list">
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_01/" target="_self">
+        1 Getting Started from Scratch
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_02/" target="_self">
+        2 Creating the First Table in Your Database
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_03/" target="_self">
+        3 Viewing Data in the Browser
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_04/" target="_self">
+        4 Showing Detailed Information in the Browser
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_05/" target="_self">
+        5 Creating Books Through the Browser
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_06/" target="_self">
+        6 Updating Books
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_07/" target="_self">
+        7 Styling Your Bookstore
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_08/" target="_self">
+        8 Deleting a Book
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_09/" target="_self">
+        9 Reviewing a Book
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_10/" target="_self">
+        10 Showing Reviews
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_11/" target="_self">
+        11 Adding Reviews from the Browser
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_12/" target="_self">
+        12 Adding Users to Your Database
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_13/" target="_self">
+        13 Logging In and Logging Out
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_14/" target="_self">
+        14 Logged In vs Logged Out Users
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_15/" target="_self">
+        15 Associating Reviews with Users
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_16/" target="_self">
+        16 The End!
+       </a>
+     </li>
+    
+   </ul>
+
+  <div class="menu">
+    <div class="hamburger-icon" data-toggle="#menu-list"> &#9776</div>
+    <div class="menu-title" data-toggle="#menu-list">Chapter 2 -- Creating the First Table in Your Database</div>
+    <div class="menu-title"><a href="/rails_tutorial/" target="_self">Home</a></div>
+  </div>
+</div>
+
+    </nav>
+    <div class="content">
+      <div class="sectionheader">
+<p>Creating the First Table in Your Database</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Open Terminal.</p>
+  </li>
+  <li>
+    <p>If you still have Terminal open from the previous chapter, you should be in the <code class="highlighter-rouge">bookstore</code> directory.</p>
+
+    <p>Do you remember how to check what directory you’re in?</p>
+
+    <p>(<code class="highlighter-rouge">pwd</code>)</p>
+  </li>
+  <li>
+    <p>If you’re not already in the <code class="highlighter-rouge">bookstore</code> directory, run the following commands to get there:</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="nb">cd </span>Projects
+<span class="nb">cd </span>bookstore
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Now run</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>rails generate model book
+</code></pre>
+    </div>
+
+    <p>This generated a few new files, but there are only a couple we’re interesed in.</p>
+  </li>
+  <li>
+    <p>Run <code class="highlighter-rouge">ls -l db/migrate</code> to take a look at one of the new files. You should see a file named something like <code class="highlighter-rouge">20161115030350_create_books.rb</code>.</p>
+
+    <p>20161115030350 is a timestamp generated when the file is created. You’re file will start with a more recent timestamp…I hope 😝</p>
+
+    <p>Let’s take a look at this file in your text editor.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  <span class="nv">$ </span><span class="nb">pwd</span>
+  /Users/awesomesauce/Projects/bookstore
+
+  <span class="nv">$ </span>rails generate model book
+        invoke  active_record
+        create    db/migrate/20161115030350_create_books.rb
+        create    app/models/book.rb
+        invoke    test_unit
+        create      <span class="nb">test</span>/models/book_test.rb
+        create      <span class="nb">test</span>/fixtures/books.yml
+
+  <span class="nv">$ </span>ls -l db/migrate
+  total 8
+  -rw-r--r--  1 awesomesauce  staff  131 Nov 14 22:03 20161115030350_create_books.rb</code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Open <code class="highlighter-rouge">db/migrate/YOUR_TIMESTAMP_create_books.rb</code> in your text editor.</p>
+
+    <p>This is a migration file called <code class="highlighter-rouge">CreateBooks</code>. Migrations are used to make changes to your database.</p>
+
+    <p>On line 3 of the <code class="highlighter-rouge">CreateBooks</code> migration, there’s a block called <code class="highlighter-rouge">create_table</code>. Inside this block, you’ll make changes to add columns to the new <code class="highlighter-rouge">books</code> table.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>  <span class="k">class</span> <span class="nc">CreateBooks</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">change</span>
+      <span class="n">create_table</span> <span class="ss">:books</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+
+        <span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<div class="protip">
+<p>You might remember <a href="http://tutorials.jumpstartlab.com/projects/ruby_in_100_minutes.html#6.-blocks">blocks</a> from the Ruby in 100 Minutes tutorial.</p>
+
+<p>Like most blocks, the <code class="highlighter-rouge">create_table</code> block starts with the <code class="highlighter-rouge">do</code> keyword and ends with the <code class="highlighter-rouge">end</code> keyword.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<p>The <code class="highlighter-rouge">books</code> table will need a few columns.</p>
+
+<p>It will need a string column to store book titles and another string column to store book authors.</p>
+
+<p>The table will also need a column to store book prices. Since keeping track of money can be tricky, the column will need to be an integer column where book prices can be stored in cents. It sounds weird, but you’ll have to trust me on this one.</p>
+
+<ol>
+  <li>
+    <p>Inside the <code class="highlighter-rouge">create_table</code> block, add the following lines:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:title</span>
+<span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:author</span>
+<span class="n">t</span><span class="p">.</span><span class="nf">integer</span> <span class="ss">:price_cents</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Save your changes to the <code class="highlighter-rouge">CreateBooks</code> migration and go back to Terminal.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre>  <span class="k">class</span> <span class="nc">CreateBooks</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">change</span>
+      <span class="n">create_table</span> <span class="ss">:books</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+        <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:title</span>
+        <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:author</span>
+        <span class="n">t</span><span class="p">.</span><span class="nf">integer</span> <span class="ss">:price_cents</span>
+        <span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<div class="aside">
+<h3 id="whats-ttimestamps">What’s t.timestamps?</h3>
+
+<p>You added a few things to the <code class="highlighter-rouge">create_table</code> block, but you might’ve noticed that there was already some code in there:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">create_table</span> <span class="ss">:books</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+
+  <span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p>What’s <code class="highlighter-rouge">t.timestamps</code>?</p>
+
+<p>It’s a convinence method added by Rails that will add two more columns to the <code class="highlighter-rouge">books</code> table: <code class="highlighter-rouge">created_at</code> and <code class="highlighter-rouge">updated_at</code>. They’ll be used to store the times when books are created and updated.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>In Terminal, make sure you’re in the <code class="highlighter-rouge">bookstore</code> directory.</p>
+  </li>
+  <li>
+    <p>Run <code class="highlighter-rouge">rake db:migrate</code>.</p>
+  </li>
+  <li>
+    <p>Yay! You’ve just run your first migration!</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  <span class="nv">$ </span><span class="nb">pwd</span>
+  /Users/awesomesauce/Projects/bookstore
+
+  <span class="nv">$ </span>rake db:migrate
+  <span class="o">==</span> 20161115030350 CreateBooks: migrating <span class="o">======================================</span>
+  -- create_table<span class="o">(</span>:books<span class="o">)</span>
+     -&gt; 0.0030s
+  <span class="o">==</span> 20161115030350 CreateBooks: migrated <span class="o">(</span>0.0034s<span class="o">)</span> <span class="o">=============================</span></code></pre></figure>
+
+</div>
+
+<div class="aside">
+<h3 id="what-just-happened">What just happened?</h3>
+
+<p>This migration just added a table to your database!</p>
+
+<p>One of the advantages of using a framework like Rails is that you can build and modify a database without having to use raw SQL.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<p>The migration was just one of the files that was generated by <code class="highlighter-rouge">rails generate model book</code>. It also generated another file: <code class="highlighter-rouge">app/models/book.rb</code>. Let’s take a quick look at it.</p>
+
+<ol>
+  <li>
+    <p>Open <code class="highlighter-rouge">app/models/book.rb</code> in your text editor.</p>
+
+    <p>It might not look very exciting, but it’s actually pretty powerful. We now have a <code class="highlighter-rouge">Book</code> class. The <code class="highlighter-rouge">Book</code> class is used to represent individual rows in the <code class="highlighter-rouge">books</code> table.</p>
+
+    <p>Still not impressed? Let’s see what you can do with this class.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>  <span class="k">class</span> <span class="nc">Book</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+  <span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<div class="protip">
+<p>You might remember <a href="http://tutorials.jumpstartlab.com/projects/ruby_in_100_minutes.html#11.-objects,-attributes,-and-methods">classes</a> from the Ruby in 100 minutes tutorial.</p>
+
+<p>Classes are used to describe things. For example, the <code class="highlighter-rouge">Book</code> class in your bookstore is used to describe books.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Open Terminal and make sure you’re in the <code class="highlighter-rouge">bookstore</code> directory.</p>
+  </li>
+  <li>
+    <p>Run <code class="highlighter-rouge">rails console</code>. This will open…the <code class="highlighter-rouge">rails console</code>.</p>
+
+    <p>The <code class="highlighter-rouge">rails console</code> is available in all Rails applications. It let’s you play around with the different things in your applications including the data stored in your database.</p>
+
+    <p>Now that you’re in the <code class="highlighter-rouge">rails console</code>, let’s see what we can do with the <code class="highlighter-rouge">Book</code> class.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  <span class="nv">$ </span><span class="nb">pwd</span>
+  /Users/awesomesauce/Projects/bookstore
+
+  <span class="nv">$ </span>rails console
+  Loading development environment <span class="o">(</span>Rails 5.0.0.1<span class="o">)</span>
+  &gt;&gt;</code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Let’s try creating my favorite book.</p>
+
+    <p>In the <code class="highlighter-rouge">rails console</code>, run the following code:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">my_favorite_book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">new</span>
+</code></pre>
+    </div>
+
+    <p>This assigns a new instance of <code class="highlighter-rouge">Book</code> to a <a href="http://tutorials.jumpstartlab.com/projects/ruby_in_100_minutes.html#2.-variables">variable</a> so that we can refer to it as <code class="highlighter-rouge">my_favorite_book</code>.</p>
+  </li>
+  <li>
+    <p>Now, to give this new instance of book a title run:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">my_favorite_book</span><span class="p">.</span><span class="nf">title</span> <span class="o">=</span> <span class="s2">"why's (poignant) Guide to Ruby"</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">my_favorite_book</code> now has a title.</p>
+
+    <p>Don’t believe me?! Try running <code class="highlighter-rouge">my_favorite_book.title</code>. It should return “why’s (poignant) Guide to Ruby”.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="o">&gt;&gt;</span> <span class="n">my_favorite_book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">new</span>
+  <span class="o">=&gt;</span> <span class="c1">#&lt;Book id: nil, title: nil, author: nil, price_cents: nil, created_at: nil, updated_at: nil&gt;</span>
+
+  <span class="o">&gt;&gt;</span> <span class="n">my_favorite_book</span><span class="p">.</span><span class="nf">title</span> <span class="o">=</span> <span class="s2">"why's (poignant) Guide to Ruby"</span>
+  <span class="o">=&gt;</span> <span class="s2">"why's (poignant) Guide to Ruby"</span>
+
+  <span class="o">&gt;&gt;</span> <span class="n">my_favorite_book</span><span class="p">.</span><span class="nf">title</span>
+  <span class="o">=&gt;</span> <span class="s2">"why's (poignant) Guide to Ruby"</span></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<p>Remember those other columns we added to the <code class="highlighter-rouge">books</code> table? We can set those on <code class="highlighter-rouge">my_favorite_book</code>.</p>
+
+<ol>
+  <li>
+    <p>Try setting <code class="highlighter-rouge">my_favorite_book</code>’s author to <a href="https://en.wikipedia.org/wiki/Why_the_lucky_stiff">“why the lucky stiff”</a>.</p>
+  </li>
+  <li>
+    <p>Although <code class="highlighter-rouge">my_favorite_book</code> is priceless, you can go ahead and give it a price. Remember, we named this column <code class="highlighter-rouge">price_cents</code>.</p>
+  </li>
+  <li>
+    <p>We should probably keep track of the number of copies we have of my favorite book. Run the following code to set the quantity:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">my_favorite_book</span><span class="p">.</span><span class="nf">quantity</span> <span class="o">=</span> <span class="mi">500</span>
+</code></pre>
+    </div>
+
+    <p>Did that work? No?!</p>
+
+    <p>Welcome to your first error!</p>
+
+    <p><img src="/rails_tutorial/assets/images/not_sure_if_happy_or_sad.png" alt="Not sure if happy or sad" /></p>
+
+    <p>These errors can seem intimidating at first, but they can be suprisingly helpful as you work your way through building an application.</p>
+
+    <p>So let’s embrace and explore these errors together!</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="o">&gt;&gt;</span> <span class="n">my_favorite_book</span><span class="p">.</span><span class="nf">author</span> <span class="o">=</span> <span class="s2">"why the lucky stiff"</span>
+  <span class="o">=&gt;</span> <span class="s2">"why the lucky stiff"</span>
+
+  <span class="o">&gt;&gt;</span> <span class="n">my_favorite_book</span><span class="p">.</span><span class="nf">price_cents</span> <span class="o">=</span> <span class="mi">100</span>
+  <span class="o">=&gt;</span> <span class="mi">100</span>
+
+  <span class="o">&gt;&gt;</span> <span class="n">my_favorite_book</span><span class="p">.</span><span class="nf">quantity</span> <span class="o">=</span> <span class="mi">500</span>
+  <span class="no">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`quantity=' for #&lt;Book:0x007fdc9453bf60&gt;
+      from /Users/awesomesauce/.rvm/gems/ruby-2.3.1/gems/activemodel-5.0.0.1/lib/active_model/attribute_methods.rb:433:in `</span><span class="nb">method_missing</span><span class="s1">'
+      from (irb):11
+      from /Users/awesomesauce/.rvm/gems/ruby-2.3.1/gems/railties-5.0.0.1/lib/rails/commands/console.rb:65:in `start'</span>
+      <span class="n">from</span> <span class="sr">/Users/</span><span class="n">awesomesauce</span><span class="o">/</span><span class="p">.</span><span class="nf">rvm</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">ruby</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="mi">3</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">railties</span><span class="o">-</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">rails</span><span class="o">/</span><span class="n">commands</span><span class="o">/</span><span class="n">console_helper</span><span class="p">.</span><span class="nf">rb</span><span class="p">:</span><span class="mi">9</span><span class="ss">:in</span> <span class="sb">`start'
+      from /Users/awesomesauce/.rvm/gems/ruby-2.3.1/gems/railties-5.0.0.1/lib/rails/commands/commands_tasks.rb:78:in `</span><span class="n">console</span><span class="s1">'
+      from /Users/awesomesauce/.rvm/gems/ruby-2.3.1/gems/railties-5.0.0.1/lib/rails/commands/commands_tasks.rb:49:in `run_command!'</span>
+      <span class="n">from</span> <span class="sr">/Users/</span><span class="n">awesomesauce</span><span class="o">/</span><span class="p">.</span><span class="nf">rvm</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">ruby</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="mi">3</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">railties</span><span class="o">-</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">rails</span><span class="o">/</span><span class="n">commands</span><span class="p">.</span><span class="nf">rb</span><span class="p">:</span><span class="mi">18</span><span class="ss">:in</span> <span class="sb">`&lt;top (required)&gt;'
+      from bin/rails:4:in `</span><span class="nb">require</span><span class="s1">'
+      from bin/rails:4:in `&lt;main&gt;'</span></code></pre></figure>
+
+</div>
+
+<div class="aside">
+<h3 id="your-first-error">Your first error</h3>
+
+<p>We tried setting quantity on <code class="highlighter-rouge">my_favorite_book</code>, but we got an error:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;</span> <span class="n">my_favorite_book</span><span class="p">.</span><span class="nf">quantity</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="no">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`quantity=' for #&lt;Book:0x007fdc9453bf60&gt;
+</span></code></pre>
+</div>
+
+<p>We get a <code class="highlighter-rouge">NoMethodError</code> for <code class="highlighter-rouge">quantity=</code> because <code class="highlighter-rouge">quantity</code> isn’t a attribute we can set on <code class="highlighter-rouge">Book</code>.</p>
+
+<p>If you remember the <code class="highlighter-rouge">CreateBooks</code> migration, we added a few columns, but we never added a column for <code class="highlighter-rouge">quantity</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CreateBooks</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span>
+  <span class="k">def</span> <span class="nf">change</span>
+    <span class="n">create_table</span> <span class="ss">:books</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:title</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:author</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">integer</span> <span class="ss">:price_cents</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p>Your database is currently in a bad state. The <code class="highlighter-rouge">books</code> table needs a <code class="highlighter-rouge">quantity</code> column to store the number of available books.</p>
+
+<p>Fortunately, we have a few ways to fix this.</p>
+
+<p>Migrations are designed to run in two directions. So far, we’ve run the <code class="highlighter-rouge">CreateBooks</code> migration “up” to add the <code class="highlighter-rouge">books</code> table.</p>
+
+<p>Now, we’re going to run the <code class="highlighter-rouge">CreateBooks</code> migration “down”. By running the migration “down”, the <code class="highlighter-rouge">books</code> table will be removed. With the table no longer in the database, we can make changes to the migration and re-run it so the <code class="highlighter-rouge">books</code> table has the <code class="highlighter-rouge">quantity</code> column.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>First, exit the <code class="highlighter-rouge">rails console</code> by running <code class="highlighter-rouge">exit</code>.</p>
+  </li>
+  <li>
+    <p>Then, run the <code class="highlighter-rouge">CreateBooks</code> migration down by running <code class="highlighter-rouge">rake db:rollback</code>.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  &gt;&gt; <span class="nb">exit</span>
+
+  <span class="nv">$ </span>rake db:rollback
+  <span class="o">==</span> 20161115030350 CreateBooks: reverting <span class="o">======================================</span>
+  -- drop_table<span class="o">(</span>:books<span class="o">)</span>
+     -&gt; 0.0098s
+  <span class="o">==</span> 20161115030350 CreateBooks: reverted <span class="o">(</span>0.0143s<span class="o">)</span> <span class="o">=============================</span></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Go back to your text editor and open the <code class="highlighter-rouge">CreateBooks</code> migration.</p>
+  </li>
+  <li>
+    <p>Inside the <code class="highlighter-rouge">create_table</code> block, add the following line:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">t</span><span class="p">.</span><span class="nf">integer</span> <span class="ss">:quantity</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Save your changes to the <code class="highlighter-rouge">CreateBooks</code> migration.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>  <span class="k">class</span> <span class="nc">CreateBooks</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">change</span>
+      <span class="n">create_table</span> <span class="ss">:books</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+        <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:title</span>
+        <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:author</span>
+        <span class="n">t</span><span class="p">.</span><span class="nf">integer</span> <span class="ss">:price_cents</span>
+        <span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span>
+        <span class="n">t</span><span class="p">.</span><span class="nf">integer</span> <span class="ss">:quantity</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Go back to Terminal.</p>
+  </li>
+  <li>
+    <p>Re-run the migration by running <code class="highlighter-rouge">rake db:migrate</code>.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  <span class="nv">$ </span>rake db:migrate
+  <span class="o">==</span> 20161115030350 CreateBooks: migrating <span class="o">======================================</span>
+  -- create_table<span class="o">(</span>:books<span class="o">)</span>
+     -&gt; 0.0415s
+  <span class="o">==</span> 20161115030350 CreateBooks: migrated <span class="o">(</span>0.0416s<span class="o">)</span> <span class="o">=============================</span></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<p>Now that your <code class="highlighter-rouge">books</code> table has the <code class="highlighter-rouge">quantity</code> column, you can go back to adding my favorite book 😉</p>
+
+<ol>
+  <li>
+    <p>Enter the <code class="highlighter-rouge">rails console</code> by running…<code class="highlighter-rouge">rails console</code>.</p>
+  </li>
+  <li>
+    <p>You already forgot what my favorite book was, didn’t you?</p>
+
+    <p>No worries. You can run each of the following lines of code in your console to refresh your memory:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">my_favorite_book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">my_favorite_book</span><span class="p">.</span><span class="nf">title</span> <span class="o">=</span> <span class="s2">"why's (poignant) Guide to Ruby"</span>
+<span class="n">my_favorite_book</span><span class="p">.</span><span class="nf">author</span> <span class="o">=</span> <span class="s2">"why the lucky stiff"</span>
+<span class="n">my_favorite_book</span><span class="p">.</span><span class="nf">price_cents</span> <span class="o">=</span> <span class="mi">100</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Ok, now that you have my favorite book again try adding the quantity:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">my_favorite_book</span><span class="p">.</span><span class="nf">quantity</span> <span class="o">=</span> <span class="mi">500</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Alright, my favorite book is coming along nicely. I think we’re ready to save it to your database.</p>
+
+    <p>Run <code class="highlighter-rouge">my_favorite_book.save</code> to save my favorite book to your database.</p>
+
+    <p>If the last thing you see says <code class="highlighter-rouge">true</code>, my favorite books has been saved to your database. Yay!</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="o">&gt;&gt;</span> <span class="n">my_favorite_book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">new</span>
+  <span class="o">=&gt;</span> <span class="c1">#&lt;Book id: nil, title: nil, author: nil, price_cents: nil, created_at: nil, updated_at: nil, quantity: nil&gt;</span>
+
+  <span class="o">&gt;&gt;</span> <span class="n">my_favorite_book</span><span class="p">.</span><span class="nf">title</span> <span class="o">=</span> <span class="s2">"why's (poignant) Guide to Ruby"</span>
+  <span class="o">=&gt;</span> <span class="s2">"why's (poignant) Guide to Ruby"</span>
+
+  <span class="o">&gt;&gt;</span> <span class="n">my_favorite_book</span><span class="p">.</span><span class="nf">author</span> <span class="o">=</span> <span class="s2">"why the lucky stiff"</span>
+  <span class="o">=&gt;</span> <span class="s2">"why the lucky stiff"</span>
+
+  <span class="o">&gt;&gt;</span> <span class="n">my_favorite_book</span><span class="p">.</span><span class="nf">price_cents</span> <span class="o">=</span> <span class="mi">100</span>
+  <span class="o">=&gt;</span> <span class="mi">100</span>
+
+  <span class="o">&gt;&gt;</span> <span class="n">my_favorite_book</span><span class="p">.</span><span class="nf">quantity</span> <span class="o">=</span> <span class="mi">500</span>
+  <span class="o">=&gt;</span> <span class="mi">500</span>
+
+  <span class="o">&gt;&gt;</span> <span class="n">my_favorite_book</span><span class="p">.</span><span class="nf">save</span>
+     <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">1</span><span class="n">ms</span><span class="p">)</span>  <span class="k">begin</span> <span class="n">transaction</span>
+    <span class="no">SQL</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">8</span><span class="n">ms</span><span class="p">)</span>  <span class="no">INSERT</span> <span class="no">INTO</span> <span class="s2">"books"</span> <span class="p">(</span><span class="s2">"title"</span><span class="p">,</span> <span class="s2">"author"</span><span class="p">,</span> <span class="s2">"price_cents"</span><span class="p">,</span> <span class="s2">"created_at"</span><span class="p">,</span> <span class="s2">"updated_at"</span><span class="p">,</span> <span class="s2">"quantity"</span><span class="p">)</span> <span class="no">VALUES</span> <span class="p">(</span><span class="sc">?,</span> <span class="sc">?,</span> <span class="sc">?,</span> <span class="sc">?,</span> <span class="sc">?,</span> <span class="sc">?)</span>  <span class="p">[[</span><span class="s2">"title"</span><span class="p">,</span> <span class="s2">"why's (poignant) Guide to Ruby"</span><span class="p">],</span> <span class="p">[</span><span class="s2">"author"</span><span class="p">,</span> <span class="s2">"why the lucky stiff"</span><span class="p">],</span> <span class="p">[</span><span class="s2">"price_cents"</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="p">[</span><span class="s2">"created_at"</span><span class="p">,</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">24</span> <span class="mo">03</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">53</span> <span class="no">UTC</span><span class="p">],</span> <span class="p">[</span><span class="s2">"updated_at"</span><span class="p">,</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">24</span> <span class="mo">03</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">53</span> <span class="no">UTC</span><span class="p">],</span> <span class="p">[</span><span class="s2">"quantity"</span><span class="p">,</span> <span class="mi">500</span><span class="p">]]</span>
+     <span class="p">(</span><span class="mi">2</span><span class="o">.</span><span class="mi">3</span><span class="n">ms</span><span class="p">)</span>  <span class="n">commit</span> <span class="n">transaction</span>
+  <span class="o">=&gt;</span> <span class="kp">true</span></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<p>What if I told you there was more than one way to add a book to your database?</p>
+
+<p><img src="/rails_tutorial/assets/images/orly.png" alt="O rly?!" /></p>
+
+<ol>
+  <li>
+    <p>Let’s try using the <code class="highlighter-rouge">create</code> method to add my second favorite book to your database.</p>
+
+    <p>Run the following code on the <code class="highlighter-rouge">rails console</code>:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="no">Book</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">title: </span><span class="s2">"Oh, the Places You'll Go!"</span><span class="p">,</span> <span class="ss">author: </span><span class="s2">"Dr. Seuss"</span><span class="p">,</span> <span class="ss">price_cents: </span><span class="mi">500</span><span class="p">,</span> <span class="ss">quantity: </span><span class="mi">200</span><span class="p">)</span>
+</code></pre>
+    </div>
+
+    <p>The <code class="highlighter-rouge">create</code> method lets us save data in a single command. Instead of setitng attributes one at a time, we can set them all at once.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="o">&gt;&gt;</span> <span class="no">Book</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">title: </span><span class="s2">"Oh, the Places You'll Go!"</span><span class="p">,</span> <span class="ss">author: </span><span class="s2">"Dr. Seuss"</span><span class="p">,</span> <span class="ss">price_cents: </span><span class="mi">500</span><span class="p">,</span> <span class="ss">quantity: </span><span class="mi">200</span><span class="p">)</span>
+     <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">1</span><span class="n">ms</span><span class="p">)</span>  <span class="k">begin</span> <span class="n">transaction</span>
+    <span class="no">SQL</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">8</span><span class="n">ms</span><span class="p">)</span>  <span class="no">INSERT</span> <span class="no">INTO</span> <span class="s2">"books"</span> <span class="p">(</span><span class="s2">"title"</span><span class="p">,</span> <span class="s2">"author"</span><span class="p">,</span> <span class="s2">"price_cents"</span><span class="p">,</span> <span class="s2">"created_at"</span><span class="p">,</span> <span class="s2">"updated_at"</span><span class="p">,</span> <span class="s2">"quantity"</span><span class="p">)</span> <span class="no">VALUES</span> <span class="p">(</span><span class="sc">?,</span> <span class="sc">?,</span> <span class="sc">?,</span> <span class="sc">?,</span> <span class="sc">?,</span> <span class="sc">?)</span>  <span class="p">[[</span><span class="s2">"title"</span><span class="p">,</span> <span class="s2">"Oh, the Places You'll Go!"</span><span class="p">],</span> <span class="p">[</span><span class="s2">"author"</span><span class="p">,</span> <span class="s2">"Dr. Seuss"</span><span class="p">],</span> <span class="p">[</span><span class="s2">"price_cents"</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span> <span class="p">[</span><span class="s2">"created_at"</span><span class="p">,</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">24</span> <span class="mo">03</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">22</span> <span class="no">UTC</span><span class="p">],</span> <span class="p">[</span><span class="s2">"updated_at"</span><span class="p">,</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">24</span> <span class="mo">03</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">22</span> <span class="no">UTC</span><span class="p">],</span> <span class="p">[</span><span class="s2">"quantity"</span><span class="p">,</span> <span class="mi">200</span><span class="p">]]</span>
+     <span class="p">(</span><span class="mi">3</span><span class="o">.</span><span class="mi">7</span><span class="n">ms</span><span class="p">)</span>  <span class="n">commit</span> <span class="n">transaction</span>
+  <span class="o">=&gt;</span> <span class="c1">#&lt;Book id: 2, title: "Oh, the Places You'll Go!", author: "Dr. Seuss", price_cents: 500, created_at: "2016-11-24 03:33:22", updated_at: "2016-11-24 03:33:22", quantity: 200&gt;</span></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<p>Now that we’ve added some books to your database, let’s try pulling them out of the database.</p>
+
+<ol>
+  <li>
+    <p>My second favorite book was the last book you added to your database. To get it, run <code class="highlighter-rouge">Book.last</code> on the <code class="highlighter-rouge">rails console</code>.</p>
+  </li>
+  <li>
+    <p>My favorite book was the first book you added. Can you guess how we would get it?</p>
+
+    <p>Run <code class="highlighter-rouge">Book.first</code> to get the first book in your database.</p>
+  </li>
+  <li>
+    <p>What if you wanted to see all the books in your database? How would you do that??</p>
+
+    <p>Run <code class="highlighter-rouge">Book.all</code> to get all the books in your database.</p>
+
+    <p>Programming can be really confusing, but every once in a while it kinda makes sense 😊</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="o">&gt;&gt;</span> <span class="no">Book</span><span class="p">.</span><span class="nf">last</span>
+    <span class="no">Book</span> <span class="no">Load</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">2</span><span class="n">ms</span><span class="p">)</span>  <span class="no">SELECT</span>  <span class="s2">"books"</span><span class="p">.</span><span class="nf">*</span> <span class="no">FROM</span> <span class="s2">"books"</span> <span class="no">ORDER</span> <span class="no">BY</span> <span class="s2">"books"</span><span class="o">.</span><span class="s2">"id"</span> <span class="no">DESC</span> <span class="no">LIMIT</span> <span class="p">?</span>  <span class="p">[[</span><span class="s2">"LIMIT"</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+  <span class="o">=&gt;</span> <span class="c1">#&lt;Book id: 2, title: "Oh, the Places You'll Go!", author: "Dr. Seuss", price_cents: 500, created_at: "2016-11-24 03:33:22", updated_at: "2016-11-24 03:33:22", quantity: 200&gt;</span>
+
+  <span class="o">&gt;&gt;</span> <span class="no">Book</span><span class="p">.</span><span class="nf">first</span>
+    <span class="no">Book</span> <span class="no">Load</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">2</span><span class="n">ms</span><span class="p">)</span>  <span class="no">SELECT</span>  <span class="s2">"books"</span><span class="p">.</span><span class="nf">*</span> <span class="no">FROM</span> <span class="s2">"books"</span> <span class="no">ORDER</span> <span class="no">BY</span> <span class="s2">"books"</span><span class="o">.</span><span class="s2">"id"</span> <span class="no">ASC</span> <span class="no">LIMIT</span> <span class="p">?</span>  <span class="p">[[</span><span class="s2">"LIMIT"</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+  <span class="o">=&gt;</span> <span class="c1">#&lt;Book id: 1, title: "why's (poignant) Guide to Ruby", author: "why the lucky stiff", price_cents: 100, created_at: "2016-11-24 03:30:53", updated_at: "2016-11-24 03:30:53", quantity: 500&gt;</span>
+
+  <span class="o">&gt;&gt;</span> <span class="no">Book</span><span class="p">.</span><span class="nf">all</span>
+    <span class="no">Book</span> <span class="no">Load</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">2</span><span class="n">ms</span><span class="p">)</span>  <span class="no">SELECT</span> <span class="s2">"books"</span><span class="p">.</span><span class="nf">*</span> <span class="no">FROM</span> <span class="s2">"books"</span>
+  <span class="o">=&gt;</span> <span class="c1">#&lt;ActiveRecord::Relation [#&lt;Book id: 1, title: "why's (poignant) Guide to Ruby", author: "why the lucky stiff", price_cents: 100, created_at: "2016-11-24 03:30:53", updated_at: "2016-11-24 03:30:53", quantity: 500&gt;, #&lt;Book id: 2, title: "Oh, the Places You'll Go!", author: "Dr. Seuss", price_cents: 500, created_at: "2016-11-24 03:33:22", updated_at: "2016-11-24 03:33:22", quantity: 200&gt;]&gt;</span></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<p>As happy as I am to see some of my favorite books in your bookstore, I’m sure you have some you’d like to add as well.</p>
+
+<ol>
+  <li>
+    <p>Add five more books to your bookstore.</p>
+  </li>
+  <li>
+    <p>When you’re done, run <code class="highlighter-rouge">Book.count</code> to get the total number of books in your database. It should return 7.</p>
+  </li>
+  <li>
+    <p>After you’ve added five more books and verified that they are saved to your database, exit the rails console by running <code class="highlighter-rouge">exit</code>.</p>
+  </li>
+</ol>
+</div>
+</div>
+
+      <div class="tutorial-button-group">
+  
+    
+      <a href="/rails_tutorial/tutorial/chapter_01/" target="_self">
+        <div class="back-button">
+          Chapter 1
+        </div>
+      </a>
+    
+    
+      <a href="/rails_tutorial/tutorial/chapter_03/" target="_self">
+        <div class="next-button">
+          Chapter 3
+        </div>
+      </a>
+    
+  
+</div>
+
+    </div>
+  </div>
+<footer>
+  <div class="container">
+    <a href="http://bmoreonrails.org/"><img src="/rails_tutorial/assets/icons/bmore.png"></a>
+    <a href="https://github.com/bmoreonrails/rails_tutorial"><img class="icon" src="/rails_tutorial/assets/icons/github.png"></a>
+    <a href="https://twitter.com/BmorRailsSchool"><img class="icon" src="/rails_tutorial/assets/icons/twitter.png"></a> 
+  </div>
+</footer>
+</body>
+</html>
+
+
+<script>
+
+$('img.screenshot').featherlight({
+    targetAttr: 'src'
+});
+
+</script>

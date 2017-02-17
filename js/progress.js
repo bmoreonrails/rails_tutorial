@@ -1,11 +1,9 @@
----
----
 $(document).ready(function() {
   var chapter = $('.container').data('chapter');
 
   if (chapter) {
     // We're in a chapter
-    var progress = chapter / {{ site.chapters.size }};
+    var progress = chapter / 16;
     $('.tutorial_nav .progress_bar').css('width', progress * 100 + '%');
   } else {
     $('.tutorial_nav .progress').css('display', 'none');

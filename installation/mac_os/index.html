@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    
+      <base target="_blank"/>
+    
+    <title>B'more on Rails Workshop for Women</title>
+    <link href="/rails_tutorial/css/syntax/monokai.css" type="text/css" rel="stylesheet"/>
+    <link href="/rails_tutorial/css/base.css" type="text/css" rel="stylesheet"/>
+    <link href="/rails_tutorial/assets/vendor/css/featherlight.min.css" type="text/css" rel="stylesheet">
+    <script src="/rails_tutorial/js/jquery.min.js"></script>
+    <script src="/rails_tutorial/assets/vendor/js/featherlight.min.js"></script>
+    <script src="/rails_tutorial/js/tutorial_nav.js"></script>
+    <script src="/rails_tutorial/js/progress.js"></script>
+  </head>
+
+<body class="installation_guide">
+  <div class="container">
+    <nav>
+      <p>
+       <div class="tutorial_nav before_you_get_started_nav">
+
+  <div class="menu">
+      <div class="menu-title">Installation -- Installation on macOS</div>
+      <div class="menu-title"><a href="/rails_tutorial/" target="_self">Home</a></div>
+  </div>
+</div>
+
+
+      </p>
+    </nav>
+    <div class="content installation">
+      <div class="sectionheader">
+<p>Installation on macOS</p>
+</div>
+
+<div class="protip">
+<h2 id="minimum-requirements">Minimum Requirements</h2>
+<p>In order to successfully follow these installation instructions, you must have the following:</p>
+
+<ul>
+  <li>Mac OS X Lion (10.7)</li>
+  <li>Administrator user with the rights to change the computer properties</li>
+</ul>
+
+<p>To check the version of your Mac OS X, go to the  menu and select “About This Mac”.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<h2 id="open-terminal">Open Terminal</h2>
+<p>We’re going to do these tasks via the Terminal.</p>
+
+<p>To open Terminal, first go to your Applications directory. Then, open the Utilities directory. Once you’re there, you should see the Terminal app. Double click it to open it.</p>
+</div>
+</div>
+
+<div class="steps">
+<div class="list">
+<h2 id="install-command-line-tools">Install Command-line tools</h2>
+
+<p>When you are installing ruby and ruby gems (libraries), your system will often need to compile code for you.  The compilers for this can be installed with XCode, the development tool suite for native macOs development.</p>
+
+<p>For this tutorial, you only need to install XCode’s command line tools.</p>
+
+<p>If you aren’t sure if you need this, try typing <code class="highlighter-rouge">gcc</code> in a terminal window. (<code class="highlighter-rouge">gcc</code> is the name of the compiler and stands for GNU Compiler Collection).</p>
+
+<p>If you receive the below dialog saying the “gcc” tool needs to be installed, click “Install”.</p>
+
+<p><img src="/rails_tutorial/assets/images/install_tools_now_dialog.png" alt="Install command line tools now?" /></p>
+
+<p><strong>Alternatively</strong>, if you get the message, <code class="highlighter-rouge">-bash: gcc: command not found</code>, or if you cancel out of the dialog, install the command-line tools with this command: <code class="highlighter-rouge">xcode-select --install</code></p>
+
+<p>This will download the command-line tools and install them.  Once installed, <code class="highlighter-rouge">gcc --version</code> should print out some information about the compiler.</p>
+</div>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>gcc --version
+
+<span class="c"># After installing, check the gcc --version again.</span>
+<span class="c"># You should get the below message:</span>
+
+Configured with: --prefix<span class="o">=</span>/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir<span class="o">=</span>/usr/include/c++/4.2.1
+Apple LLVM version 8.0.0 <span class="o">(</span>clang-800.0.38<span class="o">)</span>
+Target: x86_64-apple-darwin15.6.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin</code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<h1 id="install-homebrew">Install Homebrew</h1>
+<p>Homebrew allows you to install and manage applications through your terminal, and it’s what we’ll be using to download RVM.</p>
+
+<p>To do this, you’ll need to go to <a href="http://brew.sh/">Homebrew’s website</a> and copy and past the command that is given into your terminal prompt.</p>
+
+<p>This command uses <a href="https://en.wikipedia.org/wiki/CURL">curl</a> which is a command line tool for downloading information over the internet from your terminal. Normally this would not be advised but Homebrew is a very reputible source and used by millions of engineers around the world. So - trust us on this one :-)</p>
+
+<p>After you type in the command, the script will show what you’re downloading and then ask for your computer password. Enter in your computer password when prompted. Note that you’r password will not show up when you type it - that’s normal. Just type it and press enter.</p>
+</div>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>/usr/bin/ruby -e <span class="s2">"</span><span class="k">$(</span>curl -fsSL https://raw....<span class="k">)</span><span class="s2">"</span>
+
+<span class="c"># ==&gt; This script will install:</span>
+<span class="c"># /usr/local/bin/brew</span>
+<span class="c"># /usr/local/share/doc/homebrew</span>
+<span class="c"># /usr/local/share/man/man1/brew.1</span>
+<span class="c"># /usr/local/share/zsh/site-functions/_brew</span>
+<span class="c"># /usr/local/etc/bash_completion.d/brew</span>
+<span class="c"># /usr/local/Homebrew</span>
+<span class="c"># ==&gt; The following existing directories will be made group writable:</span>
+<span class="c"># /usr/local/bin</span>
+<span class="c"># ==&gt; The following existing directories will have their owner set to olii:</span>
+<span class="c"># /usr/local/bin</span>
+<span class="c"># ==&gt; The following existing directories will have their group set to admin:</span>
+<span class="c"># /usr/local/bin</span>
+<span class="c"># ==&gt; The following new directories will be created:</span>
+<span class="c"># /usr/local/Cellar</span>
+<span class="c"># /usr/local/Homebrew</span>
+<span class="c"># /usr/local/Frameworks</span>
+<span class="c"># /usr/local/etc</span>
+<span class="c"># /usr/local/include</span>
+<span class="c"># /usr/local/lib</span>
+<span class="c"># /usr/local/opt</span>
+<span class="c"># /usr/local/sbin</span>
+<span class="c"># /usr/local/share</span>
+<span class="c"># /usr/local/share/zsh</span>
+<span class="c"># /usr/local/share/zsh/site-functions</span>
+<span class="c"># /usr/local/var</span>
+<span class="c">#</span>
+<span class="c"># Press RETURN to continue or any other key to abort</span>
+<span class="c"># ==&gt; /usr/bin/sudo /bin/chmod u+rwx /usr/local/bin</span>
+<span class="c"># Password:</span></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<h2 id="install-rvm">Install RVM</h2>
+<p>The <a href="http://rvm.io/">Ruby Version Manager (rvm)</a> will allow you to install different versions of ruby on your machine and switch between them as you switch from one project to another. <a href="https://code.tutsplus.com/articles/why-you-should-use-rvm--net-19529">Learn why RVM is useful here</a>.</p>
+
+<div class="protip">
+<p>Note, if you already have the <code class="highlighter-rouge">rbenv</code> ruby manager installed, do not install <code class="highlighter-rouge">rvm</code> (they don’t play nice together!).</p>
+
+<p>You can check by typing <code class="highlighter-rouge">rbenv --version</code> in your terminal.</p>
+</div>
+
+<p>To install rvm, open a terminal window and run the following commands (copied directly off of the RVM website).</p>
+
+<p><code class="highlighter-rouge">brew install gpg</code></p>
+
+<p><code class="highlighter-rouge">gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3</code></p>
+
+<p><code class="highlighter-rouge">\curl -sSL https://get.rvm.io | bash -s stable</code></p>
+
+<p><code class="highlighter-rouge">source /Users/[Computer Username]/.rvm/scripts/rvm</code></p>
+
+<p>Once installed RVM will say:</p>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>Installation of RVM <span class="k">in</span> /Users/[Computer Username]/.rvm/ is almost <span class="nb">complete</span>:
+
+<span class="k">*</span> To start using RVM you need to run <span class="sb">`</span><span class="nb">source</span> /Users/[Computer Username]/.rvm/scripts/rvm<span class="sb">`</span>
+  <span class="k">in </span>all your open shell windows, <span class="k">in </span>rare cases you need to reopen all shell windows.
+</code></pre>
+</div>
+<p>Follow those instructions and copy the command and past into your terminal and press enter.
+Now you’ll be able to install Ruby!</p>
+
+</div>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>brew install gpg  <span class="c"># only necessary if gpg is not already installed</span>
+
+<span class="gp">$ </span>gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+
+<span class="gp">$ </span><span class="se">\c</span>url -sSL https://get.rvm.io | bash -s stable
+
+<span class="gp">$ </span><span class="nb">source</span> /Users/[Computer Username]/.rvm/scripts/rvm <span class="c"># check what's outputted from previous command</span></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<h2 id="install-ruby-231">Install Ruby 2.3.1</h2>
+<p>Now that you have RVM installed, you can use it to install Ruby.  You simply call <code class="highlighter-rouge">rvm install &lt;version&gt;</code>.  Let’s install the latest version (as of 12/3/2016), v2.3.1.</p>
+
+<p>To verify you’re using the correct Ruby version, type <code class="highlighter-rouge">ruby -v</code>. You should have 2.3.1 as the version.</p>
+
+<p>Finally, we’ll install bundler, which will manage all your Ruby gems.</p>
+</div>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>rvm install 2.3.1
+
+<span class="gp">$ </span>rvm default use 2.3.1
+
+<span class="gp">$ </span>ruby -v
+<span class="c"># =&gt; ruby 2.3.1p112 (2016-04-26 revision 54768) [x86_64-darwin15]</span>
+
+<span class="gp">$ </span>gem install bundler</code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<h2 id="install-rails-501">Install Rails 5.0.1</h2>
+
+<p>Now that ruby is installed, installing rails is simple.  Just install Rails with the gem command!</p>
+
+<p>If that succeeds, you should be able to run rails on the command-line:</p>
+</div>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>gem install rails -v 5.0.1 --no-document
+
+<span class="gp">$ </span>rails --version
+<span class="c"># Rails 5.0.1</span></code></pre></figure>
+
+</div>
+
+<div class="protip">
+<p>Note, adding <code class="highlighter-rouge">--no-document</code> prevents the generation of local (offline) documentation.  If you later decide you want local docs, you can easily recreate them (although it can be a slow process).  Look <a href="http://blog.honeybadger.io/how-to-globally-disable-rdoc-and-ri-during-gem-installs/">here</a> for more details.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<h2 id="test-it-out">Test it out</h2>
+
+<p>Now that we have everything we need installed, let’s try it out.</p>
+
+<p>After you type all the commands, you should see Rails starting up at the start of the line <code class="highlighter-rouge">Booting Puma</code>. Once you see <code class="highlighter-rouge">Listening on tcp://localhost:3000</code>, Rails is now running!</p>
+</div>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">  <span class="nv">$ </span>rails new test_rails
+
+  <span class="nv">$ </span><span class="nb">cd </span>test_rails
+
+  <span class="nv">$ </span>rails server
+  <span class="o">=</span>&gt; Booting Puma
+  <span class="o">=</span>&gt; Rails 5.0.1 application starting <span class="k">in </span>development on http://localhost:3000
+  <span class="o">=</span>&gt; Run <span class="sb">`</span>rails server -h<span class="sb">`</span> <span class="k">for </span>more startup options
+  Puma starting <span class="k">in </span>single mode...
+  <span class="k">*</span> Version 3.6.2 <span class="o">(</span>ruby 2.3.1-p112<span class="o">)</span>, codename: Sleepy Sunday Serenity
+  <span class="k">*</span> Min threads: 5, max threads: 5
+  <span class="k">*</span> Environment: development
+  <span class="k">*</span> Listening on tcp://localhost:3000
+  Use Ctrl-C to stop</code></pre></figure>
+
+</div>
+
+<div class="aside">
+<p>If you see the output above, rails is running and you can point your browser at http://localhost:3000 and you should see this:</p>
+
+<p><img src="/rails_tutorial/assets/images/youre_on_rails.png" alt="Yay! You're on Rails!" class="screenshot" /></p>
+
+<p>This is not the directory you’ll be using in the tutorial. To remove this simply type <code class="highlighter-rouge">rm -rf test_rails</code>.</p>
+</div>
+
+    </div>
+  </div>
+<footer>
+  <div class="container">
+    <a href="http://bmoreonrails.org/"><img src="/rails_tutorial/assets/icons/bmore.png"></a>
+    <a href="https://github.com/bmoreonrails/rails_tutorial"><img class="icon" src="/rails_tutorial/assets/icons/github.png"></a>
+    <a href="https://twitter.com/BmorRailsSchool"><img class="icon" src="/rails_tutorial/assets/icons/twitter.png"></a> 
+  </div>
+</footer>
+</body>
+</html>
+

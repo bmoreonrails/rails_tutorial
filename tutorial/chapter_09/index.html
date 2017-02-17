@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    
+      <base target="_blank"/>
+    
+    <title>B'more on Rails Workshop for Women</title>
+    <link href="/rails_tutorial/css/syntax/monokai.css" type="text/css" rel="stylesheet"/>
+    <link href="/rails_tutorial/css/base.css" type="text/css" rel="stylesheet"/>
+    <link href="/rails_tutorial/assets/vendor/css/featherlight.min.css" type="text/css" rel="stylesheet">
+    <script src="/rails_tutorial/js/jquery.min.js"></script>
+    <script src="/rails_tutorial/assets/vendor/js/featherlight.min.js"></script>
+    <script src="/rails_tutorial/js/tutorial_nav.js"></script>
+    <script src="/rails_tutorial/js/progress.js"></script>
+  </head>
+
+<body>
+  <div class="container" data-chapter="9">
+    <nav>
+      
+<div class="tutorial_nav">
+  <div class="progress"><div class="progress_bar"></div></div>
+  <ul id="menu-list">
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_01/" target="_self">
+        1 Getting Started from Scratch
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_02/" target="_self">
+        2 Creating the First Table in Your Database
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_03/" target="_self">
+        3 Viewing Data in the Browser
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_04/" target="_self">
+        4 Showing Detailed Information in the Browser
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_05/" target="_self">
+        5 Creating Books Through the Browser
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_06/" target="_self">
+        6 Updating Books
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_07/" target="_self">
+        7 Styling Your Bookstore
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_08/" target="_self">
+        8 Deleting a Book
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_09/" target="_self">
+        9 Reviewing a Book
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_10/" target="_self">
+        10 Showing Reviews
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_11/" target="_self">
+        11 Adding Reviews from the Browser
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_12/" target="_self">
+        12 Adding Users to Your Database
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_13/" target="_self">
+        13 Logging In and Logging Out
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_14/" target="_self">
+        14 Logged In vs Logged Out Users
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_15/" target="_self">
+        15 Associating Reviews with Users
+       </a>
+     </li>
+    
+     <li>
+      <a href="/rails_tutorial/tutorial/chapter_16/" target="_self">
+        16 The End!
+       </a>
+     </li>
+    
+   </ul>
+
+  <div class="menu">
+    <div class="hamburger-icon" data-toggle="#menu-list"> &#9776</div>
+    <div class="menu-title" data-toggle="#menu-list">Chapter 9 -- Reviewing a Book</div>
+    <div class="menu-title"><a href="/rails_tutorial/" target="_self">Home</a></div>
+  </div>
+</div>
+
+    </nav>
+    <div class="content">
+      <div class="sectionheader">
+<p>Reviewing a Book</p>
+</div>
+
+<div class="aside">
+<p>Your bookstore is full of wonderful books. Although they have some great descriptions, your books deserve great advocates!</p>
+
+<p>Your books need reviews. 😉</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<p>Before we can add reviews, we need a place to store them. Let’s add a new table to your database.</p>
+
+<ol>
+  <li>
+    <p>Open Terminal and go to your <code class="highlighter-rouge">bookstore</code> directory.</p>
+  </li>
+  <li>
+    <p>Now, run <code class="highlighter-rouge">rails generate model review</code>.</p>
+
+    <p>You might remember running this command when we created the books table.</p>
+
+    <p><code class="highlighter-rouge">rails generate model review</code> creates a bunch of files.</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>invoke  active_record
+create    db/migrate/20170103220053_create_reviews.rb
+create    app/models/review.rb
+invoke    test_unit
+create      <span class="nb">test</span>/models/review_test.rb
+create      <span class="nb">test</span>/fixtures/reviews.yml
+</code></pre>
+    </div>
+
+    <p>The first file it creates is a migration file. We’ve already created a few of these in your bookstore application.</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ls -l db/migrate
+total 24
+-rw-r--r--  1 alimi  staff  230 Dec 30 12:00 20161115030350_create_books.rb
+-rw-r--r--  1 alimi  staff  125 Dec 30 12:00 20161227020938_add_description_to_books.rb
+</code></pre>
+    </div>
+
+    <p>Migration files always have file names that start with the timestamp of when they were created.</p>
+
+    <p>Let’s take a look at the migration that was generated by <code class="highlighter-rouge">rails generate model review</code>.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  <span class="nv">$ </span><span class="nb">pwd</span>
+  /Users/awesomesauce/Projects/bookstore
+
+  <span class="nv">$ </span>rails generate model review
+        invoke  active_record
+        create    db/migrate/20170103220053_create_reviews.rb
+        create    app/models/review.rb
+        invoke    test_unit
+        create      <span class="nb">test</span>/models/review_test.rb
+        create      <span class="nb">test</span>/fixtures/reviews.yml</code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>In your text editor, open the <code class="highlighter-rouge">CreateReviews</code> migration (<code class="highlighter-rouge">db/migrations/TIMESTAMP_create_reviews.rb</code>).</p>
+  </li>
+  <li>
+    <p>Take a look at the <code class="highlighter-rouge">change</code> method. It has a <code class="highlighter-rouge">create_table</code> block that will create the <code class="highlighter-rouge">reviews</code> table.</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">change</span>
+  <span class="n">create_table</span> <span class="ss">:reviews</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+
+    <span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+    </div>
+
+    <p>If you ran the migration as it is now, your <code class="highlighter-rouge">reviews</code> table wouldn’t have anything other than the <code class="highlighter-rouge">created_at</code> and <code class="highlighter-rouge">updated_at</code> timestamps. We’ll need to change the <code class="highlighter-rouge">create_table</code> block so your new <code class="highlighter-rouge">reviews</code> table can store more review related data. 😄</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>  <span class="k">class</span> <span class="nc">CreateReviews</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">change</span>
+      <span class="n">create_table</span> <span class="ss">:reviews</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+
+        <span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<p>The <code class="highlighter-rouge">reviews</code> table will need a column to store the text of a review. Let’s call that column <code class="highlighter-rouge">body</code>, and let’s make it a <code class="highlighter-rouge">text</code> column so you can leave long, inspiring reviews.</p>
+
+<ol>
+  <li>
+    <p>Using your other migrations as an example, update the <code class="highlighter-rouge">create_table</code> block of your <code class="highlighter-rouge">CreateReviews</code> migration to add a <code class="highlighter-rouge">text</code> column called <code class="highlighter-rouge">body</code> to your <code class="highlighter-rouge">reviews</code> table.</p>
+  </li>
+  <li>
+    <p>When you’re done, save your changes, and run the migration by running <code class="highlighter-rouge">rake db:migrate</code>.</p>
+
+    <p>If you make any mistakes, you can always undo the migration by running <code class="highlighter-rouge">rake db:rollback</code>. Then, you can make changes to your <code class="highlighter-rouge">CreateReviews</code> migration and re-run it with <code class="highlighter-rouge">rake db:migrate</code>.</p>
+  </li>
+</ol>
+</div>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>How did you update the migration?</p>
+
+    <p>You needed to add one line to the <code class="highlighter-rouge">create_table</code> block.</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">t</span><span class="p">.</span><span class="nf">text</span> <span class="ss">:body</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>If you didn’t already, add this line to your migration.</p>
+
+    <p>If you ran the migration without adding the <code class="highlighter-rouge">body</code> column, you’ll need to rollback and re-run the migration.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre>  <span class="k">class</span> <span class="nc">CreateReviews</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">change</span>
+      <span class="n">create_table</span> <span class="ss">:reviews</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+        <span class="n">t</span><span class="p">.</span><span class="nf">text</span> <span class="ss">:body</span>
+
+        <span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<p>Now that we have reviews, let’s play with them on the <code class="highlighter-rouge">rails console</code>.</p>
+
+<ol>
+  <li>
+    <p>Go to Terminal and start the <code class="highlighter-rouge">rails console</code>.</p>
+  </li>
+  <li>
+    <p>You now have a new object you can use: <code class="highlighter-rouge">Review</code>.</p>
+
+    <p>Try running <code class="highlighter-rouge">Review.new</code>. It will return a new, empty <code class="highlighter-rouge">Review</code>.</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="c1">#&lt;Review id: nil, body: nil, created_at: nil, updated_at: nil&gt;</span>
+</code></pre>
+    </div>
+
+    <p>In addition to id, created_at, and updated_at, the new review also has a body.</p>
+  </li>
+  <li>
+    <p>Using the <code class="highlighter-rouge">Review</code> class, create two reviews.</p>
+
+    <p>The same methods you used to create books can be used to create reviews.</p>
+
+    <p>When you’re done <code class="highlighter-rouge">Review.count</code> should return 2.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="err">$</span> <span class="n">rails</span> <span class="n">console</span>
+  <span class="no">Loading</span> <span class="n">development</span> <span class="n">environment</span> <span class="p">(</span><span class="no">Rails</span> <span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+
+  <span class="o">&gt;&gt;</span> <span class="no">Review</span><span class="p">.</span><span class="nf">new</span>
+  <span class="o">=&gt;</span> <span class="c1">#&lt;Review id: nil, body: nil, created_at: nil, updated_at: nil&gt;</span></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Did you create two reviews? How did you do it?</p>
+
+    <p>Maybe you created a review by using <code class="highlighter-rouge">create</code>.</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="no">Review</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">body: </span><span class="s2">"Wow, what a great book!"</span><span class="p">)</span>
+</code></pre>
+    </div>
+
+    <p>Or maybe you started with a <code class="highlighter-rouge">new</code> review and called <code class="highlighter-rouge">save</code> on it.</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">a_new_review</span> <span class="o">=</span> <span class="no">Review</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">a_new_review</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s2">"10/10 would recommend"</span>
+<span class="n">a_new_review</span><span class="p">.</span><span class="nf">save</span>
+</code></pre>
+    </div>
+
+    <p>You might’ve even come up with something totally different!</p>
+
+    <p><img src="/rails_tutorial/assets/images/impressed.gif" alt="Somebody's impressed" /></p>
+  </li>
+  <li>
+    <p>If you get 2 when you run <code class="highlighter-rouge">Review.count</code>, yay!</p>
+
+    <p>If not, use either of the methods we described to create two reviews.</p>
+  </li>
+</ol>
+</div>
+</div>
+
+<div class="aside">
+<h3 id="associating-reviews-to-books">Associating Reviews to Books</h3>
+
+<p>Now you have a couple of reviews, but doesn’t it feel like we’re missing something?</p>
+
+<p><em>How are these reviews related to books?</em></p>
+
+<p>They’re not 😅</p>
+
+<p>Fortunately, Rails gives us a few tools to associate reviews to books.</p>
+
+<p>In this case, we can say a review should only belong to one book. This is called a <code class="highlighter-rouge">belongs_to</code> relationship.</p>
+
+<p>Let’s define the <code class="highlighter-rouge">belongs_to</code> relationship.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>In your text editor, open <code class="highlighter-rouge">app/models/review.rb</code>.</p>
+  </li>
+  <li>
+    <p>Inside the <code class="highlighter-rouge">Review</code> class, add the following line.</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">belongs_to</span> <span class="ss">:book</span>
+</code></pre>
+    </div>
+
+    <p>With this change, we’re setting up your application so a <code class="highlighter-rouge">Review</code> <code class="highlighter-rouge">belongs_to</code> a <code class="highlighter-rouge">Book</code>.</p>
+  </li>
+  <li>
+    <p>Save your changes.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>  <span class="k">class</span> <span class="nc">Review</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+    <span class="n">belongs_to</span> <span class="ss">:book</span>
+  <span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Go back to the <code class="highlighter-rouge">rails console</code> and run <code class="highlighter-rouge">reload!</code> to pick up your changes.</p>
+  </li>
+  <li>
+    <p>Now, get your first review from the database and assign it to a variable called <code class="highlighter-rouge">my_first_review</code>.</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">my_first_review</span> <span class="o">=</span> <span class="no">Review</span><span class="p">.</span><span class="nf">first</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Let’s try to get <code class="highlighter-rouge">my_first_review</code>’s book.</p>
+
+    <p>Run <code class="highlighter-rouge">my_first_review.book</code>.</p>
+
+    <p>That returned nil because <code class="highlighter-rouge">my_first_review</code> was never associated with a book.</p>
+  </li>
+  <li>
+    <p>Let’s try assigning your first book to your first review.</p>
+
+    <p>Run the following:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">my_first_review</span><span class="p">.</span><span class="nf">book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">first</span>
+</code></pre>
+    </div>
+
+    <p>That returned an error, didn’t it? 🙃</p>
+  </li>
+  <li>
+    <p>It might be hard to see, but you actually got a pretty useful error…</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="no">ActiveModel</span><span class="o">::</span><span class="no">MissingAttributeError</span><span class="p">:</span> <span class="n">can</span><span class="err">'</span><span class="n">t</span> <span class="n">write</span> <span class="n">unknown</span> <span class="n">attribute</span> <span class="sb">`book_id`</span>
+</code></pre>
+    </div>
+
+    <p>We’ve defined the <code class="highlighter-rouge">belongs_to</code> relationship between review and book, but we need a way to save that relationship in your database. To do that, we’ll need to add a <code class="highlighter-rouge">book_id</code> column to your <code class="highlighter-rouge">reviews</code> table.</p>
+  </li>
+  <li>
+    <p>Let’s make that change to the <code class="highlighter-rouge">reviews</code> table, but before you move on exit the <code class="highlighter-rouge">rails console</code>.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="o">&gt;&gt;</span> <span class="n">reload!</span>
+  <span class="no">Reloading</span><span class="p">.</span><span class="nf">.</span><span class="p">.</span>
+  <span class="nf">=</span><span class="o">&gt;</span> <span class="kp">true</span>
+
+  <span class="o">&gt;&gt;</span> <span class="n">my_first_review</span> <span class="o">=</span> <span class="no">Review</span><span class="p">.</span><span class="nf">first</span>
+    <span class="no">Review</span> <span class="no">Load</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">2</span><span class="n">ms</span><span class="p">)</span>  <span class="no">SELECT</span>  <span class="s2">"reviews"</span><span class="p">.</span><span class="nf">*</span> <span class="no">FROM</span> <span class="s2">"reviews"</span> <span class="no">ORDER</span> <span class="no">BY</span> <span class="s2">"reviews"</span><span class="o">.</span><span class="s2">"id"</span> <span class="no">ASC</span> <span class="no">LIMIT</span> <span class="p">?</span>  <span class="p">[[</span><span class="s2">"LIMIT"</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+  <span class="o">=&gt;</span> <span class="c1">#&lt;Review id: 1, body: "Wow, what a great book!", created_at: "2017-01-04 02:07:50", updated_at: "2017-01-04 02:07:50"&gt;</span>
+
+  <span class="o">&gt;&gt;</span> <span class="n">my_first_review</span><span class="p">.</span><span class="nf">book</span>
+  <span class="o">=&gt;</span> <span class="kp">nil</span>
+
+  <span class="o">&gt;&gt;</span> <span class="n">my_first_review</span><span class="p">.</span><span class="nf">book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">first</span>
+    <span class="no">Book</span> <span class="no">Load</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">3</span><span class="n">ms</span><span class="p">)</span>  <span class="no">SELECT</span>  <span class="s2">"books"</span><span class="p">.</span><span class="nf">*</span> <span class="no">FROM</span> <span class="s2">"books"</span> <span class="no">ORDER</span> <span class="no">BY</span> <span class="s2">"books"</span><span class="o">.</span><span class="s2">"id"</span> <span class="no">ASC</span> <span class="no">LIMIT</span> <span class="p">?</span>  <span class="p">[[</span><span class="s2">"LIMIT"</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+  <span class="no">ActiveModel</span><span class="o">::</span><span class="no">MissingAttributeError</span><span class="p">:</span> <span class="n">can</span><span class="err">'</span><span class="n">t</span> <span class="n">write</span> <span class="n">unknown</span> <span class="n">attribute</span> <span class="sb">`book_id`</span>
+  <span class="p">.</span><span class="nf">.</span><span class="p">.</span>
+
+  <span class="nf">&gt;</span><span class="o">&gt;</span> <span class="nb">exit</span></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<p>To add a <code class="highlighter-rouge">book_id</code> column to the <code class="highlighter-rouge">reviews</code> table, we’ll need a new migration.</p>
+
+<p>Remember, editing an old migration would mean rolling back that migration and we don’t want to do that because that would delete the data in the database.</p>
+
+<ol>
+  <li>
+    <p>In Terminal, run <code class="highlighter-rouge">rails generate migration add_book_id_to_reviews</code>.</p>
+
+    <p>This will generate a new timestamped migration called <code class="highlighter-rouge">AddBookIdToReviews</code>.</p>
+  </li>
+  <li>
+    <p>Do you remember when you added <code class="highlighter-rouge">description</code> to the <code class="highlighter-rouge">books</code> table?</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">AddDescriptionToBooks</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span>
+  <span class="k">def</span> <span class="nf">change</span>
+    <span class="n">add_column</span> <span class="ss">:books</span><span class="p">,</span> <span class="ss">:description</span><span class="p">,</span> <span class="ss">:text</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+    </div>
+
+    <p>We’ll want to do something similiar to add the <code class="highlighter-rouge">book_id</code> column to the <code class="highlighter-rouge">reviews</code> table.</p>
+  </li>
+  <li>
+    <p>Open the <code class="highlighter-rouge">AddBookIdToReviews</code> migration in your text editor (<code class="highlighter-rouge">db/migrate/TIMESTAMP_add_book_id_to_reviews.rb</code>).</p>
+  </li>
+  <li>
+    <p>Using the <code class="highlighter-rouge">AddDescriptionToBooks</code> migration as an example, update the <code class="highlighter-rouge">AddBookIdToReviews</code> migration so a <code class="highlighter-rouge">book_id</code> column is added to the <code class="highlighter-rouge">reviews</code> table. The <code class="highlighter-rouge">book_id</code> column should be an <code class="highlighter-rouge">integer</code> column.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  <span class="nv">$ </span>rails generate migration add_book_id_to_reviews
+        invoke  active_record
+        create    db/migrate/20170104024335_add_book_id_to_reviews.rb</code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>What does your solution look like?</p>
+
+    <p>Inside the <code class="highlighter-rouge">change</code> method, you should have the following line:</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">add_column</span> <span class="ss">:reviews</span><span class="p">,</span> <span class="ss">:book_id</span><span class="p">,</span> <span class="ss">:integer</span>
+</code></pre>
+    </div>
+
+    <p>This will add a <code class="highlighter-rouge">book_id</code> column to the <code class="highlighter-rouge">reviews</code> table, and the new column will be an integer column.</p>
+  </li>
+  <li>
+    <p>Update your soultion to match this solution and save your changes.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>  <span class="k">class</span> <span class="nc">AddBookIdToReviews</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">change</span>
+      <span class="n">add_column</span> <span class="ss">:reviews</span><span class="p">,</span> <span class="ss">:book_id</span><span class="p">,</span> <span class="ss">:integer</span>
+    <span class="k">end</span>
+  <span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Now go back to Terminal and run your migration!</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>rake db:migrate
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>If you pay close attention to the output, you can see the <code class="highlighter-rouge">book_id</code> column getting added to the <code class="highlighter-rouge">reviews</code> table.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">  <span class="nv">$ </span>rake db:migrate
+  <span class="o">==</span> 20170104024335 AddBookIdToReviews: migrating <span class="o">===============================</span>
+  -- add_column<span class="o">(</span>:reviews, :book_id, :integer<span class="o">)</span>
+     -&gt; 0.0073s
+  <span class="o">==</span> 20170104024335 AddBookIdToReviews: migrated <span class="o">(</span>0.0074s<span class="o">)</span> <span class="o">======================</span></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<p>Now that the <code class="highlighter-rouge">reviews</code> table has a <code class="highlighter-rouge">book_id</code> column, you can assign books to reviews. Let’s try it!</p>
+
+<ol>
+  <li>
+    <p>Open <code class="highlighter-rouge">rails console</code> and run the following code to assign your first book to your first review.</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">my_first_review</span> <span class="o">=</span> <span class="no">Review</span><span class="p">.</span><span class="nf">first</span>
+<span class="n">my_first_review</span><span class="p">.</span><span class="nf">book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">first</span>
+<span class="n">my_first_review</span><span class="p">.</span><span class="nf">save</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Now, try running <code class="highlighter-rouge">my_first_review.book</code>.</p>
+
+    <p>Yay! 🎉</p>
+
+    <p>Your first review is now associated with your first book.</p>
+
+    <p>If you look at <code class="highlighter-rouge">my_first_review</code>, you’ll notice its <code class="highlighter-rouge">book_id</code> is 1 - your first book’s id.</p>
+  </li>
+  <li>
+    <p>Go ahead and assign your second review to your first book. While you’re at it, also create another review for your first book.</p>
+
+    <p>When you’re done, <code class="highlighter-rouge">Review.count</code> should return 3.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="err">$</span> <span class="n">rails</span> <span class="n">console</span>
+  <span class="no">Loading</span> <span class="n">development</span> <span class="n">environment</span> <span class="p">(</span><span class="no">Rails</span> <span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+  <span class="o">&gt;&gt;</span> <span class="n">my_first_review</span> <span class="o">=</span> <span class="no">Review</span><span class="p">.</span><span class="nf">first</span>
+    <span class="no">Review</span> <span class="no">Load</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">2</span><span class="n">ms</span><span class="p">)</span>  <span class="no">SELECT</span>  <span class="s2">"reviews"</span><span class="p">.</span><span class="nf">*</span> <span class="no">FROM</span> <span class="s2">"reviews"</span> <span class="no">ORDER</span> <span class="no">BY</span> <span class="s2">"reviews"</span><span class="o">.</span><span class="s2">"id"</span> <span class="no">ASC</span> <span class="no">LIMIT</span> <span class="p">?</span>  <span class="p">[[</span><span class="s2">"LIMIT"</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+  <span class="o">=&gt;</span> <span class="c1">#&lt;Review id: 1, body: "Wow, what a great book!", created_at: "2017-01-04 02:07:50", updated_at: "2017-01-04 02:07:50", book_id: nil&gt;</span>
+
+  <span class="o">&gt;&gt;</span> <span class="n">my_first_review</span><span class="p">.</span><span class="nf">book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">first</span>
+    <span class="no">Book</span> <span class="no">Load</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">7</span><span class="n">ms</span><span class="p">)</span>  <span class="no">SELECT</span>  <span class="s2">"books"</span><span class="p">.</span><span class="nf">*</span> <span class="no">FROM</span> <span class="s2">"books"</span> <span class="no">ORDER</span> <span class="no">BY</span> <span class="s2">"books"</span><span class="o">.</span><span class="s2">"id"</span> <span class="no">ASC</span> <span class="no">LIMIT</span> <span class="p">?</span>  <span class="p">[[</span><span class="s2">"LIMIT"</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+  <span class="o">=&gt;</span> <span class="c1">#&lt;Book id: 1, title: "why's (poignant) Guide to Ruby", author: "why the lucky stiff", price_cents: 100, created_at: "2016-12-26 15:51:15", updated_at: "2016-12-30 20:29:14", quantity: 500, description: "Chunky Bacon!"&gt;</span>
+
+  <span class="o">&gt;&gt;</span> <span class="n">my_first_review</span><span class="p">.</span><span class="nf">save</span>
+     <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">1</span><span class="n">ms</span><span class="p">)</span>  <span class="k">begin</span> <span class="n">transaction</span>
+    <span class="no">SQL</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">8</span><span class="n">ms</span><span class="p">)</span>  <span class="no">UPDATE</span> <span class="s2">"reviews"</span> <span class="no">SET</span> <span class="s2">"updated_at"</span> <span class="o">=</span> <span class="sc">?,</span> <span class="s2">"book_id"</span> <span class="o">=</span> <span class="p">?</span> <span class="no">WHERE</span> <span class="s2">"reviews"</span><span class="o">.</span><span class="s2">"id"</span> <span class="o">=</span> <span class="p">?</span>  <span class="p">[[</span><span class="s2">"updated_at"</span><span class="p">,</span> <span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">04</span> <span class="mo">03</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">40</span> <span class="no">UTC</span><span class="p">],</span> <span class="p">[</span><span class="s2">"book_id"</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s2">"id"</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+     <span class="p">(</span><span class="mi">3</span><span class="o">.</span><span class="mi">2</span><span class="n">ms</span><span class="p">)</span>  <span class="n">commit</span> <span class="n">transaction</span>
+  <span class="o">=&gt;</span> <span class="kp">true</span>
+
+  <span class="o">&gt;&gt;</span> <span class="n">my_first_review</span><span class="p">.</span><span class="nf">book</span>
+  <span class="o">=&gt;</span> <span class="c1">#&lt;Book id: 1, title: "why's (poignant) Guide to Ruby", author: "why the lucky stiff", price_cents: 100, created_at: "2016-12-26 15:51:15", updated_at: "2016-12-30 20:29:14", quantity: 500, description: "Chunky Bacon!"&gt;</span></code></pre></figure>
+
+</div>
+
+<div class="aside">
+<h3 id="a-book-has-many-reviews">A Book Has Many Reviews</h3>
+
+<p>Your first book now has multiple reviews.</p>
+
+<p>We can find which review a book belongs to, but we can’t find all the reviews a book has.</p>
+
+<p>Or can we???</p>
+
+<p><img src="/rails_tutorial/assets/images/wink.gif" alt="Wink wink" /></p>
+
+<p>Since a book can have many reviews, we can define a <code class="highlighter-rouge">has_many</code> relationship between books and reviews.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>In your text editor, open <code class="highlighter-rouge">app/models/book.rb</code>, and add the followling line inside the class</p>
+
+    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">has_many</span> <span class="ss">:reviews</span>
+</code></pre>
+    </div>
+
+    <p>This will set up your application so a <code class="highlighter-rouge">Book</code> <code class="highlighter-rouge">has_many</code> <code class="highlighter-rouge">Review</code>s.</p>
+
+    <p>In addition, we won’t have to make any database changes because the <code class="highlighter-rouge">reviews</code> table already has a <code class="highlighter-rouge">book_id</code> column. The relationship is already defined in the database.</p>
+  </li>
+  <li>
+    <p>Save your changes.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>  <span class="k">class</span> <span class="nc">Book</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+    <span class="n">has_many</span> <span class="ss">:reviews</span>
+  <span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Now, go back to the <code class="highlighter-rouge">rails console</code> and run <code class="highlighter-rouge">reload!</code> to get you newest changes.</p>
+  </li>
+  <li>
+    <p>Get your first book and assign it to <code class="highlighter-rouge">my_first_book</code>.</p>
+  </li>
+  <li>
+    <p>Now, try running <code class="highlighter-rouge">my_first_book.reviews</code>.</p>
+
+    <p>It might be hard to see, but all your book reviews are there!</p>
+
+    <p><img src="/rails_tutorial/assets/images/dancing-banana.gif" alt="Dancing Banana" /></p>
+  </li>
+  <li>
+    <p>Don’t believe me??</p>
+
+    <p>Try running <code class="highlighter-rouge">my_first_book.reviews.count</code>. It should return 3.</p>
+  </li>
+  <li>
+    <p>Spend some time playing around with this relationship. You can do things like <code class="highlighter-rouge">my_first_book.reviews.first</code> or <code class="highlighter-rouge">my_first_book.review.pluck(:body)</code>.</p>
+
+    <p>To find a complete list of all the things you can do, take a look at the documentation <a href="http://api.rubyonrails.org/v5.0.0/classes/ActiveRecord/Associations/CollectionProxy.html">here</a>.</p>
+  </li>
+  <li>
+    <p>When your done exploring, exit the <code class="highlighter-rouge">rails console</code>.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="o">&gt;&gt;</span> <span class="n">reload!</span>
+  <span class="no">Reloading</span><span class="p">.</span><span class="nf">.</span><span class="p">.</span>
+  <span class="nf">=</span><span class="o">&gt;</span> <span class="kp">true</span>
+
+  <span class="o">&gt;&gt;</span> <span class="n">my_first_book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">first</span>
+    <span class="no">Book</span> <span class="no">Load</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">1</span><span class="n">ms</span><span class="p">)</span>  <span class="no">SELECT</span>  <span class="s2">"books"</span><span class="p">.</span><span class="nf">*</span> <span class="no">FROM</span> <span class="s2">"books"</span> <span class="no">ORDER</span> <span class="no">BY</span> <span class="s2">"books"</span><span class="o">.</span><span class="s2">"id"</span> <span class="no">ASC</span> <span class="no">LIMIT</span> <span class="p">?</span>  <span class="p">[[</span><span class="s2">"LIMIT"</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+  <span class="o">=&gt;</span> <span class="c1">#&lt;Book id: 1, title: "why's (poignant) Guide to Ruby", author: "why the lucky stiff", price_cents: 100, created_at: "2016-12-26 15:51:15", updated_at: "2016-12-30 20:29:14", quantity: 500, description: "Chunky Bacon!"&gt;</span>
+
+  <span class="o">&gt;&gt;</span> <span class="n">my_first_book</span><span class="p">.</span><span class="nf">reviews</span>
+    <span class="no">Review</span> <span class="no">Load</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">2</span><span class="n">ms</span><span class="p">)</span>  <span class="no">SELECT</span> <span class="s2">"reviews"</span><span class="p">.</span><span class="nf">*</span> <span class="no">FROM</span> <span class="s2">"reviews"</span> <span class="no">WHERE</span> <span class="s2">"reviews"</span><span class="o">.</span><span class="s2">"book_id"</span> <span class="o">=</span> <span class="p">?</span>  <span class="p">[[</span><span class="s2">"book_id"</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+  <span class="o">=&gt;</span> <span class="c1">#&lt;ActiveRecord::Associations::CollectionProxy [#&lt;Review id: 1, body: "Wow, what a great book!", created_at: "2017-01-04 02:07:50", updated_at: "2017-01-04 03:14:40", book_id: 1&gt;, #&lt;Review id: 2, body: "10/10 would recommend", created_at: "2017-01-04 02:08:57", updated_at: "2017-01-04 03:23:23", book_id: 1&gt;, #&lt;Review id: 3, body: "This book is so good!", created_at: "2017-01-04 03:23:12", updated_at: "2017-01-04 03:23:12", book_id: 1&gt;]&gt;</span>
+
+  <span class="o">&gt;&gt;</span> <span class="n">my_first_book</span><span class="p">.</span><span class="nf">reviews</span><span class="p">.</span><span class="nf">count</span>
+     <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">4</span><span class="n">ms</span><span class="p">)</span>  <span class="no">SELECT</span> <span class="no">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="no">FROM</span> <span class="s2">"reviews"</span> <span class="no">WHERE</span> <span class="s2">"reviews"</span><span class="o">.</span><span class="s2">"book_id"</span> <span class="o">=</span> <span class="p">?</span>  <span class="p">[[</span><span class="s2">"book_id"</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+  <span class="o">=&gt;</span> <span class="mi">3</span>
+
+  <span class="o">&gt;&gt;</span> <span class="nb">exit</span></code></pre></figure>
+
+</div>
+
+<div class="aside">
+<h3 id="the-magic-that-is-a-relational-database">The magic that is a Relational Database!</h3>
+<p>Are you starting to see how we’re using Rails to build a relational database?</p>
+
+<p>So far, you’ve built two tables: a <code class="highlighter-rouge">books</code> table and a <code class="highlighter-rouge">reviews</code> table. Those tables are connected to one another by the <code class="highlighter-rouge">book_id</code> column on the Reviews table. That column is making it possible for books to have many reviews in our database.</p>
+
+<p><img src="/rails_tutorial/assets/images/Relationships.png" alt="Data Table showing relationship" class="screenshot" /></p>
+</div>
+
+      <div class="tutorial-button-group">
+  
+    
+      <a href="/rails_tutorial/tutorial/chapter_08/" target="_self">
+        <div class="back-button">
+          Chapter 8
+        </div>
+      </a>
+    
+    
+      <a href="/rails_tutorial/tutorial/chapter_10/" target="_self">
+        <div class="next-button">
+          Chapter 10
+        </div>
+      </a>
+    
+  
+</div>
+
+    </div>
+  </div>
+<footer>
+  <div class="container">
+    <a href="http://bmoreonrails.org/"><img src="/rails_tutorial/assets/icons/bmore.png"></a>
+    <a href="https://github.com/bmoreonrails/rails_tutorial"><img class="icon" src="/rails_tutorial/assets/icons/github.png"></a>
+    <a href="https://twitter.com/BmorRailsSchool"><img class="icon" src="/rails_tutorial/assets/icons/twitter.png"></a> 
+  </div>
+</footer>
+</body>
+</html>
+
+
+<script>
+
+$('img.screenshot').featherlight({
+    targetAttr: 'src'
+});
+
+</script>

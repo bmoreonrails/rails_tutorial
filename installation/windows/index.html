@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    
+      <base target="_blank"/>
+    
+    <title>B'more on Rails Workshop for Women</title>
+    <link href="/rails_tutorial/css/syntax/monokai.css" type="text/css" rel="stylesheet"/>
+    <link href="/rails_tutorial/css/base.css" type="text/css" rel="stylesheet"/>
+    <link href="/rails_tutorial/assets/vendor/css/featherlight.min.css" type="text/css" rel="stylesheet">
+    <script src="/rails_tutorial/js/jquery.min.js"></script>
+    <script src="/rails_tutorial/assets/vendor/js/featherlight.min.js"></script>
+    <script src="/rails_tutorial/js/tutorial_nav.js"></script>
+    <script src="/rails_tutorial/js/progress.js"></script>
+  </head>
+
+<body class="installation_guide">
+  <div class="container">
+    <nav>
+      <p>
+       <div class="tutorial_nav before_you_get_started_nav">
+
+  <div class="menu">
+      <div class="menu-title">Installation -- Installation on Windows</div>
+      <div class="menu-title"><a href="/rails_tutorial/" target="_self">Home</a></div>
+  </div>
+</div>
+
+
+      </p>
+    </nav>
+    <div class="content installation">
+      <div class="sectionheader">
+<p>Installation on Windows</p>
+</div>
+
+<div class="protip">
+<p>Before you work through the installation instructions, make sure you have an Administrator user who has rights to change your computer’s settings.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<p>First, we’ll start by downloading <a href="https://nodejs.org/en/">Node.js</a>. You need a JavaScript runtime to run Rails, and Node.js is a pretty popular one 😉</p>
+
+<ol>
+  <li>
+    <p><a href="https://nodejs.org/dist/v6.9.5/node-v6.9.5-x86.msi">Click here</a> to download the Node.js Windows installer.</p>
+  </li>
+  <li>
+    <p>Once the download is finished, go to your Downloads directory and find the Node.js Windows Installer. The file should be named something like <code class="highlighter-rouge">node-v6.9.5-x86.msi</code>.</p>
+  </li>
+  <li>
+    <p>Double click the file to run the installer.</p>
+
+    <p>Accept the license agreement and keep all the default settings.</p>
+
+    <p>If Windows asks you if you want to let the installer install software on your computer, click “Yes”.</p>
+
+    <p><img src="/rails_tutorial/assets/images/windows_node_js_confirm_install.png" alt="Windows software installation dialog" /></p>
+  </li>
+</ol>
+</div>
+</div>
+
+<div class="steps">
+<div class="list">
+<p>Now, we’re going to install Ruby using the <a href="https://rubyinstaller.org/">RubyInstaller for Windows</a>.</p>
+
+<ol>
+  <li>
+    <p><a href="http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.3.1.exe">Click here</a> to download the Ruby Installer.</p>
+  </li>
+  <li>
+    <p>When the download finishes, go to your Downloads directory, and find the RubyInstaller. It should be named something like <code class="highlighter-rouge">rubyinstaller-2.3.1.exe</code>.</p>
+  </li>
+  <li>
+    <p>Double click to the file to run the installer.</p>
+
+    <p>You can keep most of the default settings, but on the third screen of the RubyInstaller you will need to check the option to “Add Ruby executables to your PATH”.</p>
+
+    <p><img src="/rails_tutorial/assets/images/windows_ruby_installer_path_option.png" alt="RubyInstaller with option to &quot;Add Ruby executables to your PATH&quot; selected" /></p>
+
+    <p>When the RubyInstaller finishes your computer will have Ruby 2.3.1.</p>
+  </li>
+</ol>
+</div>
+</div>
+
+<div class="steps">
+<div class="list">
+<p>Let’s verify that the RubyInstaller <em>actually</em> installed Ruby 2.3.1 by taking a look on the Command Prompt.</p>
+
+<ol>
+  <li>
+    <p>There are a number of ways to open the Command Prompt, but I’m lazy so I just like to search for it. 😉</p>
+
+    <p>The search bar <a href="/rails_tutorial/assets/images/windows_7_search.png">moves</a> <a href="/rails_tutorial/assets/images/windows_81_search.png">around</a> on <a href="/rails_tutorial/assets/images/windows_10_search.png">different versions</a> of Windows.</p>
+
+    <p>Once you find the search bar, search for “Command Prompt”. The Command Prompt should be the first item in your search results.</p>
+
+    <p><img src="/rails_tutorial/assets/images/windows_7_command_prompt_search.png" alt="Windows search results for &quot;Command Prompt&quot;" /></p>
+
+    <p>Then, you can open the Command Prompt from your search results.</p>
+  </li>
+  <li>
+    <p>To verify your Ruby install, type <code class="highlighter-rouge">ruby -v</code> into the Command Prompt and press <code class="highlighter-rouge">enter</code>.</p>
+
+    <p><code class="highlighter-rouge">ruby -v</code> will print the complete version information for the version of Ruby installed on your computer.</p>
+
+    <p>If the RubyInstaller did its job, <code class="highlighter-rouge">ruby -v</code> should print at least “ruby 2.3.1”.</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>ruby -v
+ruby 2.3.1p112 <span class="o">(</span>2016-04-26 revision 54768<span class="o">)</span> <span class="o">[</span>i386-mingw32]
+</code></pre>
+    </div>
+
+    <p>If you don’t see something like “ruby 2.3.1”, try re-running the RubyInstaller and make sure you have the “Add Ruby executables to you PATH” option selected.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">C:<span class="se">\U</span>sers<span class="se">\a</span>wesomesauce&gt;ruby -v
+ruby 2.3.1p112 <span class="o">(</span>2016-04-26 revision 54768<span class="o">)</span> <span class="o">[</span>i386-mingw32]</code></pre></figure>
+
+</div>
+
+<div class="protip">
+<p>In the next few sections, we’re going to ask you to run more commands like <code class="highlighter-rouge">ruby -v</code> on the Command Prompt.</p>
+
+<p>To run these commands, you’ll type them in the Command Prompt and press <code class="highlighter-rouge">enter</code> to execute them.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<p>To make your development experience just a little bit nicer, we’ll now install the <a href="https://rubyinstaller.org/add-ons/devkit/">RubyInstaller DevKit</a>.</p>
+
+<ol>
+  <li>
+    <p><a href="http://dl.bintray.com/oneclick/rubyinstaller/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe">Click here</a> to download the RubyInstaller DevKit.</p>
+  </li>
+  <li>
+    <p>Once the download is finished, go to your Downloads directory and find the DevKit package. It should be named something like <code class="highlighter-rouge">DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe</code>.</p>
+  </li>
+  <li>
+    <p>Double click the file to install the DevKit.</p>
+
+    <p>When prompted, extract the contents of the DevKit into <code class="highlighter-rouge">C:\RubyDevKit</code>.</p>
+
+    <p><img src="/rails_tutorial/assets/images/windows_ruby_devkit_extract_dialog.png" alt="Dialog to extract the RubyInstaller DevKit into C:\RubyDevKit" /></p>
+  </li>
+  <li>
+    <p>To install the DevKit we’ll need to run a couple of commands. Open the Command Prompt.</p>
+
+    <p>First, run</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>ruby C:<span class="se">\R</span>ubyDevKit<span class="se">\d</span>k.rb init
+</code></pre>
+    </div>
+
+    <p>to initialize the DevKit.</p>
+
+    <p>Then, run</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>ruby C:<span class="se">\R</span>ubyDevKit<span class="se">\d</span>k.rb install
+</code></pre>
+    </div>
+
+    <p>to install it on your computer.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">C:<span class="se">\U</span>sers<span class="se">\a</span>wesomesauce&gt;ruby C:<span class="se">\R</span>ubyDevKit<span class="se">\d</span>k.rb init
+<span class="o">[</span>INFO] found RubyInstaller v2.3.1 at C:<span class="se">\R</span>uby23
+
+Initialization <span class="nb">complete</span>! Please review and modify the auto-generated <span class="s1">'config.yml'</span> file to ensure it contains the root directories to all of hte installed Rubies you want enhanced by the DevKit.
+
+C:<span class="se">\U</span>sers<span class="se">\a</span>wesomesauce&gt;ruby C:<span class="se">\R</span>ubyDevKit<span class="se">\d</span>k.rb install
+<span class="o">[</span>INFO] Updating convenience notice gem override <span class="k">for</span> <span class="s1">'C:\Ruby23'</span>
+<span class="o">[</span>INFO] Installing <span class="s1">'C:/Ruby23/lib/ruby/site_ruby/devkit.rb'</span></code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<p>Before you can install Rails, you’ll need to apply an update for <a href="http://guides.rubygems.org/ssl-certificate-update/">RubyGems</a>.</p>
+
+<ol>
+  <li>
+    <p><a href="https://rubygems.org/downloads/rubygems-update-2.6.7.gem">Click here</a> to download the RubyGems update.</p>
+
+    <p>Just like the previous things you downloaded, the RubyGems update will also be downloaded into your Downloads directory.</p>
+  </li>
+  <li>
+    <p>After the download finishes, open Command Prompt.</p>
+  </li>
+  <li>
+    <p>Let’s see if we can find the RubyGems update file from the Command Prompt.</p>
+
+    <p>The RubyInstaller DevKit includes some additional commands that you can run on the Command Prompt. To make these commands available, run the following:</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>C:<span class="se">\R</span>ubyDevKit<span class="se">\d</span>evkitvars.bat
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Now, try running the following command:</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>ls -l Downloads
+</code></pre>
+    </div>
+
+    <p>This will list all the contents of your Downloads directory. It might be a little messy, but somewhere in there you should see a file named <code class="highlighter-rouge">rubygems-update-2.6.7.gem</code>.</p>
+
+    <p>The full path to the RubyGems update is <code class="highlighter-rouge">C:\Users\USERNAME\Downloads\rubygems-update-2.6.7.gem</code> where USERNAME is your username.</p>
+  </li>
+  <li>
+    <p>If you’ve found the RubyGems update file in your Downloads directory, you can move on to the next step.</p>
+
+    <p>Otherwise, you’ll need to download the RubyGems update and make sure it’s in your Donwloads directory.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">C:<span class="se">\U</span>sers<span class="se">\a</span>wesomesauce&gt;C:<span class="se">\R</span>ubyDevKit<span class="se">\d</span>evkitvars.bat
+Adding the DevKit to PATH...
+
+C:<span class="se">\U</span>sers<span class="se">\a</span>wesomesauce&gt;ls -l Downloads
+-rwxr-xr-x 1 IEUser Administrators 39895023 Feb 11 13:37 DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe
+-rw-r--r-- 1 IEUser Administrators      282 Nov 23  2014 desktop.ini
+-rw-r--r-- 1 IEUser Administrators 11485184 Feb 11 13:15 node-v6.9.5-x86.msi
+-rw-r--r-- 1 IEUser Administrators   727040 Feb 11 13:44 rubygems-update-2.6.7.gem
+-rwxr-xr-x 1 IEUser Administrators 18667740 Feb 11 13:22 rubyinstaller-2.3.1.exe</code></pre></figure>
+
+</div>
+
+<div class="protip">
+<p>The <code class="highlighter-rouge">devkitvars.bat</code> file that ships with the RubyInstaller DevKit gives you access to commands you typically only find on Linux machines. You don’t need these commands on Windows, but they can make everyone’s life just a little bit easier. 😊</p>
+
+<p>In the rest of the installation guide, whenever you’re asked to open the Command Prompt please run <code class="highlighter-rouge">C:\RubyDevKit\devkitvars.bat</code>.</p>
+</div>
+
+<div class="steps">
+<div class="list">
+<ol>
+  <li>
+    <p>Now, we’re ready to install the RubyGems update. Run the following command, but replace USERNAME with your username.</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>gem install --local C:<span class="se">\U</span>sers<span class="se">\U</span>SERNAME<span class="se">\D</span>ownloads<span class="se">\r</span>ubygems-update-2.6.7.gem --no-document
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Then, run the update:</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>update_rubygems --no-document
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Run the following command to verify that the update was installed:</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>gem --version
+</code></pre>
+    </div>
+
+    <p>It should return 2.6.7.</p>
+  </li>
+  <li>
+    <p>Now that you’ve installed the update, you can remove the update file. Run:</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>gem uninstall rubygems-update -x
+</code></pre>
+    </div>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">C:<span class="se">\U</span>sers<span class="se">\a</span>wesomesauce&gt;gem install --local C:<span class="se">\U</span>sers<span class="se">\a</span>wesomesauce<span class="se">\D</span>ownloads<span class="se">\r</span>ubygems-update-2.6.7.gem --no-document
+Successfully installed rubygems-update-2.6.7
+1 gem installed
+
+C:<span class="se">\U</span>sers<span class="se">\a</span>wesomesauce&gt;update_rubygems --no-document
+RubyGems 2.6.7 installed
+
+<span class="o">===</span> 2.6.7 / 2016-09-26
+
+Bug fixes:
+...
+
+---------------------------------------------------
+RubyGems installed the following executables:
+        C:/Ruby23/bin/gem
+
+C:<span class="se">\U</span>sers<span class="se">\a</span>wesomesauce&gt;gem --version
+2.6.7
+
+C:<span class="se">\U</span>sers<span class="se">\a</span>wesomesauce&gt;gem uninstall rubygems-update -x
+Removing update_rubygems
+Successfully uinstalled rubygems-update-2.6.7</code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<p>Now, we’re ready to install Rails! 🎉</p>
+
+<ol>
+  <li>
+    <p>Open the Command Prompt and run the following command to install Rails:</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>gem install rails --version 5.0.1 --no-document
+</code></pre>
+    </div>
+
+    <p>Windows Firewall may ask you to give Ruby access to public networks. If it does, click “Allow access”.</p>
+
+    <p><img src="/rails_tutorial/assets/images/windows_firewall_ruby.png" alt="Windows Firewall asking to give Ruby permission to the internet" /></p>
+  </li>
+  <li>
+    <p>To verify the install, run</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>rails -v
+</code></pre>
+    </div>
+
+    <p>It should return Rails 5.0.1.</p>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">C:<span class="se">\U</span>sers<span class="se">\a</span>wesomesauce&gt;gem install rails --version 5.0.1 --no-document
+Fetching: i18n-0.8.0.gem <span class="o">(</span>100%<span class="o">)</span>
+Successfully installed i18n-0.8.0
+Fetching: thread_safe-0.3.5.gem <span class="o">(</span>100%<span class="o">)</span>
+...
+Fetching: rails-5.0.1.gem <span class="o">(</span>100%<span class="o">)</span>
+Successfully installed rails-5.0.1
+36 gems installed
+
+C:<span class="se">\U</span>sers<span class="se">\a</span>wesomesauce&gt;rails -v
+Rails 5.0.1</code></pre></figure>
+
+</div>
+
+<div class="steps">
+<div class="list">
+<p>Finally, we’ll check if everything is working by creating a new Rails app.</p>
+
+<ol>
+  <li>
+    <p>Open the Command Prompt and run the following command to create a new Rails app called “installfest”.</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>rails new installfest
+</code></pre>
+    </div>
+
+    <p>This will add a new directory to your computer named “installfest”. It will have all the contents of a new Rails application.</p>
+  </li>
+  <li>
+    <p>From Command Prompt, go into the new “installfest” directory by running:</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="nb">cd </span>installfest
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Now, start the Rails application by running</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>rails server
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Go to <a href="http://localhost:3000">http://localhost:3000</a> to see the running application!</p>
+
+    <p>You should see a welcome screen that looks like this:</p>
+
+    <p><img src="/rails_tutorial/assets/images/youre_on_rails.png" alt="Rails welcome screen" /></p>
+  </li>
+  <li>
+    <p>Now that you’ve verified everything is working, you can stop the application by running <code class="highlighter-rouge">Ctrl-c</code> in the Command Prompt.</p>
+
+    <p>You might be asked if you’d like to <code class="highlighter-rouge">Terminate batch job (Y/N)?</code>. Simply type <code class="highlighter-rouge">y</code> and press <code class="highlighter-rouge">enter</code>.</p>
+  </li>
+  <li>
+    <p>You can also remove the “installfest” directory by running the following commands:</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="nb">cd</span> ..
+rm -rf installfest
+</code></pre>
+    </div>
+  </li>
+</ol>
+</div>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">C:<span class="se">\U</span>sers<span class="se">\a</span>wesomesauce&gt;rails new installfest
+      create
+      create  README.md
+      create  Rakefile
+      create  config.ru
+      create  .gitignore
+      create  Gemfile
+      ...
+         run  bundle install
+      ...
+      Bundle <span class="nb">complete</span>! 12 Gemfile dependencies, 56 gems now installed.
+      Use <span class="s1">'bundle show [gemname]'</span> to see where a bundled gem is installed.
+
+C:<span class="se">\U</span>sers<span class="se">\a</span>wesomesauce&gt;cd installfest
+
+C:<span class="se">\U</span>sers<span class="se">\a</span>wesomesauce<span class="se">\i</span>nstallfest&gt;rails server
+<span class="gp">=&gt; </span>Booting Puma
+<span class="gp">=&gt; </span>Rails 5.0.1 application starting <span class="k">in </span>development on http://localhost:3000
+...
+Use Ctrl-C to stop
+Started GET <span class="s2">"/"</span> <span class="k">for </span>127.0.0.1 at 2017-02-11 12:47:30 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: <span class="o">{</span><span class="s2">"internal"</span><span class="o">=</span>&gt;true<span class="o">}</span>
+  Rendering C:/Ruby23/lib/ruby/gems/2.3.0/gems/railties-5.0.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendering C:/Ruby23/lib/ruby/gems/2.3.0/gems/railties-5.0.1/lib/rails/templates/rails/welcome/index.html.erb <span class="o">(</span>15.6ms<span class="o">)</span>
+Completed 200 OK <span class="k">in </span>78ms <span class="o">(</span>Views: 42.6ms | ActiveRecord: 0.0ms<span class="o">)</span>
+
+
+
+Exiting
+Terminate batch job <span class="o">(</span>Y/N<span class="o">)</span>? y
+
+C:<span class="se">\U</span>sers<span class="se">\a</span>wesomesauce<span class="se">\i</span>nstallfest&gt;cd ..
+
+C:<span class="se">\U</span>sers<span class="se">\a</span>wesomesauce&gt;rm -rf installfest</code></pre></figure>
+
+</div>
+
+    </div>
+  </div>
+<footer>
+  <div class="container">
+    <a href="http://bmoreonrails.org/"><img src="/rails_tutorial/assets/icons/bmore.png"></a>
+    <a href="https://github.com/bmoreonrails/rails_tutorial"><img class="icon" src="/rails_tutorial/assets/icons/github.png"></a>
+    <a href="https://twitter.com/BmorRailsSchool"><img class="icon" src="/rails_tutorial/assets/icons/twitter.png"></a> 
+  </div>
+</footer>
+</body>
+</html>
+
