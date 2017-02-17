@@ -749,7 +749,7 @@ One solution to this problem would be to copy the check we added to the `new` me
 
 {% steps %}
 {% list %}
-  1.  Now that we have the `BooksController` locked down, let's add the same checks to the `ReviewsController`.
+  Now that we have the `BooksController` locked down, let's add the same checks to the `ReviewsController`.
 
   1.  Open the `ReviewsController` (`app/controllers/reviews_controller.rb`).
 
