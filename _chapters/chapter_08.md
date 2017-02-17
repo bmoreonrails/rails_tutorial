@@ -10,22 +10,22 @@ layout: rails_tutorial
 {% endsectionheader %}
 
 {% aside %}
-  Your bookstore is starting to feel like a fully featured application. You can list, view, add, and edit books. Is there anything else you might want to do with your books?
+Your bookstore is starting to feel like a fully featured application. You can list, view, add, and edit books. Is there anything else you might want to do with your books?
 
-  Maybe you accidentally added a book you don't have, or a book is no longer available. When these situations happen, wouldn't it be nice if you could delete the book?
+Maybe you accidentally added a book you don't have, or a book is no longer available. When these situations happen, wouldn't it be nice if you could delete the book?
 
-  Let's add the ability to delete books.
+Let's add the ability to delete books.
 {% endaside %}
 
 {% steps %}
 {% list %}
-  1.  Let's start by looking at your application's routes.
+  Let's start by looking at your application's routes.
 
   1.  Open Terminal and go to the `bookstore` directory.
 
   1.  Now, run `rake routes`.
 
-  1.  Can you guess which path we'll use to delete a book?
+      Can you guess which path we'll use to delete a book?
 
       It's in the last row of the routing table:
 
@@ -35,7 +35,9 @@ layout: rails_tutorial
 
       A DELETE request to `/books/:id` will get routed to the `BooksController` `destroy` action.
 
-  1.  Let's try visiting that path. Start your application's web server and go to [http://localhost:3000/books/1](http://localhost:3000/books/1).
+  1.  Let's try visiting that path.
+
+      Start your application's web server and go to [http://localhost:3000/books/1](http://localhost:3000/books/1).
 {% endlist %}
 
 {% highlight shell %}
@@ -62,48 +64,54 @@ layout: rails_tutorial
 
 ![Browser showing /books/1]({{site.baseurl}}/assets/images/bookstore_1_pre_delete.png){: .screenshot}
 
+{% aside %}
+What happened when you went to [http://localhost:3000/books/1](http://localhost:3000/books/1)?
+
+You pulled up the details for the first book in your application's database.
+
+*But I thought we were going to be deleting books*
+{% endaside %}
+
+{% aside %}
+### All Kinds of Requests
+
+When you visit [http://localhost:3000/books/1](http://localhost:3000/books/1), you send a GET request to your application's web server. GET requests to `/books/:id` don't have anything to do with deleting books.
+
+```shell
+book GET    /books/:id(.:format)      books#show
+```
+
+GET requests to `/books/:id` get routed to the `BooksController` `show` action. To delete a book, we need to send a DELETE request to `/books/:id`.
+
+```shell
+DELETE /books/:id(.:format)      books#destroy
+```
+
+This may seem foreign, but we actually ran into this before when we were updating books.
+
+To reach the `BooksController` `update` action, we also send a request to `/books/:id`. However, this request is either a PATCH or PUT request.
+
+```shell
+PATCH  /books/:id(.:format)      books#update
+PUT    /books/:id(.:format)      books#update
+```
+
+Do you remember doing anything special to handle the different request type? Me neither. 😊
+
+You've been sending PATCH/PUT requests to update books thanks to `form_for`.
+
+```erb
+<%= form_for(@book) do |f| %>
+```
+
+With that one line, you created a form that is submitted as a PATCH/PUT request to your application's web server.
+
+We'll do something similiar to generate DELETE requests to delete books.
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  What happened when you went to [http://localhost:3000/books/1](http://localhost:3000/books/1)?
-
-      You pulled up the details for the first book in your application's database.
-
-      *But I thought we were going to be deleting books*
-
-  1.  When you visit [http://localhost:3000/books/1](http://localhost:3000/books/1), you send a GET request to your application's web server. GET requests to `/books/:id` don't have anything to do with deleting books.
-
-      ```shell
-      book GET    /books/:id(.:format)      books#show
-      ```
-
-      GET requests to `/books/:id` get routed to the `BooksController` `show` action. To delete a book, we need to send a `DELETE` request to `/books/:id`.
-
-  1.  This may seem foreign, but we actually ran into this before when we were updating books.
-
-      To reach the `BooksController` `update` action, we also send a request to `/books/:id`. However, this request is either a `PATCH` or `PUT` request.
-
-      ```shell
-      PATCH  /books/:id(.:format)      books#update
-      PUT    /books/:id(.:format)      books#update
-      ```
-
-      Do you remember doing anything special to handle the different request type? Me neither. 😊
-
-      You've been sending PATCH/PUT requests to update books thanks to `form_for`.
-
-      ```erb
-      <%= form_for(@book) do |f| %>
-      ```
-
-      With that one line, you created a form that is submitted as a PATCH/PUT request to your application's web server.
-
-      We'll do something similiar to generate DELETE requests to delete books.
-{% endlist %}
-{% endsteps %}
-
-{% steps %}
-{% list %}
-  1.  To delete a book, we'll add a "Delete Book" button to the book details page.
+  To delete a book, we'll add a "Delete Book" button to the book details page.
 
   1.  In your text editor, open `app/views/books/show.html.erb`.
 
@@ -155,9 +163,11 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Ahh, another `Unknown action` error. Feels just like home. 😅
+  Ahh, another `Unknown action` error. Feels just like home. 😅
 
-  1.  Spend a few minutes to see if you can get past the `Unknown action` error. Instead of erroring, the button should do nothing.
+  1.  Spend a few minutes to see if you can get past the `Unknown action` error.
+
+      Instead of erroring, the button should do nothing.
 {% endlist %}
 {% endsteps %}
 
@@ -210,7 +220,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Now you have a "Delete Book" button that doesn't do anything. Let's change that.
+  Now you have a "Delete Book" button that doesn't do anything. Let's change that.
 
   1.  In the `BooksController` `destroy` method, you need to first find the book you want to destroy. Then, you'll want to call `destroy` on the book to delete it from your database.
 
