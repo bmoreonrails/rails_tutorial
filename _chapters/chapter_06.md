@@ -622,7 +622,7 @@ layout: rails_tutorial
 {% list %}
   1.  Let's make one more change to improve the edit workflow.
 
-      Right now, you can only edit books if you know the `edit_book_path` URL. Let's make this a little user friendly by adding a link to the edit page from the book show page.
+      Right now, you can only edit books if you know the `edit_book_path` URL. Let's make this a little user-friendly by adding a link to the edit page from the book show page.
 
   1.  Open `app/views/books/show.html.erb` in your text editor. Add the following line to the end of the file:
 

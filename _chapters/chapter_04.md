@@ -593,6 +593,7 @@ Let's see what happens when you use it.
 
 ![Browser showing "/books/1" with `number_to_currency(price_cents)`]({{site.baseurl}}/assets/images/pretty_price_show.png){: .screenshot}
 
+
 {% aside %}
 Looks great, right?!
 

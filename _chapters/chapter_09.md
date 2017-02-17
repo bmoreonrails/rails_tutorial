@@ -440,7 +440,7 @@ layout: rails_tutorial
 
       ![Dancing Banana]({{ site.baseurl }}/assets/images/dancing-banana.gif)
 
-  1.  Don't belive me??
+  1.  Don't believe me??
 
       Try running `my_first_book.reviews.count`. It should return 3.
 
