@@ -8,14 +8,15 @@ layout: rails_tutorial
   {{ page.title }}
 {% endsectionheader %}
 
+{% aside %}
+Your bookstore has users, but there's no way for them to login. Let's change that 😊
+{% endaside %}
 
 {% steps %}
 {% list %}
-  1.  Your bookstore has users, but there's no way for them to login. Let's change that 😊
-
   1.  Let's start by looking at your application's routes file. Open `config/routes.rb` in your text editor.
 
-  1.  You've added a couple of resources to the routes file. First, you defined `:books`. This added a series of routes to your application for creating, reading, updating, and deleting your books. Then, you added another resource `:reviews`. This added similar routes, but they're focused on reviews instead of books.
+      You've added a couple of resources to the routes file. First, you defined `:books`. This added a series of routes to your application for creating, reading, updating, and deleting your books. Then, you added another resource `:reviews`. This added similar routes, but they're focused on reviews instead of books.
 
       Now that your application has users, it might be tempting to add a `:users` resource. This would be useful if we were going to change user data, but we don't need to change any user data to log someone in.
 
@@ -46,11 +47,11 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Let's see what your application routes look like now.
+  Let's see what your application routes look like now.
 
   1.  Open Terminal, go the `bookstore` directory, and run `rake routes`.
 
-  1.  Aww, your routes are getting so big 😍
+      Aww, your routes are getting so big 😍
 
       When a user logs in, they're going to create a new session. What path will they visit to create a new session?
 
@@ -104,11 +105,11 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Oh boy, another `Routing Error`! 😝
+  Oh boy, another `Routing Error`! 😝
 
   1.  The error tells you what's wrong...
 
-      ```
+      ```text
       uninitialized constant SessionsController
       ```
 
@@ -118,19 +119,19 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Were you able to get past the `Routing Error`?
+  Were you able to get past the `Routing Error`?
 
-      No worries if you're stuck, we'll help you out 😊
+  No worries if you're stuck, we'll help you out 😊
 
   1.  You're getting a `Routing Error` because you application doesn't have a `SessionsController`.
 
       To fix this, you need to create a `SessionsController`.
 
-  1.  All controllers follow a similar pattern. They live inside the `app/controllers` directory, and they're filename matches their name.
+      All controllers follow a similar pattern. They live inside the `app/controllers` directory, and they're filename matches their name.
 
       For example, the `SessionsController` will be a file named `app/controllers/sessions_controller`.
 
-  1.  Controllers also share the same roots. Do you remember what your `BooksController` looked like when you first added it?
+      Controllers also share the same roots. Do you remember what your `BooksController` looked like when you first added it?
 
       ```ruby
       class BooksControllers < ApplicationController
@@ -156,11 +157,11 @@ layout: rails_tutorial
 {% list %}
   1.  Now, you're getting an `Unknown action` error. Just like the last error, it's giving you a hint.
 
-      ```
+      ```text
       The action 'new' could not be found for SessionsController
       ```
 
-  1.  You know what to do, right?!
+      You know what to do, right?!
 
       ![...YES]({{site.baseurl}}/assets/images/yup.gif)
 
@@ -172,7 +173,7 @@ layout: rails_tutorial
 {% list %}
   1.  What did you come up with?! Are you seeing a new error??
 
-  1.  You had to add a `new` method to the `SessionsController`.
+      You had to add a `new` method to the `SessionsController`.
 
       ```ruby
       def new
@@ -194,11 +195,11 @@ end
 
 {% steps %}
 {% list %}
-  1.  We're *sooooo* close to the end of the error train.
+  We're *sooooo* close to the end of the error train.
 
-      Can you think of reason why you're getting an `ActionController::UnknownFormat` error? It looks crazy, but we've seen this plenty of times before.
+  Can you think of reason why you're getting an `ActionController::UnknownFormat` error? It looks crazy, but we've seen this plenty of times before.
 
-  1.  You're getting an `ActionController::UnknownFormat` error because the `SessionsController` `new` action doesn't have a template.
+  You're getting an `ActionController::UnknownFormat` error because the `SessionsController` `new` action doesn't have a template.
 
   1.  Fix this error!
 
@@ -228,16 +229,18 @@ end
 
       If you're following the steps we just laid out, you'll have to stop your application's web server before running the commands. When you're done, you can restart it.
 
-  1.  Ah, has a blank page ever looked so good...
+      Ah, has a blank page ever looked so good?
 {% endlist %}
 {% endsteps %}
 
+{% aside %}
+A blank page is great and all, but wouldn't it be even better if a user could log in?!
+
+In the `SessionsController` `new` template, we need to render a form where users can enter their credentials to create a new session and log in.
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  A blank page is great and all, but wouldn't it be even better if a user could log in?!
-
-      In the `SessionsController` `new` template, we need to render a form where users can enter their credentials to create a new session and log in.
-
   1.  Open `app/views/sessions/new.html.erb` and add the following:
 
       ```erb
@@ -320,27 +323,23 @@ end
 
 ![Browser showing new session form]({{site.baseurl}}/assets/images/new_session_form.png){: .screenshot}
 
-{% steps %}
-{% list %}
-  1.  Yay! The form looks so good!!
+{% aside %}
+Yay! The form looks so good!!
 
-      But you might've noticed a couple of...weird things.
+But you might've noticed a couple of...weird things.
 
-  1.  First, did you try typing anything in the "Password" field. It shows up as plain text!
+First, did you try typing anything in the "Password" field. It shows up as plain text! That's not great if we're trying to protect passwords. Fortunately, we can change this behavior.
 
-      That's not great if we're trying to protect passwords. Fortunately, we can change this behavior.
+Also, the form submission button doesn't have the friendliest message. "Save Session" is *technically* right, but most users probably expect to see something like "Login".
 
-  1.  Also, the form submission button doesn't have the friendliest message. "Save Session" is *technically* right, but most users probably expect to see something like "Login".
+Let's make these things better!
 
-  1.  Let's make these things better!
-
-      ![Spongebob can't wait!]({{site.baseurl}}/assets/images/spongebobcantwait.gif)
-{% endlist %}
-{% endsteps %}
+![Spongebob can't wait!]({{site.baseurl}}/assets/images/spongebobcantwait.gif)
+{% endaside %}
 
 {% steps %}
 {% list %}
-  1.  First, we can change the "Password" field from a text field to a password field.
+  First, we can change the "Password" field from a text field to a password field.
 
   1.  Reopen `app/views/sessions/new.html.erb` and change
 
@@ -376,13 +375,13 @@ end
 
 {% steps %}
 {% list %}
-  1.  ...
+  ...
 
-      ![Why'd it have to be errors?]({{site.baseurl}}/assets/images/cowboys.jpg)
+  ![Why'd it have to be errors?]({{site.baseurl}}/assets/images/cowboys.jpg)
 
-      You know how to deal with `Unknown action` errors, right?!
+  You know how to deal with `Unknown action` errors, right?!
 
-      ![Of course]({{site.baseurl}}/assets/images/genewilder.gif)
+  ![Of course]({{site.baseurl}}/assets/images/genewilder.gif)
 
   1.  Fix this error!
 
@@ -417,9 +416,9 @@ end
 
 {% steps %}
 {% list %}
-  1.  Nothing happens when you try to login, but how *could* anything happen. The new session form is being submitted to the `SessionsController` `create` method, and that method is empty.
+  Nothing happens when you try to login, but how *could* anything happen. The new session form is being submitted to the `SessionsController` `create` method, and that method is empty.
 
-      Let's update the `create` method so users can login.
+  Let's update the `create` method so users can login.
 
   1.  Just like past forms, the new session form data is available in the `SessionsController` inside the `params` hash. If you take a look at your application's web server's output, you can see the params coming in.
 
@@ -488,49 +487,49 @@ end
 {% endhighlight %}
 {% endsteps %}
 
-{% steps %}
-{% list %}
-  1.  Let's start by looking at this line:
+{% aside %}
+### The Rails Session
 
-      ```ruby
-      session[:user_id] = user.id
-      ```
+Let's start by looking at this line:
 
-  1.  Rails saves a session for every user that visits your application. By default, these sessions are stored in the user's browser using something called [cookies](https://en.wikipedia.org/wiki/HTTP_cookie). Cookies are small files that browsers can use to save data on a user's machine.
+```ruby
+session[:user_id] = user.id
+```
 
-      To protect the session's contents, Rails signs and encrypts it so the contents are only accessible by the Rails application.
+Rails saves a session for every user that visits your application. By default, these sessions are stored in the user's browser using something called [cookies](https://en.wikipedia.org/wiki/HTTP_cookie). Cookies are small files that browsers can use to save data on a user's machine.
 
-  1.  Rails makes the session available as a `session` hash. You can save anything inside the `session` hash. For example, we decided to store a `user_id`.
+To protect the session's contents, Rails signs and encrypts it so the contents are only accessible by the Rails application.
 
-      ```ruby
-      session[:user_id] = user.id
-      ```
+Rails makes the session available as a `session` hash. You can save anything inside the `session` hash. For example, we decided to store a `user_id`.
 
-  1.  Sessions are probably feeling really abstract right now, but they'll make more sense when you see them in action.
-{% endlist %}
-{% endsteps %}
+```ruby
+session[:user_id] = user.id
+```
 
-{% steps %}
-{% list %}
-  1.  In the `create` method, we also made use of the flash.
+Sessions are probably feeling really abstract right now, but they'll make more sense when you see them in action.
+{% endaside %}
 
-      ```ruby
-      flash[:notice] = "Welcome back, #{user.username}!"
-      ```
+{% aside %}
+### Flash Messages
 
-      ```ruby
-      flash[:alert] = "Sorry, your username or password is invalid."
-      ```
+In the `create` method, we also made use of the flash.
 
-  1.  The flash is also part of the session, but it doesn't get saved in the user's browser. Instead, the flash is cleared after every request.
+```ruby
+flash[:notice] = "Welcome back, #{user.username}!"
+```
 
-      We can take advantage of the flash's short life cycle to temporarily show messages. For example, imagine what happens after you a user logs in to your bookstore. It's nice to see the welcome back message, but you don't really need continue seeing that message as you make your rounds through the bookstore.
+```ruby
+flash[:alert] = "Sorry, your username or password is invalid."
+```
 
-  1.  Just like the session, the flash is made available in your application as a `flash` hash. You can also store anything in the flash, but it's commonly used to save things like `notice`s and `alert`s.
+The flash is also part of the session, but it doesn't get saved in the user's browser. Instead, the flash is cleared after every request.
 
-  1.  In the `create` method, you're putting the succes message in `flash[:notice]` and the failure message is `flash[:alert]`. To show these messages, we need to make a change to your application's layout template.
-{% endlist %}
-{% endsteps %}
+We can take advantage of the flash's short life cycle to temporarily show messages. For example, imagine what happens after you a user logs in to your bookstore. It's nice to see the welcome back message, but you don't really need continue seeing that message as you make your rounds through the bookstore.
+
+Just like the session, the flash is made available in your application as a `flash` hash. You can also store anything in the flash, but it's commonly used to save things like `notice`s and `alert`s.
+
+In the `create` method, you're putting the succes message in `flash[:notice]` and the failure message is `flash[:alert]`. To show these messages, we need to make a change to your application's layout template.
+{% endaside %}
 
 {% steps %}
 {% list %}
@@ -589,9 +588,9 @@ end
 
 {% steps %}
 {% list %}
-  1.  Now that you have a fully functional `create` method, let's take it out for a spin!
+  Now that you have a fully functional `create` method, let's take it out for a spin!
 
-      ![Car flying away]({{site.baseurl}}/assets/images/Flyingcar.gif)
+  ![Car flying away]({{site.baseurl}}/assets/images/Flyingcar.gif)
 
   1.  Go to [http://localhost:3000/session/new](http://localhost:3000/session/new) and try logging in with an invalid username.
 
@@ -603,20 +602,22 @@ end
 
 ![Browser showing NoMethodError: "undefined method `authenticate' for nil:NilClass"]({{site.baseurl}}/assets/images/invalid_user_name_error.png){: .screenshot}
 
+{% aside %}
+This error is a little tricky. Remember when we used `find_by` in the `SessionsController` `create` method to get the user by their username?
+
+```ruby
+user = User.find_by(username: params[:session][:username])
+```
+
+`find_by` will return the user only if a user with that username exists. Otherwise, it returns `nil`. So when you try to log in with an invalid username, `user` becomes nil.
+
+That's why you're seeing the `NoMethodError` - you can't call `authenticate` on `nil`.
+
+To fix this error, we'll need to make a change in the `create` method.
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  This error is a little tricky. Remember when we used `find_by` in the `create` method to get the user by their username?
-
-      ```ruby
-      user = User.find_by(username: params[:session][:username])
-      ```
-
-      `find_by` will return the user only if a user with that username exists. Otherwise, it returns `nil`. So when you try to log in with an invalid username, `user` becomes nil.
-
-      That's why you're seeing the `NoMethodError` - you can't call `authenticate` on `nil`.
-
-  1.  To fix this error, we'll need to make a change in the `create` method.
-
   1.  Open `app/views/controllers/sessions_controller.rb`. Inside the `create` method change
 
       ```ruby
@@ -659,7 +660,7 @@ end
 
 {% steps %}
 {% list %}
-  1.  Yay! That's a lot better, isn't it?
+  Yay! That's a lot better, isn't it?
 
   1.  Now try logging in as "CatPower", but use an invalid password. You should still get the failure message.
 
@@ -671,17 +672,19 @@ end
 
 {% steps %}
 {% list %}
-  1.  YAYAY!!!
+  YAYAY!!!
 
-  1.  Try clicking around the bookstore. The success message should go way as soon as you visit a new page.
+  1.  Try clicking around the bookstore.
+
+      The success message should go way as soon as you visit a new page.
 {% endlist %}
 {% endsteps %}
 
 {% steps %}
 {% list %}
-  1.  Now that you're logged in, let's make it so you can log out!
+  Now that you're logged in, let's make it so you can log out!
 
-      Let's add a "Log out" link to your bookstore's header.
+  Let's add a "Log out" link to your bookstore's header.
 
   1.  Open `app/views/layouts/application.html.erb`. Change the "navigation" `div` from
 
@@ -768,7 +771,7 @@ end
 {% list %}
   1.  Since the "Log Out" link sends a DELETE request, it gets routed to the `SessionsController` `destroy` method. Whelp, that explains the error you're seeing.
 
-      ```
+      ```text
       The action 'destroy' could not be found for SessionsController
       ```
 
@@ -782,7 +785,7 @@ end
       end
       ```
 
-      The first line of this method removes the user_id we saved in the session by setting `session[:user_id]` to nil. The second line show a friendly message confirming the user has been logged out. The final line redirects the user to the `root_path`.
+      The first line of this method removes the user_id we saved in the session by setting `session[:user_id]` to nil. The second line shows a friendly message confirming the user has been logged out. The final line redirects the user to the `root_path`.
 
   1.  Save your changes and try logging out! After you've logged out, stop your application's web server.
 {% endlist %}
