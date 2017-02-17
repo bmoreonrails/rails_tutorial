@@ -8,33 +8,36 @@ layout: rails_tutorial
   {{ page.title }}
 {% endsectionheader %}
 
-
 {% aside %}
   Now that you can keep track of logged in users, you can keep track of their actions. A great example where this could be useful is with your reviews. Wouldn't it be nice to know which users are leaving which reviews?
 {% endaside %}
 
+{% aside %}
+### Has Many Relationships
+
+To track which users are leaving which reviews, we need to establish a relationship between users and reviews.
+
+A user can leave many reviews, and a review can only be written by one user. Does this sound familiar?
+
+You've already defined a similar relaltionship between books and reviews.
+
+```ruby
+class Book < ApplicationRecord
+  has_many :reviews
+end
+```
+
+```ruby
+class Review < ApplicationRecord
+  belongs_to :book
+end
+```
+
+A book has many reviews, and a review belongs to a book.
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  To track which users are leaving which reviews, we need to establish a relationship between users and reviews.
-
-      A user can leave many reviews, and a review can only be written by one user. Does this sound familiar?
-
-  1.  You've already defined a similar relaltionship between books and reviews.
-
-      ```ruby
-      class Book < ApplicationRecord
-        has_many :reviews
-      end
-      ```
-
-      ```ruby
-      class Review < ApplicationRecord
-        belongs_to :book
-      end
-      ```
-
-      A book has many reviews, and a review belongs to a book.
-
   1.  Open the `User` class (`app/models/user.rb`) in your text editor.
 
       Using the `Book` class as an example, update `User` so a user has many reviews.
@@ -65,7 +68,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Now that we've defined a relationship between users and reviews, let's see what we can do with it on the `rails console`.
+  Now that we've defined a relationship between users and reviews, let's see what we can do with it on the `rails console`.
 
   1.  Open Terminal, make sure you're in the `bookstore` directory, and start the `rails console`.
 
@@ -73,7 +76,7 @@ layout: rails_tutorial
 
   1.  Now, try running `my_first_user.reviews`.
 
-  1.  Yikes! That looks like a gnarly error... 😅
+      Yikes! That looks like a gnarly error... 😅
 
       The `ActiveRecord::StatementInvalid` error is giving you hint to what's going on. Burried inside the error, you have this message:
 
@@ -109,7 +112,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  To add a `user_id` column to the `reviews` table, we'll need to create a new migration.
+  To add a `user_id` column to the `reviews` table, we'll need to create a new migration.
 
   1.  In Terminal, run the following command:
 
@@ -131,7 +134,7 @@ layout: rails_tutorial
 {% list %}
   1.  The `AddUserIdtoReviews` migration will be very similiar to another migration you've created. Can you think of which one?
 
-  1.  `AddUserIdtoReviews` is gonna look a lot like `AddBookIdToReviews`.
+      `AddUserIdtoReviews` is gonna look a lot like `AddBookIdToReviews`.
 
       ```ruby
       class AddBookIdToReviews < ActiveRecord::Migration[5.0]
@@ -178,7 +181,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Now that we've defined the relationship between users and reviews on both the model **and** the database levels, we can go back to exploring the relationship on the `rails console`.
+  Now that we've defined the relationship between users and reviews on both the model **and** the database levels, we can go back to exploring the relationship on the `rails console`.
 
   1.  Go to Terminal and start the `rails console`.
 
@@ -276,7 +279,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Let's take a closer look at that new review.
+  Let's take a closer look at that new review.
 
   1.  Run the following code to assign the new review to a variable called `my_last_review`:
 
@@ -290,7 +293,7 @@ layout: rails_tutorial
 
   1.  Now, let's try to get the user from the review. Try running `my_last_review.user`.
 
-  1.  Hmm...that's an interesting error. Any thoughts on why you got a `NoMethodError`.
+      Hmm...that's an interesting error. Any thoughts on why you got a `NoMethodError`.
 
       (The hint is in the error)
 
@@ -314,7 +317,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  We need to define the relationship between reviews and users - a review belongs to a user.
+  We need to define the relationship between reviews and users - a review belongs to a user.
 
   1.  Open `app/models/reviews.rb`. You might notice another relationship we already defined 😉
 
@@ -338,7 +341,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  That probably sounded more challenging than it was 😅
+  That probably sounded more challenging than it was 😅
 
   1.  You should've added this line
 
@@ -359,7 +362,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Now, let's see if we can't get your last review's user.
+  Now, let's see if we can't get your last review's user.
 
   1.  Go back to the `rails console` and run the following line to pull in your changes.
 
@@ -399,86 +402,58 @@ layout: rails_tutorial
   Now that we have a way to assign reviews to their users, let's update your bookstore so we always know who's leaving reviews.
 {% endaside %}
 
-{% steps %}
-{% list %}
-  1.  Remember, we can assign a review to a user by setting the `user_id` on the review. But do you remember how users create reviews?
+{% aside %}
+### How Do Users Leave Reviews Again?
 
-      Users create reviews by submitting forms to the `ReviewsController` `create` method. Let's take a look at it.
+Remember, we can assign a review to a user by setting the `user_id` on the review. But do you remember how users create reviews?
 
-  1.  In your text editor, open the `ReviewsController` (`app/controllers/reviews_controller.rb`) and find the `create` method.
+Users create reviews by submitting forms to the `ReviewsController` `create` method. Let's take a look at it.
 
-      ```ruby
-      def create
-        book = Book.find(params[:book_id])
-        book.reviews.create(review_params)
-        redirect_to book_path(book)
-      end
-      ```
-  1.  It's been a while since you added this method, so let's do a quick review.
+In your text editor, open the `ReviewsController` (`app/controllers/reviews_controller.rb`) and find the `create` method.
 
-      In the `create` method, you start by finding the book that's being reviewed.
+```ruby
+def create
+  book = Book.find(params[:book_id])
+  book.reviews.create(review_params)
+  redirect_to book_path(book)
+end
+```
+It's been a while since you added this method, so let's do a quick review.
 
-      ```ruby
-      book = Book.find(params[:book_id])
-      ```
+In the `create` method, you start by finding the book that's being reviewed.
 
-      Then, you create a new review for it using `review_params`.
+```ruby
+book = Book.find(params[:book_id])
+```
 
-      ```ruby
-      book.reviews.create(review_params)
-      ```
+Then, you create a new review for it using `review_params`.
 
-      `review_params` is a method that defines which of the form's fields can be set on the new review.
+```ruby
+book.reviews.create(review_params)
+```
 
-      ```ruby
-      def review_params
-        params.require(:review).permit(:body)
-      end
-      ```
+`review_params` is a method that defines which of the form's fields can be set on the new review.
 
-      Using strong parameters, you set up the `review_params` method so the form must submit a `review` hash. The only field you're permitting in that hash is the `body` field.
+```ruby
+def review_params
+  params.require(:review).permit(:body)
+end
+```
 
-  1.  Now, we need to update `review_params` so we can also set `user_id`.
+Using strong parameters, you set up the `review_params` method so the form must submit a `review` hash. The only field you're permitting in that hash is the `body` field.
 
-      *But how do we know what the `user_id` should be?*
+Now, we need to update `review_params` so we can also set `user_id`.
 
-      Only logged in users can create new reviews, and we know which user is logged in because their user id is saved in the session as `user_id`.
+*But how do we know what the `user_id` should be?*
 
-      We'll have to change the `review_params` method so it lets us set `user_id` to the `user_id` saved in the session...
-{% endlist %}
+Only logged in users can create new reviews, and we know which user is logged in because their user id is saved in the session as `user_id`.
 
-{% highlight ruby linenos %}
-  class ReviewsController < ApplicationController
-    before_action :verify_user_session
-
-    def new
-      @book = Book.find(params[:book_id])
-      @review = @book.reviews.build
-    end
-
-    def create
-      book = Book.find(params[:book_id])
-      book.reviews.create(review_params)
-      redirect_to book_path(book)
-    end
-
-    def review_params
-      params.require(:review).permit(:body)
-    end
-
-    def verify_user_session
-      if session[:user_id].blank?
-        flash[:alert] = "Please login to continue"
-        redirect_to new_session_path
-      end
-    end
-  end
-{% endhighlight %}
-{% endsteps %}
+We'll have to change the `review_params` method so it lets us set `user_id` to the `user_id` saved in the session...
+{% endaside %}
 
 {% steps %}
 {% list %}
-  1.  Change the `review_params` method from
+  1.  In the `ReviewsController`, change the `review_params` method from
 
       ```ruby
       def review_params
