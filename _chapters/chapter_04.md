@@ -17,15 +17,19 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Let's start by looking at your application's routes again.
+  Let's start by looking at your application's routes again.
 
   1.  Open Terminal and go to your `bookstore` directory.
 
   1.  Run `rake routes`.
 
-  1.  So far we've worked with the first row in the routes table. We used the `/books` path with the `BooksController` `index` action to list all your application's books.
+      So far we've worked with the first row in the routes table. We used the `/books` path with the `BooksController` `index` action to list all your application's books.
 
-  1.  Now that we want to show detailed book information we'll need to use a different route.
+      ```shell
+      books GET    /books(.:format)          books#index
+      ```
+
+      Now that we want to show detailed book information we'll need to use a different route.
 
       ```shell
       book GET    /books/:id(.:format)      books#show
@@ -53,17 +57,17 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  In the `/books/:id` path, we can take advantage of `:id` to get a book by it's id.
+  In the `/books/:id` path, we can take advantage of `:id` to get a book by it's id.
 
-      What's that? You didn't know a book could have an id? Let's take a look.
+  What's that? You didn't know a book could have an id? Let's take a look.
 
   1.  Go back to Terminal and start `rails console`.
 
   1.  In the console, run `Book.first` to get the first book from your database.
 
-  1.  Take a look at the output. It might be hard to see, but at the beginning there's an id.
+      Take a look at the output. It might be hard to see, but at the beginning there's an id.
 
-      ```shell
+      ```ruby
       #<Book id: 1, title: "why's (poignant) Guide to Ruby", ... >
       ```
 
@@ -73,18 +77,18 @@ layout: rails_tutorial
 
       Run `Book.second` and look at the output.
 
-      ```shell
+      ```ruby
       #<Book id: 2, title: "Oh, the Places You'll Go!", ... >
       ```
 
       The second book in your database has an id of ... 2!!!
 
-  1.  By default, every book you create will be given a unique id, and it will be given an id in sequential order.
+      By default, every book you create will be given a unique id, and it will be given an id in sequential order.
 
   1.  Exit the console.
 {% endlist %}
 
-{% highlight shell %}
+{% highlight ruby %}
   $ rails c
   Loading development environment (Rails 5.0.0.1)
   >> Book.first
@@ -101,17 +105,17 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  How will the `/books/:id` path work in action?
+  How will the `/books/:id` path work in action?
 
   1.  Go back to Terminal and start your application's web server by running `rails server`.
 
   1.  `:id` can be replaced with specific ids. Since we know your first book's id is 1, we can go to `/books/1`.
 
-  1.  Open your browser and go to [http://localhost:3000/books/1](http://localhost:3000/books/1).
+      Open your browser and go to [http://localhost:3000/books/1](http://localhost:3000/books/1).
 
   1.  An unknown action error?! Why does that look familiar... 😉
 
-      You're trying to access the `BooksController` `show` action, but it doesn't exist. Let's make it.
+      You're trying to access the `BooksController` `show` action, but it doesn't exist. Let's make it!
 {% endlist %}
 
 {% highlight shell %}
@@ -151,7 +155,7 @@ layout: rails_tutorial
 
   1.  Now you get a different error:
 
-      ```ruby
+      ```shell
       ActionController::UnknownFormat (BooksController#show is missing a template for this request format and variant.
       ```
 
@@ -174,7 +178,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Let's add the missing template.
+  Let's add the missing template.
 
   1.  Go back to Terminal and stop your application's web server by running `Ctrl-C`.
 
@@ -182,7 +186,7 @@ layout: rails_tutorial
 
   1.  Restart your application's web server by running `rails server` and revisit [http://localhost:3000/books/1](http://localhost:3000/books/1).
 
-  1.  Yay! No errors!
+      Remember, a blank page means no errors. 😆
 
       Now that we have the `BooksController` `show` action rendering a template, we're ready to show a book's details.
 {% endlist %}
@@ -202,38 +206,38 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% steps %}
-{% list %}
-  1.  Before you can show a book's details, you have to figure out *which* book's details to show. How can we figure out which book to show?
+{% aside %}
+### How do we know which book we're showing?
 
-  1.  When you visit [http://localhost:3000/books/1](http://localhost:3000/books/1), you send a request to your application's web server. Thanks to Rails routing, the book id (1) is included in that request.
+Before you can show a book's details, you have to figure out *which* book's details to show. How can we figure out which book to show?
 
-      ```shell
-      Started GET "/books/1" for ::1 at 2016-12-26 16:12:07 -0500
-      Processing by BooksController#show as HTML
-        Parameters: {"id"=>"1"}
-        Rendering books/show.html.erb within layouts/application
-        Rendered books/show.html.erb within layouts/application (0.3ms)
-      Completed 200 OK in 266ms (Views: 263.1ms | ActiveRecord: 0.0ms)
-      ```
+When you visit [http://localhost:3000/books/1](http://localhost:3000/books/1), you send a request to your application's web server. Thanks to Rails routing, the book id (1) is included in that request.
 
-      It's tucked in there, but the id is inside the parameters hash. See it? Try to find it in your server's output. 
+```shell
+Started GET "/books/1" for ::1 at 2016-12-26 16:12:07 -0500
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 266ms (Views: 263.1ms | ActiveRecord: 0.0ms)
+```
 
-      ```shell
-      Parameters: {"id"=>"1"}
-      ```
+It's tucked in there, but the id is inside the parameters hash. See it? Try to find it in your server's output.
 
-  1.  Let's see how we can access the parameters hash in your `BooksController` `show` action.
-{% endlist %}
-{% endsteps %}
+```shell
+Parameters: {"id"=>"1"}
+```
+
+Let's see how we can access the parameters hash in your `BooksController` `show` method.
+{% endaside %}
 
 {% steps %} 
 {% list %}
   1.  Open your text editor and go to `app/controllers/books_controller.rb`.
 
-  1.  In your controllers, request parameters are available as `params`.
+  1.  Request parameters are available in all your application's controllers as `params`.
 
-  1.  Inside the `show` method, add the following code:
+      Inside the `show` method, add the following code:
 
       ```ruby
       @id = params[:id]
@@ -255,7 +259,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  By defining `@id` in the `BooksController` `show` method, it's available in the `BooksController` `show` template.
+  By defining `@id` in the `BooksController` `show` method, it's available in the `BooksController` `show` template.
 
   1.  Open `app/views/books/show.html.erb` in your text editor and add the following:
 
@@ -273,64 +277,75 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Now that the `BooksController` `show` template is wired up to render something, what do you expect to see if you visit [http://localhost:3000/books/1](http://localhost:3000/books/1)?
+  Now that the `BooksController` `show` template is wired up to render something, what do you expect to see if you visit [http://localhost:3000/books/1](http://localhost:3000/books/1)?
 
-      Do you have an idea? Let's verify it!
+  Do you have an idea? Let's verify it!
 
-  1.  Go to [http://localhost:3000/books/1](http://localhost:3000/books/1). What do you see??
+  1.  Go to [http://localhost:3000/books/1](http://localhost:3000/books/1).
+
+      What do you see?? Was it what you were expecting?
 {% endlist %}
 {% endsteps %}
 
 ![Browser showing "/books/1" with the request book's id]({{site.baseurl}}/assets/images/show_with_book_id.png){: .screenshot}
 
+{% aside %}
+Did reality meet your expecations?
+
+The page renders "This book's id is 1." becuase you made a request from your browser with book id 1 ([http://localhost:3000/books/1](http://localhost:3000/books/1)).
+
+You're able to render the id because you grabbed it from the request parameters and assigned it to `@id` inside the `BooksController` `show` action.
+
+What happens if you go to [http://localhost:3000/books/2](http://localhost:3000/books/2)?
+
+What about [http://localhost:3000/books/3](http://localhost:3000/books/3)?
+
+The new book id is rendered on every request because you wired up the template to show the requested book's id.
+{% endaside %}
+
+{% aside %}
+### Finding a Book
+
+Now that we have the book id for the book we want to show, we can use it to get that book from your application's database.
+
+We've used a few methods to get books from the database. We've used `Book.all` to get all the books, and we've used `Book.first` to get the first book.
+
+But how do we get a book by it's id? Let's explore on the `rails console`.
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  Did reality meet your expecations?
-
-      The page renders "This book's id is 1." becuase you made a request from your browser with book id 1 ([http://localhost:3000/books/1](http://localhost:3000/books/1)).
-
-      You're able to render the id because you grabbed it from the request parameters and assigned it to `@id` inside the `BooksController` `show` action.
-
-  1.  What happens if you go to [http://localhost:3000/books/2](http://localhost:3000/books/2)?
-
-      What about [http://localhost:3000/books/3](http://localhost:3000/books/3)?
-
-      The new book id is rendered on every request because you wired up the template to show the requested book's id.
-{% endlist %}
-{% endsteps %}
-
-{% steps %}
-{% list %}
-  1.  Now that we have the book id for the book we want to show, we can use it to get that book from your application's database.
-
-  1.  We've used a few methods to get books from the database. We've used `Book.all` to get all the books, and we've used `Book.first` to get the first book.
-
-      But how do we get a book by it's id?
-
-  1.  Let's explore on the `rails console`.
-
   1.  Go back to Terminal and quit your application's web server by running `Ctrl-C`. Then, start the `rails console`.
 
   1.  Now try running the following code:
 
-      ```shell
+      ```ruby
       Book.find(3)
       ```
 
-  1.  What did it return? It returned the book in your application's database with id 3.
+      What did it return? It returned the book in your application's database with id 3.
 
-  1.  What do you get with `Book.find(1)` and `Book.find(5)`? You get the book with that id.
+      ```ruby
+      #<Book id: 3, title: "1984", author: "George Orwell", price_cents: 0, created_at: "2016-12-26 15:51:15", updated_at: "2016-12-26 15:51:15", quantity: 200>
+      ```
+
+  1.  What do you get when you run `Book.find(1)` or `Book.find(5)`?
+
+      You get the book with that id.
 
   1.  What happens if you do `Book.find(100)`?
 
+      ```ruby
+      ActiveRecord::RecordNotFound: Couldn't find Book with 'id'=100
+      ```
       An error! `Book.find` returns an error when it doesn't find a book with the given book id.
 
-  1.  So we can use `Book.find` to get books from your application's database with a given id. If a book doesn't exist with that id, we get an `ActiveRecord::RecordNotFound` error.
+      So we can use `Book.find` to get books from your application's database with a given id. If a book doesn't exist with that id, we get an `ActiveRecord::RecordNotFound` error.
 
   1.  Exit the console and restart your application's web server.
 {% endlist %}
 
-{% highlight shell %}
+{% highlight ruby %}
   $ rails server
 
   ...
@@ -373,13 +388,13 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Let's use our new knowledge of `Book.find` to get and show the requested book in the `BooksController` `show` action.
+  Let's use our new knowledge of `Book.find` to get and show the requested book in the `BooksController` `show` method.
 
   1.  In your text editor, open the `BooksController`.
 
   1.  We've already grabbed the requested book id and set it to `@id`. Let's use that to find the requested book.
 
-  1.  Add the following line to the end of the `show` method:
+      Add the following line to the end of the `show` method:
 
       ```ruby
       @book = Book.find(@id)
@@ -423,14 +438,18 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
+![Browser showing the first book's id and title]({{site.baseurl}}/assets/images/show_book_id_and_title.png){: .screenshot}
+
+{% aside %}
+Yay! You got the request book and showed *some* of its information.
+
+Unfortunately, it's kinda smashed together on the page.
+
+Let's use a definition list to clean it up.
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  Yay! You got the request book and showed *some* of its information.
-
-      Unfortunately, it's kinda smashed together on the page.
-
-      Let's use a definition list to clean it up.
-
   1.  Open `app/views/books/show.html.erb` in your text editor and delete everything in the file.
 
       Yes, EVERYTHING.
@@ -449,7 +468,7 @@ layout: rails_tutorial
       </dl>
       ```
 
-      This is an HTML [definition list](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl) with a couple of terms: id and title. The terms are defined with values for the given book.
+      This is an HTML [definition list](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl) with a couple of terms: "Id" and "Title". The terms are defined with values for the given book.
 
       Save your changes and go to [http://localhost:3000/books/1](http://localhost:3000/books/1) to see the results.
 {% endlist %}
@@ -521,18 +540,22 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
+{% aside %}
+### Price Cents?
+
+The books details look great, but doesn't "Price Cents" look kinda weird?
+
+Do you ever wonder how much something would cost in pennies? Really?! I thought I was the only one!
+
+For most people, it would be easier to see the book's price in dollars. Fortunately, Rails has our back.
+
+Rails provides a [`number_to_currency` method](http://api.rubyonrails.org/classes/ActionView/Helpers/NumberHelper.html#method-i-number_to_currency) that prints a number as currency.
+
+Let's see what happens when you use it.
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  The books details look great, but doesn't "Price Cents" look kinda weird?
-
-      Do you ever wonder how much something would cost in pennies? Really?! I thought I was the only one!
-
-      For most people, it would be easier to see the book's price in dollars. Fortunately, Rails has our back.
-
-  1.  Rails provides a [`number_to_currency` method](http://api.rubyonrails.org/classes/ActionView/Helpers/NumberHelper.html#method-i-number_to_currency) that prints a number as currency.
-
-      Let's see what happens when you use it.
-
   1.  Reopen `app/views/books/show.html.erb` and change the "Price Cents" definition from
 
       ```erb
@@ -547,6 +570,7 @@ layout: rails_tutorial
 
   1.  Save your changes and revist [http://localhost:3000/books/1](http://localhost:3000/books/1).
 {% endlist %}
+
 {% highlight erb linenos %}
   <dl>
     <dt>Id</dt>
@@ -569,16 +593,19 @@ layout: rails_tutorial
 
 ![Browser showing "/books/1" with `number_to_currency(price_cents)`]({{site.baseurl}}/assets/images/pretty_price_show.png){: .screenshot}
 
+
+{% aside %}
+Looks great, right?!
+
+Except *why's (poignant) Guide to Ruby* doesn't cost $100.00. We set the book's `price_cents` to 100, and 100 cents is $1.00.
+
+`number_to_currency` formats a number as a dollar amount, but the number has to be in dollars.
+
+We need to first convert `price_cents` to dollars before we can really use `number_to_currency`.
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  Looks great, right?
-
-      Except *why's (poignant) Guide to Ruby* doesn't cost $100.00. We set the books price_cents to 100, and 100 cents is $1.00.
-
-  1.  `number_to_currency` formats a number as a dollar amount, but the number has to be in dollars.
-
-      We need to first convert `price_cents` to dollars before we can really use `number_to_currency`.
-
   1.  Reopen `app/views/books/show.html.erb` and change the "Price Cents" definition from
 
       ```erb
@@ -591,9 +618,9 @@ layout: rails_tutorial
       <dd><%= number_to_currency(@book.price_cents / 100.0) %></dd>
       ```
 
-  1.  To convert from cents to dollars, we can simply divide by 100.
+      To convert from cents to dollars, we can simply divide by 100.
 
-      (Actually we have to divide by 100.0 because [floating point math is fun](http://memecrunch.com/meme/ALWHK/if-you-use-floating-point-math/image.jpg))
+      (Actually we have to divide by 100.0 because [floating point math is fun]({{site.baseurl}}/assets/images/floating_point_math_bad_times.png))
 
       Then, the converted value is used by `number_to_currency`.
 
@@ -625,32 +652,36 @@ layout: rails_tutorial
 ![Browser showing "/books/1" with a nicely formated price]({{site.baseurl}}/assets/images/but_its_in_cents_show.png){: .screenshot}
 
 {% aside %}
-  We're making really good progress! Anyone can visit your bookstore to see what books you have, and they can learn a little about those books.
+We're making really good progress! Anyone can visit your bookstore to see what books you have, and they can learn a little about those books.
 
-  I love that we can see what books you have and how much they cost, but what if I've never heard of one of your books before??
+I love that I can see what books you have and how much they cost, but what if I've never heard of one of your books before??
 
-  Let's add book descriptions to help give just a little more info about your books.
+Let's add book descriptions to help give just a little more info about your books.
+{% endaside %}
+
+{% aside %}
+### Adding descriptions to books
+
+We can add descriptions to books by adding a `description` column to the `books` table.
+
+Do you remember how we added columns to your application's database tables?
+
+We've done that through migrations. We created a migration to add the `books` table, and we changed that migration to add new columns.
+
+Now that you're bookstore application is coming along, we don't want to go back and edit past migrations. Editing past migrations can compromise the data you've worked so hard to collect!
+
+But how will we add the `description` column to the `books` table??
+
+A new migration!
 {% endaside %}
 
 {% steps %}
 {% list %}
-  1.  We can add descriptions to books by adding a `description` column to the `books` table.
-
-  1.  Do you remember how we added columns to your application's database tables?
-
-      We've done that through migrations. We created a migration to add the `books` table, and we changed that migration to add new columns.
-
-      Now that you're bookstore application is coming along, we don't want to go back and edit past migrations. Editing past migrations can compromise the data you've worked so hard to collect!
-
-      But how will we add the `description` column to the `books` table??
-
-      A new migration!
-
   1.  Go back to Terminal and stop your application's web server by running `Ctrl-C`.
 
   1.  Now, run `rails generate migration add_description_to_books`.
 
-      This creates a new timestamped migration file `db/migrate/CURRENT_TIMESTAMP_add_description_to_books.rb`.
+      This creates a new timestamped migration file `db/migrate/TIMESTAMP_add_description_to_books.rb`.
 {% endlist %}
 
 {% highlight shell %}
@@ -664,13 +695,13 @@ layout: rails_tutorial
 {% list %}
   1.  Open your new migration in your text editor.
 
-  1.  Inside the change method, add the following line:
+  1.  Inside the `change` method, add the following line:
 
       ```ruby
       add_column :books, :description, :text
       ```
 
-  1.  With this change, we're setting up the migration to add a column to the `books` table. The new column will be named `description` and it will store any amount of `text`.
+      With this change, we're setting up the migration to add a column to the `books` table. The new column will be named `description` and it will store any amount of `text`.
 
   1.  Save your changes.
 {% endlist %}
@@ -686,7 +717,9 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  <p>Now, go back to Terminal and run `rake db:migrate` to run your new migration against your application's database.</p>
+  1.  Now, go back to Terminal.
+
+      Run `rake db:migrate` to run your new migration against your application's database.
 {% endlist %}
 
 {% highlight shell %}
@@ -700,23 +733,27 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Let's take a look how this changes your application.
+  Let's take a look at how this changes your bookstore.
 
   1.  In Terminal, start `rails console`, get your first book and assign it to a variable called `my_first_book`.
 
-  1.  Does the book look different?
+      ```ruby
+      my_first_book = Book.first
+      ```
+
+      Does the book look different?
 
       At the end, you should see a nil description.
 
-      ```shell
-      => #<Book id: 1, title: "why's (poignant) Guide to Ruby", ..., description: nil>
+      ```ruby
+      #<Book id: 1, title: "why's (poignant) Guide to Ruby", ..., description: nil>
       ```
 
       `description` is nil because you just added it.
 
   1.  You can give `my_first_book` a description by running
 
-      ```shell
+      ```ruby
       my_first_book.update(description: "YOUR INSPIRING DESCRIPTION")
       ```
 
@@ -731,7 +768,7 @@ layout: rails_tutorial
   1.  When you're done, exit the `rails console` and restart your application's web server by running `rails server`.
 {% endlist %}
 
-{% highlight shell %}
+{% highlight ruby %}
   $ rails console
   Loading development environment (Rails 5.0.0.1)
 
@@ -756,13 +793,18 @@ layout: rails_tutorial
 {% list %}
   1.  Now that your books have descriptions, you can share them with the WORLD!
 
-  1.  Reopen `app/views/books/show.html.erb` and add the book's description to the end of the definition list.
+      Reopen `app/views/books/show.html.erb` and add the book's description to the end of the definition list.
 {% endlist %}
 {% endsteps %}
 
 {% steps %}
 {% list %}
-  1.  What did you come up with? Here's the complete template.
+  1.  What did you come up with? You should've added the following lines:
+
+      ```erb
+      <dt>Description</dt>
+      <dd><%= @book.description %></dd>
+      ```
 
   1.  Save your changes and view your beautiful descriptions in your browser.
 {% endlist %}
@@ -792,23 +834,23 @@ layout: rails_tutorial
 
 ![Browser showing "/books/1" with a lovely description of "why's (poignant) Guide to Ruby"]({{site.baseurl}}/assets/images/describing_in_show.png){: .screenshot}
 
+{% aside %}
+### Links!
+
+Now you have a lovely books index and lots of individual book views, but there is no relationship between the two. Let's link them!
+
+Since you have a books index with a little bit of book information and book views lots of specific information, it makes sense to link from the books index to specific book pages.
+
+If a visitor to your bookstore is really excited to see a book on the index, they could click on that book to get more detailed information about it.
+
+We'll update the index so book titles link to their book's page.
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  Now you have a lovely books index and lots of individual book views, but there is no relationship between the two. Let's link them!
+  In HTML, you add links using anchor elements (`<a>` tags). Anchor elements link to other pages by their `href` attribute.
 
-  1.  Since you have a books index with a little bit of book information and book views lots of specific information, it makes sense to link from the books index to specific book pages.
-
-      A visitor to your bookstore viewing a book could click on it to get more detailed information.
-
-      We'll update the index so book titles link to their book's page.
-{% endlist %}
-{% endsteps %}
-
-{% steps %}
-{% list %}
-  1.  In HTML, you add links using anchor elements (`<a>` tags). Anchor elements link to other pages by their `href` attribute.
-
-      Fortunately, Rails gives us a convience method to abstract away some of that work.
+  Fortunately, Rails gives us a convience method to abstract away some of that work.
 
   1.  In your text editor, open `app/views/books/index.html.erb`.
 
