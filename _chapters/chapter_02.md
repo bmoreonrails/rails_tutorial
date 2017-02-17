@@ -230,7 +230,7 @@ Classes are used to describe things. For example, the `Book` class in your books
 
   1.  `my_favorite_book` now has a title.
 
-      Don't belive me?! Try running `my_favorite_book.title`. It should return "why's (poignant) Guide to Ruby".
+      Don't believe me?! Try running `my_favorite_book.title`. It should return "why's (poignant) Guide to Ruby".
 {% endlist %}
 
 {% highlight ruby %}

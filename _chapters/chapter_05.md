@@ -9,7 +9,7 @@ layout: rails_tutorial
 {% endsectionheader %}
 
 {% aside %}
-  So far you've created books on the `rails console`. It works, but it's not best experience. In most web applications, you enter data through...the web.
+  So far you've created books on the `rails console`. It works, but it's not the best experience. In most web applications, you enter data through...the web.
 
   Your bookstore *is* a web application, so let's treat it like one. Let's set up your application so you can create books from your browser.
 {% endaside %}
@@ -297,7 +297,7 @@ How could `@book` be nil?
       </ul>
       ```
 
-      We're putting your form elememnts inside an unordered list. The form will have two fields, one for title and one for author.
+      We're putting your form elements inside an unordered list. The form will have two fields, one for title and one for author.
 
       `f.label` defines labels for each field.
 
@@ -493,7 +493,7 @@ How could `@book` be nil?
 
 {% steps %}
 {% list %}
-  1.  Now that you have a form with a shinny "Create Book" button, why don't you try creating a book?
+  1.  Now that you have a form with a shiny "Create Book" button, why don't you try creating a book?
 
       Fill out the form and click "Create Book".
 
