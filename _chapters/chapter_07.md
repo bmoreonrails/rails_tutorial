@@ -48,9 +48,9 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Now that your application has some styles, let's use them!
+  Now that your application has some styles, let's use them!
 
-  1.  Let's start by adding a header that will get rendered on every page.
+  Let's start by adding a header that will get rendered on every page.
 
   1.  Open `app/views/layouts/application.html.erb` in your text editor.
 
@@ -74,7 +74,7 @@ layout: rails_tutorial
       </div>
       ```
 
-      On every page of your bookstore, there will be a header with a link "My Super Rad Bookstore" that links to the books index. No matter what page your on, you'll be able to get back to your bookstore's main page.
+      On every page of your bookstore, there will be a header with a link labeled "My Super Rad Bookstore" that links to the books index. No matter what page your on, you'll be able to get back to your bookstore's main page.
 
   1.  Now, let's add a containing `div` around your application's content.
 
@@ -165,7 +165,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Now that we have some styles in place, let's see what they look like.
+  Now that we have some styles in place, let's see what they look like.
 
   1.  Go to Terminal and make sure you're in the `bookstore` directory.
 
@@ -184,12 +184,14 @@ layout: rails_tutorial
 
 ![Browser showing styled books index]({{site.baseurl}}/assets/images/add_styles.png){: .screenshot}
 
+{% aside %}
+Wow! Doesn't it look so different?!
+
+Let's add a few more finishing touches.
+{% endaside %}
+
 {% steps %}
 {% list %}
-  1.  Wow! Doesn't it look so different?!
-
-      Let's add a few more finishing touches.
-
   1.  Open `app/views/books/new.html.erb`.
 
   1.  We'll add the `button` CSS class to the form submission button to make it look like a...button.
@@ -251,11 +253,11 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  There's one more link we'll style as a button. Can you guess which one it is?
+  There's one more link we'll style as a button. Can you guess which one it is?
 
-      It's a sneaky one - the "Edit book" link on the book details page.
+  It's a sneaky one - the "Edit book" link on the book details page.
 
-      Once again, we'll style the link as a button to help people recognize it as an actionable item.
+  Once again, we'll style the link as a button to help people recognize it as an actionable item.
 
   1.  Open `app/views/books/show.html.erb`.
 
@@ -293,7 +295,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Finally, we have one more button to style as a...button.
+  Finally, we have one more button to style as a...button.
 
   1.  Open `app/views/books/edit.html.erb`.
 
@@ -352,7 +354,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  To make the books index your application's homepage, we'll need to update your application's routes.
+  To make the books index your application's homepage, we'll need to update your application's routes.
 
   1.  Open `config/routes.rb` in your text editor.
 
@@ -379,11 +381,11 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Let's take a look at how the change to `config/routes.rb` changed your application's routes.
+  Let's take a look at how the change to `config/routes.rb` changed your application's routes.
 
   1.  Go back to Terminal, stop your application's web server, and run `rake routes`.
 
-  1.  You might not notice it, but there's a new row at the beginning of the table.
+      You might not notice it, but there's a new row at the beginning of the table.
 
       ```shell
       root GET    /                         books#index
@@ -419,7 +421,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Now that your bookstore has a `root` route, let's make one more change.
+  Now that your bookstore has a `root` route, let's make one more change.
 
   1.  Open `app/views/layouts/application.html.erb`.
 
