@@ -5,6 +5,7 @@
   }
   .list {
     background-color: #FFF;
+    p { padding: 1em; }
     img {
       width: 80%;
     }
@@ -16,6 +17,7 @@
     li {
       padding: .5em;
       p {
+        padding: 0em;
         margin: .5em;
         padding-left: 2em;
       }
