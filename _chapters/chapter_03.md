@@ -20,7 +20,7 @@ layout: rails_tutorial
   1.  Now open `config/routes.rb` and add the following line inside the only block in the file:
 
       ```ruby
-      resources :books  
+      resources :books
       ```
 
   1.  Save your changes.
@@ -120,7 +120,7 @@ layout: rails_tutorial
 
   1.  Create the `BooksController` by running `touch app/controllers/books_controller.rb`.
 
-  1.  Restart your web server by running `rails server`, and try going to [http:://localhost:3000/books](http:://localhost:3000/books) again.
+  1.  Restart your web server by running `rails server`, and try going to [http://localhost:3000/books](http://localhost:3000/books) again.
 
       That still errored, didn't it? But hey, at least you got a new error!
 {% endlist %}
@@ -266,7 +266,7 @@ end
       end
       ```
 
-  1.  Save your changes and try going to [http://localhost:3000/books](http://localhost:3000) again.
+  1.  Save your changes and try going to [http://localhost:3000/books](http://localhost:3000/books) again.
 
       ![Aaugh!]({{ site.baseurl }}/assets/images/aaugh.gif)
 {% endlist %}
@@ -352,9 +352,9 @@ Let's make that happen!
       <h1>Welcome to My Super Rad Bookstore!</h1>
       ```
 
-  1.  Save your changes and go to [http://localhost:3000/books](http:://localhost:3000/books) again.
+  1.  Save your changes and go to [http://localhost:3000/books](http://localhost:3000/books) again.
 
-      Yay! 🎉   
+      Yay! 🎉
 {% endlist %}
 
 {% highlight erb linenos %}
@@ -466,7 +466,7 @@ Let's focus on that funny looking syntax for a few minutes.
       <%= @books[1].title %>
       ```
 
-  1.  Can you guess what this will change? Reload [http:://localhost:3000/books](http:://localhost:3000/books) to see what happens.
+  1.  Can you guess what this will change? Reload [http://localhost:3000/books](http://localhost:3000/books) to see what happens.
 {% endlist %}
 {% highlight erb linenos %}
   <h1>Welcome to My Super Rad Bookstore!</h1>
