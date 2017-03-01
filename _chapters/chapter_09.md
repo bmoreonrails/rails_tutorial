@@ -467,7 +467,7 @@ Since a book can have many reviews, we can define a `has_many` relationship betw
 
       Try running `my_first_book.reviews.count`. It should return 3.
 
-  1.  Spend some time playing around with this relationship. You can do things like `my_first_book.reviews.first` or `my_first_book.review.pluck(:body)`.
+  1.  Spend some time playing around with this relationship. You can do things like `my_first_book.reviews.first` or `my_first_book.reviews.pluck(:body)`.
 
       To find a complete list of all the things you can do, take a look at the documentation [here](http://api.rubyonrails.org/v5.0.0/classes/ActiveRecord/Associations/CollectionProxy.html).
 
