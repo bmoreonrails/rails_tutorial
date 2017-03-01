@@ -342,13 +342,13 @@ We're going to repeat this workflow, but instead of creating a book we're going 
       <h1> New review for <%= @book.title %> </h1>
       ```
 
-  1.  Save your changes and revisit [http://localhost:3000/books/1/review/new](http://localhost:3000/books/1/review/new).
+  1.  Save your changes and revisit [http://localhost:3000/books/1/reviews/new](http://localhost:3000/books/1/reviews/new).
 
       The top of the page should have a message that says "New review for why's (poignant) Guide to Ruby".
 
   1.  Try visiting the new review path for different books in your bookstore.
 
-      For example, to visit the new review path for the second book in your bookstore you would go to [http://localhost:3000/books/2/review/new](http://localhost:3000/books/2/review/new).
+      For example, to visit the new review path for the second book in your bookstore you would go to [http://localhost:3000/books/2/reviews/new](http://localhost:3000/books/2/reviews/new).
 
       As you go to different paths, the message at the top of the page should change to show that book's title.
 {% endlist %}
