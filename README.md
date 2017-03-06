@@ -21,18 +21,21 @@ The config value `open_links_in_new_tab` in `config.yml` results in all links op
 
 ##Deploying
 
-Because we use custom plugins that Github-pages doesn't support, you must compile the page locally and deploy the contents of the _site directory only to the gh-pages branch using the following steps: 
+First, checkout master and pull the latest changes.
 
-Deploying is a little dangerous with the jekyll site because there is no versioning on the gh-pages branch. So please be super thoughtful before pushing changes. 
+```sh
+git checkout master
+git pull origin master
+```
 
-1. Delete your local copy of the gh-pages branch if you already have one. `git branch -D gh-pages`
-1. `git checkout master`
-1. `git pull origin master`
-1. `git checkout -b gh-pages`
-1. `jekyll build`
-1. `rm -rf _config.yml _layouts _scss about.md index.md _chapters _includes _plugins css js Gemfile.lock Gemfile _installation/ README.md assets/`
-1. `mv _site/* .`
-1. `rm -rf _site/`
-1. `git add .`
-1. `git commit -m "Your commit message"`
-1. `git push origin gh-pages -f`
+Then, run `rake prepare_deploy`.
+
+```sh
+rake prepare_deploy
+```
+
+When the task finishes, you'll be on the `gh-pages` branch. There will be a new commit for the changes you're deploying. If everything looks good, push the changes.
+
+```sh
+git push origin gh-pages
+```
