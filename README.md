@@ -1,12 +1,12 @@
-#Bmore On Rail Workshop Tutorial
+# Bmore On Rail Workshop Tutorial
 
 This site is created using [jekyll](https://jekyllrb.com/). If you're struggling to find information here, more can be found there.
 
-##Contributing
+## Contributing
 
 If you're interested in contributing YAY! and THANK YOU! Please fork this repo and submit any changes as a pull request. 
 
-##Up and Running
+## Up and Running
 
 Before you get started, make sure you have Ruby 2.x installed locally.
 
@@ -19,7 +19,7 @@ Now, you can get the site up and running locally by running `jekyll serve`. You 
 ### Links
 The config value `open_links_in_new_tab` in `config.yml` results in all links opening in a new tab. You can override this behavior on individual links by setting the target attribute back to the default value (`_self`) or if you just don't want the thing to work that way, remove that config value or set it to false.
 
-##Deploying
+## Deploying
 
 First, checkout master and pull the latest changes.
 
