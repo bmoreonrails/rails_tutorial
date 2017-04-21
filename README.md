@@ -8,7 +8,7 @@ If you're interested in contributing YAY! and THANK YOU! Please fork this repo a
 
 ## Up and Running
 
-Before you get started, make sure you have Ruby 2.x installed locally.
+Before you get started, make sure you have the Ruby version specified in [.ruby-version](https://github.com/bmoreonrails/rails_tutorial/blob/master/.ruby-version) installed locally.
 
 Then, clone the repo and run `bundle install`.
 
