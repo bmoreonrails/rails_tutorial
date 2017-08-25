@@ -17,7 +17,7 @@ layout: rails_tutorial
 
       Do you remember how to check what directory you're in?
 
-      (`pwd`)
+      (*Psst... it's* `pwd`)
 
   1.  If you're not already in the `bookstore` directory, run the following commands to get there:
 

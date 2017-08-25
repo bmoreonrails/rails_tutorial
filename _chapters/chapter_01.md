@@ -23,7 +23,11 @@ layout: rails_tutorial
   
   To keep things simple, we'll refer to both *Terminal* and *Command Prompt* as Terminal in the tutorial.
 
-  **Windows users!** If you followed our [install instructions]({{site.baseurl}}/installation.html), you'll have to run `C:\RubyDevKit\devkitvars.bat` when you open the Command Prompt.
+  **WINDOWS USERS!!!**
+
+  Some of the commands we'll ask you to run are not readily available on your computer. If you followed our [install instructions]({{site.baseurl}}/installation.html), you can run `C:\RubyDevKit\devkitvars.bat` to make these commands available.
+
+  Please run `C:\RubyDevKit\devkitvars.bat` whenever you open the Command Prompt in the rest of the tutorial.
 {% endprotip%}
 
 {% steps %}
@@ -39,6 +43,8 @@ layout: rails_tutorial
       ```
 
       You might see some familiar directories like `Desktop`, `Documents`, and `Music`.
+
+      **Windows users!** If you got an error, run `C:\RubyDevKit\devkitvars.bat` and try running `ls` again. Remember to run `C:\RubyDevKit\devkitvars.bat` whenever you open the Command Prompt.
 
   1.  All code deserves a good home. Add a new `Projects` directory to your home directory by running `mkdir Projects`.
 

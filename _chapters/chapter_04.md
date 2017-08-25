@@ -184,6 +184,8 @@ layout: rails_tutorial
 
   1.  Now, run `touch app/views/books/show.html.erb` to create the empty template.
 
+      **Windows users!** You didn't get an error here because you already ran `C:\RubyDevKit\devkitvars.bat`, right? Right. Remember to always run `C:\RubyDevKit\devkitvars.bat` whenever you open the Command Prompt.
+
   1.  Restart your application's web server by running `rails server` and revisit [http://localhost:3000/books/1](http://localhost:3000/books/1).
 
       Remember, a blank page means no errors. 😆

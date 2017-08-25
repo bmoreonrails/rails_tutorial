@@ -120,6 +120,8 @@ layout: rails_tutorial
 
   1.  Create the `BooksController` by running `touch app/controllers/books_controller.rb`.
 
+      **Windows users!** Did you get an error?! Try running the command again after running `C:\RubyDevKit\devkitvars.bat`. Remember to run `C:\RubyDevKit\devkitvars.bat` whenever you open the Command Prompt.
+
   1.  Restart your web server by running `rails server`, and try going to [http://localhost:3000/books](http://localhost:3000/books) again.
 
       That still errored, didn't it? But hey, at least you got a new error!
@@ -311,6 +313,8 @@ Let's make that happen!
       Create the `BooksController` template directory by running `mkdir app/views/books`.
 
   1.  Now, create the template for the `BooksController`'s `index` action by running `touch app/views/books/index.html.erb`.
+
+      **Windows users!** If, *if*, you got an error, make sure you've run `C:\RubyDevKit\devkitvars.bat`. Remember to run `C:\RubyDevKit\devkitvars.bat` whenever you open the Command Prompt.
 
   1.  Restart your web server.
 
