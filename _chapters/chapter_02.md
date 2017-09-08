@@ -19,6 +19,8 @@ layout: rails_tutorial
 
       (*Psst... it's* `pwd`)
 
+      **Windows users!** If `pwd` didn't work, make sure you've run `C:\RubyDevKit\devkitvars.bat`. Remember, you have to run `C:\RubyDevKit\devkitvars.bat` whenever you open the Command Prompt.
+
   1.  If you're not already in the `bookstore` directory, run the following commands to get there:
 
       ```shell

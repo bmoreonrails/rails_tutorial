@@ -251,6 +251,8 @@ Feel free to check out this video to learn a bit more about Relational Databases
 
       `pwd` shows you what directory you're in. You should see something like `/Users/awesomesauce/Projects/bookstore`.
 
+      **Windows users!** If `pwd` didn't work, run `C:\RubyDevKit\devkitvars.bat` and try running `pwd` again. Remember to run `C:\RubyDevKit\devkitvars.bat` whenever you open the Command Prompt.
+
   1.  If you're not in the `bookstore` directory, you're *probably* in your home directory.
 
       To get to the `bookstore` directory from your home directory, first run `cd Projects` to get to your `Projects` directory. Then, run `cd bookstore`.
