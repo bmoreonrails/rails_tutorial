@@ -43,3 +43,6 @@ gems:
 exclude:
   - Gemfile
   - Gemfile.lock
+  - README.md
+  - Rakefile
+  - lib

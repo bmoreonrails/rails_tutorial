@@ -1,19 +1,24 @@
 ---
 url: 10.html
 number: 10
-title: Showing a Book
+title: Showing Reviews
 layout: rails_tutorial
 ---
+{% sectionheader %}
+  {{ page.title }}
+{% endsectionheader %}
+
+{% aside %}
+Now that your books have some reviews, let's share them with world!
+{% endaside %}
 
 {% steps %}
 {% list %}
-  1.  Now that your books have some reviews, let's share them with world!
-
   1.  Open Terminal, go to your `bookstore` directory, and start your application's web server.
 
   1.  Now, open the details page for your first book ([http://localhost:3000/books/1](http://localhost:3000/books/1)).
 
-  1.  This page shows the details of your first book, and your first book has reviews. Doesn't this feel like a good place to show those reviews?
+      This page shows the details of your first book, and your first book has reviews. Doesn't this feel like a good place to show those reviews?
 {% endlist %}
 
 {% highlight shell %}
@@ -26,26 +31,26 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-{% steps %}
-{% list %}
-  1.  Do you remember how the book details page gets rendered?
+{% aside %}
+### How Do Book Details Get Rendered Again?
 
-      When you go to [http://localhost:3000/books/1](http://localhost:3000/books/1), a GET request is sent to your application's web server. This request gets routed to the `BooksController` `show` method.
+Do you remember how the book details page gets rendered?
 
-      ```ruby
-      def show
-        @id = params[:id]
-        @book = Book.find(@id)
-      end
-      ```
+When you go to [http://localhost:3000/books/1](http://localhost:3000/books/1), a GET request is sent to your application's web server. This request gets routed to the `BooksController` `show` method.
 
-      In the `show` method, you made the requested book's data available by assigning the book to `@book`. Then, the `show` template (`app/views/books/show.html.erb`) can use `@book` to show the book's data.
+```ruby
+def show
+  @id = params[:id]
+  @book = Book.find(@id)
+end
+```
 
-  1.  Since the `show` template has access to the book, it also has access to the book's reviews.
+In the `show` method, you made the requested book's data available by assigning the book to `@book`. Then, the `show` template (`app/views/books/show.html.erb`) can use `@book` to show the book's data.
 
-      We can take advantage of this to show a book's reviews.
-{% endlist %}
-{% endsteps %}
+Since the `show` template has access to the book, it also has access to the book's reviews.
+
+We can take advantage of this to show a book's reviews.
+{% endaside %}
 
 {% steps %}
 {% list %}
@@ -93,7 +98,7 @@ layout: rails_tutorial
 
 {% steps %}
 {% list %}
-  1.  Now we need to **show** the reviews... 😅
+  Now we need to **show** the reviews... 😅
 
   1.  Since a book has many reviews, it would make sense to list them out. Maybe, in an unordered list?
 
@@ -175,4 +180,4 @@ layout: rails_tutorial
 {% endhighlight %}
 {% endsteps %}
 
-![Browser showing book details page with reviews](screenshot.jpg)
+![Browser showing book details page with reviews]({{site.baseurl}}/assets/images/reviews_in_browser.png){: .screenshot}

@@ -1,16 +1,11 @@
 .steps {
   display: block;
   overflow: hidden;
-  margin-top: 3em;
-  margin-bottom: 3em;
-
+  margin: 6em 0;
   pre {
     overflow: auto;
   }
 
-  .highlighter-rouge {
-    color: #B32A2A;
-  }
 }
 
 @media (min-width: 480px) {

@@ -1,3 +1,21 @@
+.tutorial_nav.before_you_get_started_nav {
+  .menu-title {
+    padding-left: 10px;
+  }
+  ul.menu-links {
+    display: inline-block;
+    float: right;
+    padding-top: 5px;
+    li {
+      float: left;
+    }
+    a {
+      cursor: pointer;
+      padding: 10px;
+    }
+  }
+}
+
 .tutorial_nav {
   min-height: $nav-bar-height;
   color: #FFF;
@@ -7,10 +25,19 @@
   margin: 0;
   float: left;
   background-color: #69CBA2;
+  z-index: 1; //stops steps numbers from floating on top of nav
 
   a {
     color: #FFF;
     text-decoration: none;
+    &:hover {
+      color: $ruby;
+      text-decoration: none;
+    }
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 
   .menu-container {
@@ -19,11 +46,12 @@
   }
 
   .menu {
-    font-size: 1.4em;
     cursor: pointer;
     display: table-cell;
     width: 75%;
     height: $nav-bar-height;
+    font-size: 1em;
+    text-transform: uppercase;
   }
 
   .hamburger-icon {
@@ -42,9 +70,6 @@
   ul {
     display: none;
     list-style: none;
-    a:hover {
-      text-decoration: underline;
-    }
   }
 
   .progress {

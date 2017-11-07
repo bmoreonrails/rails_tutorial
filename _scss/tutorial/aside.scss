@@ -1,8 +1,7 @@
 .aside {
-  background-color: #D8DDDE; 
-  padding: 1em;
-  margin-top: 1em;
-  margin-bottom: 2em;
+  margin: 0 0 6em;
+  text-align: center;
+
   img {
     display: block;
     margin: auto;
@@ -11,8 +10,15 @@
     display: block;
     margin: auto;
   }
-  code {
-    color: #B32A2A;
+
+  div[class^="language-"] {
+    background-color: #F3F3F1;
+  }
+
+  .highlight {
+    text-align: left;
+    padding: .75em;
+    overflow: auto;
   }
 }
 

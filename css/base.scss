@@ -1,9 +1,15 @@
 ---
 ---
 
-$nav-bar-height: 40px;
-$nav-bar-progress-height: 10px;
 
+$nav-bar-height: 60px;
+$green: #69CBA2;
+$nav-bar-progress-height: 10px;
+$white: #fff;
+$ruby: #8B0000;
+
+@import "tutorial/footer";
+@import "tutorial/start-button";
 @import "tutorial/screenshot";
 @import "tutorial/tutorial-button-group";
 @import "tutorial/aside";
@@ -13,32 +19,87 @@ $nav-bar-progress-height: 10px;
 @import "tutorial/tutorial_nav";
 @import "tutorial/list";
 @import "tutorial/section_header";
-@import url(//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Roboto:100,300,700,500,100);
+@import "fonts";
+
+* {
+    -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
 
 .content {
-  padding-top: $nav-bar-height;
-  padding-left: 3em;
-  padding-right: 3em;
-  line-height: 1.5;
+    padding-top: $nav-bar-height;
+    padding-left: 3em;
+    padding-right: 3em;
+    line-height: 1.5;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing:inherit;
+}
+
+
+a {
+  color: $ruby;
+}
+
+div[class^="language-"] {
+  background-color: white;
+}
+
+.highlighter-rouge {
+  margin: 0 2px;
+  padding: 2px 4px;
+  background: $ruby;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  color: $white;
+}
+
+html, body {
+  height: 100%;
+
 }
 
 body {
-  overflow-x: hidden;
-  font-weight: 300;
-  font-family: 'Roboto', sans-serif;
-  padding: 0;
-  margin: 0;
-  background-color: #F3F3F1;
+    counter-reset: section;
+    overflow-x: hidden;
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #F3F3F1;
+    color: #343C39;
+    >.container {
+        min-height: calc(100% - 5.3em); //magic number for sticky footer
+        padding-bottom: 3em;
+    }
 }
 
-.highlight { background-color: #272822; }
-.highlight code { color: #FFFAF0; }
-
-@media (min-width: 480px) {
+h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
-@media (min-width: 768px) {
+.highlight {
+    background-color: #272822;
 }
 
-@media (min-width: 992px) {
+.highlight code {
+    color: #FFFAF0;
 }
+
+@media (min-width: 480px) {}
+
+@media (min-width: 768px) {}
+
+@media (min-width: 992px) {}

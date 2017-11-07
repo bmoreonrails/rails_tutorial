@@ -1,32 +1,21 @@
 ---
 layout: rails_installation
+title: Choosing Your System
 ---
 
-## Installation
+{% sectionheader %}
+Installation
+{% endsectionheader %}
 
-Pick your poison! We'll help you get Rails running on your machine.  If you _can_ meet the following requirements, that would be easier, but we'll do what we can if your computer is older.
 
-### Minimum Requirements
-<table>
-  <tr>
-    <th>OS</th><th>Version</th>
-  </tr>
-  <tr>
-    <td>Mac OS X</td><td>???</td>
-  </tr>
-  <tr>
-    <td>Ubuntu Linux</td><td>???</td>
-  </tr>
-  <tr>
-    <td>Windows</td><td>???</td>
-  </tr>
-</table>
+The steps you need to take to get your computer set up with Ruby and Rails depend on the operating system you're using. Scroll down until you see the operating system that matches your computer. If you have difficulty please read our [Troubleshooting Notes]({{site.baseurl}}/installation/troubleshooting/).
 
-### Guides
-{% for guide in site.installation %}
-  <div class="guide">
-    <a href="{{ site.baseurl }}{{guide.url}}" target="_self">
-      {{ guide.title }}
-    </a>
-  </div>
-{% endfor %}
+{% steps %}
+{% list %}
+<h2><a href="{{site.baseurl}}/installation/mac_os" target="_self">macOS</a><h2>
+<h2><a href="{{site.baseurl}}/installation/windows/" target="_self">Windows</a><h2>
+<h2><a href="{{site.baseurl}}/installation/ubuntu/" target="_self">Ubuntu</a><h2>
+{% endlist %}
+{% endsteps %}
+
+

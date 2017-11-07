@@ -1,6 +1,11 @@
 .steps {
+  p {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
   .list {
     background-color: #FFF;
+    p { padding: 1em; }
     img {
       width: 80%;
     }
@@ -11,16 +16,20 @@
     }
     li {
       padding: .5em;
-      counter-increment: item;
       p {
+        padding: 0em;
         margin: .5em;
-        padding-left: 1.5em;
+        padding-left: 2em;
+      }
+      li:before {
+        content: none;
       }
     }
     li:before {
       font-size: 2em;
       color: #64CAA0;
-      content: counter(item);
+      counter-increment: section;
+      content: counter(section);
       position: absolute;
     }
 
@@ -41,7 +50,8 @@
 @media (min-width: 768px) {
   .steps {
     .list {
-      width: 50%;
+      width: calc(50%);
+      padding: 2em; 
     }
   }
 }
