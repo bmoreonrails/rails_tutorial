@@ -47,8 +47,8 @@
 
   .menu {
     cursor: pointer;
-    display: table-cell;
-    width: 75%;
+    display: table;
+    width: 100%;
     height: $nav-bar-height;
     font-size: 1em;
     text-transform: uppercase;
@@ -64,7 +64,6 @@
   .menu-title {
     display: table-cell;
     vertical-align: middle;
-    width: 75%;
   }
 
   ul {
