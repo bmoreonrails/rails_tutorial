@@ -11,9 +11,18 @@
     {% endfor %}
    </ul>
 
-  <div class="menu">
-    <div class="hamburger-icon" data-toggle="#menu-list"> &#9776</div>
-    <div class="menu-title" data-toggle="#menu-list">Chapter {{page.number}} -- {{ page.title }}</div>
-    <div class="menu-title"><a href="{{site.baseurl}}/" target="_self">Home</a></div>
+  <div class="menu-container">
+    <div class="menu" data-toggle="#menu-list">
+      <div class="hamburger-icon"> &#9776</div>
+      <div class="menu-title">Chapter {{page.number}} -- {{ page.title }}</div>
+      <div class="menu-title"><a href="{{site.baseurl}}/" target="_self">Home</a></div>
+    </div>
+
+    <div class="search">
+      <form action="/rails_tutorial/search" method="get" target="_self">
+        <i class="material-icons">search</i><input type="text" id="search-box" name="query">
+      </form>
+    </div>
   </div>
+
 </div>

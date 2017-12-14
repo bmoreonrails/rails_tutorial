@@ -40,6 +40,11 @@
     text-decoration: underline;
   }
 
+  .menu-container {
+    display: table;
+    width: 100%;
+  }
+
   .menu {
     cursor: pointer;
     display: table;
@@ -76,6 +81,39 @@
     background-color: #ADD6C6;
     height: 100%;
     width: 0%;
+  }
+
+  .search {
+    display: table-cell;
+    vertical-align: middle;
+    padding-right: 20px;
+
+    form {
+      position: relative;
+      overflow: auto;
+      background: #FFF;
+      border-radius: 3px;
+    }
+
+    .material-icons {
+      position: absolute;
+      left: 5px;
+      height: 24px;
+      padding-top: 3px;
+      padding-bottom: 3px;
+      color: #000;
+    }
+
+    input {
+      font-size: 16px;
+      height: 30px;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0 5px 0 34px;
+      background: none;
+      border: 0;
+      outline: none;
+    }
   }
 }
 
