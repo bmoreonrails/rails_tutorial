@@ -130,7 +130,7 @@ Click on [Windows 8.1](https://support.microsoft.com/en-us/help/15356){:target='
 
 1. Swipe right and click on Start Menu
 
-2. In the Start Menu, swipe up or click/tap on All Apps (mouse over on the bottom left hand corner until your see the down arrow).
+2. In the Start Menu, swipe up or click/tap on All Apps (mouse over on the bottom left hand corner until you see the down arrow).
 
 3. Scroll down to Ruby 2.3.1-p112
 

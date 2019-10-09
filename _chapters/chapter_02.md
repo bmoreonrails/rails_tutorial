@@ -36,7 +36,7 @@ layout: rails_tutorial
 
   1.  Run `ls -l db/migrate` to take a look at one of the new files. You should see a file named something like `20161115030350_create_books.rb`.
 
-      20161115030350 is a timestamp generated when the file is created. You're file will start with a more recent timestamp...I hope 😝
+      20161115030350 is a timestamp generated when the file is created. Your file will start with a more recent timestamp...I hope 😝
 
       Let's take a look at this file in your text editor.
 {% endlist %}

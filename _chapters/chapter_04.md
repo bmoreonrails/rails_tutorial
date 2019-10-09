@@ -10,7 +10,7 @@ layout: rails_tutorial
 {% endsectionheader %}
 
 {% aside %}
-  You're bookstore is starting to come along. You have an index that lists all the books in your database by title and author. This is great, but what about the other information you've stored about your books? It would be useful to see how much a book costs, or how many are available.
+  Your bookstore is starting to come along. You have an index that lists all the books in your database by title and author. This is great, but what about the other information you've stored about your books? It would be useful to see how much a book costs, or how many are available.
 
   Let's show this information.
 {% endaside %}

@@ -10,7 +10,7 @@ layout: rails_tutorial
 {% endsectionheader %}
 
 {% aside %}
-  You're bookstore is really starting to take shape. But doesn't it look a little...spartan?
+  Your bookstore is really starting to take shape. But doesn't it look a little...spartan?
 
   Don't get me wrong, there's a beauty in the simplicity. However, there are a few changes we can make that'll make your bookstore easier to use.
 

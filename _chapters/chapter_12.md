@@ -147,7 +147,7 @@ You define the columns you want to add to the table inside the `create_table` bl
 {% aside %}
 ### What's a Password Digest?
 
-You're bookstore application now has a `users` table with a couple of columns. The `username` column probably seems reasonable, but I'm sure the `password_digest` column looks questionable. What's a *password digest* anyways?
+Your bookstore application now has a `users` table with a couple of columns. The `username` column probably seems reasonable, but I'm sure the `password_digest` column looks questionable. What's a *password digest* anyways?
 
 Rails provides a feature to make password management convienient. By adding the `passowrd_digest` column, you've already taken the first step towards using this feature.
 
