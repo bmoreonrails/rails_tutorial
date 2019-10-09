@@ -336,7 +336,7 @@ Let's define the `belongs_to` relationship.
 
       This will add a `book_id` column to the `reviews` table, and the new column will be an integer column.
 
-  1.  Update your soultion to match this solution and save your changes.
+  1.  Update your solution to match this solution and save your changes.
 {% endlist %}
 
 {% highlight ruby linenos %}

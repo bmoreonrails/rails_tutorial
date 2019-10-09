@@ -126,7 +126,7 @@ You define the columns you want to add to the table inside the `create_table` bl
       end
       ```
 
-  1.  If your `create_table` block doesn't look like this, update your soultion to match this solution and run the migration.
+  1.  If your `create_table` block doesn't look like this, update your solution to match this solution and run the migration.
 
       If you ran the migration without the `username` or `password_digest` columns, you'll need to rollback the migration and run it again.
 {% endlist %}

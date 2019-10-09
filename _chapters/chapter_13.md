@@ -299,7 +299,7 @@ In the `SessionsController` `new` template, we need to render a form where users
       <% end %>
       ```
 
-  1.  Update your soultion to match this solution. Save your changes and take a look at the form by visiting [http://localhost:3000/session/new](http://localhost:3000/session/new).
+  1.  Update your solution to match this solution. Save your changes and take a look at the form by visiting [http://localhost:3000/session/new](http://localhost:3000/session/new).
 {% endlist %}
 
 {% highlight erb linenos %}
