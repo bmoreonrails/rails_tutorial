@@ -574,7 +574,7 @@ In the `create` method, you're putting the succes message in `flash[:notice]` an
         <p class="notice"> <%= flash[:notice] %> </p>
       <% end %>
 
-      <% if flash[:alert] %
+      <% if flash[:alert] %>
         <p class="alert"> <%= flash[:alert] %> </p>
       <% end %>
 
