@@ -9,6 +9,7 @@
     <link href="/rails_tutorial/css/syntax/monokai.css" type="text/css" rel="stylesheet"/>
     <link href="/rails_tutorial/css/base.css" type="text/css" rel="stylesheet"/>
     <link href="/rails_tutorial/assets/vendor/css/featherlight.min.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="/rails_tutorial/js/jquery.min.js"></script>
     <script src="/rails_tutorial/assets/vendor/js/featherlight.min.js"></script>
     <script src="/rails_tutorial/js/tutorial_nav.js"></script>
@@ -121,11 +122,20 @@
     
    </ul>
 
-  <div class="menu">
-    <div class="hamburger-icon" data-toggle="#menu-list"> &#9776</div>
-    <div class="menu-title" data-toggle="#menu-list">Chapter 13 -- Logging In and Logging Out</div>
-    <div class="menu-title"><a href="/rails_tutorial/" target="_self">Home</a></div>
+  <div class="menu-container">
+    <div class="menu" data-toggle="#menu-list">
+      <div class="hamburger-icon"> &#9776</div>
+      <div class="menu-title">Chapter 13 -- Logging In and Logging Out</div>
+      <div class="menu-title"><a href="/rails_tutorial/" target="_self">Home</a></div>
+    </div>
+
+    <div class="search">
+      <form action="/rails_tutorial/search" method="get" target="_self">
+        <i class="material-icons">search</i><input type="text" id="search-box" name="query">
+      </form>
+    </div>
   </div>
+
 </div>
 
     </nav>
@@ -486,7 +496,7 @@
     </div>
   </li>
   <li>
-    <p>Update your soultion to match this solution. Save your changes and take a look at the form by visiting <a href="http://localhost:3000/session/new">http://localhost:3000/session/new</a>.</p>
+    <p>Update your solution to match this solution. Save your changes and take a look at the form by visiting <a href="http://localhost:3000/session/new">http://localhost:3000/session/new</a>.</p>
   </li>
 </ol>
 </div>
@@ -858,12 +868,12 @@
         <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"notice"</span><span class="nt">&gt;</span> <span class="cp">&lt;%=</span> <span class="n">flash</span><span class="p">[</span><span class="ss">:notice</span><span class="p">]</span> <span class="cp">%&gt;</span> <span class="nt">&lt;/p&gt;</span>
       <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
 
-      <span class="cp">&lt;%</span> <span class="k">if</span> <span class="n">flash</span><span class="p">[</span><span class="ss">:alert</span><span class="p">]</span> <span class="o">%</span>
-        <span class="o">&lt;</span><span class="nb">p</span> <span class="k">class</span><span class="o">=</span><span class="s2">"alert"</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="sx">%= flash[:alert] </span><span class="cp">%&gt;</span> <span class="nt">&lt;/p&gt;</span>
-      <span class="cp">&lt;%</span><span class="sx"> end </span><span class="cp">%&gt;</span>
+      <span class="cp">&lt;%</span> <span class="k">if</span> <span class="n">flash</span><span class="p">[</span><span class="ss">:alert</span><span class="p">]</span> <span class="cp">%&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"alert"</span><span class="nt">&gt;</span> <span class="cp">&lt;%=</span> <span class="n">flash</span><span class="p">[</span><span class="ss">:alert</span><span class="p">]</span> <span class="cp">%&gt;</span> <span class="nt">&lt;/p&gt;</span>
+      <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
 
       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
-        <span class="cp">&lt;%=</span><span class="sx"> yield </span><span class="cp">%&gt;</span>
+        <span class="cp">&lt;%=</span> <span class="k">yield</span> <span class="cp">%&gt;</span>
       <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/body&gt;</span>
   <span class="nt">&lt;/html&gt;</span><span class="w">

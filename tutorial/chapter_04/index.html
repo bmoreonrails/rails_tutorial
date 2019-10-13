@@ -9,6 +9,7 @@
     <link href="/rails_tutorial/css/syntax/monokai.css" type="text/css" rel="stylesheet"/>
     <link href="/rails_tutorial/css/base.css" type="text/css" rel="stylesheet"/>
     <link href="/rails_tutorial/assets/vendor/css/featherlight.min.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="/rails_tutorial/js/jquery.min.js"></script>
     <script src="/rails_tutorial/assets/vendor/js/featherlight.min.js"></script>
     <script src="/rails_tutorial/js/tutorial_nav.js"></script>
@@ -121,11 +122,20 @@
     
    </ul>
 
-  <div class="menu">
-    <div class="hamburger-icon" data-toggle="#menu-list"> &#9776</div>
-    <div class="menu-title" data-toggle="#menu-list">Chapter 4 -- Showing Detailed Information in the Browser</div>
-    <div class="menu-title"><a href="/rails_tutorial/" target="_self">Home</a></div>
+  <div class="menu-container">
+    <div class="menu" data-toggle="#menu-list">
+      <div class="hamburger-icon"> &#9776</div>
+      <div class="menu-title">Chapter 4 -- Showing Detailed Information in the Browser</div>
+      <div class="menu-title"><a href="/rails_tutorial/" target="_self">Home</a></div>
+    </div>
+
+    <div class="search">
+      <form action="/rails_tutorial/search" method="get" target="_self">
+        <i class="material-icons">search</i><input type="text" id="search-box" name="query">
+      </form>
+    </div>
   </div>
+
 </div>
 
     </nav>
@@ -135,7 +145,7 @@
 </div>
 
 <div class="aside">
-<p>You’re bookstore is starting to come along. You have an index that lists all the books in your database by title and author. This is great, but what about the other information you’ve stored about your books? It would be useful to see how much a book costs, or how many are available.</p>
+<p>Your bookstore is starting to come along. You have an index that lists all the books in your database by title and author. This is great, but what about the other information you’ve stored about your books? It would be useful to see how much a book costs, or how many are available.</p>
 
 <p>Let’s show this information.</p>
 </div>
