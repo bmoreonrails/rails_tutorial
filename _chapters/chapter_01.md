@@ -20,7 +20,7 @@ layout: rails_tutorial
   * If you're on Windows, you'll type the command into *Command Prompt*.
 
   After you've typed the command, you'll press `enter` to execute it.
-  
+
   To keep things simple, we'll refer to both *Terminal* and *Command Prompt* as Terminal in the tutorial.
 
   **Windows users!** If you followed our [install instructions]({{site.baseurl}}/installation.html), you'll have to run `C:\RubyDevKit\devkitvars.bat` when you open the Command Prompt.
@@ -32,7 +32,7 @@ layout: rails_tutorial
 
   1.  You're now in your home directory. Let's take a look what you have in there.
 
-      Run `ls` to list everything inside your home directory.
+      Run `ls` to list the files and directories inside your home directory.
 
       ```shell
       ls
@@ -109,7 +109,7 @@ layout: rails_tutorial
 {% aside %}
   Woah! The `rails new` command does a lot of stuff!
 
-  When you run `rails new`, it creates the files and directories that make up the basic structure of your new Rails application. Then, it runs `bundle install` to install the dependencies needed to run the application.
+  When you run `rails new`, it creates the files and directories that make up the basic structure of your new Rails application. Then it runs `bundle install` to install the dependencies needed to run the application.
 {% endaside %}
 
 {% steps %}
@@ -166,7 +166,7 @@ layout: rails_tutorial
 {% endsteps %}
 
 {% protip %}
-  It's easiest to view and edit the files of your application using a text editor created just for programming. If you don't already have a favorite text editor we recommend [Atom](https://atom.io/).
+  It's easiest to view and edit the files of your application using a text editor created just for programming. If you don't already have a favorite text editor, we recommend [Atom](https://atom.io/).
 {% endprotip %}
 
 {% steps %}
@@ -179,7 +179,7 @@ layout: rails_tutorial
 
       If you're using Atom, you can do this by going to `File` > `Open...`.
 
-  1.  Now, open `config/database.yml`.
+  1.  Now open `config/database.yml`.
 
       `database.yml` tells Rails how to connect to the bookstore application's database.
 
@@ -222,7 +222,7 @@ layout: rails_tutorial
 
 There are many different types of databases out there, but we'll only be working with a relational database.
 
-A relational database is made up of tables where you store data. You can think of them kinda like an Excel spreadsheet but much more powerful. There are many types of *Relational Database Management Systems* (RDMS's for short) and SQLite is just one of them.
+A relational database is made up of tables where you store data. You can think of them kinda like an Excel spreadsheet but much more powerful. There are many types of *Relational Database Management Systems* (RDMS's for short), and SQLite is just one of them.
 
 Feel free to check out this video to learn a bit more about Relational Databases:
 
@@ -243,11 +243,11 @@ Feel free to check out this video to learn a bit more about Relational Databases
       pwd
       ```
 
-      `pwd` shows you what directory you're in. You should see something like `/Users/awesomesauce/Projects/bookstore`.
+      `pwd` shows you what directory you're in, or your present working directory. You should see something like `/Users/awesomesauce/Projects/bookstore`.
 
   1.  If you're not in the `bookstore` directory, you're *probably* in your home directory.
 
-      To get to the `bookstore` directory from your home directory, first run `cd Projects` to get to your `Projects` directory. Then, run `cd bookstore`.
+      To get to the `bookstore` directory from your home directory, first run `cd Projects` to get to your `Projects` directory. Then run `cd bookstore`.
 
       ```shell
       cd Projects
@@ -263,7 +263,7 @@ Feel free to check out this video to learn a bit more about Relational Databases
       http://localhost:3000
       ```
 
- 1.  Open you web browser and go to [http://localhost:3000](http://localhost:3000).
+ 1.  Open your web browser and go to [http://localhost:3000](http://localhost:3000).
 {% endlist %}
 
 {% highlight shell %}
